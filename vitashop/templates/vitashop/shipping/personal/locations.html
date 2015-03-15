@@ -1,0 +1,40 @@
+{% extends "vitashop/base.html" %}
+{% load url from future %}
+{% load widget_tweaks %}
+{% block body %}
+
+    <div class="row center-block">
+        <div id="profile-panel" class="panel panel-default col-md-5">
+          <div class="panel-heading">
+            <h3 class="panel-title">Choose location to pickup products</h3>
+          </div>
+          <div class="panel-body">
+
+              <form id="profile_form" class="form-horizontal" action="{% url 'personal_process' %}" method="post">
+                    {% csrf_token %}
+                  <div class="form-group">
+                    <label for="locations" class="col-sm-4 control-label">Location</label>
+                    <div class="col-sm-8">
+                        {{ form.locations|add_class:"form-control"  }}
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="locations" class="col-sm-4 control-label">Price</label>
+                    <div class="col-sm-8">
+                        Zdarma
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="ok" class="col-sm-4 control-label"></label>
+                    <div class="col-sm-offset-2 col-sm-6">
+                      <button type="submit" class="btn btn-primary">OK</button>
+                    </div>
+                  </div>
+              </form>
+
+          </div>
+        </div>
+    </div>
+
+{% endblock %}

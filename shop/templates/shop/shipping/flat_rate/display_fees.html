@@ -1,0 +1,13 @@
+{% extends "shop/base.html" %}
+{% load url from future %}
+
+{% block body %}
+  <p>You will be charged {{shipping_costs}} for shipping</p><br />
+    <p>
+    <form method="post" onchange="this.submit()">
+    {% csrf_token %}
+    {{ form }}
+    </form>
+    </p>
+  <a href="{% url 'flat_process' %}">Proceed</a>
+{% endblock %}

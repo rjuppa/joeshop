@@ -1,0 +1,11 @@
+{% extends "vitashop/base.html" %}
+{% load url from future %}
+
+{% block body %}
+  <h1>Product list:</h1>
+  <hr />
+  {% for product in product_list %}
+      <a href="{% url 'product_detail' product.slug %}">{{product.get_name}}</a><br />
+      <hr />
+  {% endfor %}
+{% endblock %}

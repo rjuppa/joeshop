@@ -1,0 +1,66 @@
+{% extends "vitashop/base.html" %}
+{% load i18n %}
+{% load currency %}
+{% load url from future %}
+{% block body %}
+
+    <div class="row">
+        <div class="btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            Products <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            {% for prod in products %}
+                <li><a href="{% url 'product_detail' prod.slug %}">{{ prod.name }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div id="curr-wrapper" class="btn-group pull-right">
+            <form action="{% url 'currency' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="product_detail {{ product.slug }} ">
+                <div class="float-left">
+                    <label for="id_currency">Currency:</label>
+                    <select id="id_currency" name="sel_currency" class="form-control" onchange="this.form.submit()">
+                        {% for c in currency_set %}
+                            {% if c == currency %}
+                                <option value="{{ c }}" selected>{{ c }}</option>
+                            {% else %}
+                                <option value="{{ c }}">{{ c }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5 col-sm-5 col-xs-12">
+
+            <div class=" margin-20">
+                <img src="/media/products/{{ product.image }}" class="img-responsive" alt="{{ product.name }}" />
+            </div>
+
+        </div>
+        <div class="col-md-6 col-md-offset-1 col-sm-7 col-xs-12">
+            <h2>{{ product.name }}</h2>
+            <div>
+                <span class="product-price-label">Price:</span>
+                <span class="product-price">{{ product.unit_price|currency:currency }}</span>
+            </div>
+            <form method="post" action="{% url 'cart' %}">{% csrf_token %}
+                <input type="hidden" name="add_item_id" value="{{product.pk}}">
+                <input type="hidden" name="add_item_quantity" value="1">
+                <input type="submit" class="btn btn-warning" value="Add to cart" role="button">
+            </form>
+            <p/>
+            <ul class="nav nav-tabs">
+              <li role="presentation" class="active"><a href="#">Informace</a></li>
+              <li role="presentation"><a href="#">Slozeni</a></li>
+              <li role="presentation"><a href="#">Pouziti</a></li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}

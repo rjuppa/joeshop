@@ -1,0 +1,16 @@
+{% extends "vitashop/base.html" %}
+{% load url from future %}
+{% load i18n %}
+{% load currency %}
+
+{% block body %}
+  <h1>Thank you for your order!</h1>
+  <p>Your order has been placed</p>
+
+    <form action="" method="post">
+    {% csrf_token %}
+    <p>Please continue to pay your order for <mark>{{ order.order_total|currency:currency }}</mark> at <input type="submit" class="btn btn-warning btn-lg" value="PayPal" /></p>
+    </form>
+    <p><a href="{% url 'shop_welcome' %}">Back to the main page</a></p>
+
+{% endblock %}

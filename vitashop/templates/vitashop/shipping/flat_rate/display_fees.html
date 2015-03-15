@@ -1,0 +1,9 @@
+{% extends "vitashop/base.html" %}
+{% load url from future %}
+
+{% block body %}
+    <p>You will be charged {{shipping_costs}} for shipping</p><br />
+    <div class="text-center">
+        <a href="{% url 'flat_process' %}" class="btn btn-info">Proceed</a>
+    </div>
+{% endblock %}

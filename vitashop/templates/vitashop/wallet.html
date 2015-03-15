@@ -1,0 +1,12 @@
+{% extends "vitashop/base.html" %}
+{% load url from future %}
+{% block body %}
+
+  <h1>My test wallet</h1>
+
+    <div class="bs-component">
+      Pay to: {{ addr }} <br/>
+      Amount: {{ amount }}
+    </div>
+
+{% endblock %}

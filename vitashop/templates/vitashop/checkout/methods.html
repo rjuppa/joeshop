@@ -1,0 +1,150 @@
+{% extends "vitashop/base.html" %}
+{% load url from future %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block body %}
+
+     <div class="row">
+         <div class="col-md-3"><a class="btn btn-info" href="{% url 'cart' %}">Cart</a></div>
+         <div class="col-md-3"><a class="btn btn-info" href="{% url 'checkout_selection' %}">Delivery address</a></div>
+         <div class="col-md-3"><a class="btn btn-info" href="{% url 'checkout_methods' %}">Shipping and billing</a></div>
+         <div class="col-md-3"><a class="btn btn-default" href="{% url 'checkout_overview' %}">Overview</a></div>
+     </div>
+
+    <p>&nbsp;</p>
+
+     <div class="row">
+        <div class="btn-group">
+          <h3 class="products-header-top">{% trans "Shipping and payment methods" %}:</h3>
+        </div>
+     </div>
+
+    <div class="row">
+
+          <form method="POST" class="form-horizontal">
+              {% csrf_token %}
+
+                <div id="methods-panel" class="panel panel-primary col-md-5">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Shipping Methods</h3>
+                    </div>
+                    <div class="panel-body">
+                        {{ shipping_form|crispy }}
+                    </div>
+                    <div id="shipping_info" class="jumbotron">
+
+
+                    </div>
+                </div>
+
+                <div id="methods-panel" class="panel panel-primary col-md-5 col-md-offset-1">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Payment Methods</h3>
+                    </div>
+                    <div class="panel-body">
+                        {{ billing_form|crispy }}
+                    </div>
+                    <div id="payment_info" class="jumbotron">
+
+
+                    </div>
+                </div>
+
+
+                <div class="clearfix"></div>
+
+                <p>&nbsp;</p>
+                <div class="row">
+                      <div class="col-md-8 col-md-offset-2 text-center">
+                          <a href="{% url 'checkout_selection' %}" class="btn btn-default">Back to address</a>
+                          <button type="submit" class="btn btn-warning btn-lg">Continue to payment</button>
+                      </div>
+                </div>
+
+        </form>
+
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+
+    </div>
+
+    <div id="cposta" style="display: none;">
+        <span class="text-small"><b>Cena:</b> 91 Kč (s DPH)<br/><br/>
+        <b>Termín:</b><br/>
+        Doručení obvykle následující pracovní den, v případě objednávky v pracovních dnech do 18:00.<br/>
+
+        <b>Doručení: </b><br/>
+        V den expedice Vám bude emailem zaslána informace o čísle balíku, datu doručení a částce k úhradě.<br/>
+        <br/>
+        Výhodou je doručení přímo k Vašim rukám, v případě neúspěšného doručení je balík po dobu 7 dnů uložen na Vaší poště.</span>
+    </div>
+    <div id="personal" style="display: none;">
+        <label for="sel_place" class="control-label">Select place to pick up products </label>
+        <div class="controls">
+            <select class="form-control" name="sel_place" id="sel_place">
+                <option value="1">Praha</option>
+                <option value="2">Plzeň</option>
+                <option value="3">Brno</option>
+                <option value="4">Ostrava</option>
+            </select>
+        </div>
+        <span class="text-small"><b>Cena:</b> 0 Kč (zdarma)<br/><br/>
+        <b>Termín:</b><br/>
+        Produkty jsou připraveny k odběru ihned po objednání případně lze domluvit osobní předání.<br/>
+
+        <b>Doručení: </b><br/>
+        Produkty jsou připraveny k odběru ve vybraných městech.<br/>
+        </span>
+    </div>
+
+    <div id="bitcoin" style="display: none;">
+        <span class="text-small">The bitcoin address will be shown to pay this order on next page.</span><br/>
+    </div>
+    <div id="paypal" style="display: none;">
+        <span class="text-small">You will be redirected to Paypal payment gateway to pay you order.</span><br/>
+    </div>
+    <div id="ondelivery" style="display: none;">
+        <span class="text-small">You can pay when you pick up your products. You can use this payment only when you have choosen <b>personal delivery.</b></span><br/>
+    </div>
+
+{% endblock %}
+
+
+
+{% block scripts %}
+
+$(function(){
+    sel = $( "#id_shipping_method" );
+    sel.on('change', function (e) {
+        var optionSelected = $( "option:selected", this );
+        var valueSelected = this.value;
+
+        //el = $( valueSelected );
+        el = document.getElementById(valueSelected)
+        $( "#shipping_info" ).html(el.innerHTML);
+    });
+    //init
+    selected = "cposta";
+    sel.val(selected);
+    el = document.getElementById(selected);
+    $( "#shipping_info" ).html(el.innerHTML);
+});
+
+$(function(){
+    sel = $( "#id_payment_method" );
+    sel.on('change', function (e) {
+        var optionSelected = $( "option:selected", this );
+        var valueSelected = this.value;
+
+        //el = $( valueSelected );
+        el = document.getElementById(valueSelected)
+        $( "#payment_info" ).html(el.innerHTML);
+    });
+    //init
+    selected = "paypal";
+    sel.val(selected);
+    el = document.getElementById(selected);
+    $( "#payment_info" ).html(el.innerHTML);
+});
+{% endblock %}

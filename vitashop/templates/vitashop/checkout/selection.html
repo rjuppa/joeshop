@@ -1,0 +1,98 @@
+{% extends "vitashop/base.html" %}
+{% load url from future %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block body %}
+
+     <div class="row">
+         <div class="col-md-3"><a class="btn btn-info" href="{% url 'cart' %}">Cart</a></div>
+         <div class="col-md-3"><a class="btn btn-info" href="{% url 'checkout_selection' %}">Delivery address</a></div>
+         <div class="col-md-3"><span class="btn btn-default">Shipping and billing</span></div>
+         <div class="col-md-3"><span class="btn btn-default">Overview</span></div>
+     </div>
+
+    <p>&nbsp;</p>
+     <div class="row">
+        <div class="btn-group">
+          <h3 class="products-header-top">{% trans "Fill in your address" %}:</h3>
+        </div>
+     </div>
+
+    <div class="row">
+
+          <form method="POST" class="form-horizontal">
+              {% csrf_token %}
+
+                <div id="shipping-panel" class="panel panel-primary col-md-5 col-sm-6">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Your shipping address</h3>
+                    </div>
+                    <div class="panel-body">
+                        {{ shipping_address|crispy }}
+                    </div>
+                </div>
+
+                <div id="billing-panel" class="panel panel-transparent panel-primary col-md-5 col-md-offset-1 col-sm-6">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Your billing address</h3>
+                    </div>
+                    <div class="panel-body">
+                        {{ billing_address|crispy }}
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="form-group col-md-5">
+                    <div class="panel-body">
+                      <label for="use_billing" class="control-label">Use different billing address</label>
+                      <input type="checkbox" name="use_billing" id="use_billing" class="checkbox"
+                             onclick="toggle_address()" />
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <p>&nbsp;</p>
+                <div class="row">
+                      <div class="col-md-8 col-md-offset-2 text-center">
+                          <a href="{% url 'cart' %}" class="btn btn-default">Back to cart</a>
+                          <button type="submit" class="btn btn-warning btn-lg">Continue >></button>
+                      </div>
+                </div>
+
+        </form>
+
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+
+    </div>
+
+<script language="JavaScript">
+function toggle_address(){
+    b = $('#use_billing').prop('checked');
+    if(b) {
+        $("#billing-panel").removeClass('panel-transparent');
+        $('#id_bill-name').removeAttr('disabled');
+        $('#id_bill-address').removeAttr('disabled');
+        $('#id_bill-address2').removeAttr('disabled');
+        $('#id_bill-zip_code').removeAttr('disabled');
+        $('#id_bill-city').removeAttr('disabled');
+        $('#id_bill-state').removeAttr('disabled');
+        $('#id_bill-country').removeAttr('disabled');
+    }
+    else{
+        $("#billing-panel").addClass('panel-transparent');
+        $('#id_bill-name').prop('disabled', true);
+        $('#id_bill-address').prop('disabled', true);
+        $('#id_bill-address2').prop('disabled', true);
+        $('#id_bill-zip_code').prop('disabled', true);
+        $('#id_bill-city').prop('disabled', true);
+        $('#id_bill-state').prop('disabled', true);
+        $('#id_bill-country').prop('disabled', true);
+    }
+}
+window.onload = toggle_address;
+</script>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "vitashop/base.html" %}
+{% load url from future %}
+{% block body %}
+
+
+    <div class="row">
+        <div id="changepwd-panel" class="panel panel-default col-md-6 col-md-offset-3">
+          <div class="panel-heading">
+            <h3 class="panel-title">Change Password</h3>
+          </div>
+
+            <div class="alert alert-success" role="alert">Your password was successfully changed.</div>
+
+            <p>
+                <a href="{% url "profile" %}" class="btn btn-primary">Go to your profile</a>
+            </p>
+
+          </div>
+        </div>
+
+    </div> <!-- row -->
+
+{% endblock %}

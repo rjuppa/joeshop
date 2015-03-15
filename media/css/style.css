@@ -1,0 +1,162 @@
+.text-small{
+    font-size: .8em;
+}
+
+footer {
+    background-color: #003366;
+    height: 160px;
+    color: white;
+    padding: 10px;
+}
+
+.site{
+    height: 100%;
+    min-height: 100%;
+}
+
+.site-inner{
+    vertical-align: middle;
+}
+.jumbotron {
+  background-color: #fff;
+}
+.navbar{
+    border-radius: 0;
+    border: 0;
+}
+.space40{
+    margin-top: 40px;
+}
+.margin-20{
+    margin: 20px;
+    background-color: #3be6c4;
+}
+
+div#panel,
+div#profile-panel,
+div#cart-panel,
+div#social-panel,
+div#methods-panel,
+div#extra-panel,
+div#changepwd-panel,
+div#billing-panel,
+div#shipping-panel{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.checkbox input[type="checkbox"]{
+    height: 34px;
+    display: block;
+}
+
+.soc-btn{
+    width: 160px;
+    margin: 10px;
+}
+
+.product{
+    border: 0;
+    -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, .05);
+    box-shadow: 0 0 0 rgba(0, 0, 0, .05);
+}
+.product-title{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.product-price{
+    font-size: 1em;
+    font-weight: normal;
+    color: #080808;
+}
+.product-price a:hover, a:visited, a:link, a:active{
+    text-decoration: none;
+}
+.product-price-label{
+    font-size: 1em;
+    font-weight: normal;
+    color: #080808;
+    text-decoration: none;
+}
+.product-price-label a:hover, a:visited, a:link, a:active{
+    text-decoration: none;
+}
+.products-header-top{
+    margin-top: 0;
+}
+
+div#extra-panel textarea{
+    height: 60px;
+}
+
+.control-group.error p.help-block{
+    color: Red;
+}
+
+.panel-transparent {
+    background: none;
+    border: solid 1px #f2f2f2;
+}
+
+.panel-transparent .panel-heading{
+    background: rgba(255, 255, 255, 0.8)!important;
+    border: solid 1px #f2f2f2;
+    color: #cccccc;
+}
+
+.panel-transparent .panel-body{
+    background: rgba(255, 255, 255, 0.8)!important;
+    border: solid 1px #f2f2f2;
+    color: #f2f2f2;
+}
+
+.panel-transparent .panel-body input{
+    background: rgba(255, 255, 255, 0.8)!important;
+    border: solid 1px #f2f2f2;
+    color: #f2f2f2;
+}
+
+.panel-transparent .panel-body select{
+    background: rgba(255, 255, 255, 0.8)!important;
+    border: solid 1px #f2f2f2;
+    color: #f2f2f2;
+}
+
+#shipping_info,
+#payment_info{
+    padding: 15px;
+    height: 220px;
+}
+
+table.order{
+    display: table;
+    width: 80%;
+    max-width: 800px;
+
+}
+
+table.order td{
+    padding: 5px;
+}
+table.order td.top{
+    padding: 5px;
+    vertical-align: top;
+}
+
+table.order td.header{
+    background-color: #003366;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+div#curr-wrapper{ width: 180px}
+div#curr-wrapper label{
+    float:left;
+    width: 80px;
+    display: block;
+}
+div#curr-wrapper select {
+    float: left;
+    width: 80px;
+    display: block;
+}

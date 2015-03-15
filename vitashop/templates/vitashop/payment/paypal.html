@@ -1,0 +1,22 @@
+{% extends "vitashop/base.html" %}
+{% load url from future %}
+{% block body %}
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-header">
+          <h1 id="container">Summary of order and Paypal button</h1>
+        </div>
+        <div class="bs-component">
+          <div class="jumbotron">
+            <p>
+                Summary of order
+            </p>
+              <p><a href="#" class="btn btn-warning btn-lg">Pay in Paypal</a></p>
+            <p><a href="{% url 'products' %}" class="btn btn-primary btn-lg">Choose product</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "beershop/base.html" %}
+{% load url from future %}
+{% block body %}
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="bs-component">
+          <div class="jumbotron">
+              <h4>Payment instructions</h4>
+            <p>
+                Price is ${{ amount_dollar }} <br/>
+                Please pay {{ amount_btc }}BTC <br/>
+                to wallet address: {{ wallet_address }}
+            </p>
+            <img src="{{qrcode}}" title="Wallet address" />
+            <p>
+                Your payment has to be verified by 3 confirmations within 6 hours.<br />
+                Otherwise, your order will be cancelled automatically.<br />
+                In any case, we'll inform you by email.
+			</p>
+              <h4>Thank you for your order</h4>
+          </div>
+          <div>
+              <a href="/beershop/checkout/wallet?addr={{ wallet_address }}&amount={{ amount_btc }}">Go to wallet</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

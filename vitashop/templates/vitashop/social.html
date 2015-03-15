@@ -1,0 +1,82 @@
+{% extends "vitashop/base.html" %}
+{% load url from future %}
+{% load widget_tweaks %}
+{% block body %}
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '525404540934679',
+      xfbml      : true,
+      version    : 'v2.2'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+    <div class="row center-block">
+    <div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>
+
+
+        <a href="{% url 'social:begin' "facebook" %}">Facebook OAuth2</a> <br />
+
+        <a href="{% url 'social:begin' "email" %}">Email Auth</a> <br />
+
+
+        <form action="{% url 'social:begin' "openid" %}" method="post">{% csrf_token %}
+          <div>
+            <label for="openid_identifier">OpenId provider</label>
+            <input id="openid_identifier" type="text" value="" name="openid_identifier" />
+            <input type="submit" value="Login" />
+          </div>
+        </form>
+
+        <form action="{% url 'social:begin' "livejournal" %}" method="post">{% csrf_token %}
+          <div>
+            <label for="openid_lj_identifier">LiveJournal ID</label>
+            <input id="openid_lj_identifier" type="text" value="" name="openid_lj_user" />
+            <input type="submit" value="Login" />
+          </div>
+        </form>
+
+        <form method="post" action="{% url 'social:complete' "persona" %}">
+          <input type="hidden" name="assertion" value="" />
+          <a rel="nofollow" id="persona" href="#">Persona</a>
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
+<script src="https://login.persona.org/include.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function () {
+    $('#persona').on('click', function (e) {
+        e.preventDefault();
+        var self = $(this);
+        navigator.id.get(function (assertion) {
+            if (assertion) {
+                self.parent('form')
+                        .find('input[type=hidden]')
+                        .attr('value', assertion)
+                        .end()
+                    .submit();
+            } else {
+                alert('Some error occurred');
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "vitashop/base.html" %}
+{% load url from future %}
+{% load i18n %}
+
+{% block body %}
+
+
+    <div class="row">
+        <div id="panel" class="panel panel-info col-md-5 col-sm-6">
+            <div class="panel-heading">
+                <h3 class="panel-title">The payment was canceled by user.</h3>
+            </div>
+            <div class="panel-body">
+                {{ error }}
+            </div>
+        </div>
+    </div>
+
+
+    <form action="{% url 'checkout_thankyou' %}" method="post">
+        {% csrf_token %}
+        <p>Please continue to pay again your order at <input type="submit" class="btn btn-warning btn-lg" value="PayPal" /></p>
+    </form>
+
+    <p><a href="{% url 'shop_welcome' %}">Back to the main page</a></p>
+
+{% endblock %}

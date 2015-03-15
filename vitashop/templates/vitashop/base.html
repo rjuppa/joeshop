@@ -1,0 +1,106 @@
+{% load staticfiles %}
+{% load shop_tags %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Daily4Sport.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+      <!-- Latest compiled and minified CSS //maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.css -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.css">
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/style.css" media="screen">
+    {% block head %}
+    {% endblock %}
+  </head>
+  <body>
+      <header>
+          <nav class="navbar navbar-default" role="navigation">
+            <div class="container">
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                <a class="navbar-brand" href="/vitashop/">Home</a>
+              </div>
+                <div class="collapse navbar-collapse" id="collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                      <li><a href="{% url 'products' %}">Products <span class="sr-only">(current)</span></a></li>
+                      <li><a href="{% url 'exchange' %}">Exchange</a></li>
+                      {% if cart_obj.total_quantity > 0 %}
+                        <li>{% cart %}</li>
+                      {% endif %}
+                      {% if user.is_authenticated %}
+                          <li><a href="{% url 'profile' %}">{{ user.email }}</a></li>
+                          <li><a href="{% url 'logout' %}">Log Out</a></li>
+                      {% else %}
+                                <li><a href="{% url 'login' %}">Login</a></li>
+                      {% endif %}
+                    </ul>
+                </div>
+
+            </div>
+          </nav>
+      </header>
+
+
+    <div class="container">
+        {% block body %}
+        {% endblock %}
+    </div>
+
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <p>Information</p>
+                </div>
+                <div class="col-sm-4">
+                    <p>Media</p>
+                </div>
+                <div class="col-sm-4">
+                    <p>Other</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ STATIC_URL }}js/jquery/1.11.2/jquery.min.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap/3.3.2/bootstrap.min.js"></script>
+
+<script language="JavaScript">
+$(function(){
+  function stripTrailingSlash(str) {
+      if(str.indexOf('/products/')>-1)
+        return '/vitashop/products/';
+
+      if(str.substr(-1) == '/')
+          return str.substr(0, str.length - 1);
+
+      return str;
+  }
+
+  var url = window.location.pathname;
+  var activePage = stripTrailingSlash(url);
+
+  $('.nav li a').each(function(){
+    var currentPage = stripTrailingSlash($(this).attr('href'));
+
+    if (activePage == currentPage) {
+      $(this).parent().addClass('active');
+    }
+  });
+});
+
+{% block scripts %}{% endblock %}
+</script>
+
+
+
+  </body>
+</html>

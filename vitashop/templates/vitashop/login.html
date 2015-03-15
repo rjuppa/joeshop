@@ -1,0 +1,140 @@
+{% extends "vitashop/base.html" %}
+{% load url from future %}
+{% load widget_tweaks %}
+
+{% block head %}
+<meta name="google-signin-clientid" content="{{ SOCIAL_AUTH_GOOGLE_PLUS_KEY }}" />
+<meta name="google-signin-scope" content="https://www.googleapis.com/auth/plus.profile.emails.read" />
+<meta name="google-signin-requestvisibleactions" content="http://schema.org/AddAction" />
+<meta name="google-signin-cookiepolicy" content="single_host_origin" />
+<script src="https://apis.google.com/js/client:platform.js?onload=render" async defer>
+ /* Executed when the APIs finish loading */
+ function render() {
+    alert('alert');
+   // Additional params including the callback, the rest of the params will
+   // come from the page-level configuration.
+   var additionalParams = {
+     'callback': signinCallback
+   };
+
+   // Attach a click listener to a button to trigger the flow.
+   var signinButton = document.getElementById('signinButton');
+   signinButton.addEventListener('click', function() {
+     gapi.auth.signIn(additionalParams); // Will use page level configuration
+   });
+ }
+
+
+</script>
+{% endblock %}
+
+{% block body %}
+
+<div id="fb-root"></div>
+<script>
+    // FACEBOOK LOGIN
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : {{ SOCIAL_AUTH_FACEBOOK_KEY }},
+      xfbml      : true,
+      version    : 'v2.2'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+    <div class="space40"></div>
+
+    <div class="row-fluid center-block">
+        <div id="profile-panel" class="panel panel-primary col-md-5">
+          <div class="panel-heading">
+            <h3 class="panel-title">Log In</h3>
+          </div>
+          <div class="panel-body">
+              <div class="space40"></div>
+              <form id="profile_form" class="form-horizontal" action="" method="post">
+                  <input type="hidden" name="next" value="{{ next }}" />
+                    {% csrf_token %}
+                  <div class="form-group">
+                    <label for="username" class="col-sm-4 control-label">Email</label>
+                    <div class="col-sm-8">
+                        {{ login_form.username|add_class:"form-control"  }}
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="password" class="col-sm-4 control-label">Password</label>
+                    <div class="col-sm-8">
+                      {{ login_form.password|add_class:"form-control" }}
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="Login" class="col-sm-4 control-label"></label>
+                    <div class="col-sm-6">
+                      <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                  </div>
+              </form>
+
+          </div>
+        </div>
+
+
+        <div id="social-panel" class="jumbletron col-md-5 col-md-offset-2">
+            <p>You can also use your favorite <mark>social networks</mark> to login to the shop.</p>
+
+          <div class="row">
+            <a href="{% url 'social:begin' "facebook" %}" class="btn btn-primary soc-btn">Sign in with Facebook</a> <br />
+          </div>
+          <div class="row">
+            <button type="button" id="signinButton" class="btn btn-danger soc-btn" onclick="signin()"
+                    data-loading-text="Calling..." autocomplete="off">Sign in with Google</button>
+          </div>
+            <p>&nbsp;</p>
+            <p>
+                <span class="text-small">In case you prefer to register with your email, please click
+                <a href="{% url 'register' %}" class="btn btn-primary btn-xs">register a new user</a></span>
+            </p>
+         <form id="google-plus" method="post" action="{% url 'social:complete' "google-plus" %}">
+            {% csrf_token %}
+            <input id="at" type="hidden" name="access_token" value="" />
+            <input id="code" type="hidden" name="code" value="" />
+        </form>
+
+        </div>
+
+    </div>
+
+    <div class="space40"></div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+function signin() { $("#signinButton").button('loading'); gapi.auth.signIn({'callback': signinCallback}); }
+function signinCallback(authResult) {
+    $("#signinButton").button('reset');
+  if (authResult['status']['signed_in']) {
+      // Update the app to reflect a signed in user
+      $('#code').attr('value', authResult['code']);
+      $('#at').attr('value', authResult['access_token']);
+      $('#google-plus').submit();
+  } else {
+    // Update the app to reflect a signed out user
+    // Possible error values:
+    //   "user_signed_out" - User is signed-out
+    //   "access_denied" - User denied access to your app
+    //   "immediate_failed" - Could not automatically log in the user
+    console.log('Sign-in state: ' + authResult['error']);
+  }
+}
+</script>
+
+{% endblock %}
