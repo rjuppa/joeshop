@@ -90,7 +90,7 @@ class OrderManager(models.Manager):
         order.order_total = cart.total_price
         return order
 
-    @transaction.commit_on_success
+    # @transaction.commit_on_success
     def create_from_cart(self, cart, request):
         """
         This creates a new Order object (and all the rest) from a passed Cart

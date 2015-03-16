@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from decimal import Decimal
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -24,7 +25,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = ['daily4sport.com', '127.0.0.1']
+ALLOWED_HOSTS = ['daily4sport.com', '127.0.0.1', '178.62.240.190']
 PREPEND_WWW = False
 
 PAYPAL_RECEIVER_EMAIL = ''
@@ -80,18 +81,31 @@ ROOT_URLCONF = 'joeshop.urls'
 
 WSGI_APPLICATION = 'joeshop.wsgi.application'
 
+if os.environ.get('PRODUCTION'):
+    DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql_psycopg2',
+                'NAME': os.environ.get('DB_NAME'),
+                'USER': os.environ.get('DB_USER'),
+                'PASSWORD': os.environ.get('DB_PASSWORD'),
+                'HOST': '127.0.0.1',
+                'PORT': '',
+                'TEST_NAME': 'test_beer',
+            },
+        }
 
-DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'beer',
-            'USER': 'postgres',
-            'PASSWORD': 'postgres',
-            'HOST': '127.0.0.1',
-            'PORT': '',
-            'TEST_NAME': 'test_beer',
-        },
-    }
+else:
+    DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql_psycopg2',
+                'NAME': 'beer',
+                'USER': 'postgres',
+                'PASSWORD': 'postgres',
+                'HOST': '127.0.0.1',
+                'PORT': '',
+                'TEST_NAME': 'test_beer',
+            },
+        }
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
