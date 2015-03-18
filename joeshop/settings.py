@@ -25,7 +25,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = ['daily4sport.com', '127.0.0.1', '178.62.240.190']
+ALLOWED_HOSTS = ['vitamineral.infom', '127.0.0.1', '178.62.240.190']
 PREPEND_WWW = False
 
 PAYPAL_RECEIVER_EMAIL = ''
@@ -81,7 +81,10 @@ ROOT_URLCONF = 'joeshop.urls'
 
 WSGI_APPLICATION = 'joeshop.wsgi.application'
 
-if os.environ.get('PRODUCTION'):
+IS_PRODUCTION = 0
+IS_PRODUCTION = os.environ.get('PRODUCTION')
+
+if IS_PRODUCTION:
     DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -98,8 +101,8 @@ else:
     DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-                'NAME': 'beer',
-                'USER': 'postgres',
+                'NAME': 'vitashop',
+                'USER': 'postgres' ,
                 'PASSWORD': 'postgres',
                 'HOST': '127.0.0.1',
                 'PORT': '',
