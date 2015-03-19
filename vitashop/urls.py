@@ -25,6 +25,7 @@ urlpatterns = patterns('vitashop.views',
     url(r'^setpwd/$', password_set, name='password_set'),
 
     url(r'^exchange/$', exchange, name='exchange'),
+    url(r'^information/$', information, name='information'),
     url(r'^products/$', products, name='products'),
     url(r'^currency/$', currency, name='currency'),
     url(r'^products/(?P<slug>[0-9A-Za-z-_.//]+)/$', product_detail, name='product_detail'),

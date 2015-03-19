@@ -40,6 +40,10 @@ def social(request):
         return redirect('profile')
     return render(request, 'vitashop/social.html', {})
 
+def information(request):
+    ctx = {}
+    return render(request, 'vitashop/information.html', ctx)
+
 def products(request):
     products = MyProduct.objects.filter(active=True).order_by('ordering')
     ctx = {'products': products}
@@ -142,7 +146,6 @@ def password_set(request):
 def login_view(request):
     user = request.user
     ctx = dict(site=get_current_site(request))
-    ctx['login_form'] = AuthenticationForm
     ctx['message'] = ''
     ctx['SOCIAL_AUTH_FACEBOOK_KEY'] = settings.SOCIAL_AUTH_FACEBOOK_KEY
     ctx['SOCIAL_AUTH_GOOGLE_PLUS_KEY'] = settings. SOCIAL_AUTH_GOOGLE_PLUS_KEY
@@ -152,10 +155,13 @@ def login_view(request):
 
     # POST
     if request.method == 'POST':
+        form = AuthenticationForm(request.POST)
+        ctx['form'] = form
         username = request.POST['username']
         password = request.POST['password']
         if 'next' in request.POST:
             next = request.POST['next']
+
         user = authenticate(username=username, password=password)
         if user is not None:
             if user.is_active:
@@ -163,13 +169,14 @@ def login_view(request):
                 # Redirect to a success page.
                 return HttpResponseRedirect(next)
             else:
-                ctx['message'] = 'disabled account'
+                form.add_error("username", 'disabled account')
         else:
-            ctx['message'] = 'invalid login'
+            form.add_error("password", 'invalid login')
         ctx['next'] = next
         return render(request, 'vitashop/login.html', ctx)
 
     # GET
+    ctx['form'] = AuthenticationForm
     if 'next' in request.GET:
         next = request.GET['next']
     ctx['next'] = next

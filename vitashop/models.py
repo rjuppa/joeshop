@@ -164,7 +164,13 @@ class MyProduct(Product):
     def get_price(self):
         if settings.USE_MULTI_CURRENCY:
             es = ExchangeService()
-            price = es.convert_dollar_into(self.unit_price, self.currency)
+            if settings.PRIMARY_CURRENCY == 'USD':
+                price = es.convert_dollar_into(self.unit_price, self.currency)
+            elif settings.PRIMARY_CURRENCY == 'CZK':
+                price = es.convert_koruna_into(self.unit_price, self.currency)
+            else:
+                raise ValueError
+
             return price
         else:
             return self.unit_price

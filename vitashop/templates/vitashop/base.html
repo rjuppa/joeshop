@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Daily4Sport.com</title>
+    <title>vitamineral.info.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
@@ -25,11 +25,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                <a class="navbar-brand" href="/vitashop/">Home</a>
+                <a class="navbar-brand" href="/">Home</a>
               </div>
                 <div class="collapse navbar-collapse" id="collapse">
                     <ul class="nav navbar-nav navbar-right">
                       <li><a href="{% url 'products' %}">Products <span class="sr-only">(current)</span></a></li>
+                      <li><a href="{% url 'information' %}">Information</a></li>
                       <li><a href="{% url 'exchange' %}">Exchange</a></li>
                       {% if cart_obj.total_quantity > 0 %}
                         <li>{% cart %}</li>
@@ -47,8 +48,20 @@
           </nav>
       </header>
 
-
     <div class="container">
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>{% if message.tags == 'danger' %}Error!{% else %}{{ message.tags }}!{% endif %}</strong> {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
         {% block body %}
         {% endblock %}
     </div>
@@ -59,12 +72,29 @@
             <div class="row">
                 <div class="col-sm-4">
                     <p>Information</p>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Affiliate</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
                 </div>
                 <div class="col-sm-4">
                     <p>Media</p>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Youtube</a></li>
+                        <li><a href="#">Success stories</a></li>
+                    </ul>
                 </div>
                 <div class="col-sm-4">
                     <p>Other</p>
+                    <ul>
+                        <li><a href="#">Bitcoins</a></li>
+
+                    </ul>
                 </div>
             </div>
         </div>

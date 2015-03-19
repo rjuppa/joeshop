@@ -111,7 +111,29 @@ class RegistrationForm(forms.ModelForm):
 class AuthenticationForm(DjangoAuthenticationForm):
     username = forms.CharField(max_length=254, widget=forms.TextInput(attrs={'placeholder': 'email'}))
     password = forms.CharField(label=_("Password"), widget=forms.PasswordInput(attrs={'placeholder': 'password'}))
+    next = forms.HiddenInput()
 
+    def __init__(self, request=None, *args, **kwargs):
+        """
+        The 'request' parameter is set for custom auth use by subclasses.
+        The form data comes in via the standard 'data' kwarg.
+        """
+        self.request = request
+        self.user_cache = None
+        super(AuthenticationForm, self).__init__(*args, **kwargs)
+        self.cleaned_data = {}
+
+    def clean_username(self):
+        username = self.cleaned_data.get("username")
+        return username
+
+    def clean_password(self):
+        password = self.cleaned_data.get("password")
+        return password
+
+    def clean_next(self):
+        next = self.cleaned_data.get("next")
+        return next
 
 class CaptchaLoginForm(AuthenticationForm):
     # captcha = CaptchaField()

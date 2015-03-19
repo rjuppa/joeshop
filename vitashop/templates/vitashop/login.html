@@ -31,7 +31,7 @@
 {% block body %}
 
 <div id="fb-root"></div>
-<script>
+<script language="JavaScript">
     // FACEBOOK LOGIN
   window.fbAsyncInit = function() {
     FB.init({
@@ -58,20 +58,38 @@
             <h3 class="panel-title">Log In</h3>
           </div>
           <div class="panel-body">
-              <div class="space40"></div>
+                 {% if form.errors %}
+                        <p>
+                          {% if form.non_field_errors %}
+                            <span class="label label-danger">{{ form.non_field_errors }}</span>
+                          {% endif %}
+                          {% for field in form %}
+                            {% if field.errors %}
+                              <div>
+                                  {% for error in field.errors %}
+                                        <span class="label label-danger">{{ field.label }}: {{ error }}</span>
+                                  {% endfor %}
+                              </div>
+                            {% endif %}
+                          {% endfor %}
+                        </p>
+               {% else %}
+                    <div class="space40">&nbsp;</div>
+               {% endif %}
+
               <form id="profile_form" class="form-horizontal" action="" method="post">
                   <input type="hidden" name="next" value="{{ next }}" />
                     {% csrf_token %}
                   <div class="form-group">
                     <label for="username" class="col-sm-4 control-label">Email</label>
                     <div class="col-sm-8">
-                        {{ login_form.username|add_class:"form-control"  }}
+                        {{ form.username|add_class:"form-control"  }}
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="password" class="col-sm-4 control-label">Password</label>
                     <div class="col-sm-8">
-                      {{ login_form.password|add_class:"form-control" }}
+                      {{ form.password|add_class:"form-control" }}
                     </div>
                   </div>
                   <div class="form-group">
@@ -94,7 +112,7 @@
           </div>
           <div class="row">
             <button type="button" id="signinButton" class="btn btn-danger soc-btn" onclick="signin()"
-                    data-loading-text="Calling..." autocomplete="off">Sign in with Google</button>
+                    data-loading-text="Calling..." autocomplete="off">Sign in with Google+</button>
           </div>
             <p>&nbsp;</p>
             <p>
@@ -117,7 +135,7 @@
 
 {% block scripts %}
 
-<script>
+<script language="JavaScript">
 function signin() { $("#signinButton").button('loading'); gapi.auth.signIn({'callback': signinCallback}); }
 function signinCallback(authResult) {
     $("#signinButton").button('reset');

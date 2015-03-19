@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 from decimal import Decimal
+from django.contrib.messages import constants as messages
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -25,7 +26,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = ['vitamineral.infom', '127.0.0.1', '178.62.240.190']
+ALLOWED_HOSTS = ['vitamineral.info', '127.0.0.1', '178.62.240.190']
 PREPEND_WWW = False
 
 PAYPAL_RECEIVER_EMAIL = ''
@@ -139,6 +140,11 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
+MESSAGE_TAGS = {
+    messages.ERROR: '',
+    50: 'danger',
+}
+
 AUTH_USER_MODEL = 'vitashop.MyUser'
 SOCIAL_AUTH_USER_MODEL = 'vitashop.MyUser'
 
@@ -186,7 +192,7 @@ SOCIAL_AUTH_PIPELINE = (
 )
 
 USE_MULTI_CURRENCY = True
-PRIMARY_CURRENCY = 'USD'
+PRIMARY_CURRENCY = 'CZK'
 ALLOWED_CURRENCIES = ['USD', 'CZK']
 
 

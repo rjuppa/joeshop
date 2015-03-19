@@ -5,16 +5,61 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="page-header">
-          <h1 id="container">Welcome to Daily 4 Sport shop</h1>
+          <h1 id="container">Vitamineral Shop</h1>
+          <h3>When you want to ..</h3>
         </div>
         <div class="bs-component">
-          <div class="jumbotron">
+
+              <table>
+                  <tr>
+                      <td style="width: 20%"><img src="{{ MEDIA_URL }}img/running.jpg" class="img-responsive" alt="" /></td>
+                      <td style="width: 20%"><img src="{{ MEDIA_URL }}img/cycling.jpg" class="img-responsive" alt="" /></td>
+                      <td style="width: 20%"><img src="{{ MEDIA_URL }}img/squash.jpg" class="img-responsive" alt="" /></td>
+                      <td style="width: 20%"><img src="{{ MEDIA_URL }}img/florball.jpg" class="img-responsive" alt="" /></td>
+                      <td style="width: 20%"><img src="{{ MEDIA_URL }}img/work.jpg" class="img-responsive" alt="" /></td>
+                  </tr>
+                  <tr>
+                      <td>be back on the top</td>
+                      <td>enjoy life</td>
+                      <td>have more energy</td>
+                      <td>enjoy friends</td>
+                      <td>think faster</td>
+                  </tr>
+              </table>
+
             <p>
-                This site is very special. It is just the simplest implementaion od django shop.<br/>
-                And you can pay with bitcoins.
+                <h3>keep in ming your body needs construction materials.</h3>
             </p>
+
+            <div class="col-md-4">
+                <h4>Vitamins</h4>
+                <p>Vitamins are organic compounds which are needed in small quantities to sustain life. We get vitamins from food, because the human body either does not produce enough of them, or none at all.</p>
+                <a href="#">read more</a>
+            </div>
+            <div class="col-md-4">
+                <h4>Minerals</h4>
+                <p>Minerals is one confusing topic. Inorganic, organic, chelated, elemental, ionic, colloidal, essential, trace – all these claims! What do we really need? Credentials in nutrition apparently mean very little when it comes to minerals.</p>
+                <a href="#">read more</a>
+            </div>
+            <div class="col-md-4">
+                <h4>Calmag</h4>
+                <p>Calcium and magnesium are essential for more than 300 functions in your body, such as sleep, pain, cramp and muscle spasm alleviation,  nervousness, restless leg syndrome, relaxation, alleviating stress, hyperactivity, heart function, blood pressure, blood clotting (especially important during tooth extraction, child birth, operations and so on), etc.</p>
+                <a href="#">read more</a>
+            </div>
             <p><a href="{% url 'products' %}" class="btn btn-primary btn-lg">Choose product</a></p>
-          </div>
+
+            <div class="clearfix"></div>
+
+            <div class="col-md-4">
+                <img src="{{ MEDIA_URL }}img/paypal.png" class="img-responsive" alt="Pay with PayPal" />
+
+            </div>
+
+            <div class="col-md-4">
+                <img src="{{ MEDIA_URL }}img/bitcoin_accepted.png" class="img-responsive" alt="Pay with Bitcoins" />
+
+            </div>
+
         </div>
       </div>
     </div>

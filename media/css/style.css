@@ -85,6 +85,15 @@ div#shipping-panel{
     margin-top: 0;
 }
 
+div#prod_content{
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    padding: 8px;
+    border: solid 1px #c0c0c0;
+    border-top: 0;
+}
+
 div#extra-panel textarea{
     height: 60px;
 }
@@ -159,4 +168,10 @@ div#curr-wrapper select {
     float: left;
     width: 80px;
     display: block;
+}
+
+ul.messages li.label{
+    display: block;
+    padding: 4px;
+    width: 50%;
 }
