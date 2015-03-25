@@ -82,7 +82,7 @@ ROOT_URLCONF = 'joeshop.urls'
 
 WSGI_APPLICATION = 'joeshop.wsgi.application'
 
-IS_PRODUCTION = 0
+
 IS_PRODUCTION = os.environ.get('PRODUCTION')
 
 if IS_PRODUCTION:
@@ -214,8 +214,7 @@ SHOP_PAYMENT_BACKENDS = ['vitashop.payment.backends.paybitcoin.BitcoinBackend',
 SHOP_SHIPPING_FLAT_RATE = 0
 
 # Bitcoin's bip0032 HD account
-XPUB = 'tpubDDihoqdraF3bt1K2kJwAmXJozej3wsmjBXbCKRFiAt2WRYiM4BAsTrdb23Fvy4YDVyL1EWL8o28dUgay5Pey65zhzoBiYKspbXvp2XqzdPy'
-ADDRESS_TYPE = 111  # Testnet
+XPUB = 'xpub6CmLvNuAcabE7RTtpG4sT826Ek1kT5guSoRbAkS8k9mbiz8CeDjRfgRHYh7Z8f4eW2BzCnquYwYU6ApwAoCae8sxQiKxMKb2oa2fgXq8c8Y'
 
 
 # Internationalization

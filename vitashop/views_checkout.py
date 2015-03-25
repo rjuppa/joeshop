@@ -28,7 +28,10 @@ from shop.util.login_mixin import LoginMixin
 from vitashop.forms import ShippingForm, BillingForm
 from vitashop.payment.backends.paypal import *
 from vitashop.payment.api import PaymentAPI
+from vitashop.exchange import ExchangeService
 from shop.backends_pool import backends_pool
+from shop.util.btc_helper import Coindesk_Exchange
+from vitashop.utils import Account
 
 logger = logging.getLogger('vitashop.checkout')
 
@@ -292,6 +295,8 @@ class CheckoutMethodsView(LoginMixin, ShopTemplateView):
 class OverviewView(LoginMixin, ShopTemplateView):
     template_name = 'vitashop/checkout/overview.html'
     order = None
+    payment = None
+    shipping = None
 
     def get_extra_info_form(self):
         """
@@ -319,6 +324,16 @@ class OverviewView(LoginMixin, ShopTemplateView):
         order = get_order_from_request(self.request)
         order.status = Order.CONFIRMED
         order.save()
+
+        # empty the related cart
+        try:
+            cart = Cart.objects.get(pk=order.cart_pk)
+            cart.empty()
+        except Cart.DoesNotExist:
+            pass
+
+        confirmed.send(sender=None, order=order)
+
 
     def get_context_data(self, **kwargs):
         ctx = super(OverviewView, self).get_context_data(**kwargs)
@@ -352,8 +367,10 @@ class OverviewView(LoginMixin, ShopTemplateView):
         else:
             ctx.update({'is_billing_address_same': False})
 
-        ctx.update({'shipping_backend': self.request.session['shipping_backend']})
-        ctx.update({'payment_backend': self.request.session['payment_backend']})
+        self.payment = self.request.session['payment_backend']
+        self.shipping = self.request.session['shipping_backend']
+        ctx.update({'shipping_backend': self.shipping})
+        ctx.update({'payment_backend': self.payment})
         return ctx
 
     def post(self, *args, **kwargs):
@@ -368,6 +385,9 @@ class OverviewView(LoginMixin, ShopTemplateView):
 class ThankYouView(LoginMixin, ShopTemplateView):
     template_name = 'vitashop/checkout/thank_you.html'
     url_name = 'checkout_thankyou'
+    order = None
+    payment = None
+    shipping = None
 
     def get_context_data(self, **kwargs):
         ctx = super(ThankYouView, self).get_context_data(**kwargs)
@@ -376,8 +396,38 @@ class ThankYouView(LoginMixin, ShopTemplateView):
         order = get_order_from_request(self.request)
         if order and order.status == Order.CONFIRMED:
             ctx.update({'order': order, })
+
+        self.payment = self.request.session['payment_backend']
+        self.shipping = self.request.session['shipping_backend']
+        ctx.update({'shipping_backend': self.shipping})
+        ctx.update({'payment_backend': self.payment})
+
+        # convert price in dollar into BTC
+        exs = ExchangeService()
+        price_usd = exs.price_in_usd(order.order_total)
+        ex = Coindesk_Exchange(self.request)
+        amount_fiat = order.order_total
+        ctx.update({'amount_fiat': amount_fiat})
+
+        amount_btc = ex.convert_dollar_to_btc(price_usd)
+        ctx.update({'amount_btc': amount_btc})
+
+        transaction_id = date.today().strftime('%Y') + '%06d' % order.id
+        ctx.update({'transaction_id': transaction_id})
+
+        wallet_address = self.create_wallet_address(order.id)
+        ctx.update({'wallet_address': wallet_address})
+
+        chl = urllib.quote("bitcoin:%s?amount=%s" % (wallet_address, amount_btc))
+        ctx.update({'qrcode': 'https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=%s' % chl})
         return ctx
 
+    def create_wallet_address(self, id):
+        if id < 0:
+            raise Exception("id cannot be negative!")
+
+        acc = Account(settings.XPUB)
+        return acc.gen_new_address(id)
 
     def post(self, *args, **kwargs):
         # need to pay on Paypal in USD

@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="btn-group">
-          <h3 class="products-header-top">Products:</h3>
+          <h3 class="products-header-top">Products</h3>
         </div>
 
         <div id="curr-wrapper" class="btn-group pull-right">
@@ -45,8 +45,7 @@
                         <span class="product-title">{{ product.name }}</span>
                         <div class="second">
                             <span class="product-price-label">Price:</span>
-                            <span class="product-price">{{ product.unit_price|currency:currency }}</span><br/>
-                            <a href="{% url 'product_detail' product.slug %}" class="btn btn-warning btn-sm">Order</a>
+                            <span class="product-price">{{ product.unit_price|currency:currency }}</span>
                         </div>
                     </div>
                 </a>

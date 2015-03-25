@@ -9,7 +9,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from shop.models.ordermodel import Order, OrderPayment
 from shop.models.cartmodel import Cart
 from shop.util.decorators import on_method, order_required
-from shop.util.btc_helper import Exchange
+from shop.util.btc_helper import Coindesk_Exchange
 from shop.order_signals import confirmed
 from shop.util.bip32 import get_address_for_account
 from django.conf import settings
@@ -37,7 +37,7 @@ class BitcoinBackend(object):
         zero money as the received payment for that order.
         """
         order = self.shop.get_order(request)
-        ex = Exchange(request)
+        ex = Coindesk_Exchange(request)
         amount_dollar = self.shop.get_order_total(order)
         amount_btc = ex.convert_dollar_to_btc(amount_dollar)
         transaction_id = date.today().strftime('%Y') + '%06d' % order.id

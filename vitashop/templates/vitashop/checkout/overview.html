@@ -4,12 +4,35 @@
 {% load currency %}
 {% block body %}
 
-<div class="row">
-         <div class="col-md-3"><a class="btn btn-info" href="{% url 'cart' %}">Cart</a></div>
-         <div class="col-md-3"><a class="btn btn-info" href="{% url 'checkout_selection' %}">Delivery address</a></div>
-         <div class="col-md-3"><a class="btn btn-info" href="{% url 'checkout_methods' %}">Shipping and billing</a></div>
-         <div class="col-md-3"><a class="btn btn-info" href="{% url 'checkout_overview' %}">Order summary</a></div>
-     </div>
+
+    <div class="row">
+        <div class="progresshead">Progress of your checkout</div>
+        <div class="col-md-2 progress1">
+            <a class="btn1" href="{% url 'products' %}">Shopping&nbsp;&nbsp;&nbsp;
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'cart' %}">Cart&nbsp;&nbsp;&nbsp;
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'checkout_selection' %}">Delivery address&nbsp;&nbsp;&nbsp;
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'checkout_methods' %}">Shipping and billing&nbsp;&nbsp;&nbsp;
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'checkout_overview' %}">Summary&nbsp;&nbsp;&nbsp;
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="col-md-1 progress2"><span class="btn1">Pay&nbsp;&nbsp;&nbsp;
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            </span>
+        </div>
+    </div>
 
     <p>&nbsp;</p>
 
@@ -138,11 +161,11 @@
 
     <p>&nbsp;</p>
     <div class="row">
-          <div class="col-md-8 col-md-offset-2 text-center">
-              <a href="{% url 'checkout_methods' %}" class="btn btn-default">Back to shipping and billing</a>
+          <div class="btnpanel col-md-11 text-center">
+              <a href="{% url 'checkout_methods' %}" class="btn btn-default pull-left">Back to shipping and billing</a>
               <form action="" method="post">
                 {% csrf_token %}
-                 <input type="submit" class="btn btn-warning btn-lg" value="Place the order" />
+                 <input type="submit" class="btn btn-danger btn-md" value="Place the order" />
               </form>
           </div>
     </div>

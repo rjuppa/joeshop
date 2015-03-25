@@ -63,3 +63,5 @@ class VitashopAPI(ShopAPI):
         # Emit the signal to say we're now selecting payment
         payment_selection.send(self, order=order)
         return redirect('checkout_overview')
+
+

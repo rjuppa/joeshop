@@ -5,12 +5,34 @@
 
 {% block body %}
 
-     <div class="row">
-         <div class="col-md-3"><a class="btn btn-info" href="{% url 'cart' %}">Cart</a></div>
-         <div class="col-md-3"><a class="btn btn-info" href="{% url 'checkout_selection' %}">Delivery address</a></div>
-         <div class="col-md-3"><span class="btn btn-default">Shipping and billing</span></div>
-         <div class="col-md-3"><span class="btn btn-default">Overview</span></div>
-     </div>
+    <div class="row">
+        <div class="progresshead">Progress of your checkout</div>
+        <div class="col-md-2 progress1">
+            <a class="btn1" href="{% url 'products' %}">Shopping&nbsp;&nbsp;&nbsp;
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'cart' %}">Cart&nbsp;&nbsp;&nbsp;
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'checkout_selection' %}">Delivery address&nbsp;&nbsp;&nbsp;
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="col-md-2 progress2"><span class="btn1">Shipping and billing&nbsp;&nbsp;&nbsp;
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            </span>
+        </div>
+        <div class="col-md-2 progress2"><span class="btn1">Summary&nbsp;&nbsp;&nbsp;
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            </span>
+        </div>
+        <div class="col-md-1 progress2"><span class="btn1">Pay&nbsp;&nbsp;&nbsp;
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            </span>
+        </div>
+    </div>
 
     <p>&nbsp;</p>
      <div class="row">
@@ -26,7 +48,7 @@
 
                 <div id="shipping-panel" class="panel panel-primary col-md-5 col-sm-6">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Your shipping address</h3>
+                        <h5 class="panel-title">Your shipping address</h5>
                     </div>
                     <div class="panel-body">
                         {{ shipping_address|crispy }}
@@ -35,7 +57,7 @@
 
                 <div id="billing-panel" class="panel panel-transparent panel-primary col-md-5 col-md-offset-1 col-sm-6">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Your billing address</h3>
+                        <h5 class="panel-title">Your billing address</h5>
                     </div>
                     <div class="panel-body">
                         {{ billing_address|crispy }}
@@ -54,12 +76,11 @@
 
                 <div class="clearfix"></div>
 
-                <p>&nbsp;</p>
                 <div class="row">
-                      <div class="col-md-8 col-md-offset-2 text-center">
-                          <a href="{% url 'cart' %}" class="btn btn-default">Back to cart</a>
-                          <button type="submit" class="btn btn-warning btn-lg">Continue >></button>
-                      </div>
+                  <div class="btnpanel col-md-11 text-center">
+                      <a href="{% url 'cart' %}" class="btn btn-default pull-left">Back to cart</a>
+                      <button type="submit" class="btn btn-danger btn-md">Continue >></button>
+                  </div>
                 </div>
 
         </form>
@@ -69,6 +90,10 @@
 
     </div>
 
+{% endblock %}
+
+
+{% block scripts %}
 <script language="JavaScript">
 function toggle_address(){
     b = $('#use_billing').prop('checked');
@@ -88,11 +113,12 @@ function toggle_address(){
         $('#id_bill-address').prop('disabled', true);
         $('#id_bill-address2').prop('disabled', true);
         $('#id_bill-zip_code').prop('disabled', true);
-        $('#id_bill-city').prop('disabled', true);
+        $('#id_bill-cityhi').prop('disabled', true);
         $('#id_bill-state').prop('disabled', true);
         $('#id_bill-country').prop('disabled', true);
     }
 }
+
 window.onload = toggle_address;
 </script>
 {% endblock %}

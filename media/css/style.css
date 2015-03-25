@@ -1,12 +1,85 @@
 .text-small{
     font-size: .8em;
 }
+/*  FF7706  1f9425  */
+a{
+    color: #1f9425;
+}
+a:hover{
+    color: #f7360f;
+}
+
+h1 {
+	font-size: 3em;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+}
+h2{
+    color: #F7BD09;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+}
+h3 {
+	padding-top:15px;
+    color: #F5B834;
+    font-weight: 600;
+}
+
+h4 {
+	padding-top:15px;
+    color: #6E541D;
+    font-weight: 600;
+}
+h5 {
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 1.8em;
+}
+
+p {
+	text-align:justify;	
+}
 
 footer {
-    background-color: #003366;
-    height: 160px;
-    color: white;
+    background-color: #272015;
+    border-top: 3px solid #F5B834;
+    height: auto;
     padding: 10px;
+	margin-top:20px;
+}
+
+footer a{
+    color: rgb(221, 185, 172);
+}
+
+footer ul {
+    margin:0;
+	padding:0;
+	margin-left:10px;
+		
+}
+
+footer p {
+	font-size:16px;
+	padding-left:10px;
+	text-decoration:underline;	
+}
+footer small {
+	color: #888;
+}
+
+footer hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #888;
+    margin: 1em 0;
+    padding: 0;
+}
+
+footer ul
+{
+    list-style-type: none;
 }
 
 .site{
@@ -32,6 +105,13 @@ footer {
     background-color: #3be6c4;
 }
 
+#cartbill td{
+    background-color: #ffffff;
+}
+#cartbill th{
+    background-color: #dedede;
+}
+
 div#panel,
 div#profile-panel,
 div#cart-panel,
@@ -43,6 +123,18 @@ div#billing-panel,
 div#shipping-panel{
     padding-left: 0;
     padding-right: 0;
+    border-color:#1E6B48;
+    border-radius: 0;
+
+}
+
+.panel-primary .panel-heading{
+    background-color: #1E6B48;
+    border-radius: 0;
+}
+
+.panel-primary .panel-body{
+    background-color: #F3EECF;
 }
 
 .checkbox input[type="checkbox"]{
@@ -65,8 +157,8 @@ div#shipping-panel{
     font-weight: bold;
 }
 .product-price{
-    font-size: 1em;
-    font-weight: normal;
+    font-size: 1.2em;
+    font-weight: 600;
     color: #080808;
 }
 .product-price a:hover, a:visited, a:link, a:active{
@@ -91,6 +183,15 @@ div#prod_content{
     min-height: 300px;
     padding: 8px;
     border: solid 1px #c0c0c0;
+    border-top: 0;
+}
+.thumbnail{
+    border: 1px solid #F3EECF;
+    border-radius: 0;
+    padding: 0;
+}
+.thumbnail .panel-footer{
+    background-color: #F3EECF;
     border-top: 0;
 }
 
@@ -153,7 +254,7 @@ table.order td.top{
 }
 
 table.order td.header{
-    background-color: #003366;
+    background-color: #666666;
     color: #ffffff;
     font-weight: bold;
 }
@@ -168,10 +269,146 @@ div#curr-wrapper select {
     float: left;
     width: 80px;
     display: block;
+	margin-bottom:30px;
+	margin-top:-6px;
 }
 
 ul.messages li.label{
     display: block;
     padding: 4px;
     width: 50%;
+}
+
+@font-face {
+  font-family: "DancingScript";
+  src: local("☺"),
+    url("fonts/Dancing Script OT.woff") format("woff"),
+    url("fonts/Dancing Script OT.otf") format("opentype"),
+    url('fonts/Dancing Script.ttf')  format('truetype') /* Safari, Android, iOS */
+}
+
+
+.navbar-default {
+	background-color:#1E6B48;
+    color: #FFFFFF;
+    font-weight: 600;
+    border-bottom: 3px solid #F5B834;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color:#FFFFFF;
+    font-weight: 600;
+}
+.navbar-default .navbar-nav > li > a:hover {
+	color:#F5B834;
+    font-weight: 600;
+}
+
+#brand{
+	color:#FFFFFF;
+    font-weight: 500;
+    font-family: "DancingScript", Georgia, serif;
+    font-size: 2em;
+}
+a#brand:hover{
+	color:#F5B834;
+}
+
+
+.page-header {
+	margin-top:0;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+	background-color:#2D2D2D;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+	background-color:#F5B834;
+	color:#2D2D2D;
+}
+
+.align-topics {
+	margin-top:3%;	
+	padding-bottom:17%;
+}
+
+
+.btn-danger{
+    background-color: #f7360f;
+    border-color: #F5B834;
+}
+
+.btn-danger:hover{
+    background-color: #2d8f41;
+    border-color: #F5B834;
+}
+
+.btn-primary{
+    background-color: #1E6B48;
+    border-color: #1E6B48;
+}
+
+.btn-primary:hover{
+    background-color: #2d8f41;
+    border-color: #F5B834;
+}
+
+#signinButton{
+    background-color: #8f2519;
+    border-color: #8f120a;
+}
+#fbb{
+    background-color: #28448f;
+    border-color: #123b8f;
+}
+
+.btnpanel{
+    height: 50px;
+    border-radius: 2px;
+    background-color: #F3EECF;
+    text-align: center;
+    padding: 8px;
+}
+
+
+.carousel-caption{
+    text-align: left;
+    right: 0;
+    left: 60px;
+}
+
+.centerDiv {
+    width: 100%;
+    height:500px;
+    margin: 0 auto;
+}
+
+.progresshead{
+    padding: 8px;
+    font-size: 1em;
+    color: #F5B834;
+    font-weight: 600;
+    text-align: left;
+}
+.progress1{
+    float: left;
+    margin: 0;
+    border: 0;
+    background-color: #F3EECF;
+    border-bottom: 4px solid #1f9425;
+    border-left: 2px solid #ffffff;
+    text-align: center;
+    padding: 8px;
+}
+.progress2{
+    float: left;
+    margin: 0;
+    border: 0;
+    background-color: #FAFAFA;
+    border-bottom: 4px solid #888888;
+    border-left: 2px solid #ffffff;
+    color: #888888;
+    text-align: center;
+    padding: 8px;
 }

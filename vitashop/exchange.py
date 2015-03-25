@@ -1,5 +1,6 @@
 from decimal import Decimal
 from django.conf import settings
+from django.template.defaultfilters import floatformat
 
 class ExchangeService(object):
 
@@ -36,6 +37,17 @@ class ExchangeService(object):
             return price
         else:
             raise KeyError
+
+    def price_in_usd(self, amount):
+        exs = ExchangeService()
+        if settings.PRIMARY_CURRENCY == 'USD':
+            new_value = exs.convert_dollar_into(amount, 'USD')
+        elif settings.PRIMARY_CURRENCY == 'CZK':
+            new_value = exs.convert_koruna_into(amount, 'USD')
+        else:
+            raise ValueError
+        s = floatformat(new_value, 2)
+        return Decimal(str(s))
 
     def convert_to_dec(self, price):
         f = round(price, 2)

@@ -5,12 +5,34 @@
 
 {% block body %}
 
-     <div class="row">
-         <div class="col-md-3"><a class="btn btn-info" href="{% url 'cart' %}">Cart</a></div>
-         <div class="col-md-3"><a class="btn btn-info" href="{% url 'checkout_selection' %}">Delivery address</a></div>
-         <div class="col-md-3"><a class="btn btn-info" href="{% url 'checkout_methods' %}">Shipping and billing</a></div>
-         <div class="col-md-3"><a class="btn btn-default" href="{% url 'checkout_overview' %}">Overview</a></div>
-     </div>
+    <div class="row">
+        <div class="progresshead">Progress of your checkout</div>
+        <div class="col-md-2 progress1">
+            <a class="btn1" href="{% url 'products' %}">Shopping&nbsp;&nbsp;&nbsp;
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'cart' %}">Cart&nbsp;&nbsp;&nbsp;
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'checkout_selection' %}">Delivery address&nbsp;&nbsp;&nbsp;
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'checkout_methods' %}">Shipping and billing&nbsp;&nbsp;&nbsp;
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="col-md-2 progress2"><span class="btn1">Summary&nbsp;&nbsp;&nbsp;
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            </span>
+        </div>
+        <div class="col-md-1 progress2"><span class="btn1">Pay&nbsp;&nbsp;&nbsp;
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            </span>
+        </div>
+    </div>
 
     <p>&nbsp;</p>
 
@@ -27,7 +49,7 @@
 
                 <div id="methods-panel" class="panel panel-primary col-md-5">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Shipping Methods</h3>
+                        <h5 class="panel-title">Shipping Methods</h5>
                     </div>
                     <div class="panel-body">
                         {{ shipping_form|crispy }}
@@ -40,7 +62,7 @@
 
                 <div id="methods-panel" class="panel panel-primary col-md-5 col-md-offset-1">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Payment Methods</h3>
+                        <h5 class="panel-title">Payment Methods</h5>
                     </div>
                     <div class="panel-body">
                         {{ billing_form|crispy }}
@@ -55,10 +77,12 @@
                 <div class="clearfix"></div>
 
                 <p>&nbsp;</p>
+
+                <p>&nbsp;</p>
                 <div class="row">
-                      <div class="col-md-8 col-md-offset-2 text-center">
-                          <a href="{% url 'checkout_selection' %}" class="btn btn-default">Back to address</a>
-                          <button type="submit" class="btn btn-warning btn-lg">Continue to payment</button>
+                      <div class="btnpanel col-md-11 text-center">
+                          <a href="{% url 'checkout_selection' %}" class="btn btn-default pull-left">Back to address</a>
+                          <button type="submit" class="btn btn-danger btn-md">Continue to payment</button>
                       </div>
                 </div>
 
@@ -113,7 +137,7 @@
 
 
 {% block scripts %}
-
+<script language="JavaScript">
 $(function(){
     sel = $( "#id_shipping_method" );
     sel.on('change', function (e) {
@@ -147,4 +171,5 @@ $(function(){
     el = document.getElementById(selected);
     $( "#payment_info" ).html(el.innerHTML);
 });
+</script>
 {% endblock %}

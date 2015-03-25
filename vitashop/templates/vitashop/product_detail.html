@@ -45,14 +45,14 @@
         </div>
         <div class="col-md-6 col-md-offset-1 col-sm-7 col-xs-12">
             <h2>{{ product.name }}</h2>
-            <div>
+            <p>
                 <span class="product-price-label">Price:</span>
                 <span class="product-price">{{ product.unit_price|currency:currency }}</span>
-            </div>
+            </p>
             <form method="post" action="{% url 'cart' %}">{% csrf_token %}
                 <input type="hidden" name="add_item_id" value="{{product.pk}}">
                 <input type="hidden" name="add_item_quantity" value="1">
-                <input type="submit" class="btn btn-warning" value="Add to cart" role="button">
+                <input type="submit" class="btn btn-danger" value="Add to cart" role="button">
             </form>
             <p>    </p>
 

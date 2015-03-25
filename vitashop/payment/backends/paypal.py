@@ -102,11 +102,11 @@ class PaypalAPI(object):
                 order.save()
 
                 # empty the related cart
-                try:
-                    cart = Cart.objects.get(pk=order.cart_pk)
-                    cart.empty()
-                except Cart.DoesNotExist:
-                    pass
+                # try:
+                #     cart = Cart.objects.get(pk=order.cart_pk)
+                #     cart.empty()
+                # except Cart.DoesNotExist:
+                #     pass
 
                 completed.send(sender=None, order=order)
                 return True

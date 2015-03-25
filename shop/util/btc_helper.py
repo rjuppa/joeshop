@@ -6,11 +6,10 @@ from datetime import datetime
 
 from django.conf import settings
 
-from shop.util.bip32 import get_address_for_account
 import bitcoin
 import bitcoin.rpc
 
-class Exchange(object):
+class Coindesk_Exchange(object):
     DATE_FORMAT = "%Y-%m-%d %H:%M"
     SESSION_NAME = 'exchange_rate'
     COIN = 1000000
@@ -119,15 +118,6 @@ class BC(object):
     COIN = 10**8
     _rpc = None
 
-    def __init__(self):
-        bitcoin.SelectParams('testnet')
-        self._rpc = bitcoin.rpc.Proxy()
-
-    def create_wallet_address(self, order_id):
-        if order_id < 0:
-            raise Exception("order_id cannot be negative!")
-
-        return get_address_for_account(settings.XPUB, order_id, settings.ADDRESS_TYPE)
 
     def check_order_for_payment(self, order):
         confirmed = 0
