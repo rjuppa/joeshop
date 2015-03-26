@@ -14,6 +14,8 @@ from decimal import Decimal
 from django.contrib.messages import constants as messages
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+SITE_NAME = 'Vitamineral.info'
+EMAIL_FROM = 'radek.juppa@syntacticsugar.com'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -86,6 +88,7 @@ WSGI_APPLICATION = 'joeshop.wsgi.application'
 IS_PRODUCTION = os.environ.get('PRODUCTION')
 
 if IS_PRODUCTION:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -99,6 +102,7 @@ if IS_PRODUCTION:
         }
 
 else:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -126,6 +130,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "vitashop.context_processors.currency_obj",
     "vitashop.context_processors.currency_set"
 )
+
+TEMPLATE_DIRS = (BASE_DIR + '/templates/',)
 
 TEMPLATE_LOADERS = (
     ('django.template.loaders.cached.Loader', (
@@ -235,7 +241,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR+ '/static/'
+STATIC_ROOT = BASE_DIR + '/static/'
 
 
 MEDIA_URL = '/media/'

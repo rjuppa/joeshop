@@ -1,0 +1,5 @@
+Hello,
+it is an activation e-mail.
+Please click the link {{ site }}?key={{ activation_code }}&lang={{ lang }}
+
+Vitamineral.info Team

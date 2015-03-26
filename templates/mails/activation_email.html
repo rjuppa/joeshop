@@ -1,0 +1,35 @@
+{% extends "mails/mail_layout.html" %}{% load i18n %}
+
+{% block title %}
+	      {% trans "activation_email_title" %}
+{% endblock title %}
+
+
+{% block body %}
+
+<h2 style="color: #F7BD09;font-weight: 600;text-shadow: 0 1px 2px rgba(0, 0, 0, .6);">Signed up successfully</h2>
+<p>
+    You have signed up successfully.<br/>
+    Click on activation link bellow to activate your account.<br/>
+</p>
+<p>
+<a href='{{ site }}?key={{ activation_code }}&lang={{ lang }}'>{{ site }}?key={{ activation_code }}&lang={{ lang }}</a>
+</p>
+<hr>
+{% trans "activation_email1" %}
+<hr>
+{% trans "activation_email2" %}
+
+
+{% endblock body %}
+
+
+{% block buttonlink %}
+	{{ site }}?key={{ activation_code }}&lang={{ lang }}
+{% endblock buttonlink %}
+
+
+{% block buttontext %}
+	{% trans "activate_account" %}
+{% endblock buttontext %}
+

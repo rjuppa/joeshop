@@ -30,28 +30,27 @@ def index(request):
     ctx = {}
     return render(request, 'vitashop/index.html', ctx)
 
+
 def test_view(request):
     ctx = {}
     return render(request, 'vitashop/test.html', ctx)
+
 
 def error_view(request, message):
     ctx = {'message': message}
     return render(request, 'vitashop/error.html', ctx)
 
-def social(request):
-    """Home view, displays login mechanism"""
-    if request.user.is_authenticated():
-        return redirect('profile')
-    return render(request, 'vitashop/social.html', {})
 
 def information(request):
     ctx = {}
     return render(request, 'vitashop/information.html', ctx)
 
+
 def products(request):
     products = MyProduct.objects.filter(active=True).order_by('ordering')
     ctx = {'products': products}
     return render(request, 'vitashop/products.html', ctx)
+
 
 def product_detail(request, slug):
     if not slug:
@@ -66,8 +65,10 @@ def product_detail(request, slug):
     ctx = {'products': products, 'product': product}
     return render(request,  'vitashop/product_detail.html', ctx)
 
+
 def oauth2callback(request):
     pass
+
 
 def currency(request):
     user = request.user
@@ -90,6 +91,7 @@ def currency(request):
     else:
         url = reverse('products')   # fallback
     return HttpResponseRedirect(url)
+
 
 def clean_next(value):
     if not value:
@@ -208,8 +210,8 @@ def register_view(request):
         ctx['form'] = form
         if form.is_valid():
             user = form.save()
-            url = reverse('register_success')
-            return HttpResponseRedirect(url + '?email=' + user.email)
+            user.send_registration_mail()
+            return HttpResponseRedirect(reverse('register_success') + '?email=' + user.email)
 
         return render(request, 'vitashop/register.html', ctx)
     # GET

@@ -77,8 +77,8 @@ class RegistrationForm(forms.ModelForm):
             code='duplicate_username',
         )
 
-    def clean_new_password1(self):
-        data = self.cleaned_data['new_password1']
+    def clean_password1(self):
+        data = self.cleaned_data['password1']
         if len(data) < self.MIN_LENGTH:
             raise forms.ValidationError("The new password must be at least %d characters long." %
                                         self.MIN_LENGTH)
@@ -102,7 +102,11 @@ class RegistrationForm(forms.ModelForm):
 
     def save(self, commit=True):
         user = super(RegistrationForm, self).save(commit=False)
-        user.set_password(self.cleaned_data["password1"])
+        p2 = self.clean_password2()
+        user.set_password(self.clean_password1())
+        username = self.clean_email()
+        username = username.replace('+', '-')
+        user.username = username.replace('@', '.')
         if commit:
             user.save()
         return user

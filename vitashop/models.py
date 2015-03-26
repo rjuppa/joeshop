@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from polymorphic.manager import PolymorphicManager
 from django.utils.translation import ugettext_lazy as _
+from django.template.loader import render_to_string
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 from django.contrib.auth import get_user_model
 from shop.util.fields import CurrencyField
@@ -11,9 +12,13 @@ from shop.addressmodel.models import Country
 from shop.models.defaults.order import Order
 from django.core.urlresolvers import reverse
 from django.core.mail import send_mail
+from django.core.mail import EmailMultiAlternatives
 from django.core import validators
 from django.utils import timezone
 from vitashop.exchange import ExchangeService
+import logging
+
+logger = logging.getLogger('vitashop')
 
 USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'vitashop.MyUser')
 
@@ -105,6 +110,26 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
         Sends an email to this User.
         """
         send_mail(subject, message, from_email, [self.email], **kwargs)
+
+    def send_registration_mail(self):
+        subject = settings.SITE_NAME + ' - Registration'
+        from_email = settings.EMAIL_FROM
+        content = {'site': 'http://' + settings.SITE_NAME, 'activation_code': 1234, 'email_to': self.email, 'lang': 'en'}
+        text_content = render_to_string('mails/activation_email.txt', content)
+        html_content = render_to_string('mails/activation_email.html', content)
+
+        try:
+            # send an email
+            msg = EmailMultiAlternatives(subject, text_content, settings.SITE_NAME + ' <%s>' % from_email, [self.email])
+            msg.attach_alternative(html_content, "text/html")
+            msg.send()
+        except Exception as ex:
+            logger.error(ex)
+            # translation.activate(cur_language)
+            return False
+
+        return True
+
 
     def __str__(self):
         return self.email

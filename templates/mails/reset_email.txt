@@ -1,0 +1,8 @@
+Hello,
+
+you have asked for reseting password.
+
+If you want to reset your password, click <a href="{{ url }}?key={{ activation_code }}&lang={{ lang }}" target="_blank">RESET PASSWORD<a>
+or continue to {{ site }} }}
+
+Vitamineral.info Team
