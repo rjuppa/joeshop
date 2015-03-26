@@ -15,7 +15,7 @@ from django.contrib.messages import constants as messages
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 SITE_NAME = 'Vitamineral.info'
-EMAIL_FROM = 'radek.juppa@syntacticsugar.com'
+EMAIL_FROM = 'vitamineral1@gmail.com'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
