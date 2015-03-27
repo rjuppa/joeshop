@@ -13,7 +13,7 @@
     Click on activation link bellow to activate your account.<br/>
 </p>
 <p>
-<a href='{{ site }}?key={{ activation_code }}&lang={{ lang }}'>{{ site }}?key={{ activation_code }}&lang={{ lang }}</a>
+<a href='{{ site }}/{{ activation_code }}?lang={{ lang }}'>{{ site }}/{{ activation_code }}?lang={{ lang }}</a>
 </p>
 <hr>
 {% trans "activation_email1" %}
@@ -25,7 +25,7 @@
 
 
 {% block buttonlink %}
-	{{ site }}?key={{ activation_code }}&lang={{ lang }}
+	{{ site }}/{{ activation_code }}?lang={{ lang }}
 {% endblock buttonlink %}
 
 
