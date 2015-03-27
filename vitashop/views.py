@@ -106,7 +106,7 @@ def clean_next(value):
 def activate_view(request, code):
     ctx = {}
     if MyUser.objects.activate(code):
-        messages.success(request, 'Your account was activated successfully.')
+        messages.success(request, 'Your account has been activated successfully.')
         return HttpResponseRedirect(reverse('profile'))
     else:
         messages.error(request, 'Your activation code was not found. (Maybe expired)', extra_tags='danger')
@@ -121,7 +121,7 @@ def profile(request):
         profile_form = ProfileForm(request.POST, instance=user)
         if profile_form.is_valid():
             profile_form.save()
-            messages.success(request, 'Saved successfully.')
+            messages.success(request, 'Your profile has updated.')
         else:
             messages.error(request, 'Unable to save changes.', extra_tags='danger')
 
