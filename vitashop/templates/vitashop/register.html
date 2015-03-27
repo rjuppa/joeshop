@@ -80,6 +80,7 @@
 
               <form id="profile_form" class="form-horizontal" action="" method="post">
                   <input type="hidden" id="next" value="{% url "profile" %}" />
+                  <input type="hidden" id="lang" value="en" />
                     {% csrf_token %}
                   <div class="form-group">
                     <label for="email" class="col-sm-4 control-label">Email</label>

@@ -372,11 +372,7 @@ a#brand:hover{
 }
 
 
-.carousel-caption{
-    text-align: left;
-    right: 0;
-    left: 60px;
-}
+
 
 .centerDiv {
     width: 100%;
@@ -411,4 +407,29 @@ a#brand:hover{
     color: #888888;
     text-align: center;
     padding: 8px;
+}
+
+.cap-white{
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-size: 1.8em;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+    color: #ffffff;
+}
+
+.cap-black{
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-size: 3em;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+    color: #272015;
+}
+
+.carousel-caption{
+    padding-bottom: 0;
+    text-align: left;
+    right: 0;
+    left: 70px;
 }

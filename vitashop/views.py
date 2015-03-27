@@ -103,6 +103,15 @@ def clean_next(value):
         return li[0], None
 
 
+def activate_view(request, code):
+    ctx = {}
+    if MyUser.objects.activate(code):
+        messages.success(request, 'Your account was activated successfully.')
+        return HttpResponseRedirect(reverse('profile'))
+    else:
+        messages.error(request, 'Your activation code was not found. (Maybe expired)', extra_tags='danger')
+        return render(request, 'vitashop/error.html', ctx)
+
 
 @login_required
 def profile(request):
@@ -114,7 +123,7 @@ def profile(request):
             profile_form.save()
             messages.success(request, 'Saved successfully.')
         else:
-            messages.success(request, 'Error...')
+            messages.error(request, 'Unable to save changes.', extra_tags='danger')
 
     else:
         profile_form = ProfileForm(instance=user)
@@ -175,7 +184,7 @@ def login_view(request):
                 # Redirect to a success page.
                 return HttpResponseRedirect(next)
             else:
-                form.add_error("username", 'disabled account')
+                form.add_error("username", 'Account is not active. Check your mailbox for activation email.')
         else:
             form.add_error("password", 'invalid login')
         ctx['next'] = next

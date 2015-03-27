@@ -59,6 +59,7 @@ class RegistrationForm(forms.ModelForm):
     password2 = forms.CharField(label=_("Password confirmation"),
         widget=forms.PasswordInput,
         help_text=_("Enter the same password as above, for verification."))
+    language = forms.HiddenInput()
 
     class Meta:
         model = MyUser
@@ -66,12 +67,12 @@ class RegistrationForm(forms.ModelForm):
 
     def clean_email(self):
         # Since User.username is unique, this check is redundant,
-        # but it sets a nicer error message than the ORM. See #13147.
+        # but it sets a nicer error message than the ORM.
         email = self.cleaned_data["email"]
         try:
             MyUser._default_manager.get(email=email)
         except MyUser.DoesNotExist:
-            return email
+            return email.lower()
         raise forms.ValidationError(
             self.error_messages['duplicate_email'],
             code='duplicate_username',
@@ -101,14 +102,13 @@ class RegistrationForm(forms.ModelForm):
         return password2
 
     def save(self, commit=True):
-        user = super(RegistrationForm, self).save(commit=False)
-        p2 = self.clean_password2()
-        user.set_password(self.clean_password1())
-        username = self.clean_email()
-        username = username.replace('+', '-')
-        user.username = username.replace('@', '.')
-        if commit:
-            user.save()
+        self.clean_password1()
+        password = self.clean_password2()
+        email = self.clean_email()
+        username = email
+        username = username.replace('+', '')
+        username = username.replace('@', '.')
+        user = MyUser.objects.create_user(email, username, password)
         return user
 
 

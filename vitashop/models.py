@@ -16,6 +16,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.core import validators
 from django.utils import timezone
 from vitashop.exchange import ExchangeService
+import uuid
 import logging
 
 logger = logging.getLogger('vitashop')
@@ -42,8 +43,26 @@ class MyUserManager(BaseUserManager):
         )
 
         user.set_password(password)
+        user.code = self.generate_activation_key()
+        user.is_active = False
         user.save(using=self._db)
         return user
+
+    def generate_activation_key(self):
+        import base64
+        b = base64.urlsafe_b64encode(uuid.uuid4().bytes)
+        s = b.decode("utf-8")
+        return s
+
+    def activate(self, code):
+        try:
+            user = self.model.objects.get(code=code)
+            user.is_active = True
+            user.code = ''
+            user.save()
+            return True
+        except MyUser.DoesNotExist:
+            return False
 
     def create_superuser(self, email, username, password):
         """
@@ -69,6 +88,7 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
         help_text=_('Required. 30 characters or fewer. Letters, digits and '
                     '@/./+/-/_ only.'),
         validators=[
+
             validators.RegexValidator(r'^[\w.@+-]+$', _('Enter a valid username.'), 'invalid')
         ])
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
@@ -80,8 +100,10 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(_('active'), default=True,
         help_text=_('Designates whether this user should be treated as '
                     'active. Unselect this instead of deleting accounts.'))
+    is_affiliate = models.BooleanField(_('affiliate'), default=False)
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
-
+    code = models.CharField(_('code'), max_length=40, blank=True)
+    lang = models.CharField(_('lang'), max_length=2, blank=True)
     objects = MyUserManager()
 
     USERNAME_FIELD = 'email'
@@ -114,7 +136,9 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
     def send_registration_mail(self):
         subject = settings.SITE_NAME + ' - Registration'
         from_email = settings.EMAIL_FROM
-        content = {'site': 'http://' + settings.SITE_NAME, 'activation_code': 1234, 'email_to': self.email, 'lang': 'en'}
+
+        content = {'site': 'http://' + settings.SITE_NAME, 'activation_code': self.code,
+                   'email_to': self.email, 'lang': self.lang}
         text_content = render_to_string('mails/activation_email.txt', content)
         html_content = render_to_string('mails/activation_email.html', content)
 
