@@ -41,9 +41,7 @@ def error_view(request, message):
     return render(request, 'vitashop/error.html', ctx)
 
 
-def information(request):
-    ctx = {}
-    return render(request, 'vitashop/information.html', ctx)
+
 
 
 def products(request):

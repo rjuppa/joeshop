@@ -73,10 +73,10 @@
                 <div class="col-sm-3">
                     <h3>Information</h3>
                     <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Affiliate</a></li>
-                        <li><a href="#">Shipping</a></li>
+                        <li><a href="{% url 'faq' %}">FAQ</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                        <li><a href="{% url 'affiliate' %}">Affiliate</a></li>
+                        <li><a href="{% url 'information' %}">Shipping</a></li>
                         <li><a href="#">Privacy</a></li>
                     </ul>
                 </div>
@@ -92,7 +92,7 @@
                 <div class="col-sm-3">
                     <h3>Other</h3>
                     <ul>
-                        <li><a href="#">Bitcoins1234</a></li>
+                        <li><a href="{% url 'bitcoin' %}">Bitcoin</a></li>
 
                     </ul>
                 </div>

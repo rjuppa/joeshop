@@ -16,7 +16,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 SITE_NAME = 'Vitamineral.info'
 EMAIL_FROM = 'robot@vitamineral.info'
-
+EMAIL_ADMIN = 'rjuppa@gmail.com'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
@@ -67,6 +67,7 @@ INSTALLED_APPS = (
     'shop',                 # The django SHOP application
     # 'shop.addressmodel',    # The default Address and country models
     'vitashop',
+    'web',
     'social.apps.django_app.default',
 )
 

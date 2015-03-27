@@ -1,0 +1,54 @@
+{% extends "vitashop/base.html" %}
+{% load url from future %}
+{% load widget_tweaks %}
+{% block body %}
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-header">
+          <h3 id="container">Contact us</h3>
+        </div>
+
+        <a name="top#"></a>
+        <div class="col-md-8">
+
+                <form id="contact-data" class="form-horizontal" action="" method="POST">
+                    {% csrf_token %}
+                    <p>
+                        <label for="id_name">Name:<span class="form-error-mark" title="Field is required.">*</span></label>
+                        {{ form.name|add_class:"form-control" }}
+                    </p>
+                    <p>
+                        <label for="id_email">Email:<span class="form-error-mark" title="Field is required.">*</span></label>
+                        {{ form.email|add_class:"form-control" }}
+                    </p>
+                    <p>
+                        <label for="id_subject">Subject:<span class="form-error-mark" title="Field is required.">*</span></label>
+                        {{ form.subject|add_class:"form-control" }}
+                    </p>
+                    <p>
+                        <label for="id_comment">Message:</label>
+                        {{ form.comment|add_class:"form-control" }}
+                    </p>
+{#                    <p>#}
+{#                        <label for="id_comment">Captcha:</label>#}
+{#                        {{ form.captcha }}#}
+{#                    </p>#}
+                    <p>
+                        <label for="submit">&nbsp;</label>
+                        <input type="submit" value="Send" class="btn btn-primary btn-lg">
+                    </p>
+                </form>
+
+        </div>
+
+        <div class="col-md-4">  </div>
+        
+
+        <div class="clearfix"></div>
+        <br />
+        <br />
+      </div>
+    </div>
+
+{% endblock %}
