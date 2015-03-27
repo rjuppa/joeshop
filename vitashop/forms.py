@@ -70,8 +70,8 @@ class RegistrationForm(forms.ModelForm):
         # but it sets a nicer error message than the ORM.
         email = self.cleaned_data["email"]
         try:
-            MyUser._default_manager.get(email=email)
-        except MyUser.DoesNotExist:
+            self.model.objects.get(email=email)
+        except self.model.DoesNotExist:
             return email.lower()
         raise forms.ValidationError(
             self.error_messages['duplicate_email'],
@@ -108,7 +108,7 @@ class RegistrationForm(forms.ModelForm):
         username = email
         username = username.replace('+', '')
         username = username.replace('@', '.')
-        user = MyUser.objects.create_user(email, username, password)
+        user = self.model.objects.create_inactive_user(email, username, password)
         return user
 
 

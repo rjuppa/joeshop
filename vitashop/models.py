@@ -26,10 +26,20 @@ USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'vitashop.MyUser')
 # ----------------------------------------------------- USER
 
 class MyUserManager(BaseUserManager):
+    def create_inactive_user(self, email, username, password=None):
+        """
+        Creates and saves a inactive User with the given email and password
+        """
+        user = self.create_user(email, username, password)
+        user.code = self.generate_activation_key()
+        user.is_active = False
+        user.save(using=self._db)
+        return user
+
     def create_user(self, email, username, password=None):
         """
-        Creates and saves a User with the given email, date of
-        birth and password.
+        Creates and saves a User with the given email and username from social auth
+        without password
         """
         if not email:
             raise ValueError('Users must have an email address')
@@ -43,8 +53,7 @@ class MyUserManager(BaseUserManager):
         )
 
         user.set_password(password)
-        user.code = self.generate_activation_key()
-        user.is_active = False
+        user.is_active = True
         user.save(using=self._db)
         return user
 
