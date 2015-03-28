@@ -75,8 +75,8 @@
                     <ul>
                         <li><a href="{% url 'faq' %}">FAQ</a></li>
                         <li><a href="{% url 'contact' %}">Contact</a></li>
-                        <li><a href="{% url 'affiliate' %}">Affiliate</a></li>
-                        <li><a href="{% url 'information' %}">Shipping</a></li>
+                        <li><a href="{% url 'affiliate' %}#affiliate">Affiliate</a></li>
+                        <li><a href="{% url 'information' %}#shipping">Shipping</a></li>
                         <li><a href="#">Privacy</a></li>
                     </ul>
                 </div>
@@ -96,10 +96,12 @@
 
                     </ul>
                 </div>
-                <div class="col-md-3">
-                	<h3>Newsletter</h3>
-                    <input class="form-control" id="id_username" maxlength="254" name="username" placeholder="Enter your Email..." type="text"><br>
-                    <button style="background-color:transparent; border:2px solid #ffffff; padding:5px 10px; color:#ffffff; float:right;">SUBMIT</button>
+                <div class="col-md-1"></div>
+                <div class="col-md-2">
+                    <h3>Payment</h3>
+                    <br/>
+                    <img src="{{ MEDIA_URL }}img/bitcoin_accepted.png" class="img-responsive" alt="Pay with Bitcoins" style="margin:10px 0;" />
+                    <img src="{{ MEDIA_URL }}img/paypal.png" class="img-responsive" alt="Pay with PayPal" style="margin:10px 0;" />
                 </div>
             </div>
             <hr style="color: red">
@@ -107,10 +109,10 @@
             <small>@ 2015 vitamineral.info. All Rights Reserved</small>
             </div>
             <div class="col-sm-2">
-                <img src="{{ MEDIA_URL }}img/bitcoin_accepted.png" class="img-responsive" alt="Pay with Bitcoins" style="margin:10px 0;" />
+
             </div>
             <div class="col-sm-2">
-				<img src="{{ MEDIA_URL }}img/paypal.png" class="img-responsive" alt="Pay with PayPal" style="margin:10px 0;" />
+
             </div>
         </div>
     </footer>

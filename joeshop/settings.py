@@ -15,43 +15,22 @@ from django.contrib.messages import constants as messages
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 SITE_NAME = 'Vitamineral.info'
-EMAIL_FROM = 'robot@vitamineral.info'
-EMAIL_ADMIN = 'rjuppa@gmail.com'
+EMAIL_FROM = 'do-not-reply@vitamineral.info'
+EMAIL_ADMIN = 'vitamineral1@gmail.com'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'r_nbmsa%_51x_-z8zvg(-e)o(d*m$ngdrs1r---5$sw^+$k6(p'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['vitamineral.info', '127.0.0.1', '178.62.240.190']
 PREPEND_WWW = False
 
-PAYPAL_RECEIVER_EMAIL = ''
 # PAYPAL
-PAYPAL_TEST = True
+PAYPAL_TEST = False
 PAYPAL_VERSION = 93
-if PAYPAL_TEST:
-    # testing
-    PAYPAL_USERNAME = 'sdk-three_api1.sdk.com'
-    PAYPAL_PASSWORD = 'QFZCWN5HZM8VBG7Q'
-    PAYPAL_SIGNATURE = 'A-IzJhZZjhg29XQ2qnhapuwxIDzyAZQ92FRP5dqBzVesOkzbdUONzmOU'
-    PAYPAL_SIG_URL = 'https://api-3t.sandbox.paypal.com/nvp'
-    PAYPAL_CERT_URL = 'https://api.sandbox.paypal.com/nvp'
-    PAYPAL_REDIRECT = 'https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&useraction=commit&token=%s'
-else:
-    # production
-    PAYPAL_USERNAME = '........'
-    PAYPAL_PASSWORD = '........'
-    PAYPAL_SIGNATURE = '.....'
-    PAYPAL_SIG_URL = 'https://api-3t.paypal.com/nvp'
-    PAYPAL_CERT_URL = 'https://api.paypal.com/nvp'
-    PAYPAL_REDIRECT = 'https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&useraction=commit&token=%s'
-
+PAYPAL_RECEIVER_EMAIL = ''
 
 # Application definition
 INSTALLED_APPS = (
@@ -82,13 +61,23 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'joeshop.urls'
-
 WSGI_APPLICATION = 'joeshop.wsgi.application'
 
 
 IS_PRODUCTION = os.environ.get('PRODUCTION')
 
 if IS_PRODUCTION:
+    # SECURITY WARNING: keep the secret key used in production secret!
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+
+    # PAYPAL production
+    PAYPAL_USERNAME = os.environ.get('PAYPAL_USERNAME'),
+    PAYPAL_PASSWORD = os.environ.get('PAYPAL_PASSWORD'),
+    PAYPAL_SIGNATURE = os.environ.get('PAYPAL_SIGNATURE'),
+    PAYPAL_SIG_URL = 'https://api-3t.paypal.com/nvp'
+    PAYPAL_CERT_URL = 'https://api.paypal.com/nvp'
+    PAYPAL_REDIRECT = 'https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&useraction=commit&token=%s'
+
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     DATABASES = {
             'default': {
@@ -98,23 +87,63 @@ if IS_PRODUCTION:
                 'PASSWORD': os.environ.get('DB_PASSWORD'),
                 'HOST': '127.0.0.1',
                 'PORT': '',
-                'TEST_NAME': 'test_beer',
             },
         }
 
+    # Bitcoin's bip0032 HD account
+    XPUB = os.environ.get('XPUB')
+
+    SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('FACEBOOK_KEY')
+    SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('FACEBOOK_SECRET')
+    SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+    SOCIAL_AUTH_GOOGLE_PLUS_KEY = os.environ.get('GOOGLE_PLUS_KEY')
+    SOCIAL_AUTH_GOOGLE_PLUS_SECRET = os.environ.get('GOOGLE_PLUS_SECRET')
+
+    SOCIAL_AUTH_TWITTER_KEY = ''
+    SOCIAL_AUTH_TWITTER_SECRET = ''
+
 else:
+    # testing
+    SECRET_KEY = 'gfnbmsasf51x_-z8zvg12e3ofd*m$ngdrs1r1115$sw^+$k6(p'
+
+    # PAYPAL testing
+    PAYPAL_USERNAME = 'sdk-three_api1.sdk.com'
+    PAYPAL_PASSWORD = 'QFZCWN5HZM8VBG7Q'
+    PAYPAL_SIGNATURE = 'A-IzJhZZjhg29XQ2qnhapuwxIDzyAZQ92FRP5dqBzVesOkzbdUONzmOU'
+    PAYPAL_SIG_URL = 'https://api-3t.sandbox.paypal.com/nvp'
+    PAYPAL_CERT_URL = 'https://api.sandbox.paypal.com/nvp'
+    PAYPAL_REDIRECT = 'https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&useraction=commit&token=%s'
+
+    # Testing env.
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.postgresql_psycopg2',
                 'NAME': 'vitashop',
-                'USER': 'postgres' ,
+                'USER': 'postgres',
                 'PASSWORD': 'postgres',
                 'HOST': '127.0.0.1',
                 'PORT': '',
                 'TEST_NAME': 'test_beer',
             },
         }
+
+    # some fake Bitcoin's bip0032 HD account
+    XPUB = 'xpub001MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqsefD265TMg7usUDFdp6W1EGMcet8'
+
+    SOCIAL_AUTH_FACEBOOK_KEY = '111111111111111'
+    SOCIAL_AUTH_FACEBOOK_SECRET = '1111111111111111111111111111111'
+    SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+    SOCIAL_AUTH_GOOGLE_PLUS_KEY = '111111111111-11111111111111111111111111111111.apps.googleusercontent.com'
+    SOCIAL_AUTH_GOOGLE_PLUS_SECRET = '111111111111111111111111'
+
+    SOCIAL_AUTH_TWITTER_KEY = ''
+    SOCIAL_AUTH_TWITTER_SECRET = ''
+
+
+
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
@@ -173,17 +202,6 @@ SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/shop/profile/'
 SOCIAL_AUTH_NEW_ASSOCIATION_REDIRECT_URL = '/shop/profile/'
 SOCIAL_AUTH_DISCONNECT_REDIRECT_URL = '/'
 
-SOCIAL_AUTH_FACEBOOK_KEY = '525404540934679'
-SOCIAL_AUTH_FACEBOOK_SECRET = 'a6aa8ab163ad8a0e17ef323456e2fcae'
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
-
-
-SOCIAL_AUTH_GOOGLE_PLUS_KEY = '352447090631-8ju2aqnjbovai64mkr8vs5laju1668mj.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_PLUS_SECRET = 'EEBJOb4o3svXB0B6bqhigdte'
-
-SOCIAL_AUTH_TWITTER_KEY = ''
-SOCIAL_AUTH_TWITTER_SECRET = ''
-
 SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.social_details',
     'social.pipeline.social_auth.social_uid',
@@ -219,9 +237,6 @@ SHOP_PAYMENT_BACKENDS = ['vitashop.payment.backends.paybitcoin.BitcoinBackend',
                          'vitashop.payment.backends.pay_on_delivery.PayOnDeliveryBackend',]
 
 SHOP_SHIPPING_FLAT_RATE = 0
-
-# Bitcoin's bip0032 HD account
-XPUB = 'xpub6CmLvNuAcabE7RTtpG4sT826Ek1kT5guSoRbAkS8k9mbiz8CeDjRfgRHYh7Z8f4eW2BzCnquYwYU6ApwAoCae8sxQiKxMKb2oa2fgXq8c8Y'
 
 
 # Internationalization
