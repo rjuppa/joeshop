@@ -1,6 +1,7 @@
 {% extends "vitashop/base.html" %}
 {% load url from future %}
 {% load widget_tweaks %}
+{% load i18n %}
 
 {% block head %}
 <meta name="google-signin-clientid" content="{{ SOCIAL_AUTH_GOOGLE_PLUS_KEY }}" />
@@ -113,6 +114,20 @@
 
     </div>
 <br /><br /><br /><br /><br /><br />
+
+    <form action="{% url 'set_language' %}" method="post">
+    {% csrf_token %}
+    <input name="next" type="hidden" value="{{ redirect_to }}" />
+    <select name="language">
+    {% get_language_info_list for LANGUAGES as languages %}
+    {% for language in languages %}
+    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+        {{ language.name_local }} ({{ language.code }})
+    </option>
+    {% endfor %}
+    </select>
+    <input type="submit" value="Go" />
+    </form>
 
 {% endblock %}
 

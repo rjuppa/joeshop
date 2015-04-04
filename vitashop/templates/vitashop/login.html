@@ -1,7 +1,7 @@
 {% extends "vitashop/base.html" %}
 {% load url from future %}
 {% load widget_tweaks %}
-
+{% load i18n %}
 {% block head %}
 <meta name="google-signin-clientid" content="{{ SOCIAL_AUTH_GOOGLE_PLUS_KEY }}" />
 <meta name="google-signin-scope" content="https://www.googleapis.com/auth/plus.profile.emails.read" />
@@ -59,7 +59,7 @@
     </div>
         <div id="profile-panel" class="panel panel-primary col-md-6">
           <div class="panel-heading">
-            <h5 class="panel-title">Log In</h5>
+            <h5 class="panel-title">{% trans "Log In" %}</h5>
           </div>
           <div class="panel-body">
                  {% if form.errors %}
@@ -85,13 +85,13 @@
                   <input type="hidden" name="next" value="{{ next }}" />
                     {% csrf_token %}
                   <div class="form-group">
-                    <label for="username" class="col-sm-3 control-label">Email</label>
+                    <label for="username" class="col-sm-3 control-label">{% trans "Email" %}</label>
                     <div class="col-sm-8">
                         {{ form.username|add_class:"form-control"  }}
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="password" class="col-sm-3 control-label">Password</label>
+                    <label for="password" class="col-sm-3 control-label">{% trans "Password" %}</label>
                     <div class="col-sm-8">
                       {{ form.password|add_class:"form-control" }}
                     </div>
@@ -99,7 +99,7 @@
                   <div class="form-group">
                     <label for="Login" class="col-sm-3 control-label"></label>
                     <div class="col-sm-6">
-                      <button type="submit" class="btn btn-primary">Login</button>
+                      <button type="submit" class="btn btn-primary">{% trans "Login" %}</button>
                     </div>
                   </div>
               </form>
@@ -115,19 +115,24 @@
 
 		
         <div id="social-panel" class="jumbletron col-md-6">
-            <p>You can also use your favorite <mark>social networks</mark> to login to the shop.</p>
+
+            <p>
+                {% trans "You can also use your favorite <mark>social networks</mark> to log in to the shop." %}
+            </p>
 
           <div class="row">
-            <a href="{% url 'social:begin' "facebook" %}" id="fbb" class="btn btn-primary soc-btn">Sign in with Facebook</a> <br />
+            <a href="{% url 'social:begin' "facebook" %}" id="fbb" class="btn btn-primary soc-btn">{% trans "Sign in with Facebook" %}</a> <br />
           </div>
           <div class="row">
             <button type="button" id="signinButton" class="btn btn-danger soc-btn" onclick="signin()"
-                    data-loading-text="Calling..." autocomplete="off">Sign in with Google+</button>
+                    data-loading-text="Calling..." autocomplete="off">{% trans "Sign in with Google+" %}</button>
           </div>
             
             <p>
-                <span class="text-small">In case you prefer to register with your email, please click
-                <a href="{% url 'register' %}" class="btn btn-primary btn-xs">register a new user</a></span>
+                <span class="text-small">
+                    {% trans "In case you prefer to register with your email, please click" %}
+                    <a href="{% url 'register' %}" class="btn btn-primary btn-xs">{% trans "register a new user" %}</a>
+                </span>
             </p>
          <form id="google-plus" method="post" action="{% url 'social:complete' "google-plus" %}">
             {% csrf_token %}

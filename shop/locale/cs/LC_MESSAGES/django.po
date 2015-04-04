@@ -1,0 +1,375 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-04-04 14:15+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#: shop/addressmodel/models.py:12
+#, python-format
+msgid ""
+"\n"
+"Name: %(name)s,\n"
+"Address: %(address)s,\n"
+"Zip-Code: %(zipcode)s,\n"
+"City: %(city)s,\n"
+"State: %(state)s,\n"
+"Country: %(country)s\n"
+msgstr ""
+
+#: shop/addressmodel/models.py:32 shop/addressmodel/models.py:48
+#: shop/models_bases/__init__.py:359
+msgid "Country"
+msgstr "Stát"
+
+#: shop/addressmodel/models.py:33
+msgid "Countries"
+msgstr ""
+
+#: shop/addressmodel/models.py:42 shop/models_bases/__init__.py:29
+msgid "Name"
+msgstr ""
+
+#: shop/addressmodel/models.py:43 shop/addressmodel/models.py:51
+msgid "Address"
+msgstr ""
+
+#: shop/addressmodel/models.py:44
+msgid "Address2"
+msgstr ""
+
+#: shop/addressmodel/models.py:45
+msgid "Zip Code"
+msgstr ""
+
+#: shop/addressmodel/models.py:46
+msgid "City"
+msgstr ""
+
+#: shop/addressmodel/models.py:47
+msgid "State"
+msgstr ""
+
+#: shop/addressmodel/models.py:52
+msgid "Addresses"
+msgstr ""
+
+#: shop/admin/orderadmin.py:47
+msgid "Shipping"
+msgstr ""
+
+#: shop/admin/orderadmin.py:50
+msgid "Billing"
+msgstr ""
+
+#: shop/forms.py:29
+msgid "Shipping method"
+msgstr ""
+
+#: shop/forms.py:30 shop/models/ordermodel.py:102
+msgid "Payment method"
+msgstr ""
+
+#: shop/models/defaults/cart.py:10 shop/models_bases/__init__.py:91
+msgid "Cart"
+msgstr ""
+
+#: shop/models/defaults/cart.py:11 shop/models_bases/__init__.py:92
+msgid "Carts"
+msgstr ""
+
+#: shop/models/defaults/cartitem.py:10 shop/models_bases/__init__.py:292
+msgid "Cart item"
+msgstr ""
+
+#: shop/models/defaults/cartitem.py:11 shop/models_bases/__init__.py:293
+msgid "Cart items"
+msgstr ""
+
+#: shop/models/defaults/order.py:15 shop/models/ordermodel.py:46
+#: shop/models/ordermodel.py:60 shop/models/ordermodel.py:95
+#: shop/models_bases/__init__.py:367 shop/models_bases/__init__.py:456
+msgid "Order"
+msgstr ""
+
+#: shop/models/defaults/order.py:16 shop/models_bases/__init__.py:368
+msgid "Orders"
+msgstr ""
+
+#: shop/models/defaults/orderitem.py:11 shop/models/ordermodel.py:79
+#: shop/models_bases/__init__.py:471
+msgid "Order item"
+msgstr ""
+
+#: shop/models/defaults/orderitem.py:12 shop/models_bases/__init__.py:472
+msgid "Order items"
+msgstr ""
+
+#: shop/models/defaults/product.py:17 shop/models_bases/__init__.py:41
+#: shop/models_bases/__init__.py:462
+msgid "Product"
+msgstr ""
+
+#: shop/models/defaults/product.py:18 shop/models_bases/__init__.py:42
+msgid "Products"
+msgstr ""
+
+#: shop/models/ordermodel.py:47
+msgid "Extra info"
+msgstr ""
+
+#: shop/models/ordermodel.py:51 shop/models/ordermodel.py:52
+msgid "Order extra info"
+msgstr ""
+
+#: shop/models/ordermodel.py:61 shop/models/ordermodel.py:80
+msgid "Label"
+msgstr ""
+
+#: shop/models/ordermodel.py:62 shop/models/ordermodel.py:81
+#: shop/models/ordermodel.py:97
+msgid "Amount"
+msgstr ""
+
+#: shop/models/ordermodel.py:63 shop/models/ordermodel.py:82
+msgid "Serialized extra data"
+msgstr ""
+
+#: shop/models/ordermodel.py:66
+msgid "Is shipping"
+msgstr ""
+
+#: shop/models/ordermodel.py:70
+msgid "Extra order price field"
+msgstr ""
+
+#: shop/models/ordermodel.py:71
+msgid "Extra order price fields"
+msgstr ""
+
+#: shop/models/ordermodel.py:86
+msgid "Extra order item price field"
+msgstr ""
+
+#: shop/models/ordermodel.py:87
+msgid "Extra order item price fields"
+msgstr ""
+
+#: shop/models/ordermodel.py:99
+msgid "Transaction ID"
+msgstr ""
+
+#: shop/models/ordermodel.py:100
+msgid "The transaction processor's reference"
+msgstr ""
+
+#: shop/models/ordermodel.py:103
+msgid "The payment backend used to process the purchase"
+msgstr ""
+
+#: shop/models/ordermodel.py:107
+msgid "Order payment"
+msgstr ""
+
+#: shop/models/ordermodel.py:108
+msgid "Order payments"
+msgstr ""
+
+#: shop/models_bases/__init__.py:30
+msgid "Slug"
+msgstr ""
+
+#: shop/models_bases/__init__.py:31
+msgid "Active"
+msgstr ""
+
+#: shop/models_bases/__init__.py:33
+msgid "Date added"
+msgstr ""
+
+#: shop/models_bases/__init__.py:35
+msgid "Last modified"
+msgstr ""
+
+#: shop/models_bases/__init__.py:36 shop/models_bases/__init__.py:463
+#: shop/templates/shop/cart.html:16
+#: shop/templates/shop/templatetags/_order.html:28
+msgid "Unit price"
+msgstr "Cena/kus"
+
+#: shop/models_bases/__init__.py:344
+msgid "Processing"
+msgstr ""
+
+#: shop/models_bases/__init__.py:345
+msgid "Confirming"
+msgstr ""
+
+#: shop/models_bases/__init__.py:346
+msgid "Confirmed"
+msgstr ""
+
+#: shop/models_bases/__init__.py:347
+msgid "Completed"
+msgstr ""
+
+#: shop/models_bases/__init__.py:348
+msgid "Shipped"
+msgstr ""
+
+#: shop/models_bases/__init__.py:349
+msgid "Canceled"
+msgstr ""
+
+#: shop/models_bases/__init__.py:353
+msgid "User"
+msgstr ""
+
+#: shop/models_bases/__init__.py:354
+msgid "Status"
+msgstr ""
+
+#: shop/models_bases/__init__.py:355
+msgid "Order subtotal"
+msgstr ""
+
+#: shop/models_bases/__init__.py:356
+#: shop/templates/shop/templatetags/_order.html:62
+msgid "Order Total"
+msgstr "Celkem"
+
+#: shop/models_bases/__init__.py:357
+msgid "Shipping address"
+msgstr ""
+
+#: shop/models_bases/__init__.py:358
+msgid "Billing address"
+msgstr ""
+
+#: shop/models_bases/__init__.py:360
+msgid "Created"
+msgstr ""
+
+#: shop/models_bases/__init__.py:361
+msgid "Updated"
+msgstr ""
+
+#: shop/models_bases/__init__.py:362
+msgid "Cart primary key"
+msgstr ""
+
+#: shop/models_bases/__init__.py:371
+#, python-format
+msgid "Order ID: %(id)s"
+msgstr ""
+
+#: shop/models_bases/__init__.py:458
+msgid "Product reference"
+msgstr "Reference"
+
+#: shop/models_bases/__init__.py:460 shop/templates/shop/cart.html:15
+#: shop/templates/shop/templatetags/_order.html:27
+msgid "Product name"
+msgstr "Název"
+
+#: shop/models_bases/__init__.py:464 shop/templates/shop/cart.html:17
+#: shop/templates/shop/templatetags/_order.html:29
+msgid "Quantity"
+msgstr "Množství"
+
+#: shop/models_bases/__init__.py:465
+msgid "Line subtotal"
+msgstr ""
+
+#: shop/models_bases/__init__.py:466
+msgid "Line total"
+msgstr "Celkem"
+
+#: shop/shipping/backends/flat_rate.py:13
+#: shop/shipping/backends/flat_rate.py:16
+#: shop/shipping/backends/flat_rate.py:19
+#: shop/shipping/backends/flat_rate.py:22
+msgid "Shipping rate"
+msgstr ""
+
+#: shop/shipping/backends/flat_rate.py:31
+msgid "Flat rate"
+msgstr ""
+
+#: shop/templates/shop/cart.html:6
+msgid "Your shopping cart"
+msgstr "Nákupní košík"
+
+#: shop/templates/shop/cart.html:41
+#: shop/templates/shop/templatetags/_order.html:49
+msgid "Line Total"
+msgstr "Celkem"
+
+#: shop/templates/shop/cart.html:47
+msgid "Cart Subtotal"
+msgstr "Mezisoučet"
+
+#: shop/templates/shop/cart.html:55
+msgid "Cart Total"
+msgstr "Celkem"
+
+#: shop/templates/shop/cart.html:59
+msgid "Update Shopping Cart"
+msgstr "Aktualizovat"
+
+#: shop/templates/shop/cart.html:64
+msgid "Empty Shopping Cart"
+msgstr "Vyprázdnit košík"
+
+#: shop/templates/shop/cart.html:68
+msgid "Proceed to checkout"
+msgstr "Dokončit nákup"
+
+#: shop/templates/shop/cart.html:73
+msgid "Shopping cart is empty"
+msgstr "Nákupní košík je prázdný."
+
+#: shop/templates/shop/order_list.html:5
+msgid "Order list"
+msgstr "Objednávky"
+
+#: shop/templates/shop/templatetags/_order.html:4
+msgid "Order ID:"
+msgstr "ID"
+
+#: shop/templates/shop/templatetags/_order.html:8
+msgid "Order Status"
+msgstr "Stav"
+
+#: shop/templates/shop/templatetags/_order.html:14
+msgid "Shipping Address"
+msgstr "Doručovací adresa"
+
+#: shop/templates/shop/templatetags/_order.html:18
+msgid "Billing Address"
+msgstr "Fakturační adresa"
+
+#: shop/templates/shop/templatetags/_order.html:54
+msgid "Order Subtotal"
+msgstr "Mezisoučet"
+
+#: shop/templates/shop/welcome.html:12
+msgid "Hello"
+msgstr ""
+
+#: shop/templates/shop/welcome.html:13
+msgid "Your orders"
+msgstr "Objednávky"

@@ -19,6 +19,27 @@ h2{
     font-weight: 600;
     text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
 }
+@media screen and (min-width: 320px) {
+    h2{
+        font-size:1.2em;
+    }
+}
+@media screen and (min-width: 768px) {
+    h2{
+        font-size:1.6em;
+    }
+}
+@media screen and (min-width: 992px) {
+    h2{
+        font-size:1.9em;
+    }
+}
+@media screen and (min-width: 1200px) {
+    h2{
+        font-size:2.2em;
+    }
+}
+
 h3 {
 	padding-top:15px;
     color: #F5B834;
@@ -143,7 +164,7 @@ div#shipping-panel{
 }
 
 .soc-btn{
-    width: 160px;
+    width: 190px;
     margin: 10px;
 }
 
@@ -298,6 +319,7 @@ ul.messages li.label{
 .navbar-default .navbar-nav > li > a {
 	color:#FFFFFF;
     font-weight: 600;
+    height: 50px;
 }
 .navbar-default .navbar-nav > li > a:hover {
 	color:#F5B834;
@@ -407,6 +429,27 @@ a#brand:hover{
     color: #888888;
     text-align: center;
     padding: 8px;
+}
+
+@media (min-width: 320px) {
+  .cap {
+    font-size: 0.5em;
+  }
+}
+@media (min-width: 768px) {
+  .cap {
+    font-size: 0.6em;
+  }
+}
+@media (min-width: 992px) {
+  .cap {
+    font-size: 0.7em;
+  }
+}
+@media (min-width: 1200px) {
+  .cap {
+    font-size: 1em;
+  }
 }
 
 .cap-white{

@@ -1,7 +1,9 @@
 {% load staticfiles %}
-{% load shop_tags %}
+{% load currency %}
+{% load shopytags %}
+{% load i18n %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE }}">
   <head>
     <meta charset="utf-8">
     <title>Vitamineral.info</title>
@@ -29,17 +31,17 @@
               </div>
                 <div class="collapse navbar-collapse" id="collapse">
                     <ul class="nav navbar-nav navbar-right">
-                      <li><a href="{% url 'products' %}">Products <span class="sr-only">(current)</span></a></li>
-                      <li><a href="{% url 'information' %}">Information</a></li>
-                      <li><a href="{% url 'exchange' %}">Exchange</a></li>
+                      <li><a href="{% url 'products' %}">{% trans "Products" %} <span class="sr-only">(current)</span></a></li>
+                      <li><a href="{% url 'information' %}">{% trans "Information" %}</a></li>
+                      <li><a href="{% url 'exchange' %}">{% trans "Exchange" %}</a></li>
                       {% if cart_obj.total_quantity > 0 %}
                         <li>{% cart %}</li>
                       {% endif %}
                       {% if user.is_authenticated %}
                           <li><a href="{% url 'profile' %}">{{ user.email }}</a></li>
-                          <li><a href="{% url 'logout' %}">Log Out</a></li>
+                          <li><a href="{% url 'logout' %}">{% trans "Log Out" %}</a></li>
                       {% else %}
-                                <li><a href="{% url 'login' %}">Login</a></li>
+                                <li><a href="{% url 'login' %}">{% trans "Login" %}</a></li>
                       {% endif %}
                     </ul>
                 </div>
@@ -71,34 +73,35 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-3">
-                    <h3>Information</h3>
+                    <h3>{% trans "Information" %}</h3>
                     <ul>
-                        <li><a href="{% url 'faq' %}">FAQ</a></li>
-                        <li><a href="{% url 'contact' %}">Contact</a></li>
-                        <li><a href="{% url 'affiliate' %}#affiliate">Affiliate</a></li>
-                        <li><a href="{% url 'information' %}#shipping">Shipping</a></li>
-                        <li><a href="#">Privacy</a></li>
+                        <li><a href="{% url 'faq' %}">{% trans "FAQ" %}</a></li>
+                        <li><a href="{% url 'contact' %}">{% trans "Contact" %}</a></li>
+                        <li><a href="{% url 'affiliate' %}#affiliate">{% trans "Affiliate" %}</a></li>
+                        <li><a href="{% url 'information' %}#shipping">{% trans "Shipping" %}</a></li>
+                        <li><a href="#">{% trans "Privacy" %}</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-3">
-                    <h3>Media</h3>
+                    <h3>{% trans "Media" %}</h3>
                     <ul>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Youtube</a></li>
-                        <li><a href="#">Success stories</a></li>
+                        <li><a href="#">{% trans "Blog" %}</a></li>
+                        <li><a href="#">{% trans "Facebook" %}</a></li>
+                        <li><a href="#">{% trans "Youtube" %}</a></li>
+                        <li><a href="#">{% trans "Success stories" %}</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-3">
-                    <h3>Other</h3>
+                    <h3>{% trans "Other" %}</h3>
                     <ul>
-                        <li><a href="{% url 'bitcoin' %}">Bitcoin</a></li>
+                        <li><a href="{% url 'bitcoin' %}">{% trans "Bitcoins" %}</a></li>
+                        <li><span style="color:rgb(221, 185, 172);">Languages:</span> <b><a href="/?lang=cs">cs</a>&nbsp;<a href="/?lang=en">en</a></b></li>
 
                     </ul>
                 </div>
                 <div class="col-md-1"></div>
                 <div class="col-md-2">
-                    <h3>Payment</h3>
+                    <h3>{% trans "Payment" %}</h3>
                     <br/>
                     <img src="{{ MEDIA_URL }}img/bitcoin_accepted.png" class="img-responsive" alt="Pay with Bitcoins" style="margin:10px 0;" />
                     <img src="{{ MEDIA_URL }}img/paypal.png" class="img-responsive" alt="Pay with PayPal" style="margin:10px 0;" />
@@ -106,7 +109,7 @@
             </div>
             <hr style="color: red">
             <div class="col-sm-8">
-            <small>@ 2015 vitamineral.info. All Rights Reserved</small>
+            <small>&copy; 2015 vitamineral.info {% trans "All Rights Reserved." %}</small>
             </div>
             <div class="col-sm-2">
 

@@ -1,67 +1,66 @@
 {% extends "vitashop/base.html" %}
 {% load url from future %}
+{% load i18n %}
 {% block body %}
 
     <div class="row">
       <div class="col-lg-12">
         <div class="page-header">
-          <h3 id="container">Information</h3>
+          <h3 id="container">{% trans "Information" %}</h3>
         </div>
 
         <a name="top#"></a>
 
         <div class="col-md-12">
             <ul>
-                <li><a href="#products#">Products</a></li>
-                <li><a href="#vitamins#">Vitamins</a></li>
-                <li><a href="#minerals#">Minerals</a></li>
-                <li><a href="#calmag#">Calmag</a></li>
-                <li><a href="#shipping#">Shipping and delivery</a></li>
-                <li><a href="#affiliate#">Affiliate program</a></li>
-                <li><a href="{% url 'bitcoin' %}">Bitcoins</a></li>
+                <li><a href="#products#">{% trans "Products" %}</a></li>
+                <li><a href="#vitamins#">{% trans "Vitamins" %}</a></li>
+                <li><a href="#minerals#">{% trans "Minerals" %}</a></li>
+                <li><a href="#calmag#">{% trans "CalMag" %}</a></li>
+                <li><a href="#shipping#">{% trans "Shipping and delivery" %}</a></li>
+                <li><a href="#affiliate#">{% trans "Affiliate program" %}</a></li>
+                <li><a href="{% url 'bitcoin' %}">{% trans "Bitcoins" %}</a></li>
             </ul>
         </div>
 
         <div class="col-md-8">
             <a name="products#"></a>
-            <h4>Products</h4>
+            <h4>{% trans "Products" %}</h4>
             <p>All our products..</p>
             <p>TODO</p>
 
 
             <a name="vitamins#"></a>
 
-            <h4>Vitamins</h4>
+            <h4>{% trans "Vitamins" %}</h4>
             <p>Vitamins are organic compounds which are needed in small quantities to sustain life. We get vitamins from food, because the human body either does not produce enough of them, or none at all.</p>
             <p>TODO</p>
 
             <div class="clearfix"></div>
 
             <a name="minerals#"></a>
-            <h4>Minerals</h4>
+            <h4>{% trans "Minerals" %}</h4>
             <p>Minerals is one confusing topic. Inorganic, organic, chelated, elemental, ionic, colloidal, essential, trace – all these claims! What do we really need? Credentials in nutrition apparently mean very little when it comes to minerals.</p>
             <p>TODO</p>
 
             <div class="clearfix"></div>
 
             <a name="calmag#"></a>
-            <h4>Calmag</h4>
+            <h4>{% trans "CalMag" %}</h4>
             <p>Calcium and magnesium are essential for more than 300 functions in your body, such as sleep, pain, cramp and muscle spasm alleviation,  nervousness, restless leg syndrome, relaxation, alleviating stress, hyperactivity, heart function, blood pressure, blood clotting (especially important during tooth extraction, child birth, operations and so on), etc.</p>
             <p>TODO</p>
 
             <div class="clearfix"></div>
 
             <a name="shipping#"></a>
-            <h4>Shipping and delivery</h4>
+            <h4>{% trans "Shipping and delivery" %}</h4>
             <p>We ship to all over the world with standard post or DHL.</p>
 
             <div class="clearfix"></div>
 
             <a name="affiliate#"></a>
-            <h4>Affiliate program</h4>
+            <h4>{% trans "Affiliate program" %}</h4>
             <p>Do you like our products and want to become a member of Affiliate program? We offer great conditions for affiliate marketers. Commission is 8% from EVERY FUTURE ORDER from your customer. Program is available for all our customers automatically.</p>
-
-
 
         </div>
 

@@ -1,12 +1,13 @@
 {% extends "vitashop/base.html" %}
 {% load url from future %}
 {% load widget_tweaks %}
+{% load i18n %}
 {% block body %}
 
     <div class="row">
       <div class="col-lg-12">
         <div class="page-header">
-          <h3 id="container">Contact us</h3>
+          <h3 id="container">{% trans "Contact us" %}</h3>
         </div>
 
         <a name="top#"></a>
@@ -15,19 +16,19 @@
                 <form id="contact-data" class="form-horizontal" action="" method="POST">
                     {% csrf_token %}
                     <p>
-                        <label for="id_name">Name:<span class="form-error-mark" title="Field is required.">*</span></label>
+                        <label for="id_name">{% trans "Name" %}:<span class="form-error-mark" title="Field is required.">*</span></label>
                         {{ form.name|add_class:"form-control" }}
                     </p>
                     <p>
-                        <label for="id_email">Email:<span class="form-error-mark" title="Field is required.">*</span></label>
+                        <label for="id_email">{% trans "Email" %}:<span class="form-error-mark" title="Field is required.">*</span></label>
                         {{ form.email|add_class:"form-control" }}
                     </p>
                     <p>
-                        <label for="id_subject">Subject:<span class="form-error-mark" title="Field is required.">*</span></label>
+                        <label for="id_subject">{% trans "Subject" %}:<span class="form-error-mark" title="Field is required.">*</span></label>
                         {{ form.subject|add_class:"form-control" }}
                     </p>
                     <p>
-                        <label for="id_comment">Message:</label>
+                        <label for="id_comment">{% trans "Message" %}:</label>
                         {{ form.comment|add_class:"form-control" }}
                     </p>
 {#                    <p>#}
@@ -36,7 +37,7 @@
 {#                    </p>#}
                     <p>
                         <label for="submit">&nbsp;</label>
-                        <input type="submit" value="Send" class="btn btn-primary btn-lg">
+                        <input type="submit" value="{% trans "Send" %}" class="btn btn-primary btn-lg">
                     </p>
                 </form>
 

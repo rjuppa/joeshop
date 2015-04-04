@@ -1,0 +1,79 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-04-04 21:11+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#: templates/web/contact.html:10
+msgid "Contact us"
+msgstr "Kontaktujte nás"
+
+#: templates/web/contact.html:19
+msgid "Name"
+msgstr "Jméno"
+
+#: templates/web/contact.html:23
+msgid "Email"
+msgstr "Email"
+
+#: templates/web/contact.html:27
+msgid "Subject"
+msgstr "Nadpis"
+
+#: templates/web/contact.html:31
+msgid "Message"
+msgstr "Zpráva"
+
+#: templates/web/contact.html:40
+msgid "Send"
+msgstr "Odeslat"
+
+#: templates/web/information.html:9
+msgid "Information"
+msgstr "Informace"
+
+#: templates/web/information.html:16 templates/web/information.html.py:28
+msgid "Products"
+msgstr "Produkty"
+
+#: templates/web/information.html:17 templates/web/information.html.py:35
+msgid "Vitamins"
+msgstr "Vitamíny"
+
+#: templates/web/information.html:18 templates/web/information.html.py:42
+msgid "Minerals"
+msgstr "Minerály"
+
+#: templates/web/information.html:19 templates/web/information.html.py:49
+msgid "CalMag"
+msgstr "CalMag"
+
+#: templates/web/information.html:20 templates/web/information.html.py:56
+msgid "Shipping and delivery"
+msgstr "Doručování zásilek"
+
+#: templates/web/information.html:21 templates/web/information.html.py:62
+msgid "Affiliate program"
+msgstr "Afility"
+
+#: templates/web/information.html:22
+msgid "Bitcoins"
+msgstr "Platby v Bitcoinech"
+
+#: templates/web/thankyou.html:11
+msgid "Thank you!"
+msgstr "Děkujeme Vám!"

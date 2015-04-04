@@ -1,16 +1,19 @@
 {% extends "vitashop/base.html" %}
 {% load url from future %}
+{% load i18n %}
 {% block body %}
 
     <div class="row">
       <div class="col-lg-12">
-        <div class="page-header">
-            <br/>
-            <cite>
-                "Your body is a great machine.<br/>
-            It does matter what you fuel it."
-            </cite>
+        <div class="page-header" style="height: 60px;">
+            <div style="width: 50%; height: 60px; float: left;">
+                <cite>"{% trans "Our body works like a great machine.<br/>It does matter what you fuel it." %}"</cite>
+            </div>
+            <div style="width: 50%; height: 60px; float: left; text-align: right;">
+                <b><a href="/?lang=cs">cs</a>&nbsp;<a href="/?lang=en">en</a></b>
+            </div>
         </div>
+          <div class="clearfix"></div>
         <div class="bs-component">
               <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
@@ -27,31 +30,31 @@
               <div class="carousel-inner">
                 <div class="item active">
                   <img src="{{ MEDIA_URL }}img/running_slider.jpg" class="img-responsive" alt="" />
-                  <div class="carousel-caption">
+                  <div class="carousel-caption cap">
                       <span class="cap-white" style="font-size: 1.4em">IF YOU NEED TO</span>&nbsp;&nbsp;&nbsp;<span class="cap-black" style="font-size: 2.4em">BE BACK ON THE TOP</span>
                   </div>
                 </div>
                 <div class="item">
                   <img src="{{ MEDIA_URL }}img/cycling_slider.jpg" class="img-responsive" alt="" />
-                  <div class="carousel-caption">
+                  <div class="carousel-caption cap">
                       <span class="cap-white">IF YOU NEED TO</span>&nbsp;&nbsp;&nbsp;<span class="cap-black">ENJOY LIFE</span>
                   </div>
                 </div>
                 <div class="item">
                   <img src="{{ MEDIA_URL }}img/squash_slider.jpg" class="img-responsive" alt="" />
-                  <div class="carousel-caption">
+                  <div class="carousel-caption cap">
                       <span class="cap-white">IF YOU NEED</span>&nbsp;&nbsp;&nbsp;<span class="cap-black">MORE ENERGY</span>
                   </div>
                 </div>
                 <div class="item">
                   <img src="{{ MEDIA_URL }}img/florball_slider.jpg" class="img-responsive" alt="" />
-                  <div class="carousel-caption">
+                  <div class="carousel-caption cap">
                       <span class="cap-white">IF YOU NEED TO</span>&nbsp;&nbsp;&nbsp;<span class="cap-black">ENJOY GAME</span>
                   </div>
                 </div>
                 <div class="item">
                   <img src="{{ MEDIA_URL }}img/work_slider.jpg" class="img-responsive" alt="" />
-                  <div class="carousel-caption">
+                  <div class="carousel-caption cap">
                       <span class="cap-white">IF YOU NEED TO</span>&nbsp;&nbsp;&nbsp;<span class="cap-black">THINK FASTER</span>
                   </div>
                 </div>
@@ -70,54 +73,38 @@
             <hr />
 
             <p class="text-right">
-                <h2>&nbsp;&nbsp;Keep in mind your body needs construction materials.</h2>
+                <h2>&nbsp;&nbsp;{% trans "Keep in mind your body needs construction materials." %}</h2>
             </p>
 			<div class="align-topics">
-            <div class="col-md-4">
-                <h4>Vitamins</h4>
-                <p>Vitamins are organic compounds which are needed in small quantities to sustain life. We get vitamins from food, because the human body either does not produce enough of them, or none at all.</p>
-                <a href="javascript:showhide('uniquename1')">read more...</a>
-                <div id="uniquename1" style="display:none;">
-        <p>...Content goes here.</p>
-    </div>
+                <div class="col-md-4">
+                    <h4>{% trans "Vitamins" %}</h4>
+                    <p>Vitamins are organic compounds which are needed in small quantities to sustain life. We get vitamins from food, because the human body either does not produce enough of them, or none at all.</p>
+                    <a href="{% url 'information' %}#vitamins">{% trans "read more" %}...</a><br>
+                    <br>
+                </div>
+                <div class="col-md-4">
+                    <h4>{% trans "Minerals" %}</h4>
+                    <p>Minerals is one confusing topic. Inorganic, organic, chelated, elemental, ionic, colloidal, essential, trace – all these claims! What do we really need? Credentials in nutrition apparently mean very little</p>
+                    <a href="{% url 'information' %}">{% trans "read more" %}...</a><br>
+                    <br>
+                </div>
+                <div class="col-md-4">
+                    <h4>{% trans "CalMag" %}</h4>
+                    <p>Calcium and magnesium are essential for more than 300 functions in your body, such as sleep, pain, cramp and muscle spasm alleviation,  nervousness, restless leg syndrome, relaxation,</p>
+                    <a href="{% url 'information' %}">{% trans "read more" %}...</a><br>
+                    <br>
+                </div>
             </div>
-            <div class="col-md-4">
-                <h4>Minerals</h4>
-                <p>Minerals is one confusing topic. Inorganic, organic, chelated, elemental, ionic, colloidal, essential, trace – all these claims! What do we really need? Credentials in nutrition apparently mean very little</p>
-                <a href="javascript:showhide('uniquename2')">read more...</a>
-                <div id="uniquename2" style="display:none;">
-        <p>... when it comes to minerals.</p>
-    </div>
-            </div>
-            <div class="col-md-4">
-                <h4>Calmag</h4>
-                <p>Calcium and magnesium are essential for more than 300 functions in your body, such as sleep, pain, cramp and muscle spasm alleviation,  nervousness, restless leg syndrome, relaxation,</p>
-                <a href="javascript:showhide('uniquename3')">read more...</a>
-                <div id="uniquename3" style="display:none;">
-        <p>... alleviating stress, hyperactivity, heart function, blood pressure, blood clotting (especially important during tooth extraction, child birth, operations and so on), etc.</p>
-    </div>
-            </div>
-            </div>
-            
             <div class="row">
-            <div class="col-sm-4">
-            <p><a href="{% url 'products' %}" class="btn btn-danger btn-lg">Choose product</a></p>
-            </div>
-
-
-            <div class="col-sm-8"></div>
-
-            
+                <div class="col-sm-4">
+                    <p>
+                        <a href="{% url 'products' %}" class="btn btn-danger btn-lg">{% trans "Choose product" %}</a>
+                    </p>
+                </div>
+                <div class="col-sm-8"></div>
 			</div>
         </div>
       </div>
     </div>
     
-    <script type="text/javascript">
- function showhide(id) {
-    var e = document.getElementById(id);
-    e.style.display = (e.style.display == 'block') ? 'none' : 'block';
- }
-</script>
-
 {% endblock %}

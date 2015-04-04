@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import os
 from decimal import Decimal
 from django.contrib.messages import constants as messages
+from django.utils.translation import ugettext_lazy as _
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 SITE_NAME = 'Vitamineral.info'
@@ -52,12 +54,14 @@ INSTALLED_APPS = (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'vitashop.middleware.localization.LanguageMiddleware'
 )
 
 ROOT_URLCONF = 'joeshop.urls'
@@ -242,15 +246,22 @@ SHOP_SHIPPING_FLAT_RATE = 0
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'cs'
+LANGUAGE_COOKIE_NAME = 'vitalang'
+LANGUAGE_SESSION_KEY = 'vitalang'
+LANGUAGES = (
+  ('cs', _('Czech')),
+  ('en', _('English')),
+)
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Prague'
 
 USE_I18N = True
 
 USE_L10N = True
 
 USE_TZ = True
+
 
 
 # Static files (CSS, JavaScript, Images)

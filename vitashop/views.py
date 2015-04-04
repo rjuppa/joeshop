@@ -19,11 +19,13 @@ from vitashop.models import *
 from vitashop.forms import *
 from shop.util.btc_helper import Coindesk_Exchange, BC
 from django.utils.decorators import method_decorator
+from django.utils.translation import ugettext as _
 from shop.views import ShopListView, ShopDetailView
 from shop.forms import get_cart_item_formset
 from shop.models.productmodel import Product
 from shop.util.cart import get_or_create_cart
 from shop.views import ShopView, ShopTemplateResponseMixin
+
 
 
 def index(request):
@@ -32,7 +34,7 @@ def index(request):
 
 
 def test_view(request):
-    ctx = {}
+    ctx = RequestContext(request, {})
     return render(request, 'vitashop/test.html', ctx)
 
 

@@ -14,7 +14,7 @@
                 {% csrf_token %}
                 <input type="hidden" name="next" value="cart">
                 <div class="float-left">
-                    <label for="id_currency">Currency:</label>
+                    <label for="id_currency">{% trans "Currency" %}:</label>
                     <select id="id_currency" name="sel_currency" class="form-control" onchange="this.form.submit()">
                         {% for c in currency_set %}
                             {% if c == currency %}
@@ -124,7 +124,7 @@
     <p>&nbsp;</p>
     <div class="row">
           <div class="btnpanel col-md-12 text-center">
-              <a href="{% url 'products' %}" class="btn btn-default pull-left">Back to shopping</a>
+              <a href="{% url 'products' %}" class="btn btn-default pull-left">{% trans "Back to shopping" %} </a>
               <a href="{% url 'checkout_selection' %}" class="btn btn-danger btn-md">{% trans "Proceed to checkout" %}</a>
           </div>
     </div>

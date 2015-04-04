@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="btn-group">
-          <h3 class="products-header-top">Products</h3>
+          <h3 class="products-header-top">{% trans "Products" %}</h3>
         </div>
 
         <div id="curr-wrapper" class="btn-group pull-right">
@@ -14,7 +14,7 @@
                 {% csrf_token %}
                 <input type="hidden" name="next" value="products">
                 <div class="float-left">
-                    <label for="id_currency">Currency:</label>
+                    <label for="id_currency">{% trans "Currency" %}:</label>
                     <select id="id_currency" name="sel_currency" class="form-control" onchange="this.form.submit()">
                         {% for c in currency_set %}
                             {% if c == currency %}
@@ -44,7 +44,7 @@
                     <div class="panel-footer text-center">
                         <span class="product-title">{{ product.name }}</span>
                         <div class="second">
-                            <span class="product-price-label">Price:</span>
+                            <span class="product-price-label">{% trans "Price" %}:</span>
                             <span class="product-price">{{ product.unit_price|currency:currency }}</span>
                         </div>
                     </div>

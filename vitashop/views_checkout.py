@@ -9,6 +9,7 @@ from decimal import Decimal
 from django.core.urlresolvers import reverse
 from django.forms import models as model_forms
 from django.http import HttpResponseRedirect
+from django.utils.translation import ugettext as _
 from django.views.generic import RedirectView
 from shop.models import ExtraOrderPriceField
 from shop.forms import BillingShippingForm
