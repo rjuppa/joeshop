@@ -63,6 +63,7 @@ def product_detail(request, slug):
 
     products = MyProduct.objects.filter(active=True).order_by('name')
     ctx = {'products': products, 'product': product}
+    ctx['desc2'] = _(product.desc2)
     return render(request,  'vitashop/product_detail.html', ctx)
 
 

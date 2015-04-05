@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-04 20:33+0200\n"
+"POT-Creation-Date: 2015-04-05 21:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -302,7 +302,7 @@ msgstr ""
 msgid "Personal pickup"
 msgstr ""
 
-#: templates/vitashop/base.html:35 templates/vitashop/base.html.py:77
+#: templates/vitashop/base.html:35 templates/vitashop/base.html.py:76
 #: templates/vitashop/product_detail.html:60
 msgid "Information"
 msgstr "Informace"
@@ -319,52 +319,52 @@ msgstr "Odhlásit"
 msgid "Login"
 msgstr "Přihlásit"
 
-#: templates/vitashop/base.html:79
+#: templates/vitashop/base.html:78
 msgid "FAQ"
 msgstr "Otázky"
 
-#: templates/vitashop/base.html:80
+#: templates/vitashop/base.html:79
 msgid "Contact"
 msgstr "Kontakt"
 
-#: templates/vitashop/base.html:81
+#: templates/vitashop/base.html:80
 msgid "Affiliate"
 msgstr "Spolupráce"
 
-#: templates/vitashop/base.html:82
+#: templates/vitashop/base.html:81
 #: templates/vitashop/checkout/overview.html:90
 msgid "Shipping"
 msgstr "Doručování"
 
-#: templates/vitashop/base.html:83
+#: templates/vitashop/base.html:82
 msgid "Privacy"
 msgstr "Soukromí"
 
-#: templates/vitashop/base.html:87
+#: templates/vitashop/base.html:86
 msgid "Media"
 msgstr "Media"
 
-#: templates/vitashop/base.html:89
+#: templates/vitashop/base.html:88
 msgid "Blog"
 msgstr "Další informace"
 
-#: templates/vitashop/base.html:90
+#: templates/vitashop/base.html:89
 msgid "Facebook"
 msgstr "Facebook"
 
-#: templates/vitashop/base.html:91
+#: templates/vitashop/base.html:90
 msgid "Youtube"
 msgstr "Youtube"
 
-#: templates/vitashop/base.html:92
+#: templates/vitashop/base.html:91
 msgid "Success stories"
 msgstr "Příběhy"
 
-#: templates/vitashop/base.html:96
+#: templates/vitashop/base.html:95
 msgid "Other"
 msgstr "Ostatní"
 
-#: templates/vitashop/base.html:98
+#: templates/vitashop/base.html:97
 msgid "Bitcoins"
 msgstr "Bitcoiny"
 
@@ -477,30 +477,31 @@ msgstr "Vyplňte adresu"
 msgid ""
 "Our body works like a great machine.<br/>It does matter what you fuel it."
 msgstr ""
-"Naše tělo funguje podobně jako skvělý stroj. <br/>Ale je potřeba se trochu starat."
+"Naše tělo funguje podobně jako skvělý stroj. <br/>Ale je potřeba se trochu "
+"starat."
 
-#: templates/vitashop/index.html:71
-msgid "Keep in mind your body needs construction materials."
-msgstr "Tělo se dokáže regenerovat, ale potřebuje konstrukční materiál"
+#: templates/vitashop/index.html:76
+msgid "Vitamines and minerals are not drugs. They are foodstuff."
+msgstr "Vitamíny a minerály nepatří mezi léky. Jsou to potraviny."
 
-#: templates/vitashop/index.html:75
+#: templates/vitashop/index.html:80
 msgid "Vitamins"
 msgstr "Vitamíny"
 
-#: templates/vitashop/index.html:77 templates/vitashop/index.html.py:82
-#: templates/vitashop/index.html:87
+#: templates/vitashop/index.html:82 templates/vitashop/index.html.py:88
+#: templates/vitashop/index.html:94
 msgid "read more"
 msgstr "číst dále"
 
-#: templates/vitashop/index.html:80
+#: templates/vitashop/index.html:86
 msgid "Minerals"
 msgstr "Minerály"
 
-#: templates/vitashop/index.html:85
+#: templates/vitashop/index.html:92
 msgid "CalMag"
 msgstr "CalMag"
 
-#: templates/vitashop/index.html:93
+#: templates/vitashop/index.html:101
 msgid "Choose product"
 msgstr "Vybírat produkty"
 
@@ -537,7 +538,7 @@ msgid "Order list"
 msgstr "Výpis objednávek"
 
 #: templates/vitashop/product_detail.html:55
-msgid "Add to cart"
+msgid "Add to Cart"
 msgstr "Do košíku"
 
 #: templates/vitashop/product_detail.html:61
@@ -551,6 +552,259 @@ msgstr "Použití"
 #: templates/vitashop/product_detail.html:63
 msgid "Warnings"
 msgstr "Upozornění"
+
+#: templates/vitashop/product_detail.html:85
+msgid ""
+"This product is not intended to diagnose, treat, cure, or prevent any "
+"disease."
+msgstr ""
+"Tento produkt není lék, ani není určen k diagnóze nebo léčení nemoci.Jedná "
+"se o doplněk stravy, který nemůže být náhradou za kvalitní a pestrou stravu."
+
+#: templates/vitashop/product_fake.html:9
+msgid "calmag-lemon-desc1"
+msgstr ""
+"Calmag je calcio-magneziový minerální nápoj (doplněk), který organizmus umí "
+"vstřebat velice rychle a beze zbytků. Calmag je minerální práškový "
+"potravinový dopiněk. Tento dopiněk je vhodný jako podpora léčby a hlavně "
+"jako prevence proti zdravotním potížím. Díky vysokému množství vápníku a "
+"hořčíku příznivě podporuje náš organismus a to dokonce tak, že jsme schopni "
+"pozorovat na sobě výsledky. Calmag existuje v několika podobách. Asi "
+"nejčastěji je znám jako tablety, kapsle, hustý tekutý nebo v prášku. Málokdo "
+"však ví, že poslední varianta je ta nejúčinější. Prášek totiž lze připravit "
+"jako nápoj a v této podobě je pak pro naše tělo nejlépe stravitelný, podobně "
+"jako další důležité látky a <b>proto se také neukládá jako nepotřebný např. "
+"v ledvinách a kolenech.</b> Calmag pomáhá tam, kde je potřeba vysoké dávky "
+"hořčíku a vápníku. Calmag funguje, protože se jeho minerály během přípravy "
+"mění na vápníkové a magnesiové ionty. Vaše tělo nemusí trávit tyto ionty, "
+"ale umí je vstřebat přímo ze žaludku. "
+
+#: templates/vitashop/product_fake.html:10
+msgid "calmag-lemon-desc2"
+msgstr ""
+"<p>Čistá hmotnost balení: 142g</p><table class='supple'><thead><tr><th "
+"colspan='3'>1 dávka = 7g (kávová lžička)</th></tr><tr><th>Složení</"
+"th><th>Množství</th><th>% DDD*</th></tr></thead><tbody><tr><td>Vitamin C</"
+"td><td>500 mg</td><td>833%</td></tr><tr><td>Calcium</td><td>400 mg</"
+"td><td>40%</td></tr><tr><td>Magnesium</td><td>200 mg</td><td>50%</td></tr></"
+"tbody></table><small>DDD[%] = Doporučená denní dávka</small><br>"
+
+#: templates/vitashop/product_fake.html:11
+msgid "calmag-lemon-desc3"
+msgstr ""
+"<p>Denní dávka je 1-2 kávové lžičky.<br> Calmag můžete užívat denně nebo "
+"méně často podle vlastního uvážení.</p><b>Příprava:</b><br>Podobně jako "
+"turecká káva. Do skleničky vložíme 1 kávovou lžičku prášku. Do 1/3 zalijeme "
+"horkou vodou. Trochu to syčí(jsou to minerály) Lžičkou mícháme obsah až do "
+"úplného rozpuštění. <br>Teď máme 2 možnosti: buďto horký nebo studený nápoj. "
+"V případě horkého nápoje. Vložíme pytlík s čajem a dolejeme horkou vodou. V "
+"případě studeného nápoje dolejeme studeným džusem."
+
+#: templates/vitashop/product_fake.html:13
+msgid "vitamineral-komplex-desc1"
+msgstr ""
+"Jeden balíček obsahuje doporučenou denní dávky důležitých vitamínů a "
+"minerálů. Užívání těchto vitamínů a minerálů se doporučuje každému. Hlavně "
+"se doporučuje ženám užívajícím  hormonální antikoncepci, dospívající "
+"mládeži, starším osobám, kuřákům, konzumentům alkoholu, sportovcům, lidem "
+"vystaveným fyzické zátěži. Vitamíny, tak jako potraviny by měl každý z nás "
+"užívat stále, nejen sezóně. Vitamíny totiž patří mezi potraviny a né léky. "
+"Jejich základní úloha je řídit různé procesy v těle a tak ho udržují v "
+"dobrém a funkčním stavu. A při této dávce se človek může cítit plný energie, "
+"bez tělesného stresu, křečí, únavy a podobných projevů."
+
+#: templates/vitashop/product_fake.html:14
+msgid "vitamineral-komplex-desc2"
+msgstr ""
+"<p>Balení obsahuje 30 denních dávek</p><table "
+"class='supple'><thead><tr><td>Výživové hodnoty:</td><td>1 dávka</td><td>% "
+"DDD*</td></tr></thead> <tr><td>Vitamín A (retinyl palmitát)</td><td>3000 µg</"
+"td><td>375,00%</td></tr> <tr><td>Vitamín D3 (cholecalciferol)</td><td>10 µg</"
+"td><td>200,00%</td></tr> <tr><td>Vitamín E (DL-alfa-tokoferilacetát)</"
+"td><td>268 mg</td><td>2333,00%</td></tr> <tr><td>Vitamín C (kyselina L-"
+"askorbová)</td><td> 500 mg</td><td> 625,00%</td></tr> <tr><td>Vitamín "
+"B1(tiamín-mononitrát) </td><td> 50 mg </td><td>4545,00%</td></tr> <tr><td> "
+"Vitamín B2(riboflavín)</td><td>  50 mg</td><td> 3571,00%</td></tr> <tr><td> "
+"Vitamín B3 (Nikotínamid)</td><td>  50 mg</td><td> 312,5%</td></tr> <tr><td> "
+"Vitamín B5 (D-pantotenát vápenatý)</td><td>  50 mg</td><td> 833,00%</td></"
+"tr> <tr><td> Vitamín B6 (pyridoxínhydrochlorid)</td><td>  50 mg</td><td> "
+"3571,00%</td></tr> <tr><td> Vitamín B12 (kyanokobalamín)</td><td>  50 μg</"
+"td><td> 2000,00%</td></tr> <tr><td> Biotín (D-biotín)</td><td>  50 μg</"
+"td><td> 100,00%</td></tr> <tr><td> Kyselina Listová (kyselina "
+"pteroylmonoglutámová)</td><td> 100 μg</td><td> 50,00%</td></tr> <tr><td> "
+"Cholín (cholín bitartrát) </td><td> 50 mg</td><td>**</td></tr> <tr><td> "
+"Inositol</td><td>  50 mg</td><td> **</td></tr> <tr><td> PABA </td><td> 50 "
+"mg</td><td> **</td></tr> <tr><td> Šípek</td><td> 150 mg</td><td> **</td></"
+"tr> <tr><td> Bioflavonoidy (citrónů, pomerančů, grapefruitů, limetek a "
+"mandarinek)</td><td> 150 mg</td><td> **</td></tr> <tr><td> Vápnik (vápenaté "
+"soli kyseliny trihydrogenfosforečne)</td><td> 125 mg</td><td> 15,63%</td></"
+"tr> <tr><td> Horčík (oxid hořečnatý a diglycinát hořečnatý)</td><td>  60 mg</"
+"td><td> 16,00%</td></tr> <tr><td> Železo (diglycinát železnatý)</td><td> 4,5 "
+"mg</td><td> 32,14 %</td></tr> <tr><td> Zinok (diglycinát zinečnatý)</"
+"td><td>  3,5 mg</td><td> 35,00%</td></tr> <tr><td> Mangán (diglycinát "
+"manganatý)</td><td>  1 mg</td><td> 50,00 %</td></tr> <tr><td> Meď "
+"(diglycinát meďnatý)</td><td>  0,5 mg</td><td> 50,00 %</td></tr> <tr><td> "
+"Draslík (glukonan draselný)</td><td> 11,5 mg</td><td> 0,58 %</td></tr> "
+"<tr><td> Jód (jodid draselný)</td><td>  50 µg</td><td> 33,33%</td></tr> "
+"<tr><td> Chróm (chlorid chromitý)</td><td> 25,00 µg</td><td> 62,50%</td></"
+"tr> <tr><td> Selén (L-selenometionin)</td><td> 12.5 µg </td><td> 22,73%</"
+"td></tr> <tr><td> Molybdén (molybdénan sodný)</td><td> 18 µg</td><td> "
+"36,00%</td></tr></table> <small>DDD[%] = Doporučená denní dávka</small>"
+
+#: templates/vitashop/product_fake.html:15
+msgid "vitamineral-komplex-desc3"
+msgstr "Jednou denně, po jídle."
+
+#: templates/vitashop/product_fake.html:17
+msgid "calcium-gluconate-desc1"
+msgstr ""
+"<b>VÁPNÍK</b><br>Vápník (kalcium) je základní součást kostí a zubů, ale také "
+"prostředek nezbytný pro mnoho tělesných funkcí, například pro srážení krve a "
+"svalovou činnost. Sníst dostatečné množství potravin bohatých na vápník není "
+"tak snadné, ale jeho nedostatek může nahradit vhodný potravinový dopiněk. "
+"Nedostatek vápníku může zapříčinit mnohá onemocnění a jiné zdravotní "
+"problémy. Jednak je to zvýšená láma-vost kostí, kazivost zubů apod. ale "
+"hlavně také Osteoporóza, což je závažná nemoc která způsobuje řídnutí kostí. "
+"Nemoc se častěji vyskytuje u žen ve vyšším věku. Název vychází ze dvou "
+"řeckých slov (osteo - kost, poros - otvor). Mikroskopický obraz "
+"osteoporotické (prořídlé) kosti se dá připodobnit jeskynnímu systému s "
+"rozsáhlejšími dutinami a méně stabilními vnitřními opěrnými strukturami, "
+"které si můžeme představit jako krápníky). Se slábnoucími 'krápníky' a "
+"zvětšujícími se dutinami se zvyšuje riziko vzniku zlomenin."
+
+#: templates/vitashop/product_fake.html:18
+msgid "calcium-gluconate-desc2"
+msgstr ""
+"<p>Čistá hmotnost balení: 420g</p><table class='supple'><tr><td>Glukonan "
+"vápenatý</td><td>540 mg</td><td>67%</td></tr></tbody></table><small>DDD[%] = "
+"Doporučená denní dávka</small><br>"
+
+#: templates/vitashop/product_fake.html:19
+msgid "calcium-gluconate-desc3"
+msgstr ""
+"<p>Calcium je jedna ze dvou složek přípravku Calmag<br> Calmag můžete užívat "
+"denně nebo podle vlastního uvážení.</p><b>Příprava:</b><br> Do skleničky "
+"vložíme 1 polévkovou lžičku Calcia. Přidáme 1/2 kávové lžičky <a href='/shop/"
+"products/magnesium/'>Magnesia</a>. Přidáme 1 polévkovou lžíci jablečného "
+"octa (15ml). Do 1/3 zalijeme horkou vodou. Trochu to syčí(jsou to minerály) "
+"Lžičkou mícháme obsah až do úplného rozpuštění. <br>Teď máme 2 možnosti: "
+"buďto horký nebo studený nápoj. V případě horkého nápoje. Vložíme pytlík s "
+"čajem a dolejeme horkou vodou. V případě studeného nápoje dolejeme studeným "
+"džusem."
+
+#: templates/vitashop/product_fake.html:21
+msgid "magnesium-desc1"
+msgstr ""
+"<b>HOŘČÍK</b><br> Význam hořčíku (magnézia) se trochu přeceňuje, ale přesto "
+"může být pro zdraví jedním z nejdůležitějších minerálů. Studie svědčí pro "
+"to, že stejně jako podporuje asi 300 procesů vázaných na enzymy v organismu, "
+"může hořčík pomáhat v prevenci mnoha chronických nemocí. Nedostatek hořčíku "
+"můžete na sobě pozorovat zvýšením stresu, depresí nebo špatným spánkem. "
+"Lidé, kteří v potravě přijímají málo hořčíku mohou být více podráždění, "
+"unavení a celkově bez nálady. Hořčík je také výborný pro zastavení svalových "
+"křečí, které postihují hlavně dolní končetiny a to lýtka nebo stehna. "
+"Příznivě také působí proti menstruačním bolestem, které se zhošují s věkem "
+"ženy."
+
+#: templates/vitashop/product_fake.html:22
+msgid "magnesium-desc2"
+msgstr ""
+"<p>Čistá hmotnost balení: 84g</p><table class='supple'><thead><tr><th "
+"colspan='3'>1 dávka = 400mg</th></tr><tr><th>Složení</th><th>Množství</"
+"th><th>% DDD*</th></tr></thead><tbody><tr><td>Uhličitan hořečnatý</td><td>90 "
+"mg</td><td>24%</td></tr></tbody></table><small>DDD[%] = Doporučená denní "
+"dávka</small><br>"
+
+#: templates/vitashop/product_fake.html:23
+msgid "magnesium-desc3"
+msgstr ""
+"<p>Magnesium je jedna ze dvou složek přípravku Calmag<br> Calmag můžete "
+"užívat denně nebo méně často podle vlastního uvážení.</p><b>Příprava:</"
+"b><br> Do skleničky vložíme 1 polévkovou lžičku <a href='/shop/products/"
+"calcium-gluconate/'>Calcia</a>. Přidáme 1/2 kávové lžičky Magnesia. Přidáme "
+"1 polévkovou lžíci jablečného octa (15ml). Do 1/3 zalijeme horkou vodou. "
+"Trochu to syčí(jsou to minerály) Lžičkou mícháme obsah až do úplného "
+"rozpuštění. <br>Teď máme 2 možnosti: buďto horký nebo studený nápoj. V "
+"případě horkého nápoje. Vložíme pytlík s čajem a dolejeme horkou vodou. V "
+"případě studeného nápoje dolejeme studeným džusem."
+
+#: templates/vitashop/product_fake.html:25
+msgid "calmag-original-520g-desc1"
+msgstr ""
+"Calmag je calcio-magneziový minerální nápoj (doplněk), který organizmus umí "
+"vstřebat velice rychle a beze zbytků. Calmag je minerální práškový "
+"potravinový dopiněk. Tento dopiněk je vhodný jako podpora léčby a hlavně "
+"jako prevence proti zdravotním potížím. Díky vysokému množství vápníku a "
+"hořčíku příznivě podporuje náš organismus a to dokonce tak, že jsme schopni "
+"pozorovat na sobě výsledky. Calmag existuje v několika podobách. Asi "
+"nejčastěji je znám jako tablety, kapsle, hustý tekutý nebo v prášku. Málokdo "
+"však ví, že poslední varianta je ta nejúčinější. Prášek totiž lze připravit "
+"jako nápoj a v této podobě je pak pro naše tělo nejlépe stravitelný, podobně "
+"jako další důležité látky a <b>proto se také neukládá jako nepotřebný např. "
+"v ledvinách a kolenech.</b> Calmag pomáhá tam, kde je potřeba vysoké dávky "
+"hořčíku a vápníku. Calmag funguje, protože se jeho minerály během přípravy "
+"mění na vápníkové a magnesiové ionty. Vaše tělo nemusí trávit tyto ionty, "
+"ale umí je vstřebat přímo ze žaludku. "
+
+#: templates/vitashop/product_fake.html:26
+msgid "calmag-original-520g-desc2"
+msgstr ""
+"<p>Čistá hmotnost balení: 520g</p><table class='supple'><thead><tr><th "
+"colspan='3'>1 dávka = 7g (kávová lžička)</th></tr><tr><th>Složení</"
+"th><th>Množství</th><th>% DDD*</th></tr></thead><tbody><tr><td>Vitamin C</"
+"td><td>500 mg</td><td>833%</td></tr><tr><td>Calcium</td><td>400 mg</"
+"td><td>40%</td></tr><tr><td>Magnesium</td><td>200 mg</td><td>50%</td></tr></"
+"tbody></table><small>DDD[%] = Doporučená denní dávka</small><br>"
+
+#: templates/vitashop/product_fake.html:27
+msgid "calmag-original-520g-desc3"
+msgstr ""
+"<p>Denní dávka je 1-2 kávové lžičky.<br> Calmag můžete užívat denně nebo "
+"podle vlastního uvážení.</p><b>Příprava:</b><br>Podobně jako turecká káva. "
+"Do skleničky vložíme 1 kávovou lžičku prášku. Do 1/3 zalijeme horkou vodou. "
+"Trochu to syčí(jsou to minerály) Lžičkou mícháme obsah až do úplného "
+"rozpuštění. <br>Teď máme 2 možnosti: buďto horký nebo studený nápoj. V "
+"případě horkého nápoje. Vložíme pytlík s čajem a dolejeme horkou vodou. V "
+"případě studeného nápoje dolejeme studeným džusem."
+
+#: templates/vitashop/product_fake.html:29
+msgid "calmag-original-142g-desc1"
+msgstr ""
+"Calmag je calcio-magneziový minerální nápoj (doplněk), který organizmus umí "
+"vstřebat velice rychle a beze zbytků. Calmag je minerální práškový "
+"potravinový dopiněk. Tento dopiněk je vhodný jako podpora léčby a hlavně "
+"jako prevence proti zdravotním potížím. Díky vysokému množství vápníku a "
+"hořčíku příznivě podporuje náš organismus a to dokonce tak, že jsme schopni "
+"pozorovat na sobě výsledky. Calmag existuje v několika podobách. Asi "
+"nejčastěji je znám jako tablety, kapsle, hustý tekutý nebo v prášku. Málokdo "
+"však ví, že poslední varianta je ta nejúčinější. Prášek totiž lze připravit "
+"jako nápoj a v této podobě je pak pro naše tělo nejlépe stravitelný, podobně "
+"jako další důležité látky a <b>proto se také neukládá jako nepotřebný např. "
+"v ledvinách a kolenech.</b> Calmag pomáhá tam, kde je potřeba vysoké dávky "
+"hořčíku a vápníku. Calmag funguje, protože se jeho minerály během přípravy "
+"mění na vápníkové a magnesiové ionty. Vaše tělo nemusí trávit tyto ionty, "
+"ale umí je vstřebat přímo ze žaludku. "
+
+#: templates/vitashop/product_fake.html:30
+msgid "calmag-original-142g-desc2"
+msgstr ""
+"<p>Čistá hmotnost balení: 142g</p><table class='supple'><thead><tr><th "
+"colspan='3'>1 dávka = 7g (kávová lžička)</th></tr><tr><th>Složení</"
+"th><th>Množství</th><th>% DDD*</th></tr></thead><tbody><tr><td>Vitamin C</"
+"td><td>500 mg</td><td>833%</td></tr><tr><td>Calcium</td><td>400 mg</"
+"td><td>40%</td></tr><tr><td>Magnesium</td><td>200 mg</td><td>50%</td></tr></"
+"tbody></table><small>DDD[%] = Doporučená denní dávka</small><br>"
+
+#: templates/vitashop/product_fake.html:31
+msgid "calmag-original-142g-desc3"
+msgstr ""
+"<p>Denní dávka je 1-2 kávové lžičky.<br> Calmag můžete užívat denně nebo "
+"podle vlastního uvážení.</p><b>Příprava:</b><br>Podobně jako turecká káva. "
+"Do skleničky vložíme 1 kávovou lžičku prášku. Do 1/3 zalijeme horkou vodou. "
+"Trochu to syčí(jsou to minerály) Lžičkou mícháme obsah až do úplného "
+"rozpuštění. <br>Teď máme 2 možnosti: buďto horký nebo studený nápoj. V "
+"případě horkého nápoje. Vložíme pytlík s čajem a dolejeme horkou vodou. V "
+"případě studeného nápoje dolejeme studeným džusem."
 
 #: templates/vitashop/templatetags/_cart.html:4
 #, fuzzy
@@ -573,6 +827,9 @@ msgstr "Doručovací adresa"
 #: templates/vitashop/templatetags/_order.html:18
 msgid "Billing Address"
 msgstr "Fakturační adresa"
+
+#~ msgid "Keep in mind your body needs construction materials."
+#~ msgstr "Tělo se dokáže regenerovat, ale potřebuje konstrukční materiál"
 
 #~ msgid "Czech"
 #~ msgstr "Česky"

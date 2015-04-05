@@ -60,7 +60,26 @@ h5 {
 p {
 	text-align:justify;	
 }
+table.supple{
+    display: table;
+    width: 90%;
+    font-size: 11px;
+    border-collapse: collapse;
+    border: 0;
 
+}
+table.supple tr{
+    border-bottom: 1px solid #999;
+}
+table.supple td{
+    text-align: left;
+    font-weight: normal;
+    vertical-align: top;
+    padding: 3px;
+}
+.pad5{
+    padding: 30px 40px 10px 10px;
+}
 footer {
     background-color: #272015;
     border-top: 3px solid #F5B834;
