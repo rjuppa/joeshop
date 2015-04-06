@@ -1,4 +1,3 @@
-{% load url from future %}
 {% load i18n %}
 {% load currency %}
 <a href="{% url 'cart' %}">{% trans "Shopping Cart" %} <small>({{ cart.total_price|currency:cart.currency }})</small></a>

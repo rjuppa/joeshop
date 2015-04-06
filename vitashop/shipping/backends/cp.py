@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from decimal import Decimal
+from django.template.defaultfilters import floatformat
 from django import forms
 from django.conf import settings
 from django.conf.urls import patterns, url
@@ -8,6 +9,8 @@ from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 from shop.models import ExtraOrderPriceField
 from shop.util.decorators import on_method, shop_login_required, order_required
+from vitashop.exchange import ExchangeService
+from vitashop.utils import get_currency
 
 class CPostaShippingForm(forms.Form):
     locations = forms.ChoiceField(choices=tuple([(0, '-- choose --'),
@@ -16,7 +19,7 @@ class CPostaShippingForm(forms.Form):
                                                  (3, 'Brno'),
                                                  (4, 'Ostrava')]), label=_('Location to pick up'))
 
-class CPostaShipping(object):
+class CPostaShipping():
     """
     This is just an example of a possible flat-rate shipping module, that
     charges a flat rate defined in settings.SHOP_SHIPPING_FLAT_RATE
@@ -25,14 +28,28 @@ class CPostaShipping(object):
     backend_name = 'CPosta shipping'
     backend_verbose_name = 'Česká Pošta'
     template = 'vitashop/shipping/cp/posta.html'
+    rate = '89.0' # it is fee
 
     def __init__(self, shop):
         self.shop = shop
-        self.rate = '0.5'   # it is free
+
 
     @property
     def cost(self):
         return Decimal(self.rate)
+
+    @staticmethod
+    def get_price(currency):
+        exs = ExchangeService()
+        if settings.PRIMARY_CURRENCY == 'USD':
+            new_value = exs.convert_dollar_into(Decimal(CPostaShipping.rate), currency)
+        elif settings.PRIMARY_CURRENCY == 'CZK':
+            new_value = exs.convert_koruna_into(Decimal(CPostaShipping.rate), currency)
+        else:
+            raise ValueError
+        s = floatformat(new_value, 2)
+        return Decimal(str(new_value))
+
 
     #@on_method(shop_login_required)
     @on_method(order_required)
@@ -43,7 +60,8 @@ class CPostaShipping(object):
         It calls shop.finished() to go to the next step in the checkout
         process.
         """
-        self.shop.add_shipping_costs(self.shop.get_order(request), 'CPosta shipping', Decimal(self.rate))
+        curr = get_currency(request)
+        self.shop.add_shipping_costs(self.shop.get_order(request), 'CPosta shipping', self.get_price(curr))
         return self.shop.finished(self.shop.get_order(request))
         # That's an HttpResponseRedirect
 
@@ -56,7 +74,8 @@ class CPostaShipping(object):
         """
 
         form = CPostaShippingForm()    # Czech rep.
-        d = Decimal(self.rate)
+        curr = get_currency(request)
+        d = self.get_price(curr)
         if request.method == 'POST':
             if u'locations' in request.POST:
                 # Czech rep.

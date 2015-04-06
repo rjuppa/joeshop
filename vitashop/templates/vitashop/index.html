@@ -10,7 +10,13 @@
                 <cite>"{% trans "Our body works like a great machine.<br/>It does matter what you fuel it." %}"</cite>
             </div>
             <div style="width: 50%; height: 60px; float: left; text-align: right;">
-                <b><a href="/?lang=cs">cs</a>&nbsp;<a href="/?lang=en">en</a></b>
+                <b>
+                    {% if LANGUAGE_CODE == 'cs' %}
+                        <span>cs</span>&nbsp;<a href="/?lang=en">en</a>
+                    {% else %}
+                        <a href="/?lang=cs">cs</a>&nbsp;<span>en</span>
+                    {% endif %}
+                </b>
             </div>
         </div>
           <div class="clearfix"></div>

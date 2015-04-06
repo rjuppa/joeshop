@@ -41,95 +41,95 @@ msgstr ""
 
 #: shop/addressmodel/models.py:42 shop/models_bases/__init__.py:29
 msgid "Name"
-msgstr ""
+msgstr "Jméno"
 
 #: shop/addressmodel/models.py:43 shop/addressmodel/models.py:51
 msgid "Address"
-msgstr ""
+msgstr "Adresa"
 
 #: shop/addressmodel/models.py:44
 msgid "Address2"
-msgstr ""
+msgstr "Adresa"
 
 #: shop/addressmodel/models.py:45
 msgid "Zip Code"
-msgstr ""
+msgstr "PSČ"
 
 #: shop/addressmodel/models.py:46
 msgid "City"
-msgstr ""
+msgstr "Město"
 
 #: shop/addressmodel/models.py:47
 msgid "State"
-msgstr ""
+msgstr "Stát"
 
 #: shop/addressmodel/models.py:52
 msgid "Addresses"
-msgstr ""
+msgstr "Adresy"
 
 #: shop/admin/orderadmin.py:47
 msgid "Shipping"
-msgstr ""
+msgstr "Doručení"
 
 #: shop/admin/orderadmin.py:50
 msgid "Billing"
-msgstr ""
+msgstr "Platby"
 
 #: shop/forms.py:29
 msgid "Shipping method"
-msgstr ""
+msgstr "Doručovací metody"
 
 #: shop/forms.py:30 shop/models/ordermodel.py:102
 msgid "Payment method"
-msgstr ""
+msgstr "Platební metody"
 
 #: shop/models/defaults/cart.py:10 shop/models_bases/__init__.py:91
 msgid "Cart"
-msgstr ""
+msgstr "Košík"
 
 #: shop/models/defaults/cart.py:11 shop/models_bases/__init__.py:92
 msgid "Carts"
-msgstr ""
+msgstr "Košíky"
 
 #: shop/models/defaults/cartitem.py:10 shop/models_bases/__init__.py:292
 msgid "Cart item"
-msgstr ""
+msgstr "Položka"
 
 #: shop/models/defaults/cartitem.py:11 shop/models_bases/__init__.py:293
 msgid "Cart items"
-msgstr ""
+msgstr "Položky"
 
 #: shop/models/defaults/order.py:15 shop/models/ordermodel.py:46
 #: shop/models/ordermodel.py:60 shop/models/ordermodel.py:95
 #: shop/models_bases/__init__.py:367 shop/models_bases/__init__.py:456
 msgid "Order"
-msgstr ""
+msgstr "Objednávka"
 
 #: shop/models/defaults/order.py:16 shop/models_bases/__init__.py:368
 msgid "Orders"
-msgstr ""
+msgstr "Objednávky"
 
 #: shop/models/defaults/orderitem.py:11 shop/models/ordermodel.py:79
 #: shop/models_bases/__init__.py:471
 msgid "Order item"
-msgstr ""
+msgstr "Položka"
 
 #: shop/models/defaults/orderitem.py:12 shop/models_bases/__init__.py:472
 msgid "Order items"
-msgstr ""
+msgstr "Položky"
 
 #: shop/models/defaults/product.py:17 shop/models_bases/__init__.py:41
 #: shop/models_bases/__init__.py:462
 msgid "Product"
-msgstr ""
+msgstr "Produkt"
 
 #: shop/models/defaults/product.py:18 shop/models_bases/__init__.py:42
 msgid "Products"
-msgstr ""
+msgstr "Produkty"
 
 #: shop/models/ordermodel.py:47
 msgid "Extra info"
-msgstr ""
+msgstr "Extra info"
 
 #: shop/models/ordermodel.py:51 shop/models/ordermodel.py:52
 msgid "Order extra info"
@@ -137,12 +137,12 @@ msgstr ""
 
 #: shop/models/ordermodel.py:61 shop/models/ordermodel.py:80
 msgid "Label"
-msgstr ""
+msgstr "Popis"
 
 #: shop/models/ordermodel.py:62 shop/models/ordermodel.py:81
 #: shop/models/ordermodel.py:97
 msgid "Amount"
-msgstr ""
+msgstr "Množství"
 
 #: shop/models/ordermodel.py:63 shop/models/ordermodel.py:82
 msgid "Serialized extra data"

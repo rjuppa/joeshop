@@ -1,6 +1,6 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm as DjangoAuthenticationForm
-from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.forms import AuthenticationForm as DjangoAuthenticationForm, PasswordResetForm
+from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
 from shop.addressmodel.models import Address, Country
 from shop.forms import get_shipping_backends_choices, get_billing_backends_choices
@@ -70,8 +70,9 @@ class RegistrationForm(forms.ModelForm):
         # but it sets a nicer error message than the ORM.
         email = self.cleaned_data["email"]
         try:
-            self.model.objects.get(email=email)
-        except self.model.DoesNotExist:
+
+            self.Meta.model.objects.get(email=email)
+        except self.Meta.model.DoesNotExist:
             return email.lower()
         raise forms.ValidationError(
             self.error_messages['duplicate_email'],
@@ -108,7 +109,7 @@ class RegistrationForm(forms.ModelForm):
         username = email
         username = username.replace('+', '')
         username = username.replace('@', '.')
-        user = self.model.objects.create_inactive_user(email, username, password)
+        user = self.Meta.model.objects.create_inactive_user(email, username, password)
         return user
 
 

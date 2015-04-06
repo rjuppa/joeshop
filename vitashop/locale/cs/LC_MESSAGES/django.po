@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-05 21:59+0200\n"
+"POT-Creation-Date: 2015-04-06 20:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,13 +20,14 @@ msgstr ""
 
 #: forms.py:52
 msgid "A user with that email already exists."
-msgstr ""
+msgstr "Tento email je již zaregistrován."
 
 #: forms.py:53
 msgid "The two password fields didn't match."
 msgstr ""
 
 #: forms.py:55 models.py:250 models.py:305 templates/vitashop/login.html:88
+#: templates/vitashop/profile.html:34 templates/vitashop/register.html:87
 msgid "Email"
 msgstr ""
 
@@ -38,25 +39,26 @@ msgstr ""
 msgid "This value must be valid email address."
 msgstr ""
 
-#: forms.py:57 forms.py:117 templates/vitashop/login.html:94
+#: forms.py:57 forms.py:118 templates/vitashop/login.html:94
+#: templates/vitashop/profile.html:42 templates/vitashop/register.html:93
 msgid "Password"
-msgstr ""
+msgstr "Heslo"
 
 #: forms.py:59
 msgid "Password confirmation"
-msgstr ""
+msgstr "Potvrzení hesla"
 
 #: forms.py:61
 msgid "Enter the same password as above, for verification."
 msgstr ""
 
-#: forms.py:194
+#: forms.py:195
 msgid "Shipping method"
-msgstr ""
+msgstr "Doručovací metoda"
 
-#: forms.py:204
+#: forms.py:205
 msgid "Payment method"
-msgstr ""
+msgstr "Platební metoda"
 
 #: models.py:96
 msgid "username"
@@ -72,7 +74,7 @@ msgstr ""
 
 #: models.py:103
 msgid "first name"
-msgstr ""
+msgstr "jméno"
 
 #: models.py:104
 msgid "last name"
@@ -186,7 +188,7 @@ msgstr ""
 
 #: models.py:208
 msgid "Weight"
-msgstr ""
+msgstr "Váha"
 
 #: models.py:209
 msgid "Old Price"
@@ -194,15 +196,15 @@ msgstr ""
 
 #: models.py:210 models.py:254
 msgid "Discount"
-msgstr ""
+msgstr "Sleva"
 
 #: models.py:211
 msgid "Ordering"
-msgstr ""
+msgstr "Pořadí"
 
 #: models.py:216 models.py:275
 msgid "Product"
-msgstr ""
+msgstr "Produkt"
 
 #: models.py:217 templates/vitashop/base.html:34
 #: templates/vitashop/product_detail.html:10
@@ -212,21 +214,22 @@ msgstr "Produkty"
 
 #: models.py:249
 msgid "User"
-msgstr ""
+msgstr "Uživatel"
 
 #: models.py:251
 msgid "Language"
-msgstr ""
+msgstr "Jazyk"
 
 #: models.py:252 models.py:306 templates/vitashop/cart.html:17
+#: templates/vitashop/checkout/overview.html:46
 #: templates/vitashop/product_detail.html:23
 #: templates/vitashop/products.html:17
 msgid "Currency"
-msgstr ""
+msgstr "Měna"
 
-#: models.py:253
+#: models.py:253 templates/vitashop/profile.html:55
 msgid "Newsletter"
-msgstr ""
+msgstr "Newsletter"
 
 #: models.py:255
 msgid "Parent"
@@ -234,11 +237,11 @@ msgstr ""
 
 #: models.py:258 models.py:274
 msgid "Customer"
-msgstr ""
+msgstr "Zákazník"
 
 #: models.py:259
 msgid "Customers"
-msgstr ""
+msgstr "Zákazníci"
 
 #: models.py:276 templates/vitashop/cart.html:58
 #: templates/vitashop/checkout/overview.html:105
@@ -276,31 +279,31 @@ msgstr ""
 
 #: models.py:314 models.py:315
 msgid "Payment History"
-msgstr ""
+msgstr "Platební historie"
 
 #: payment/backends/pay_on_delivery.py:11
 msgid "Pay On Delivery"
-msgstr ""
+msgstr "Dobírka"
 
 #: payment/backends/paybitcoin.py:20
 msgid "Bitcoin payment"
-msgstr ""
+msgstr "Bitcoin platba"
 
 #: payment/backends/paypal.py:25
 msgid "Paypal payment"
-msgstr ""
+msgstr "PayPal platba"
 
 #: payment/backends/prepayment.py:16
 msgid "Advance payment"
 msgstr ""
 
-#: shipping/backends/cp.py:17 shipping/backends/personal.py:17
+#: shipping/backends/cp.py:20 shipping/backends/personal.py:17
 msgid "Location to pick up"
-msgstr ""
+msgstr "Místo k vyzvednutí"
 
 #: shipping/backends/personal.py:27
 msgid "Personal pickup"
-msgstr ""
+msgstr "Osobní převzetí"
 
 #: templates/vitashop/base.html:35 templates/vitashop/base.html.py:76
 #: templates/vitashop/product_detail.html:60
@@ -316,6 +319,7 @@ msgid "Log Out"
 msgstr "Odhlásit"
 
 #: templates/vitashop/base.html:44 templates/vitashop/login.html:102
+#: templates/vitashop/register_success.html:22
 msgid "Login"
 msgstr "Přihlásit"
 
@@ -368,12 +372,16 @@ msgstr "Ostatní"
 msgid "Bitcoins"
 msgstr "Bitcoiny"
 
-#: templates/vitashop/base.html:104
+#: templates/vitashop/base.html:98
+msgid "Languages"
+msgstr "Jazyky"
+
+#: templates/vitashop/base.html:105
 #: templates/vitashop/checkout/overview.html:96
 msgid "Payment"
 msgstr "Platby"
 
-#: templates/vitashop/base.html:112
+#: templates/vitashop/base.html:113
 msgid "All Rights Reserved."
 msgstr "Všechna práva vyhrazena."
 
@@ -397,7 +405,8 @@ msgstr "Název"
 msgid "Unit price"
 msgstr "Cena/kus"
 
-#: templates/vitashop/cart.html:59
+#: templates/vitashop/cart.html:59 templates/vitashop/checkout/methods.html:99
+#: templates/vitashop/checkout/methods.html:119
 #: templates/vitashop/checkout/overview.html:106
 #: templates/vitashop/product_detail.html:49
 #: templates/vitashop/products.html:47
@@ -434,13 +443,157 @@ msgstr "Dokončit nákup"
 msgid "Shopping cart is empty"
 msgstr "Nákupní košík je prázdný."
 
-#: templates/vitashop/checkout/methods.html:41
+#: templates/vitashop/change_pwd.html:8 templates/vitashop/change_pwd.html:14
+msgid "Change Password"
+msgstr "Změnit heslo"
+
+#: templates/vitashop/change_pwd.html:37
+msgid "Old Password"
+msgstr "Staré heslo"
+
+#: templates/vitashop/change_pwd.html:43 templates/vitashop/set_pwd.html:34
+msgid "New Password"
+msgstr "Nové heslo"
+
+#: templates/vitashop/change_pwd.html:49
+msgid "New password confirmation"
+msgstr "Nové heslo (potvrzení)"
+
+#: templates/vitashop/change_pwd.html:57
+msgid "Back"
+msgstr "Zpět"
+
+#: templates/vitashop/change_pwd.html:60 templates/vitashop/profile.html:63
+#: templates/vitashop/set_pwd.html:42
+msgid "Save"
+msgstr "Uložit"
+
+#: templates/vitashop/change_pwd_done.html:9
+msgid "Your password was successfully changed."
+msgstr "Vaše heslo bylo úspěšně nastaveno."
+
+#: templates/vitashop/change_pwd_done.html:12
+msgid "Go to your profile"
+msgstr "Jít na profil"
+
+#: templates/vitashop/checkout/methods.html:10
+#: templates/vitashop/checkout/overview.html:9
+#: templates/vitashop/checkout/selection.html:9
+msgid "Progress of your checkout"
+msgstr "Platební proces"
+
+#: templates/vitashop/checkout/methods.html:12
+#: templates/vitashop/checkout/overview.html:11
+#: templates/vitashop/checkout/selection.html:11
+msgid "Shopping"
+msgstr "Nakupování"
+
+#: templates/vitashop/checkout/methods.html:16
+#: templates/vitashop/checkout/overview.html:15
+#: templates/vitashop/checkout/selection.html:15
+msgid "Cart"
+msgstr "Košík"
+
+#: templates/vitashop/checkout/methods.html:20
+#: templates/vitashop/checkout/overview.html:19
+#: templates/vitashop/checkout/selection.html:19
+msgid "Delivery Address"
+msgstr "Doručovací adresa"
+
+#: templates/vitashop/checkout/methods.html:24
+#: templates/vitashop/checkout/overview.html:23
+#: templates/vitashop/checkout/selection.html:23
+msgid "Shipping and Billing"
+msgstr "Platební metoda"
+
+#: templates/vitashop/checkout/methods.html:28
+#: templates/vitashop/checkout/overview.html:27
+#: templates/vitashop/checkout/selection.html:27
+msgid "Summary"
+msgstr "Souhrn"
+
+#: templates/vitashop/checkout/methods.html:32
+#: templates/vitashop/checkout/overview.html:31
+#: templates/vitashop/checkout/selection.html:31
+msgid "Pay"
+msgstr "Platba"
+
+#: templates/vitashop/checkout/methods.html:42
 msgid "Shipping and payment methods"
+msgstr "Doručení a platby"
+
+#: templates/vitashop/checkout/methods.html:53
+msgid "Shipping Methods"
+msgstr "Doručovací metody"
+
+#: templates/vitashop/checkout/methods.html:66
+msgid "Payment Methods"
+msgstr "Platební metody"
+
+#: templates/vitashop/checkout/methods.html:85
+msgid "Back to Delivery Address"
+msgstr "Zpět na doručovací adresu"
+
+#: templates/vitashop/checkout/methods.html:86
+msgid "Continue to Payment"
+msgstr "Pokračovat"
+
+#: templates/vitashop/checkout/methods.html:100
+#: templates/vitashop/checkout/methods.html:120
+msgid "Period od delivery"
+msgstr "Termín"
+
+#: templates/vitashop/checkout/methods.html:101
+msgid "Delivery usually takes 1-2 working days."
+msgstr "Doručení obvykle trvá 1-2 pracovní dny."
+
+#: templates/vitashop/checkout/methods.html:103
+msgid "Delivery"
+msgstr "Doručení"
+
+#: templates/vitashop/checkout/methods.html:104
+msgid "An email with number of package will be sent in day of expedition."
+msgstr "V den expedice Vám bude emailem zaslána informace o čísle balíku."
+
+#: templates/vitashop/checkout/methods.html:106
+msgid ""
+"If messenger does not reach you then package will be stored 7 days in the "
+"post office. "
 msgstr ""
+"Výhodou je doručení přímo k Vašim rukám, v případě neúspěšného doručení je "
+"balík po dobu 7 dnů uložen na Vaší poště."
+
+#: templates/vitashop/checkout/methods.html:121
+msgid ""
+"Personal pick up is available only in Plzeň. You will receive instructions "
+"where to pick up products."
+msgstr ""
+"Produkty lze zatím vyzvednout osobně jen v Plzni na prodejně.<br/>Zboží je "
+"připraveno k odběru ihned po objednání. Případně lze domluvit osobní "
+"předání. Instrukce, kde si můžete zboží vyzvednout, budou vytištěny na "
+"objednávce."
+
+#: templates/vitashop/checkout/methods.html:123
+msgid "We work on"
+msgstr "Připravujeme"
+
+#: templates/vitashop/checkout/methods.html:124
+msgid "Posibility to pick up products in main cities."
+msgstr "Možnost vyzvednutí produktů v krajských městech."
+
+#: templates/vitashop/checkout/methods.html:129
+msgid "The bitcoin address will be shown to pay this order on next page."
+msgstr ""
+"Bitcoinová adresa pro zaplacení této objednávky bude zobrazena na "
+"následující stránce."
+
+#: templates/vitashop/checkout/methods.html:133
+msgid "You will be redirected to Paypal payment gateway to pay this order."
+msgstr "Po odeslání objednávky budete přesměrováni na platební bránu PayPal."
 
 #: templates/vitashop/checkout/overview.html:41
 msgid "Order summary"
-msgstr ""
+msgstr "Objednávka"
 
 #: templates/vitashop/checkout/overview.html:57
 #: templates/vitashop/checkout/overview.html:69
@@ -469,9 +622,49 @@ msgstr "Mezisoučet"
 msgid "Order Total"
 msgstr "Celkem"
 
+#: templates/vitashop/checkout/overview.html:165
+msgid "Back to Shipping and Billing"
+msgstr "Zpět na platební metody"
+
+#: templates/vitashop/checkout/overview.html:168
+msgid "Place the Order"
+msgstr "Odeslat objednávku"
+
 #: templates/vitashop/checkout/selection.html:40
 msgid "Fill in your address"
 msgstr "Vyplňte adresu"
+
+#: templates/vitashop/checkout/selection.html:51
+msgid "Your shipping address"
+msgstr "Doručovací adresa"
+
+#: templates/vitashop/checkout/selection.html:60
+msgid "Your billing address"
+msgstr "Fakturační adresa"
+
+#: templates/vitashop/checkout/selection.html:71
+msgid "Use different billing address"
+msgstr "Použít jinou fakturační adresu"
+
+#: templates/vitashop/checkout/selection.html:80
+msgid "Back to Cart"
+msgstr "Zpět do košíku"
+
+#: templates/vitashop/checkout/selection.html:81
+msgid "Continue"
+msgstr "Pokračovat"
+
+#: templates/vitashop/error.html:13
+msgid "Continue shopping"
+msgstr "Nakupovat"
+
+#: templates/vitashop/exchange.html:6
+msgid "Bitcoin exchange rate"
+msgstr "Aktuální kurz Bitcoinu"
+
+#: templates/vitashop/exchange.html:24
+msgid "Current time"
+msgstr "Aktuální čas"
 
 #: templates/vitashop/index.html:10
 msgid ""
@@ -480,28 +673,28 @@ msgstr ""
 "Naše tělo funguje podobně jako skvělý stroj. <br/>Ale je potřeba se trochu "
 "starat."
 
-#: templates/vitashop/index.html:76
+#: templates/vitashop/index.html:82
 msgid "Vitamines and minerals are not drugs. They are foodstuff."
 msgstr "Vitamíny a minerály nepatří mezi léky. Jsou to potraviny."
 
-#: templates/vitashop/index.html:80
+#: templates/vitashop/index.html:86
 msgid "Vitamins"
 msgstr "Vitamíny"
 
-#: templates/vitashop/index.html:82 templates/vitashop/index.html.py:88
-#: templates/vitashop/index.html:94
+#: templates/vitashop/index.html:88 templates/vitashop/index.html.py:94
+#: templates/vitashop/index.html:100
 msgid "read more"
 msgstr "číst dále"
 
-#: templates/vitashop/index.html:86
+#: templates/vitashop/index.html:92
 msgid "Minerals"
 msgstr "Minerály"
 
-#: templates/vitashop/index.html:92
+#: templates/vitashop/index.html:98
 msgid "CalMag"
 msgstr "CalMag"
 
-#: templates/vitashop/index.html:101
+#: templates/vitashop/index.html:107
 msgid "Choose product"
 msgstr "Vybírat produkty"
 
@@ -561,7 +754,7 @@ msgstr ""
 "Tento produkt není lék, ani není určen k diagnóze nebo léčení nemoci.Jedná "
 "se o doplněk stravy, který nemůže být náhradou za kvalitní a pestrou stravu."
 
-#: templates/vitashop/product_fake.html:9
+#: templates/vitashop/product_fake.html:6
 msgid "calmag-lemon-desc1"
 msgstr ""
 "Calmag je calcio-magneziový minerální nápoj (doplněk), který organizmus umí "
@@ -579,7 +772,7 @@ msgstr ""
 "mění na vápníkové a magnesiové ionty. Vaše tělo nemusí trávit tyto ionty, "
 "ale umí je vstřebat přímo ze žaludku. "
 
-#: templates/vitashop/product_fake.html:10
+#: templates/vitashop/product_fake.html:7
 msgid "calmag-lemon-desc2"
 msgstr ""
 "<p>Čistá hmotnost balení: 142g</p><table class='supple'><thead><tr><th "
@@ -589,7 +782,7 @@ msgstr ""
 "td><td>40%</td></tr><tr><td>Magnesium</td><td>200 mg</td><td>50%</td></tr></"
 "tbody></table><small>DDD[%] = Doporučená denní dávka</small><br>"
 
-#: templates/vitashop/product_fake.html:11
+#: templates/vitashop/product_fake.html:8
 msgid "calmag-lemon-desc3"
 msgstr ""
 "<p>Denní dávka je 1-2 kávové lžičky.<br> Calmag můžete užívat denně nebo "
@@ -600,7 +793,7 @@ msgstr ""
 "V případě horkého nápoje. Vložíme pytlík s čajem a dolejeme horkou vodou. V "
 "případě studeného nápoje dolejeme studeným džusem."
 
-#: templates/vitashop/product_fake.html:13
+#: templates/vitashop/product_fake.html:10
 msgid "vitamineral-komplex-desc1"
 msgstr ""
 "Jeden balíček obsahuje doporučenou denní dávky důležitých vitamínů a "
@@ -613,7 +806,7 @@ msgstr ""
 "dobrém a funkčním stavu. A při této dávce se človek může cítit plný energie, "
 "bez tělesného stresu, křečí, únavy a podobných projevů."
 
-#: templates/vitashop/product_fake.html:14
+#: templates/vitashop/product_fake.html:11
 msgid "vitamineral-komplex-desc2"
 msgstr ""
 "<p>Balení obsahuje 30 denních dávek</p><table "
@@ -651,11 +844,11 @@ msgstr ""
 "td></tr> <tr><td> Molybdén (molybdénan sodný)</td><td> 18 µg</td><td> "
 "36,00%</td></tr></table> <small>DDD[%] = Doporučená denní dávka</small>"
 
-#: templates/vitashop/product_fake.html:15
+#: templates/vitashop/product_fake.html:12
 msgid "vitamineral-komplex-desc3"
 msgstr "Jednou denně, po jídle."
 
-#: templates/vitashop/product_fake.html:17
+#: templates/vitashop/product_fake.html:14
 msgid "calcium-gluconate-desc1"
 msgstr ""
 "<b>VÁPNÍK</b><br>Vápník (kalcium) je základní součást kostí a zubů, ale také "
@@ -672,14 +865,14 @@ msgstr ""
 "které si můžeme představit jako krápníky). Se slábnoucími 'krápníky' a "
 "zvětšujícími se dutinami se zvyšuje riziko vzniku zlomenin."
 
-#: templates/vitashop/product_fake.html:18
+#: templates/vitashop/product_fake.html:15
 msgid "calcium-gluconate-desc2"
 msgstr ""
 "<p>Čistá hmotnost balení: 420g</p><table class='supple'><tr><td>Glukonan "
 "vápenatý</td><td>540 mg</td><td>67%</td></tr></tbody></table><small>DDD[%] = "
 "Doporučená denní dávka</small><br>"
 
-#: templates/vitashop/product_fake.html:19
+#: templates/vitashop/product_fake.html:16
 msgid "calcium-gluconate-desc3"
 msgstr ""
 "<p>Calcium je jedna ze dvou složek přípravku Calmag<br> Calmag můžete užívat "
@@ -692,7 +885,7 @@ msgstr ""
 "čajem a dolejeme horkou vodou. V případě studeného nápoje dolejeme studeným "
 "džusem."
 
-#: templates/vitashop/product_fake.html:21
+#: templates/vitashop/product_fake.html:18
 msgid "magnesium-desc1"
 msgstr ""
 "<b>HOŘČÍK</b><br> Význam hořčíku (magnézia) se trochu přeceňuje, ale přesto "
@@ -706,7 +899,7 @@ msgstr ""
 "Příznivě také působí proti menstruačním bolestem, které se zhošují s věkem "
 "ženy."
 
-#: templates/vitashop/product_fake.html:22
+#: templates/vitashop/product_fake.html:19
 msgid "magnesium-desc2"
 msgstr ""
 "<p>Čistá hmotnost balení: 84g</p><table class='supple'><thead><tr><th "
@@ -715,7 +908,7 @@ msgstr ""
 "mg</td><td>24%</td></tr></tbody></table><small>DDD[%] = Doporučená denní "
 "dávka</small><br>"
 
-#: templates/vitashop/product_fake.html:23
+#: templates/vitashop/product_fake.html:20
 msgid "magnesium-desc3"
 msgstr ""
 "<p>Magnesium je jedna ze dvou složek přípravku Calmag<br> Calmag můžete "
@@ -728,7 +921,7 @@ msgstr ""
 "případě horkého nápoje. Vložíme pytlík s čajem a dolejeme horkou vodou. V "
 "případě studeného nápoje dolejeme studeným džusem."
 
-#: templates/vitashop/product_fake.html:25
+#: templates/vitashop/product_fake.html:22
 msgid "calmag-original-520g-desc1"
 msgstr ""
 "Calmag je calcio-magneziový minerální nápoj (doplněk), který organizmus umí "
@@ -746,7 +939,7 @@ msgstr ""
 "mění na vápníkové a magnesiové ionty. Vaše tělo nemusí trávit tyto ionty, "
 "ale umí je vstřebat přímo ze žaludku. "
 
-#: templates/vitashop/product_fake.html:26
+#: templates/vitashop/product_fake.html:23
 msgid "calmag-original-520g-desc2"
 msgstr ""
 "<p>Čistá hmotnost balení: 520g</p><table class='supple'><thead><tr><th "
@@ -756,7 +949,7 @@ msgstr ""
 "td><td>40%</td></tr><tr><td>Magnesium</td><td>200 mg</td><td>50%</td></tr></"
 "tbody></table><small>DDD[%] = Doporučená denní dávka</small><br>"
 
-#: templates/vitashop/product_fake.html:27
+#: templates/vitashop/product_fake.html:24
 msgid "calmag-original-520g-desc3"
 msgstr ""
 "<p>Denní dávka je 1-2 kávové lžičky.<br> Calmag můžete užívat denně nebo "
@@ -767,7 +960,7 @@ msgstr ""
 "případě horkého nápoje. Vložíme pytlík s čajem a dolejeme horkou vodou. V "
 "případě studeného nápoje dolejeme studeným džusem."
 
-#: templates/vitashop/product_fake.html:29
+#: templates/vitashop/product_fake.html:26
 msgid "calmag-original-142g-desc1"
 msgstr ""
 "Calmag je calcio-magneziový minerální nápoj (doplněk), který organizmus umí "
@@ -785,7 +978,7 @@ msgstr ""
 "mění na vápníkové a magnesiové ionty. Vaše tělo nemusí trávit tyto ionty, "
 "ale umí je vstřebat přímo ze žaludku. "
 
-#: templates/vitashop/product_fake.html:30
+#: templates/vitashop/product_fake.html:27
 msgid "calmag-original-142g-desc2"
 msgstr ""
 "<p>Čistá hmotnost balení: 142g</p><table class='supple'><thead><tr><th "
@@ -795,7 +988,7 @@ msgstr ""
 "td><td>40%</td></tr><tr><td>Magnesium</td><td>200 mg</td><td>50%</td></tr></"
 "tbody></table><small>DDD[%] = Doporučená denní dávka</small><br>"
 
-#: templates/vitashop/product_fake.html:31
+#: templates/vitashop/product_fake.html:28
 msgid "calmag-original-142g-desc3"
 msgstr ""
 "<p>Denní dávka je 1-2 kávové lžičky.<br> Calmag můžete užívat denně nebo "
@@ -806,11 +999,65 @@ msgstr ""
 "případě horkého nápoje. Vložíme pytlík s čajem a dolejeme horkou vodou. V "
 "případě studeného nápoje dolejeme studeným džusem."
 
-#: templates/vitashop/templatetags/_cart.html:4
-#, fuzzy
-#| msgid "Shopping cart"
+#: templates/vitashop/profile.html:9 templates/vitashop/profile.html.py:15
+msgid "Your Profile"
+msgstr "Váš profil"
+
+#: templates/vitashop/profile.html:22
+msgid "First Name"
+msgstr "Jméno"
+
+#: templates/vitashop/profile.html:28
+msgid "Last Name"
+msgstr "Příjmení"
+
+#: templates/vitashop/profile.html:45
+msgid "Change"
+msgstr "Změnit"
+
+#: templates/vitashop/profile.html:47
+msgid "Password is not used."
+msgstr "Heslo není nastaveno"
+
+#: templates/vitashop/profile.html:48
+msgid "Set"
+msgstr "Nastavit"
+
+#: templates/vitashop/register.html:58
+msgid "Register With Your Email"
+msgstr "Registrovat se emailem"
+
+#: templates/vitashop/register.html:99
+msgid "Confirm Password"
+msgstr "Potvrdit heslo"
+
+#: templates/vitashop/register.html:107
+msgid "Register"
+msgstr "Registrovat"
+
+#: templates/vitashop/register_success.html:9
+msgid "Signed up successfully"
+msgstr "Registrace byla úspěšná!"
+
+#: templates/vitashop/register_success.html:17
+msgid "You have signed up successfully."
+msgstr "Vaše registrace proběhla úspěšně."
+
+#: templates/vitashop/register_success.html:18
+msgid "An activation email was sent to address"
+msgstr "Aktivační email byl odeslán na emailovou adresu"
+
+#: templates/vitashop/register_success.html:19
+msgid "Please check your email and activate your account."
+msgstr "Prosím zkontrolujte Váši mailovou schánku a aktivujte svůj účet."
+
+#: templates/vitashop/set_pwd.html:10
+msgid "Set Password"
+msgstr "Nové heslo"
+
+#: templates/vitashop/templatetags/_cart.html:3
 msgid "Shopping Cart"
-msgstr "Nákupní košík"
+msgstr "Košík"
 
 #: templates/vitashop/templatetags/_order.html:4
 msgid "Order ID:"

@@ -6,29 +6,29 @@
 {% block body %}
 
     <div class="row">
-        <div class="progresshead">Progress of your checkout</div>
+        <div class="progresshead">{% trans "Progress of your checkout" %}</div>
         <div class="col-md-2 progress1">
-            <a class="btn1" href="{% url 'products' %}">Shopping&nbsp;&nbsp;&nbsp;
+            <a class="btn1" href="{% url 'products' %}">{% trans "Shopping" %}&nbsp;&nbsp;&nbsp;
             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
             </a>
         </div>
-        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'cart' %}">Cart&nbsp;&nbsp;&nbsp;
+        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'cart' %}">{% trans "Cart" %}&nbsp;&nbsp;&nbsp;
             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
             </a>
         </div>
-        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'checkout_selection' %}">Delivery address&nbsp;&nbsp;&nbsp;
+        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'checkout_selection' %}">{% trans "Delivery Address" %}&nbsp;&nbsp;&nbsp;
             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
             </a>
         </div>
-        <div class="col-md-2 progress2"><span class="btn1">Shipping and billing&nbsp;&nbsp;&nbsp;
+        <div class="col-md-2 progress2"><span class="btn1">{% trans "Shipping and Billing" %}&nbsp;&nbsp;&nbsp;
             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
             </span>
         </div>
-        <div class="col-md-2 progress2"><span class="btn1">Summary&nbsp;&nbsp;&nbsp;
+        <div class="col-md-2 progress2"><span class="btn1">{% trans "Summary" %}&nbsp;&nbsp;&nbsp;
             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
             </span>
         </div>
-        <div class="col-md-1 progress2"><span class="btn1">Pay&nbsp;&nbsp;&nbsp;
+        <div class="col-md-1 progress2"><span class="btn1">{% trans "Pay" %}&nbsp;&nbsp;&nbsp;
             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
             </span>
         </div>
@@ -48,7 +48,7 @@
 
                 <div id="shipping-panel" class="panel panel-primary col-md-5 col-sm-6">
                     <div class="panel-heading">
-                        <h5 class="panel-title">Your shipping address</h5>
+                        <h5 class="panel-title">{% trans "Your shipping address" %}</h5>
                     </div>
                     <div class="panel-body">
                         {{ shipping_address|crispy }}
@@ -57,7 +57,7 @@
 
                 <div id="billing-panel" class="panel panel-transparent panel-primary col-md-5 col-md-offset-1 col-sm-6">
                     <div class="panel-heading">
-                        <h5 class="panel-title">Your billing address</h5>
+                        <h5 class="panel-title">{% trans "Your billing address" %}</h5>
                     </div>
                     <div class="panel-body">
                         {{ billing_address|crispy }}
@@ -68,9 +68,8 @@
 
                 <div class="form-group col-md-5">
                     <div class="panel-body">
-                      <label for="use_billing" class="control-label">Use different billing address</label>
-                      <input type="checkbox" name="use_billing" id="use_billing" class="checkbox"
-                             onclick="toggle_address()" />
+                      <label for="use_billing" class="control-label">{% trans "Use different billing address" %}</label>
+                      <input type="checkbox" name="use_billing" id="use_billing" class="checkbox" onclick="toggle_address()" />
                     </div>
                 </div>
 
@@ -78,8 +77,8 @@
 
                 <div class="row">
                   <div class="btnpanel col-md-11 text-center">
-                      <a href="{% url 'cart' %}" class="btn btn-default pull-left">Back to cart</a>
-                      <button type="submit" class="btn btn-danger btn-md">Continue >></button>
+                      <a href="{% url 'cart' %}" class="btn btn-default pull-left">{% trans "Back to Cart" %}</a>
+                      <button type="submit" class="btn btn-danger btn-md">{% trans "Continue" %} >></button>
                   </div>
                 </div>
 

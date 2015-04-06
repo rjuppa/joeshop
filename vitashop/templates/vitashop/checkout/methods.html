@@ -1,34 +1,35 @@
 {% extends "vitashop/base.html" %}
 {% load url from future %}
+{% load currency %}
 {% load crispy_forms_tags %}
 {% load i18n %}
 
 {% block body %}
 
     <div class="row">
-        <div class="progresshead">Progress of your checkout</div>
+        <div class="progresshead">{% trans "Progress of your checkout" %}</div>
         <div class="col-md-2 progress1">
-            <a class="btn1" href="{% url 'products' %}">Shopping&nbsp;&nbsp;&nbsp;
+            <a class="btn1" href="{% url 'products' %}">{% trans "Shopping" %}&nbsp;&nbsp;&nbsp;
             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
             </a>
         </div>
-        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'cart' %}">Cart&nbsp;&nbsp;&nbsp;
+        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'cart' %}">{% trans "Cart" %}&nbsp;&nbsp;&nbsp;
             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
             </a>
         </div>
-        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'checkout_selection' %}">Delivery address&nbsp;&nbsp;&nbsp;
+        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'checkout_selection' %}">{% trans "Delivery Address" %}&nbsp;&nbsp;&nbsp;
             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
             </a>
         </div>
-        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'checkout_methods' %}">Shipping and billing&nbsp;&nbsp;&nbsp;
+        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'checkout_methods' %}">{% trans "Shipping and Billing" %}&nbsp;&nbsp;&nbsp;
             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
             </a>
         </div>
-        <div class="col-md-2 progress2"><span class="btn1">Summary&nbsp;&nbsp;&nbsp;
+        <div class="col-md-2 progress2"><span class="btn1">{% trans "Summary" %}&nbsp;&nbsp;&nbsp;
             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
             </span>
         </div>
-        <div class="col-md-1 progress2"><span class="btn1">Pay&nbsp;&nbsp;&nbsp;
+        <div class="col-md-1 progress2"><span class="btn1">{% trans "Pay" %}&nbsp;&nbsp;&nbsp;
             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
             </span>
         </div>
@@ -49,7 +50,7 @@
 
                 <div id="methods-panel" class="panel panel-primary col-md-5">
                     <div class="panel-heading">
-                        <h5 class="panel-title">Shipping Methods</h5>
+                        <h5 class="panel-title">{% trans "Shipping Methods" %}</h5>
                     </div>
                     <div class="panel-body">
                         {{ shipping_form|crispy }}
@@ -62,7 +63,7 @@
 
                 <div id="methods-panel" class="panel panel-primary col-md-5 col-md-offset-1">
                     <div class="panel-heading">
-                        <h5 class="panel-title">Payment Methods</h5>
+                        <h5 class="panel-title">{% trans "Payment Methods" %}</h5>
                     </div>
                     <div class="panel-body">
                         {{ billing_form|crispy }}
@@ -81,8 +82,8 @@
                 <p>&nbsp;</p>
                 <div class="row">
                       <div class="btnpanel col-md-11 text-center">
-                          <a href="{% url 'checkout_selection' %}" class="btn btn-default pull-left">Back to address</a>
-                          <button type="submit" class="btn btn-danger btn-md">Continue to payment</button>
+                          <a href="{% url 'checkout_selection' %}" class="btn btn-default pull-left">{% trans "Back to Delivery Address" %}</a>
+                          <button type="submit" class="btn btn-danger btn-md">{% trans "Continue to Payment" %}</button>
                       </div>
                 </div>
 
@@ -94,42 +95,42 @@
     </div>
 
     <div id="cposta" style="display: none;">
-        <span class="text-small"><b>Cena:</b> 91 Kč (s DPH)<br/><br/>
-        <b>Termín:</b><br/>
-        Doručení obvykle následující pracovní den, v případě objednávky v pracovních dnech do 18:00.<br/>
+        <span class="">
+            <b>{% trans "Price" %}:</b> {{ shipping_price|currency:currency }}<br/><br/>
+            <b>{% trans "Period od delivery" %}:</b><br/>
+            {% trans "Delivery usually takes 1-2 working days." %}<br/><br/>
 
-        <b>Doručení: </b><br/>
-        V den expedice Vám bude emailem zaslána informace o čísle balíku, datu doručení a částce k úhradě.<br/>
-        <br/>
-        Výhodou je doručení přímo k Vašim rukám, v případě neúspěšného doručení je balík po dobu 7 dnů uložen na Vaší poště.</span>
+            <b>{% trans "Delivery" %}: </b><br/>
+            {% trans "An email with number of package will be sent in day of expedition." %}<br/>
+            <br/>
+            {% trans "If messenger does not reach you then package will be stored 7 days in the post office. " %}
+        </span>
     </div>
     <div id="personal" style="display: none;">
-        <label for="sel_place" class="control-label">Select place to pick up products </label>
+        {% comment %}        <label for="sel_place" class="control-label">Select place to pick up products </label>
         <div class="controls">
             <select class="form-control" name="sel_place" id="sel_place">
                 <option value="1">Praha</option>
                 <option value="2">Plzeň</option>
-                <option value="3">Brno</option>
-                <option value="4">Ostrava</option>
             </select>
-        </div>
-        <span class="text-small"><b>Cena:</b> 0 Kč (zdarma)<br/><br/>
-        <b>Termín:</b><br/>
-        Produkty jsou připraveny k odběru ihned po objednání případně lze domluvit osobní předání.<br/>
-
-        <b>Doručení: </b><br/>
-        Produkty jsou připraveny k odběru ve vybraných městech.<br/>
+        </div>{% endcomment %}
+        <span>
+            <b>{% trans "Price" %}:</b> {{ 0|currency:currency }}<br/><br/>
+            <b>{% trans "Period od delivery" %}:</b><br/>
+            {% trans "Personal pick up is available only in Plzeň. You will receive instructions where to pick up products." %}
+            <br/>
+            <b>{% trans "We work on" %}: </b><br/>
+            {% trans "Posibility to pick up products in main cities." %}<br/>
         </span>
     </div>
 
-    <div id="bitcoin" style="display: none;">
-        <span class="text-small">The bitcoin address will be shown to pay this order on next page.</span><br/>
+    <div id="bitcoin-payment" style="display: none;">
+        <span class="">{% trans "The bitcoin address will be shown to pay this order on next page." %}</span><br/>
+        <img src="{{ MEDIA_URL }}img/bitcoin_accepted.png" class="img-responsive" alt="Pay with Bitcoins" style="margin:10px 0;max-width: 160px" />
     </div>
     <div id="paypal" style="display: none;">
-        <span class="text-small">You will be redirected to Paypal payment gateway to pay you order.</span><br/>
-    </div>
-    <div id="ondelivery" style="display: none;">
-        <span class="text-small">You can pay when you pick up your products. You can use this payment only when you have choosen <b>personal delivery.</b></span><br/>
+        <span class="">{% trans "You will be redirected to Paypal payment gateway to pay this order." %}</span><br/>
+        <img src="{{ MEDIA_URL }}img/Paypal.jpg" class="img-responsive" alt="Pay with Bitcoins" style="margin:10px 0;max-width: 140px" />
     </div>
 
 {% endblock %}

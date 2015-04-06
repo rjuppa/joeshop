@@ -6,29 +6,29 @@
 
 
     <div class="row">
-        <div class="progresshead">Progress of your checkout</div>
+        <div class="progresshead">{% trans "Progress of your checkout" %}</div>
         <div class="col-md-2 progress1">
-            <a class="btn1" href="{% url 'products' %}">Shopping&nbsp;&nbsp;&nbsp;
+            <a class="btn1" href="{% url 'products' %}">{% trans "Shopping" %}&nbsp;&nbsp;&nbsp;
             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
             </a>
         </div>
-        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'cart' %}">Cart&nbsp;&nbsp;&nbsp;
+        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'cart' %}">{% trans "Cart" %}&nbsp;&nbsp;&nbsp;
             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
             </a>
         </div>
-        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'checkout_selection' %}">Delivery address&nbsp;&nbsp;&nbsp;
+        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'checkout_selection' %}">{% trans "Delivery Address" %}&nbsp;&nbsp;&nbsp;
             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
             </a>
         </div>
-        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'checkout_methods' %}">Shipping and billing&nbsp;&nbsp;&nbsp;
+        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'checkout_methods' %}">{% trans "Shipping and Billing" %}&nbsp;&nbsp;&nbsp;
             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
             </a>
         </div>
-        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'checkout_overview' %}">Summary&nbsp;&nbsp;&nbsp;
+        <div class="col-md-2 progress1"><a class="btn1" href="{% url 'checkout_overview' %}">{% trans "Summary" %}&nbsp;&nbsp;&nbsp;
             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
             </a>
         </div>
-        <div class="col-md-1 progress2"><span class="btn1">Pay&nbsp;&nbsp;&nbsp;
+        <div class="col-md-1 progress2"><span class="btn1">{% trans "Pay" %}&nbsp;&nbsp;&nbsp;
             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
             </span>
         </div>
@@ -43,8 +43,8 @@
 
         <div id="curr-wrapper" class="btn-group pull-right">
                 <div class="float-left">
-                    <label for="id_currency">Currency: </label>
-                    <label for="id_currency">{{ currency }}</label>
+                    <label for="id_currency">{% trans "Currency" %}: {{ currency }}</label>
+                    <label for="id_currency">&nbsp;</label>
                 </div>
         </div>
      </div>
@@ -142,7 +142,7 @@
             {% for extra_price_field in order.extraorderpricefield_set.all %}
               <tr>
                 <td colspan="2">&nbsp;</td>
-                <td>{{ extra_price_field.label }}</td>
+                <td>{% trans extra_price_field.label|safe %}</td>
                 <td class="text-right">{{ extra_price_field.value|currency:currency }}</td>
               </tr>
             {% endfor %}
@@ -162,10 +162,10 @@
     <p>&nbsp;</p>
     <div class="row">
           <div class="btnpanel col-md-11 text-center">
-              <a href="{% url 'checkout_methods' %}" class="btn btn-default pull-left">Back to shipping and billing</a>
+              <a href="{% url 'checkout_methods' %}" class="btn btn-default pull-left">{% trans "Back to Shipping and Billing" %}</a>
               <form action="" method="post">
                 {% csrf_token %}
-                 <input type="submit" class="btn btn-danger btn-md" value="Place the order" />
+                 <input type="submit" class="btn btn-danger btn-md" value="{% trans "Place the Order" %}" />
               </form>
           </div>
     </div>

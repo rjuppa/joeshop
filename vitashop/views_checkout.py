@@ -9,11 +9,7 @@ from decimal import Decimal
 from django.core.urlresolvers import reverse
 from django.forms import models as model_forms
 from django.http import HttpResponseRedirect
-from django.utils.translation import ugettext as _
-from django.views.generic import RedirectView
-from shop.models import ExtraOrderPriceField
-from shop.forms import BillingShippingForm
-from shop.addressmodel.models import Address, Country
+from vitashop.shipping.backends.cp import CPostaShipping
 from shop.models import AddressModel, OrderExtraInfo
 from shop.models import Order
 from shop.util.address import (
@@ -28,7 +24,7 @@ from shop.views import ShopTemplateView, ShopView
 from shop.util.login_mixin import LoginMixin
 from vitashop.forms import ShippingForm, BillingForm
 from vitashop.payment.backends.paypal import *
-from vitashop.payment.api import PaymentAPI
+from vitashop.utils import get_currency
 from vitashop.exchange import ExchangeService
 from shop.backends_pool import backends_pool
 from shop.util.btc_helper import Coindesk_Exchange
@@ -258,10 +254,13 @@ class CheckoutMethodsView(LoginMixin, ShopTemplateView):
         ctx = super(CheckoutMethodsView, self).get_context_data(**kwargs)
         shipping_form = self.get_shipping_selection_form()
         billing_form = self.get_billing_selection_form()
+        shipping_price = Decimal(CPostaShipping.rate)
         ctx.update({
             'shipping_form': shipping_form,
             'billing_form': billing_form,
+            'shipping_price': shipping_price
         })
+
         return ctx
 
     def add_shipping_cost(self, order, backend_url):

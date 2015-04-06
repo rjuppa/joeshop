@@ -237,8 +237,7 @@ SHOP_SHIPPING_BACKENDS = ['vitashop.shipping.backends.cp.CPostaShipping',
                         'vitashop.shipping.backends.personal.PersonalShipping',]
 
 SHOP_PAYMENT_BACKENDS = ['vitashop.payment.backends.paybitcoin.BitcoinBackend',
-                         'vitashop.payment.backends.paypal.PaypalBackend',
-                         'vitashop.payment.backends.pay_on_delivery.PayOnDeliveryBackend',]
+                         'vitashop.payment.backends.paypal.PaypalBackend',]
 
 SHOP_SHIPPING_FLAT_RATE = 0
 

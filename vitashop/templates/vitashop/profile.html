@@ -6,32 +6,32 @@
 {% block body %}
     <div class="row center-block">
         <div class="page-header">
-          <h3 id="container">Your Profile</h3>
+          <h3 id="container">{% trans "Your Profile" %}</h3>
         </div>
 
         <div class="centerDiv">
             <div id="profile-panel" class="panel panel-primary col-md-6 col-md-offset-3">
               <div class="panel-heading">
-                  <h5 class="panel-title">Your Profile</h5>
+                  <h5 class="panel-title">{% trans "Your Profile" %}</h5>
               </div>
               <div class="panel-body">
 
                   <form id="profile_form" class="form-horizontal" action="" method="post">
                         {% csrf_token %}
                       <div class="form-group">
-                        <label for="first_name" class="col-sm-5 control-label">First Name</label>
+                        <label for="first_name" class="col-sm-5 control-label">{% trans "First Name" %}</label>
                         <div class="col-sm-7">
                             {{ profile_form.first_name|add_class:"form-control"  }}
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="last_name" class="col-sm-5 control-label">Last Name</label>
+                        <label for="last_name" class="col-sm-5 control-label">{% trans "Last Name" %}</label>
                         <div class="col-sm-7">
                           {{ profile_form.last_name|add_class:"form-control" }}
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="email" class="col-sm-5 control-label">Email</label>
+                        <label for="email" class="col-sm-5 control-label">{% trans "Email" %}</label>
                         <div class="col-sm-7">
                           <input type="text" id="email" class="form-control" value="{{ user.email }}" readonly />
                         </div>
@@ -39,20 +39,20 @@
 
 
                           <div class="form-group">
-                            <label for="changepwd" class="col-sm-5 control-label">Password</label>
+                            <label for="changepwd" class="col-sm-5 control-label">{% trans "Password" %}</label>
                             <div class="col-sm-7">
                                 {% if use_password %}
-                                    <a href="{% url "password_change" %}" id="changepwd">Change</a>
+                                    <a href="{% url "password_change" %}" id="changepwd">{% trans "Change" %}</a>
                                 {% else %}
-                                    <span>Password is not used.</span>
-                                    <a href="{% url "password_set" %}" id="changepwd">Set</a>
+                                    <span>{% trans "Password is not used." %}</span>
+                                    <a href="{% url "password_set" %}" id="changepwd">{% trans "Set" %}</a>
                                 {% endif %}
                             </div>
                           </div>
 
 
                       <div class="form-group">
-                        <label for="newsletter" class="col-sm-5 control-label">Newsletter</label>
+                        <label for="newsletter" class="col-sm-5 control-label">{% trans "Newsletter" %}</label>
                           <div class="col-sm-7">
                               <input type="checkbox" name="newsletter" id="newsletter" class="checkbox" />
                           </div>
@@ -60,7 +60,7 @@
                       <div class="form-group">
                           <label for="newsletter" class="col-sm-5 control-label"></label>
                         <div class="col-sm-7">
-                          <button type="submit" class="btn btn-primary">Save</button>
+                          <button type="submit" class="btn btn-primary">{% trans "Save" %}</button>
                         </div>
                       </div>
                   </form>

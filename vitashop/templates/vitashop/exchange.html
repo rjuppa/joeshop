@@ -3,10 +3,7 @@
 {% load i18n %}
 {% block body %}
 
-  <h3>Bitcoin exchange rate:</h3>
-    <br />
-
-
+  <h3>{% trans "Bitcoin exchange rate" %}:</h3>
     <div class="bs-component ">
         <div class="centerDiv">
           <table class="table table-striped table-hover" style="width: 440px">
@@ -24,7 +21,7 @@
                 <td>{{ btc_euro }}</td>
               </tr>
               <tr><br /><br />
-                <td colspan="3">Current time: {{ updated }}&nbsp;<span style="font-size: small">Powered by <a href="http://www.coindesk.com/price/" target="_blank">CoinDesk</a>.</span></td>
+                <td colspan="3">{% trans "Current time" %}: {{ updated }}&nbsp;<span style="font-size: small">Powered by <a href="http://www.coindesk.com/price/" target="_blank">CoinDesk</a>.</span></td>
               </tr>
             </tbody>
           </table>
