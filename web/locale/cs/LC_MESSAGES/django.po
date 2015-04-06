@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-04 21:11+0200\n"
+"POT-Creation-Date: 2015-04-06 23:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,7 +46,7 @@ msgstr "Odeslat"
 msgid "Information"
 msgstr "Informace"
 
-#: templates/web/information.html:16 templates/web/information.html.py:28
+#: templates/web/information.html:16
 msgid "Products"
 msgstr "Produkty"
 
@@ -54,25 +54,115 @@ msgstr "Produkty"
 msgid "Vitamins"
 msgstr "Vitamíny"
 
-#: templates/web/information.html:18 templates/web/information.html.py:42
+#: templates/web/information.html:18 templates/web/information.html.py:41
 msgid "Minerals"
 msgstr "Minerály"
 
-#: templates/web/information.html:19 templates/web/information.html.py:49
+#: templates/web/information.html:19 templates/web/information.html.py:47
 msgid "CalMag"
 msgstr "CalMag"
 
-#: templates/web/information.html:20 templates/web/information.html.py:56
+#: templates/web/information.html:20
 msgid "Shipping and delivery"
 msgstr "Doručování zásilek"
 
-#: templates/web/information.html:21 templates/web/information.html.py:62
+#: templates/web/information.html:21
 msgid "Affiliate program"
-msgstr "Afility"
+msgstr "Provizní program"
 
 #: templates/web/information.html:22
 msgid "Bitcoins"
 msgstr "Platby v Bitcoinech"
+
+#: templates/web/information.html:28
+msgid "Products - origin and quality assurance"
+msgstr "Produkty - původ a zajištění kvality"
+
+#: templates/web/information.html:30
+msgid ""
+"All products were made in the USA. Factory is based in Clearwater, state "
+"Florida."
+msgstr ""
+"Všechny nabízené produkty byly vyrobeny v USA. Výroba probíhá ve městě "
+"Clearwater, ve státe Florida. Jedná se o výrobky prvotřídní kvality. Při "
+"výrobě je uplatněn systém kontroly kvality. Důraz na kvalitu výrobku je "
+"kladený v každém směru. Nekontroluje se pouze hotový výrobek, ale celý "
+"průběh výroby. Kontrolují se suroviny, postup vážení, míchání ingrediencí i "
+"finální produkt. Inspektor kvality je stále přítomný, aby se ujistil, že v "
+"každém kroku je vykonaný standardní postup. Produkty jsou certifikované "
+"americkou U.S. Food and Drug Administration. "
+
+#: templates/web/information.html:36
+msgid "Vitamins are organic substances..."
+msgstr ""
+"Vitaminy jsou organické látky nezbytné v malých množstvích, které si lidské "
+"tělo neumí samo vytvořit a musí je proto přijímat v potravě. Existuje 13 "
+"základních typů vitamínů, získáváme je z potravy a každý z nich hraje "
+"důležitou úlohu v určitém odvětví, je proto třeba doplňovat všechny druhy "
+"vitamínů, aby náš organismus mohl dobře fungovat a byl chráněný vůči různým "
+"onemocněním.  <br>Více na <a href='http://www.mojevitaminy.cz/' "
+"target='_blank'>mojevitaminy.cz</a>"
+
+#: templates/web/information.html:42
+msgid "Minerals are..."
+msgstr ""
+"Minerální látky jsou důležitou složkou ve výživě člověka, do organismu "
+"vstupují především prostřednictvím potravy a nápojů, vody, někdy i "
+"vdechovaným vzduchem a přes kůži. Jejich úloha je mnohostranná. Jsou "
+"nepostradatelné pro správný vývin kostry, jsou významným faktorem vnitřního "
+"metabolizmu, účastní se tvorby enzymů, hormonů, vitamínů a jiných pro život "
+"nezbytných látek. Mezi minerály a stopové prvky se řadí vápník, hořčík, "
+"fosfor, sodík, draslík, železo, síra, zinek, selen, křemík, chrom, jód, "
+"fluor, měď, mangan, kobalt, Bór a další.  <br>Více na <a href='http://www."
+"mojevitaminy.cz/co-je-mineral/' target='_blank'>mojevitaminy.cz/co-je-"
+"mineral/</a>"
+
+#: templates/web/information.html:48
+msgid "What is CalMag?"
+msgstr "Co je CalMag?"
+
+#: templates/web/information.html:49
+msgid "Calmag is Calcium-magnesium mineral drink."
+msgstr ""
+"Calmag je calcio-magneziový minerální nápoj, který organizmus umí vstřebat "
+"velice rychle a beze zbytků."
+
+#: templates/web/information.html:50
+msgid "Calcium and magnesium are essential..."
+msgstr ""
+"Vápník(calcium) a hořčík(magnesium) jsou nezbytné pro více než 300 funkcí v "
+"těle, jako je spánek, bolest, křeče a svalové křeče zmírnění, nervozita, "
+"syndrom neklidných nohou, relaxaci, zmírnění stresu, hyperaktivita, funkce "
+"srdce, krevní tlak, krevní srážlivost (zvláště důležité při extrakci zubu, "
+"narození dítěte, operace a tak dále), atd. Calmag je běžně ve Spojených "
+"Státech doporučován mnoha profesionálními lékaři.Calmag funguje, protože se "
+"jeho minerály přeměňují na vápníkové a magnesiové ionty, zatím co si ho "
+"připravujete. Iont je kladně či záporně nabitý  atom. Vaše tělo nemusí "
+"trávit tyto Ionty, ale umí je přímo vstřebat přímo ze žaludku. Takovýto druh "
+"(Ionizovaný Vápník) má daleko větší míru, schopnost absorpce než ten tvrdý "
+"vápník v tabletách, kterého je tělo schopno vstřebat pouze 20-30%. Mnoho "
+"vápníků v tabletách je ve formě nerozpustitelných solí. Jehož vstřebání "
+"závisí na kyselém PH způsobeném normálním vylučováním žaludeční kyseliny "
+"chlorovodíkové. Jestliže taková (kyselost) kyselina momentálně chybí, vápník "
+"není rozpuštěn a nemůže být využitý tělem jako potřebný. "
+
+#: templates/web/information.html:55
+msgid "Shipping and Delivery"
+msgstr "Doručování zásilek"
+
+#: templates/web/information.html:56
+msgid "Shipping and Delivery..."
+msgstr ""
+"Zásilky doručujeme standardně Českou poštou. Připravujeme možnost osobního vyzvednutí zásilky v krajských městech."
+
+#: templates/web/information.html:61
+msgid "Affiliate Program"
+msgstr "Provizní program"
+
+#: templates/web/information.html:62
+msgid "Affiliate Program..."
+msgstr ""
+"Každý náš zákazník má právo se zapojit do našeho affiliate programu. Nabízíme nejlepší podmínky na trhu."
 
 #: templates/web/thankyou.html:11
 msgid "Thank you!"
