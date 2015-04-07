@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-06 20:01+0200\n"
+"POT-Creation-Date: 2015-04-07 13:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -681,20 +681,43 @@ msgstr "Vitamíny a minerály nepatří mezi léky. Jsou to potraviny."
 msgid "Vitamins"
 msgstr "Vitamíny"
 
-#: templates/vitashop/index.html:88 templates/vitashop/index.html.py:94
-#: templates/vitashop/index.html:100
-msgid "read more"
-msgstr "číst dále"
+#: templates/vitashop/index.html:88
+msgid "Vitamins_text..."
+msgstr ""
+"Vitaminy jsou organické látky nezbytné v malých množstvích, které si lidské "
+"tělo neumí samo vytvořit a musí je proto přijímat v potravě. Existuje 13 "
+"základních typů vitamínů, získáváme je z potravy a každý z nich hraje "
+"důležitou úlohu ..."
 
-#: templates/vitashop/index.html:92
+#: templates/vitashop/index.html:89 templates/vitashop/index.html.py:97
+#: templates/vitashop/index.html:105
+msgid "read more"
+msgstr ""
+"&nbsp;číst&nbsp;dále&nbsp;<span class='glyphicon glyphicon-star'></span>"
+
+#: templates/vitashop/index.html:94
 msgid "Minerals"
 msgstr "Minerály"
 
-#: templates/vitashop/index.html:98
+#: templates/vitashop/index.html:96
+msgid "Minerals_text..."
+msgstr ""
+"Minerální látky jsou důležitou složkou ve výživě člověka, do organismu "
+"vstupují především prostřednictvím potravy a nápojů, vody, někdy i "
+"vdechovaným vzduchem a přes kůži. Jejich úloha je mnohostranná. ..."
+
+#: templates/vitashop/index.html:102
 msgid "CalMag"
 msgstr "CalMag"
 
-#: templates/vitashop/index.html:107
+#: templates/vitashop/index.html:104
+msgid "CalMag_text..."
+msgstr ""
+"Calmag je calcio-magneziový minerální nápoj, který organizmus umí vstřebat "
+"velice rychle a beze zbytků. Vápník (calcium) a hořčík (magnesium) jsou "
+"nezbytné pro více než 300 funkcí v těle, jako je spánek, bolest..."
+
+#: templates/vitashop/index.html:113
 msgid "Choose product"
 msgstr "Vybírat produkty"
 

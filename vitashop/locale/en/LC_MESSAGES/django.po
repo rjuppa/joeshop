@@ -1,0 +1,907 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-04-07 13:14+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: forms.py:52
+msgid "A user with that email already exists."
+msgstr ""
+
+#: forms.py:53
+msgid "The two password fields didn't match."
+msgstr ""
+
+#: forms.py:55 models.py:250 models.py:305 templates/vitashop/login.html:88
+#: templates/vitashop/profile.html:34 templates/vitashop/register.html:87
+msgid "Email"
+msgstr ""
+
+#: forms.py:55
+msgid "Required. "
+msgstr ""
+
+#: forms.py:56
+msgid "This value must be valid email address."
+msgstr ""
+
+#: forms.py:57 forms.py:118 templates/vitashop/login.html:94
+#: templates/vitashop/profile.html:42 templates/vitashop/register.html:93
+msgid "Password"
+msgstr ""
+
+#: forms.py:59
+msgid "Password confirmation"
+msgstr ""
+
+#: forms.py:61
+msgid "Enter the same password as above, for verification."
+msgstr ""
+
+#: forms.py:195
+msgid "Shipping method"
+msgstr ""
+
+#: forms.py:205
+msgid "Payment method"
+msgstr ""
+
+#: models.py:96
+msgid "username"
+msgstr ""
+
+#: models.py:97
+msgid "Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+
+#: models.py:101
+msgid "Enter a valid username."
+msgstr ""
+
+#: models.py:103
+msgid "first name"
+msgstr ""
+
+#: models.py:104
+msgid "last name"
+msgstr ""
+
+#: models.py:105
+msgid "email address"
+msgstr ""
+
+#: models.py:106
+msgid "staff status"
+msgstr ""
+
+#: models.py:107
+msgid "Designates whether the user can log into this admin site."
+msgstr ""
+
+#: models.py:109
+msgid "active"
+msgstr ""
+
+#: models.py:110
+msgid ""
+"Designates whether this user should be treated as active. Unselect this "
+"instead of deleting accounts."
+msgstr ""
+
+#: models.py:112
+msgid "affiliate"
+msgstr ""
+
+#: models.py:113
+msgid "date joined"
+msgstr ""
+
+#: models.py:114
+msgid "code"
+msgstr ""
+
+#: models.py:115
+msgid "lang"
+msgstr ""
+
+#: models.py:121
+msgid "user"
+msgstr ""
+
+#: models.py:122
+msgid "users"
+msgstr ""
+
+#: models.py:181
+msgid "Name"
+msgstr ""
+
+#: models.py:182
+msgid "Slug"
+msgstr ""
+
+#: models.py:183
+msgid "Active"
+msgstr ""
+
+#: models.py:184 models.py:198
+msgid "Image"
+msgstr ""
+
+#: models.py:185 models.py:199
+msgid "Intro"
+msgstr ""
+
+#: models.py:186 models.py:277 models.py:299 models.py:310
+msgid "Created"
+msgstr ""
+
+#: models.py:189 models.py:201
+msgid "Category"
+msgstr ""
+
+#: models.py:190
+msgid "Categories"
+msgstr ""
+
+#: models.py:200
+msgid "Link"
+msgstr ""
+
+#: models.py:202
+msgid "Desc1"
+msgstr ""
+
+#: models.py:203
+msgid "Desc2"
+msgstr ""
+
+#: models.py:204
+msgid "Desc3"
+msgstr ""
+
+#: models.py:205
+msgid "Filter1"
+msgstr ""
+
+#: models.py:206
+msgid "Filter2"
+msgstr ""
+
+#: models.py:207
+msgid "Featured"
+msgstr ""
+
+#: models.py:208
+msgid "Weight"
+msgstr ""
+
+#: models.py:209
+msgid "Old Price"
+msgstr ""
+
+#: models.py:210 models.py:254
+msgid "Discount"
+msgstr ""
+
+#: models.py:211
+msgid "Ordering"
+msgstr ""
+
+#: models.py:216 models.py:275
+msgid "Product"
+msgstr ""
+
+#: models.py:217 templates/vitashop/base.html:34
+#: templates/vitashop/product_detail.html:10
+#: templates/vitashop/products.html:9
+msgid "Products"
+msgstr ""
+
+#: models.py:249
+msgid "User"
+msgstr ""
+
+#: models.py:251
+msgid "Language"
+msgstr ""
+
+#: models.py:252 models.py:306 templates/vitashop/cart.html:17
+#: templates/vitashop/checkout/overview.html:46
+#: templates/vitashop/product_detail.html:23
+#: templates/vitashop/products.html:17
+msgid "Currency"
+msgstr ""
+
+#: models.py:253 templates/vitashop/profile.html:55
+msgid "Newsletter"
+msgstr ""
+
+#: models.py:255
+msgid "Parent"
+msgstr ""
+
+#: models.py:258 models.py:274
+msgid "Customer"
+msgstr ""
+
+#: models.py:259
+msgid "Customers"
+msgstr ""
+
+#: models.py:276 templates/vitashop/cart.html:58
+#: templates/vitashop/checkout/overview.html:105
+#: templates/vitashop/templatetags/_order.html:29
+msgid "Quantity"
+msgstr ""
+
+#: models.py:280 models.py:281
+msgid "ShoppingHistory"
+msgstr ""
+
+#: models.py:300
+msgid "Unconfirmed"
+msgstr ""
+
+#: models.py:301
+msgid "Confirmed"
+msgstr ""
+
+#: models.py:302
+msgid "Canceled"
+msgstr ""
+
+#: models.py:307
+msgid "Result"
+msgstr ""
+
+#: models.py:308
+msgid "Wallet address"
+msgstr ""
+
+#: models.py:309
+msgid "Payment status"
+msgstr ""
+
+#: models.py:314 models.py:315
+msgid "Payment History"
+msgstr ""
+
+#: payment/backends/pay_on_delivery.py:11
+msgid "Pay On Delivery"
+msgstr ""
+
+#: payment/backends/paybitcoin.py:20
+msgid "Bitcoin payment"
+msgstr ""
+
+#: payment/backends/paypal.py:25
+msgid "Paypal payment"
+msgstr ""
+
+#: payment/backends/prepayment.py:16
+msgid "Advance payment"
+msgstr ""
+
+#: shipping/backends/cp.py:20 shipping/backends/personal.py:17
+msgid "Location to pick up"
+msgstr ""
+
+#: shipping/backends/personal.py:27
+msgid "Personal pickup"
+msgstr ""
+
+#: templates/vitashop/base.html:35 templates/vitashop/base.html.py:76
+#: templates/vitashop/product_detail.html:60
+msgid "Information"
+msgstr ""
+
+#: templates/vitashop/base.html:36
+msgid "Exchange"
+msgstr ""
+
+#: templates/vitashop/base.html:42
+msgid "Log Out"
+msgstr ""
+
+#: templates/vitashop/base.html:44 templates/vitashop/login.html:102
+#: templates/vitashop/register_success.html:22
+msgid "Login"
+msgstr ""
+
+#: templates/vitashop/base.html:78
+msgid "FAQ"
+msgstr ""
+
+#: templates/vitashop/base.html:79
+msgid "Contact"
+msgstr ""
+
+#: templates/vitashop/base.html:80
+msgid "Affiliate"
+msgstr ""
+
+#: templates/vitashop/base.html:81
+#: templates/vitashop/checkout/overview.html:90
+msgid "Shipping"
+msgstr ""
+
+#: templates/vitashop/base.html:82
+msgid "Privacy"
+msgstr ""
+
+#: templates/vitashop/base.html:86
+msgid "Media"
+msgstr ""
+
+#: templates/vitashop/base.html:88
+msgid "Blog"
+msgstr ""
+
+#: templates/vitashop/base.html:89
+msgid "Facebook"
+msgstr ""
+
+#: templates/vitashop/base.html:90
+msgid "Youtube"
+msgstr ""
+
+#: templates/vitashop/base.html:91
+msgid "Success stories"
+msgstr ""
+
+#: templates/vitashop/base.html:95
+msgid "Other"
+msgstr ""
+
+#: templates/vitashop/base.html:97
+msgid "Bitcoins"
+msgstr ""
+
+#: templates/vitashop/base.html:98
+msgid "Languages"
+msgstr ""
+
+#: templates/vitashop/base.html:105
+#: templates/vitashop/checkout/overview.html:96
+msgid "Payment"
+msgstr ""
+
+#: templates/vitashop/base.html:113
+msgid "All Rights Reserved."
+msgstr ""
+
+#: templates/vitashop/cart.html:10
+msgid "Shopping cart"
+msgstr ""
+
+#: templates/vitashop/cart.html:45
+msgid "Empty Shopping Cart"
+msgstr ""
+
+#: templates/vitashop/cart.html:56
+#: templates/vitashop/checkout/overview.html:103
+#: templates/vitashop/templatetags/_order.html:27
+msgid "Product name"
+msgstr ""
+
+#: templates/vitashop/cart.html:57
+#: templates/vitashop/checkout/overview.html:104
+#: templates/vitashop/templatetags/_order.html:28
+msgid "Unit price"
+msgstr ""
+
+#: templates/vitashop/cart.html:59 templates/vitashop/checkout/methods.html:99
+#: templates/vitashop/checkout/methods.html:119
+#: templates/vitashop/checkout/overview.html:106
+#: templates/vitashop/product_detail.html:49
+#: templates/vitashop/products.html:47
+msgid "Price"
+msgstr ""
+
+#: templates/vitashop/cart.html:85
+#: templates/vitashop/checkout/overview.html:128
+#: templates/vitashop/templatetags/_order.html:49
+msgid "Line Total"
+msgstr ""
+
+#: templates/vitashop/cart.html:96
+msgid "Cart Subtotal"
+msgstr ""
+
+#: templates/vitashop/cart.html:108
+msgid "Cart Total"
+msgstr ""
+
+#: templates/vitashop/cart.html:115
+msgid "Update Shopping Cart"
+msgstr ""
+
+#: templates/vitashop/cart.html:127
+msgid "Back to shopping"
+msgstr ""
+
+#: templates/vitashop/cart.html:128
+msgid "Proceed to checkout"
+msgstr ""
+
+#: templates/vitashop/cart.html:136
+msgid "Shopping cart is empty"
+msgstr ""
+
+#: templates/vitashop/change_pwd.html:8 templates/vitashop/change_pwd.html:14
+msgid "Change Password"
+msgstr ""
+
+#: templates/vitashop/change_pwd.html:37
+msgid "Old Password"
+msgstr ""
+
+#: templates/vitashop/change_pwd.html:43 templates/vitashop/set_pwd.html:34
+msgid "New Password"
+msgstr ""
+
+#: templates/vitashop/change_pwd.html:49
+msgid "New password confirmation"
+msgstr ""
+
+#: templates/vitashop/change_pwd.html:57
+msgid "Back"
+msgstr ""
+
+#: templates/vitashop/change_pwd.html:60 templates/vitashop/profile.html:63
+#: templates/vitashop/set_pwd.html:42
+msgid "Save"
+msgstr ""
+
+#: templates/vitashop/change_pwd_done.html:9
+msgid "Your password was successfully changed."
+msgstr ""
+
+#: templates/vitashop/change_pwd_done.html:12
+msgid "Go to your profile"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:10
+#: templates/vitashop/checkout/overview.html:9
+#: templates/vitashop/checkout/selection.html:9
+msgid "Progress of your checkout"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:12
+#: templates/vitashop/checkout/overview.html:11
+#: templates/vitashop/checkout/selection.html:11
+msgid "Shopping"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:16
+#: templates/vitashop/checkout/overview.html:15
+#: templates/vitashop/checkout/selection.html:15
+msgid "Cart"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:20
+#: templates/vitashop/checkout/overview.html:19
+#: templates/vitashop/checkout/selection.html:19
+msgid "Delivery Address"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:24
+#: templates/vitashop/checkout/overview.html:23
+#: templates/vitashop/checkout/selection.html:23
+msgid "Shipping and Billing"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:28
+#: templates/vitashop/checkout/overview.html:27
+#: templates/vitashop/checkout/selection.html:27
+msgid "Summary"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:32
+#: templates/vitashop/checkout/overview.html:31
+#: templates/vitashop/checkout/selection.html:31
+msgid "Pay"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:42
+msgid "Shipping and payment methods"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:53
+msgid "Shipping Methods"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:66
+msgid "Payment Methods"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:85
+msgid "Back to Delivery Address"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:86
+msgid "Continue to Payment"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:100
+#: templates/vitashop/checkout/methods.html:120
+msgid "Period od delivery"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:101
+msgid "Delivery usually takes 1-2 working days."
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:103
+msgid "Delivery"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:104
+msgid "An email with number of package will be sent in day of expedition."
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:106
+msgid ""
+"If messenger does not reach you then package will be stored 7 days in the "
+"post office. "
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:121
+msgid ""
+"Personal pick up is available only in Plzeň. You will receive instructions "
+"where to pick up products."
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:123
+msgid "We work on"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:124
+msgid "Posibility to pick up products in main cities."
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:129
+msgid "The bitcoin address will be shown to pay this order on next page."
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:133
+msgid "You will be redirected to Paypal payment gateway to pay this order."
+msgstr ""
+
+#: templates/vitashop/checkout/overview.html:41
+msgid "Order summary"
+msgstr ""
+
+#: templates/vitashop/checkout/overview.html:57
+#: templates/vitashop/checkout/overview.html:69
+msgid "Customer information"
+msgstr ""
+
+#: templates/vitashop/checkout/overview.html:59
+msgid "Shipping and billing address"
+msgstr ""
+
+#: templates/vitashop/checkout/overview.html:71
+msgid "Shipping address"
+msgstr ""
+
+#: templates/vitashop/checkout/overview.html:78
+msgid "Billing address"
+msgstr ""
+
+#: templates/vitashop/checkout/overview.html:139
+#: templates/vitashop/templatetags/_order.html:54
+msgid "Order Subtotal"
+msgstr ""
+
+#: templates/vitashop/checkout/overview.html:151
+#: templates/vitashop/templatetags/_order.html:62
+msgid "Order Total"
+msgstr ""
+
+#: templates/vitashop/checkout/overview.html:165
+msgid "Back to Shipping and Billing"
+msgstr ""
+
+#: templates/vitashop/checkout/overview.html:168
+msgid "Place the Order"
+msgstr ""
+
+#: templates/vitashop/checkout/selection.html:40
+msgid "Fill in your address"
+msgstr ""
+
+#: templates/vitashop/checkout/selection.html:51
+msgid "Your shipping address"
+msgstr ""
+
+#: templates/vitashop/checkout/selection.html:60
+msgid "Your billing address"
+msgstr ""
+
+#: templates/vitashop/checkout/selection.html:71
+msgid "Use different billing address"
+msgstr ""
+
+#: templates/vitashop/checkout/selection.html:80
+msgid "Back to Cart"
+msgstr ""
+
+#: templates/vitashop/checkout/selection.html:81
+msgid "Continue"
+msgstr ""
+
+#: templates/vitashop/error.html:13
+msgid "Continue shopping"
+msgstr ""
+
+#: templates/vitashop/exchange.html:6
+msgid "Bitcoin exchange rate"
+msgstr ""
+
+#: templates/vitashop/exchange.html:24
+msgid "Current time"
+msgstr ""
+
+#: templates/vitashop/index.html:10
+msgid ""
+"Our body works like a great machine.<br/>It does matter what you fuel it."
+msgstr ""
+
+#: templates/vitashop/index.html:82
+msgid "Vitamines and minerals are not drugs. They are foodstuff."
+msgstr ""
+
+#: templates/vitashop/index.html:86
+msgid "Vitamins"
+msgstr ""
+
+#: templates/vitashop/index.html:88
+msgid "Vitamins_text..."
+msgstr ""
+"Vitamins are organic compounds which are needed in small quantities to sustain life. We get vitamins from food, because the human body either does not produce enough of them, or none at all. There are 13 types of vitamins. They are "
+
+#: templates/vitashop/index.html:89 templates/vitashop/index.html.py:97
+#: templates/vitashop/index.html:105
+msgid "read more"
+msgstr ""
+
+#: templates/vitashop/index.html:94
+msgid "Minerals"
+msgstr ""
+
+
+#: templates/vitashop/index.html:96
+msgid "Minerals_text..."
+msgstr ""
+"The minerals in our diet are essential for a variety of bodily functions. They are important for building strong bones "
+"and teeth, blood, skin, hair, nerve function, muscle and for metabolic processes such as those that turn the food "
+
+#: templates/vitashop/index.html:102
+msgid "CalMag"
+msgstr ""
+
+#: templates/vitashop/index.html:104
+msgid "CalMag_text..."
+msgstr ""
+"Calmag is Calcium-magnesium mineral drink. The body can absorb it quickly and <b>completely</b>."
+"Calcium and magnesium are essential for more than 300 functions in your "
+"body, such as sleep, pain, cramp and muscle spasm alleviation,  nervousness, "
+
+#: templates/vitashop/index.html:113
+msgid "Choose product"
+msgstr ""
+
+#: templates/vitashop/login.html:62
+msgid "Log In"
+msgstr ""
+
+#: templates/vitashop/login.html:120
+msgid ""
+"You can also use your favorite <mark>social networks</mark> to log in to the "
+"shop."
+msgstr ""
+
+#: templates/vitashop/login.html:124
+msgid "Sign in with Facebook"
+msgstr ""
+
+#: templates/vitashop/login.html:128
+msgid "Sign in with Google+"
+msgstr ""
+
+#: templates/vitashop/login.html:133
+msgid "In case you prefer to register with your email, please click"
+msgstr ""
+
+#: templates/vitashop/login.html:134
+msgid "register a new user"
+msgstr ""
+
+#: templates/vitashop/order_list.html:5
+msgid "Order list"
+msgstr ""
+
+#: templates/vitashop/product_detail.html:55
+msgid "Add to Cart"
+msgstr ""
+
+#: templates/vitashop/product_detail.html:61
+msgid "Supplements"
+msgstr ""
+
+#: templates/vitashop/product_detail.html:62
+msgid "Usage"
+msgstr ""
+
+#: templates/vitashop/product_detail.html:63
+msgid "Warnings"
+msgstr ""
+
+#: templates/vitashop/product_detail.html:85
+msgid ""
+"This product is not intended to diagnose, treat, cure, or prevent any "
+"disease."
+msgstr ""
+
+#: templates/vitashop/product_fake.html:6
+msgid "calmag-lemon-desc1"
+msgstr ""
+
+#: templates/vitashop/product_fake.html:7
+msgid "calmag-lemon-desc2"
+msgstr ""
+
+#: templates/vitashop/product_fake.html:8
+msgid "calmag-lemon-desc3"
+msgstr ""
+
+#: templates/vitashop/product_fake.html:10
+msgid "vitamineral-komplex-desc1"
+msgstr ""
+
+#: templates/vitashop/product_fake.html:11
+msgid "vitamineral-komplex-desc2"
+msgstr ""
+
+#: templates/vitashop/product_fake.html:12
+msgid "vitamineral-komplex-desc3"
+msgstr ""
+
+#: templates/vitashop/product_fake.html:14
+msgid "calcium-gluconate-desc1"
+msgstr ""
+
+#: templates/vitashop/product_fake.html:15
+msgid "calcium-gluconate-desc2"
+msgstr ""
+
+#: templates/vitashop/product_fake.html:16
+msgid "calcium-gluconate-desc3"
+msgstr ""
+
+#: templates/vitashop/product_fake.html:18
+msgid "magnesium-desc1"
+msgstr ""
+
+#: templates/vitashop/product_fake.html:19
+msgid "magnesium-desc2"
+msgstr ""
+
+#: templates/vitashop/product_fake.html:20
+msgid "magnesium-desc3"
+msgstr ""
+
+#: templates/vitashop/product_fake.html:22
+msgid "calmag-original-520g-desc1"
+msgstr ""
+
+#: templates/vitashop/product_fake.html:23
+msgid "calmag-original-520g-desc2"
+msgstr ""
+
+#: templates/vitashop/product_fake.html:24
+msgid "calmag-original-520g-desc3"
+msgstr ""
+
+#: templates/vitashop/product_fake.html:26
+msgid "calmag-original-142g-desc1"
+msgstr ""
+
+#: templates/vitashop/product_fake.html:27
+msgid "calmag-original-142g-desc2"
+msgstr ""
+
+#: templates/vitashop/product_fake.html:28
+msgid "calmag-original-142g-desc3"
+msgstr ""
+
+#: templates/vitashop/profile.html:9 templates/vitashop/profile.html.py:15
+msgid "Your Profile"
+msgstr ""
+
+#: templates/vitashop/profile.html:22
+msgid "First Name"
+msgstr ""
+
+#: templates/vitashop/profile.html:28
+msgid "Last Name"
+msgstr ""
+
+#: templates/vitashop/profile.html:45
+msgid "Change"
+msgstr ""
+
+#: templates/vitashop/profile.html:47
+msgid "Password is not used."
+msgstr ""
+
+#: templates/vitashop/profile.html:48
+msgid "Set"
+msgstr ""
+
+#: templates/vitashop/register.html:58
+msgid "Register With Your Email"
+msgstr ""
+
+#: templates/vitashop/register.html:99
+msgid "Confirm Password"
+msgstr ""
+
+#: templates/vitashop/register.html:107
+msgid "Register"
+msgstr ""
+
+#: templates/vitashop/register_success.html:9
+msgid "Signed up successfully"
+msgstr ""
+
+#: templates/vitashop/register_success.html:17
+msgid "You have signed up successfully."
+msgstr ""
+
+#: templates/vitashop/register_success.html:18
+msgid "An activation email was sent to address"
+msgstr ""
+
+#: templates/vitashop/register_success.html:19
+msgid "Please check your email and activate your account."
+msgstr ""
+
+#: templates/vitashop/set_pwd.html:10
+msgid "Set Password"
+msgstr ""
+
+#: templates/vitashop/templatetags/_cart.html:3
+msgid "Shopping Cart"
+msgstr ""
+
+#: templates/vitashop/templatetags/_order.html:4
+msgid "Order ID:"
+msgstr ""
+
+#: templates/vitashop/templatetags/_order.html:8
+msgid "Order Status"
+msgstr ""
+
+#: templates/vitashop/templatetags/_order.html:14
+msgid "Shipping Address"
+msgstr ""
+
+#: templates/vitashop/templatetags/_order.html:18
+msgid "Billing Address"
+msgstr ""

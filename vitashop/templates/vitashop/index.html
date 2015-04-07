@@ -84,20 +84,26 @@
 			<div class="align-topics">
                 <div class="col-md-4">
                     <h4>{% trans "Vitamins" %}</h4>
-                    <p>Vitamins are organic compounds which are needed in small quantities to sustain life. We get vitamins from food, because the human body either does not produce enough of them, or none at all.</p>
-                    <a href="{% url 'information' %}#vitamins">{% trans "read more" %}...</a><br>
+                    <p>
+                        {% trans "Vitamins_text..." %}
+                        <a href="{% url 'information' %}#vitamins">{% trans "read more" %}</a><br>
+                    </p>
                     <br>
                 </div>
                 <div class="col-md-4">
                     <h4>{% trans "Minerals" %}</h4>
-                    <p>Minerals is one confusing topic. Inorganic, organic, chelated, elemental, ionic, colloidal, essential, trace – all these claims! What do we really need? Credentials in nutrition apparently mean very little</p>
-                    <a href="{% url 'information' %}">{% trans "read more" %}...</a><br>
+                    <p>
+                        {% trans "Minerals_text..." %}
+                        <a href="{% url 'information' %}">{% trans "read more" %}</a><br>
+                    </p>
                     <br>
                 </div>
                 <div class="col-md-4">
                     <h4>{% trans "CalMag" %}</h4>
-                    <p>Calcium and magnesium are essential for more than 300 functions in your body, such as sleep, pain, cramp and muscle spasm alleviation,  nervousness, restless leg syndrome, relaxation,</p>
-                    <a href="{% url 'information' %}">{% trans "read more" %}...</a><br>
+                    <p>
+                        {% trans "CalMag_text..." %}
+                        <a href="{% url 'information' %}">{% trans "read more" %}</a><br>
+                    </p>
                     <br>
                 </div>
             </div>

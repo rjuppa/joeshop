@@ -88,15 +88,23 @@ msgstr ""
 #: templates/web/information.html:36
 msgid "Vitamins are organic substances..."
 msgstr ""
-"Vitamins are organic substances needed in small quantities, which the human "
-"body can not build and it must therefore take in food."
+"Vitamins are organic compounds which are needed in small quantities to sustain life. We get vitamins from food, because the human body either does not produce enough of them, or none at all. There are 13 types of vitamins. They are "
+"<ul><li>Vitamin A</li><li>B vitamins (thiamine, riboflavin, niacin, pantothenic acid, biotin, vitamin B-6, vitamin B-12 and folate)</li>"
+"<li>Vitamin C</li><li>Vitamin D</li><li>Vitamin E</li><li>Vitamin K</li></ul> "
+"You can usually get all your vitamins from the foods you eat. Your body can also make vitamins D and K. People who eat a vegetarian diet may need to take a vitamin B12 supplement. "
+"Each vitamin has specific jobs. If you have low levels of certain vitamins, you may get health problems. For example, if you don't get enough vitamin C, you could become anemic. Some vitamins may help prevent medical problems. Vitamin A prevents night blindness. "
+
 
 #: templates/web/information.html:42
 msgid "Minerals are..."
 msgstr ""
-"Minerals are important for your body to stay healthy. Your body uses "
-"minerals for many different jobs, including building bones, making hormones "
-"and regulating your heartbeat."
+"The minerals in our diet are essential for a variety of bodily functions. They are important for building strong bones "
+"and teeth, blood, skin, hair, nerve function, muscle and for metabolic processes such as those that turn the food we eat "
+"into energy. This means that minerals are needed for the body to work properly, for growth and development, and overall, "
+"for maintaining normal health. Different minerals are required in different amounts but they are all essential. Minerals "
+"are grouped depending on how much they are needed on a daily basis so the minerals that are needed more in bigger amounts "
+"on a daily basis are known as the minerals, macro-minerals or major minerals. The minerals that are needed less and in "
+"smaller amounts are known as micro-minerals."
 
 #: templates/web/information.html:48
 msgid "What is CalMag?"
@@ -104,7 +112,7 @@ msgstr "What is CalMag?"
 
 #: templates/web/information.html:49
 msgid "Calmag is Calcium-magnesium mineral drink."
-msgstr "Calmag is Calcium-magnesium mineral drink."
+msgstr "Calmag is Calcium-magnesium mineral drink. The body can absorb it quickly and <b>completely</b>."
 
 #: templates/web/information.html:50
 msgid "Calcium and magnesium are essential..."
@@ -113,7 +121,13 @@ msgstr ""
 "body, such as sleep, pain, cramp and muscle spasm alleviation,  nervousness, "
 "restless leg syndrome, relaxation, alleviating stress, hyperactivity, heart "
 "function, blood pressure, blood clotting (especially important during tooth "
-"extraction, child birth, operations and so on), etc."
+"extraction, child birth, operations and so on). Why instant CalMag works unlike "
+"tablets and capsules that sometimes don’t break down properly, CalMag "
+"has been formulated in a 2:1 blend of calcium gluconate and magnesium carbonate "
+"with vitamin C to adjust the pH so your body can actually absorb the calcium and magnesium. "
+"This is very important. It is made with boiling water and this is very important as calcium "
+"particles are large and the chemical reaction created by dissolving the powder with boiling water "
+"breaks them down into absorbable ionts."
 
 #: templates/web/information.html:55
 msgid "Shipping and Delivery"
