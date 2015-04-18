@@ -734,7 +734,7 @@ msgstr ""
 
 #: templates/vitashop/index.html:82
 msgid "Vitamines and minerals are not drugs. They are foodstuff."
-msgstr "Vitamíny a minerály nepatří mezi léky. Jsou to potraviny."
+msgstr "Vitamíny a minerály naše tělo potřebuje přijímat každý den."
 
 #: templates/vitashop/index.html:86
 msgid "Vitamins"

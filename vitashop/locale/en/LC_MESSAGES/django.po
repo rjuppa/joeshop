@@ -723,7 +723,7 @@ msgstr ""
 
 #: templates/vitashop/index.html:82
 msgid "Vitamines and minerals are not drugs. They are foodstuff."
-msgstr ""
+msgstr "Our body needs to consume vitamines and minerals daily."
 
 #: templates/vitashop/index.html:86
 msgid "Vitamins"
