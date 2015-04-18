@@ -25,7 +25,7 @@ EMAIL_ADMIN = 'vitamineral1@gmail.com'
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = ['vitamineral.info', '127.0.0.1', '178.62.240.190']
+ALLOWED_HOSTS = ['vitamineral.info', 'www.vitamineral.info', '127.0.0.1', '178.62.240.190']
 PREPEND_WWW = False
 
 # PAYPAL
