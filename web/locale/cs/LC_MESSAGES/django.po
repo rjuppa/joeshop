@@ -144,7 +144,7 @@ msgstr ""
 "vápníků v tabletách je ve formě nerozpustitelných solí. Jehož vstřebání "
 "závisí na kyselém PH způsobeném normálním vylučováním žaludeční kyseliny "
 "chlorovodíkové. Jestliže taková (kyselost) kyselina momentálně chybí, vápník "
-"není rozpuštěn a nemůže být využitý tělem jako potřebný. "
+"není rozpuštěn a nemůže být využitý tělem jako potřebný. To se Vám s CalMagem nestane."
 
 #: templates/web/information.html:55
 msgid "Shipping and Delivery"

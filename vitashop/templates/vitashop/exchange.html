@@ -6,6 +6,7 @@
   <h3>{% trans "Bitcoin exchange rate" %}:</h3>
     <div class="bs-component ">
         <div class="centerDiv">
+
           <table class="table table-striped table-hover" style="width: 440px">
             <thead>
               <tr>
@@ -20,11 +21,34 @@
                 <td>${{ btc_dollar }}</td>
                 <td>{{ btc_euro }}</td>
               </tr>
-              <tr><br /><br />
-                <td colspan="3">{% trans "Current time" %}: {{ updated }}&nbsp;<span style="font-size: small">Powered by <a href="http://www.coindesk.com/price/" target="_blank">CoinDesk</a>.</span></td>
+              <tr>
+                <td colspan="3"><span style="font-size: small">{% trans "Current time" %}: {{ updated }}&nbsp; Powered by <a href="http://www.coindesk.com/price/" target="_blank">CoinDesk</a>.</span></td>
               </tr>
             </tbody>
           </table>
+
+        <h3>{% trans "Czech crown exchange rate" %}:</h3>
+
+          <table class="table table-striped table-hover" style="width: 440px">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>1Dollar</th>
+                <th>1Euro</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>CZK</td>
+                <td>{{ usd_in_czk }}Kč</td>
+                <td>{{ eur_in_czk }}Kč</td>
+              </tr>
+              <tr>
+                <td colspan="3"><span style="font-size: small">{% trans "Current date" %}: {{ cnb_updated }}&nbsp; Powered by <a href="http://www.cnb.cz/cs/financni_trhy/devizovy_trh/kurzy_devizoveho_trhu/" target="_blank">www.cnb.cz</a>.</span></td>
+              </tr>
+            </tbody>
+          </table>
+
         </div>
     </div>
     <br/>

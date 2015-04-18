@@ -16,6 +16,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.core import validators
 from django.utils import timezone
 from vitashop.exchange import ExchangeService
+from decimal import Decimal
 import uuid
 import logging
 
@@ -195,6 +196,8 @@ class Category(models.Model):
 
 class MyProduct(Product):
     currency = settings.PRIMARY_CURRENCY
+    one_dollar = Decimal('0.01')
+
     image = models.CharField(max_length=255, verbose_name=_('Image'))
     intro = models.CharField(max_length=255, verbose_name=_('Intro'))
     link = models.CharField(max_length=255, verbose_name=_('Link'), blank=True, null=True)
@@ -219,13 +222,19 @@ class MyProduct(Product):
     def set_currency(self, currency):
         self.currency = currency
 
+    def convert_koruna_into(self, currency):
+        if self.currency == settings.PRIMARY_CURRENCY:  #CZK
+            return self.unit_price
+        elif self.currency == 'USD':
+            return self.unit_price / self.one_dollar
+
     def get_price(self):
+        return self.unit_price
+
+    def get_price2(self):
         if settings.USE_MULTI_CURRENCY:
-            es = ExchangeService()
-            if settings.PRIMARY_CURRENCY == 'USD':
-                price = es.convert_dollar_into(self.unit_price, self.currency)
-            elif settings.PRIMARY_CURRENCY == 'CZK':
-                price = es.convert_koruna_into(self.unit_price, self.currency)
+            if settings.PRIMARY_CURRENCY == 'CZK':
+                price = self.convert_koruna_into(self.currency)
             else:
                 raise ValueError
 

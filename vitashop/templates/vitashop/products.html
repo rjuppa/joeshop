@@ -30,28 +30,33 @@
 
     </div>
 
-    <div class="row">
-        {% for product in products %}
-        <div class="product panel col-md-3 col-sm-4 col-xs-6">
-            <div class="thumbnail">
-                <a href="{% url 'product_detail' product.slug %}">
-                    <div class="margin-20">
-                        <img src="/media/img/{{ product.image }}" class="img-responsive"
-                             alt="{{ product.name }}" />
-                    </div>
+
+    <div class="centerDiv">
+        <div class="row">
+
+                {% for product in products %}
+                <div class="product panel col-md-3 col-sm-4 col-xs-6">
+                    <div class="thumbnail">
+                        <a href="{% url 'product_detail' product.slug %}">
+                            <div class="margin-20">
+                                <img src="/media/img/{{ product.image }}" class="img-responsive"
+                                     alt="{{ product.name }}" />
+                            </div>
 
 
-                    <div class="panel-footer text-center">
-                        <span class="product-title">{{ product.name }}</span>
-                        <div class="second">
-                            <span class="product-price-label">{% trans "Price" %}:</span>
-                            <span class="product-price">{{ product.unit_price|currency:currency }}</span>
-                        </div>
+                            <div class="panel-footer text-center">
+                                <span class="product-title">{{ product.name }}</span>
+                                <div class="second">
+                                    <span class="product-price-label">{% trans "Price" %}:</span>
+                                    <span class="product-price">{% currency_tag product.unit_price currency %}</span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </a>
-            </div>
+                </div>
+                {% endfor %}
+
         </div>
-        {% endfor %}
     </div>
 
 {% endblock %}

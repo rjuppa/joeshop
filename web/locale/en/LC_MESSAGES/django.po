@@ -83,7 +83,12 @@ msgid ""
 "Florida."
 msgstr ""
 "All products were made in the USA. Factory is based in Clearwater, state "
-"Florida."
+"Florida. Manufacturing is based on a system that is centered on quality control. Control of quality exists "
+"at each step throughout our production process. It does not consist simply of checking the finished "
+"product. It is an integral part of all process. Quality is built into the product at each production step. "
+"From screening of raw materials, through the steps of weighing, mixing, encapsulation or tabletting, and bottling, "
+" a Quality Control inspector is on hand on the production floor to make sure that at each "
+"point a Standard Operating Procedure is followed. All products are certified by U.S. FDA."
 
 #: templates/web/information.html:36
 msgid "Vitamins are organic substances..."

@@ -17,7 +17,7 @@ from shop.views.cart import CartDetails, CartItemDetail
 from shop.models.defaults.order import Order
 from vitashop.models import *
 from vitashop.forms import *
-from shop.util.btc_helper import Coindesk_Exchange, BC
+from shop.util.btc_helper import Coindesk_Exchange, BC, CNB_Exchange
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext as _
 from shop.views import ShopListView, ShopDetailView
@@ -341,10 +341,16 @@ class MyCartDetails(ShopTemplateResponseMixin, CartItemDetail):
 def exchange(request):
     exs = Coindesk_Exchange(request)
     ctx = {}
-    ctx['updated'] = exs.updated
+    ctx['updated'] = exs.updated_formated()
     ctx['btc_dollar'] = exs.get_btc_in_dollar()
     ctx['btc_euro'] = exs.get_btc_in_euro()
+
+    cnb = CNB_Exchange(request)
+    ctx['cnb_updated'] = cnb.updated_formated()
+    ctx['usd_in_czk'] = cnb.get_dollar_in_czk()
+    ctx['eur_in_czk'] = cnb.get_euro_in_czk()
     return render(request, 'vitashop/exchange.html', ctx)
+
 
 def wallet(request):
     addr = request.GET['addr']

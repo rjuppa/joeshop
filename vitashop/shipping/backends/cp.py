@@ -28,7 +28,7 @@ class CPostaShipping():
     backend_name = 'CPosta shipping'
     backend_verbose_name = 'Česká Pošta'
     template = 'vitashop/shipping/cp/posta.html'
-    rate = '89.0' # it is fee
+    rate = '99.0'   # it is fee
 
     def __init__(self, shop):
         self.shop = shop
@@ -39,8 +39,8 @@ class CPostaShipping():
         return Decimal(self.rate)
 
     @staticmethod
-    def get_price(currency):
-        exs = ExchangeService()
+    def get_price(currency, request):
+        exs = ExchangeService(request)
         if settings.PRIMARY_CURRENCY == 'USD':
             new_value = exs.convert_dollar_into(Decimal(CPostaShipping.rate), currency)
         elif settings.PRIMARY_CURRENCY == 'CZK':
@@ -61,7 +61,7 @@ class CPostaShipping():
         process.
         """
         curr = get_currency(request)
-        self.shop.add_shipping_costs(self.shop.get_order(request), 'CPosta shipping', self.get_price(curr))
+        self.shop.add_shipping_costs(self.shop.get_order(request), 'CPosta shipping', self.get_price(curr, request))
         return self.shop.finished(self.shop.get_order(request))
         # That's an HttpResponseRedirect
 
@@ -75,7 +75,7 @@ class CPostaShipping():
 
         form = CPostaShippingForm()    # Czech rep.
         curr = get_currency(request)
-        d = self.get_price(curr)
+        d = self.get_price(curr, request)
         if request.method == 'POST':
             if u'locations' in request.POST:
                 # Czech rep.

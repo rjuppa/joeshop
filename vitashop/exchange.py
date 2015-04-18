@@ -1,16 +1,22 @@
 from decimal import Decimal
 from django.conf import settings
 from django.template.defaultfilters import floatformat
+from shop.util.btc_helper import Coindesk_Exchange, BC, CNB_Exchange
 
 class ExchangeService(object):
 
-    dollar_in_usd = Decimal('1')
-    dollar_in_czk = Decimal('25.10')
-    dollar_in_btc = Decimal('0.00010')
+    def __init__(self, request):
+        btc = Coindesk_Exchange(request)
+        cnb = CNB_Exchange(request)
+        self.btc_in_dollar = btc.get_btc_in_dollar()
+        self.dollar_in_usd = Decimal('1')
+        self.dollar_in_czk = cnb.get_dollar_in_czk()
+        self.dollar_in_btc = Decimal('1') / self.btc_in_dollar
 
-    koruna_in_usd = Decimal('1')/Decimal('25.10')
-    koruna_in_czk = Decimal('1')
-    koruna_in_btc = Decimal('0.000007')
+
+        self.koruna_in_usd = Decimal('1')/self.dollar_in_czk
+        self.koruna_in_czk = Decimal('1')
+        self.koruna_in_btc = Decimal('1') / (btc.get_btc_in_dollar()*self.dollar_in_czk)
 
     def convert_dollar_into(self, amount, currency):
         if currency == 'CZK':
@@ -39,14 +45,21 @@ class ExchangeService(object):
             raise KeyError
 
     def price_in_usd(self, amount):
-        exs = ExchangeService()
-        if settings.PRIMARY_CURRENCY == 'USD':
-            new_value = exs.convert_dollar_into(amount, 'USD')
-        elif settings.PRIMARY_CURRENCY == 'CZK':
-            new_value = exs.convert_koruna_into(amount, 'USD')
+        if settings.PRIMARY_CURRENCY == 'CZK':
+            new_value = self.convert_koruna_into(amount, 'USD')
         else:
             raise ValueError
         s = floatformat(new_value, 2)
+        s = s.replace(',', '.')
+        return Decimal(str(s))
+
+    def one_btc_in_czk(self):
+        if settings.PRIMARY_CURRENCY == 'CZK':
+            new_value = self.btc_in_dollar * self.dollar_in_czk
+        else:
+            raise ValueError
+        s = floatformat(new_value, 2)
+        s = s.replace(',', '.')
         return Decimal(str(s))
 
     def convert_to_dec(self, price):

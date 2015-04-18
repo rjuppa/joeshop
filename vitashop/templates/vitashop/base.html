@@ -77,27 +77,26 @@
                     <ul>
                         <li><a href="{% url 'faq' %}">{% trans "FAQ" %}</a></li>
                         <li><a href="{% url 'contact' %}">{% trans "Contact" %}</a></li>
-                        <li><a href="{% url 'affiliate' %}#affiliate">{% trans "Affiliate" %}</a></li>
-                        <li><a href="{% url 'information' %}#shipping">{% trans "Shipping" %}</a></li>
-                        <li><a href="#">{% trans "Privacy" %}</a></li>
+                        <li><a href="{% url 'information' %}#affiliate#">{% trans "Affiliate" %}</a></li>
+                        <li><a href="{% url 'information' %}#shipping#">{% trans "Shipping" %}</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-3">
                     <h3>{% trans "Media" %}</h3>
                     <ul>
-                        <li><a href="#">{% trans "Blog" %}</a></li>
-                        <li><a href="#">{% trans "Facebook" %}</a></li>
-                        <li><a href="#">{% trans "Youtube" %}</a></li>
-                        <li><a href="#">{% trans "Success stories" %}</a></li>
+                        <li><a href="http://www.zdraviok.cz/zdravi/62-VICE-O-ZDRAVI/214-Zdravotni-problemy" target="_blank">{% trans "Blog" %}</a></li>
+                        <li><a href="https://www.facebook.com/pages/Zdraví-OK-sro/381736631841888" target="_blank">{% trans "Facebook" %}</a></li>
+                        <li><a href="http://receptyprozdravi.cz/video/58-jime-spravne-vitaminy" target="_blank">{% trans "Video" %}</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-3">
                     <h3>{% trans "Other" %}</h3>
                     <ul>
                         <li><a href="{% url 'bitcoin' %}">{% trans "Bitcoins" %}</a></li>
-                        <li><span style="color:rgb(221, 185, 172);">{% trans "Languages" %}:</span>
-                                <a href="/?lang=cs">cs</a>&nbsp;<a href="/?lang=en">en</a>
-                        </li>
+                        <li><span style="color:rgb(221, 185, 172);">{% trans "Languages" %}:</span>&nbsp;<a href="/?lang=cs">cs</a>&nbsp;<a href="/?lang=en">en</a></li>
+                        <li><a href="{% url 'information' %}#vitamins#">{% trans "Vitamins" %}</a></li>
+                        <li><a href="{% url 'information' %}#minerals#">{% trans "Minerals" %}</a></li>
+                        <li><a href="{% url 'information' %}#calmag#">{% trans "CalMag" %}</a></li>
                     </ul>
                 </div>
                 <div class="col-md-1"></div>

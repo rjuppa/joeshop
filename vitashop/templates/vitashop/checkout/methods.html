@@ -96,7 +96,7 @@
 
     <div id="cposta" style="display: none;">
         <span class="">
-            <b>{% trans "Price" %}:</b> {{ shipping_price|currency:currency }}<br/><br/>
+            <b>{% trans "Price" %}:</b>&nbsp;{% currency_tag shipping_price currency %}<br/><br/>
             <b>{% trans "Period od delivery" %}:</b><br/>
             {% trans "Delivery usually takes 1-2 working days." %}<br/><br/>
 
@@ -115,7 +115,7 @@
             </select>
         </div>{% endcomment %}
         <span>
-            <b>{% trans "Price" %}:</b> {{ 0|currency:currency }}<br/><br/>
+            <b>{% trans "Price" %}:</b>{% currency_tag 0 currency %}<br/><br/>
             <b>{% trans "Period od delivery" %}:</b><br/>
             {% trans "Personal pick up is available only in Plzeň. You will receive instructions where to pick up products." %}
             <br/>
@@ -126,11 +126,11 @@
 
     <div id="bitcoin-payment" style="display: none;">
         <span class="">{% trans "The bitcoin address will be shown to pay this order on next page." %}</span><br/>
-        <img src="{{ MEDIA_URL }}img/bitcoin_accepted.png" class="img-responsive" alt="Pay with Bitcoins" style="margin:10px 0;max-width: 160px" />
+        <img src="{{ MEDIA_URL }}img/bitcoin_accepted.png" class="img-responsive" alt="Pay with Bitcoins" style="margin:10px 0;max-width: 160px border:0" />
     </div>
     <div id="paypal" style="display: none;">
         <span class="">{% trans "You will be redirected to Paypal payment gateway to pay this order." %}</span><br/>
-        <img src="{{ MEDIA_URL }}img/Paypal.jpg" class="img-responsive" alt="Pay with Bitcoins" style="margin:10px 0;max-width: 140px" />
+        <img src="{{ MEDIA_URL }}img/Paypal.jpg" class="img-responsive" alt="Pay with Bitcoins" style="margin:10px 0;max-width: 140px; border:0" />
     </div>
 
 {% endblock %}

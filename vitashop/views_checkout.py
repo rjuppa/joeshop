@@ -403,7 +403,7 @@ class ThankYouView(LoginMixin, ShopTemplateView):
         ctx.update({'payment_backend': self.payment})
 
         # convert price in dollar into BTC
-        exs = ExchangeService()
+        exs = ExchangeService(self.request)
         price_usd = exs.price_in_usd(order.order_total)
         ex = Coindesk_Exchange(self.request)
         amount_fiat = order.order_total
@@ -418,6 +418,10 @@ class ThankYouView(LoginMixin, ShopTemplateView):
         wallet_address = self.create_wallet_address(order.id)
         ctx.update({'wallet_address': wallet_address})
 
+
+        rate_btc = exs.one_btc_in_czk()
+        ctx.update({'rate_btc': rate_btc})
+
         chl = urllib.quote("bitcoin:%s?amount=%s" % (wallet_address, amount_btc))
         ctx.update({'qrcode': 'https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=%s' % chl})
         return ctx
@@ -426,6 +430,8 @@ class ThankYouView(LoginMixin, ShopTemplateView):
         if id < 0:
             raise Exception("id cannot be negative!")
 
+        if settings.DEBUG:
+            return "BTC-ADDRESS-MISSING-IN-DEBUG"
         acc = Account(settings.XPUB)
         return acc.gen_new_address(id)
 

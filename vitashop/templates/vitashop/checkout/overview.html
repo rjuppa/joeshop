@@ -109,9 +109,9 @@
             {% for item in order.items.all %}
               <tr>
                 <td>{{item.product_name}}</td>
-                <td class="text-right">{{ item.unit_price|currency:currency }}</td>
+                <td class="text-right">{% currency_tag item.unit_price currency %}</td>
                 <td>{{item.quantity}}</td>
-                <td class="text-right">{{item.line_subtotal|currency:currency }}</td>
+                <td class="text-right">{% currency_tag item.line_subtotal currency %}</td>
               </tr>
 
               {% if item.extraorderitempricefield_set.all %}
@@ -126,7 +126,7 @@
                   <tr>
                       <td colspan="2">&nbsp;</td>
                       <td>{% trans "Line Total" %}:</td>
-                      <td class="text-right">{{item.line_total|currency:currency }}</td>
+                      <td class="text-right">{% currency_tag item.line_total currency %}</td>
                   </tr>
                 {% endif %}
 
@@ -137,19 +137,19 @@
             <tr>
                 <td colspan="2">&nbsp;</td>
                 <td>{% trans "Order Subtotal" %}</td>
-                <td class="text-right">{{order.order_subtotal|currency:currency }}</td>
+                <td class="text-right">{% currency_tag order.order_subtotal currency %}</td>
             </tr>
             {% for extra_price_field in order.extraorderpricefield_set.all %}
               <tr>
                 <td colspan="2">&nbsp;</td>
                 <td>{% trans extra_price_field.label|safe %}</td>
-                <td class="text-right">{{ extra_price_field.value|currency:currency }}</td>
+                <td class="text-right">{% currency_tag extra_price_field.value currency %}</td>
               </tr>
             {% endfor %}
             <tr>
                 <td colspan="2">&nbsp;</td>
                 <td><b>{% trans "Order Total" %}</b></td>
-                <td class="text-right"><b>{{order.order_total|currency:currency}}</b></td>
+                <td class="text-right"><b>{% currency_tag order.order_total currency %}</b></td>
             </tr>
           </tfoot>
         </table>

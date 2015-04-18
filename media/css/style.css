@@ -495,3 +495,9 @@ a#brand:hover{
     right: 0;
     left: 70px;
 }
+
+.btc-price{
+    font-size: 1.4em;
+    color: red;
+    font-weight: 600;
+}

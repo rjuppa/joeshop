@@ -65,12 +65,12 @@
                       {% with form.quantity as field %}
                         <tr>
                           <td>{{ form.instance.product.get_name }}</td>
-                          <td>{{ form.instance.product.get_price|currency:currency }}</td>
+                          <td>{% currency_tag form.instance.product.get_price currency %}</td>
                           <td>
                               {{ form.id }}
                               {{ field.errors }}
                               {{ field }}</td>
-                          <td>{{ form.instance.line_subtotal|currency:currency }}</td>
+                          <td>{% currency_tag form.instance.line_subtotal currency %}</td>
                         </tr>
                         {% for extra_price_field in form.instance.extra_price_fields %}
                           <tr>
@@ -83,7 +83,7 @@
                             <tr>
                                 <td colspan="2">&nbsp;</td>
                                 <td>{% trans "Line Total" %}:</td>
-                                <td>{{ form.instance.line_total|currency:currency }}</td>
+                                <td>{% currency_tag form.instance.line_total currency %}</td>
                             </tr>
                           {% endif %}
                       {% endwith %}
@@ -94,7 +94,7 @@
                     <tr>
                         <td colspan="2">&nbsp;</td>
                         <td>{% trans "Cart Subtotal" %}</td>
-                        <td>{{cart.subtotal_price|currency:currency }}</td>
+                        <td>{% currency_tag cart.total_price currency %}</td>
                     </tr>
                     {% for extra_price_field in cart.extra_price_fields %}
                       <tr>
@@ -106,7 +106,7 @@
                     <tr>
                         <td colspan="2">&nbsp;</td>
                         <td><b>{% trans "Cart Total" %}</b></td>
-                        <td><b>{{cart.total_price|currency:currency}}</b></td>
+                        <td><b>{% currency_tag cart.total_price currency %}</b></td>
                     </tr>
                   </tfoot>
                 </table>

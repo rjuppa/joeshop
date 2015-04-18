@@ -4,37 +4,34 @@
 {% load currency %}
 
 {% block body %}
-  <h1>Thank you for your order!</h1>
-  <p>Your order has been placed</p>
+  <h1>{% trans "Thank you for your order!" %}</h1>
+  <p>{% trans "Your order has been placed" %}</p>
 
     <div class="clearfix"></div>
 
     {% if payment_backend == 'paypal' %}
         <form action="" method="post">
             {% csrf_token %}
-            <p>Please continue to pay your order for <mark>{{ order.order_total|currency:currency }}</mark> at <input type="submit" class="btn btn-warning btn-lg" value="PayPal" /></p>
+            <p>{% trans "Please continue to pay your order with " %}<mark>{% currency_tag order.order_total currency %}</mark> at <input type="submit" class="btn btn-warning btn-lg" value="PayPal" /></p>
         </form>
         <p>
-            <a href="{% url 'shop_welcome' %}">Back to the main page</a>
+            <a href="{% url 'shop_welcome' %}">{% trans "Back to the main page" %}</a>
         </p>
     {% else %}
-        <div class="jumbotron">
-              <h4>Payment instructions</h4>
+        <div>
+            <h4>{% trans "Payment instructions" %}</h4>
             <p>
-                Price is {{ amount_fiat|currency:currency }} <br/>
-                Please pay {{ amount_btc }}BTC <br/>
-                to wallet address: {{ wallet_address }}
+                {% trans "Price is " %}{% currency_tag amount_fiat currency %}<br/>
+                <span class="btc-price">{% trans "Please pay " %}{{ amount_btc }}BTC </span><br/>
+                {% trans "Bitcoin exchange rate: " %}1BTC = {% currency_tag rate_btc currency %} <span style="font-size: small"> {% trans "from" %} <a href="http://www.coindesk.com/price/" target="_blank">CoinDesk</a>.</span><br/>
+                <b>{% trans "to wallet address:" %} {{ wallet_address }}</b>
             </p>
             <img src="{{ qrcode }}" title="Wallet address" />
+            {% trans "Your payment has to be verified..." %}
             <p>
-                Your payment has to be verified by 3 confirmations within 6 hours.<br />
-                Otherwise, your order will be cancelled automatically.<br />
-                In any case, we'll inform you by email.
+
 			</p>
-              <h4>Thank you for your order</h4>
-          </div>
-          <div>
-              <a href="{% url 'wallet' %}?addr={{ wallet_address }}&amount={{ amount_btc }}">Go to wallet</a>
+              <h4>{% trans "Thank you for your order" %}</h4>
           </div>
     {% endif %}
 

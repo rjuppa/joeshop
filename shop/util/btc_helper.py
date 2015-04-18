@@ -9,9 +9,108 @@ from django.conf import settings
 import bitcoin
 import bitcoin.rpc
 
+class CNB_Exchange(object):
+    DATE_FORMAT = "%d.%m.%Y"
+    SESSION_NAME = 'cnb_exchange_rate'
+    content = {}
+    _req = None
+
+    def __init__(self, req):
+        if not req:
+            raise ValueError('req is None')
+
+        self._req = req
+        if self.SESSION_NAME in req.session:
+            self.load(req)
+
+        if not self.content:
+            self.refresh()
+
+    def load(self, req):
+        if not req:
+            raise ValueError('req is None')
+
+        self._req = req
+        if self.SESSION_NAME in req.session:
+            data = req.session[self.SESSION_NAME]
+            self.content = pickle.loads(data.encode('utf-8'))
+        else:
+            self.content = {}
+
+    def refresh(self):
+        # refresh btc rate
+        try:
+            response = urllib2.urlopen('http://www.cnb.cz/cs/financni_trhy/devizovy_trh/kurzy_devizoveho_trhu/denni_kurz.txt')
+            data = response.read()
+            lines = data.splitlines()
+            today = lines[0].decode('utf8')[:10]
+            usd_in_czk = '0'
+            eur_in_czk = '0'
+            for line in lines:
+                arr = line.split('|')
+                if arr[0] == 'USA':
+                    usd_in_czk = arr[4]
+                    usd_in_czk = usd_in_czk.replace(',', '.')
+                if arr[0] == 'EMU':
+                    eur_in_czk = arr[4]
+                    eur_in_czk = eur_in_czk.replace(',', '.')
+
+            self.content = {}
+            self.content.update({'usd_in_czk': Decimal(usd_in_czk)})
+            self.content.update({'eur_in_czk': Decimal(eur_in_czk)})
+            self.content.update({'cnb_updated': today})
+
+            # save to session
+            self._req.session[self.SESSION_NAME] = pickle.dumps(self.content).decode('utf-8')
+        except Exception as e:
+            s = e.args[0]
+            pass
+
+    def is_up_to_date(self):
+        # rate is up-to-date 1 hour
+        if not self.updated():
+            return False
+
+        d = datetime.now() - self.updated()
+        if d.seconds < 3600:
+            return True
+        else:
+            return False
+
+
+    def updated(self):
+        if 'cnb_updated' in self.content:
+            date = self.content['cnb_updated']
+            date = datetime.strptime(date, self.DATE_FORMAT)
+            return date
+        else:
+            return False
+
+    def updated_formated(self):
+        if 'cnb_updated' in self.content:
+            date = self.content['cnb_updated']
+            date = datetime.strptime(date, self.DATE_FORMAT)
+            return date.strftime(self.DATE_FORMAT)
+        else:
+            return ''
+
+    def get_dollar_in_czk(self):
+        if not self.is_up_to_date() and 'usd_in_czk' in self.content:
+            self.refresh()
+        return self.content['usd_in_czk']
+
+    def get_euro_in_czk(self):
+        if not self.is_up_to_date() and 'eur_in_czk' in self.content:
+            self.refresh()
+        return self.content['eur_in_czk']
+
+
+
+
+
 class Coindesk_Exchange(object):
     DATE_FORMAT = "%Y-%m-%d %H:%M"
-    SESSION_NAME = 'exchange_rate'
+    SESSION_NAME = 'btc_exchange_rate'
     COIN = 1000000
     FEE = Decimal(1)/10000
     content = {}
@@ -22,7 +121,7 @@ class Coindesk_Exchange(object):
             raise ValueError('req is None')
 
         self._req = req
-        if 'exchange_rate' in req.session:
+        if self.SESSION_NAME in req.session:
             self.load(req)
 
         if not self.content:
@@ -34,7 +133,7 @@ class Coindesk_Exchange(object):
             raise ValueError('req is None')
 
         self._req = req
-        if 'exchange_rate' in req.session:
+        if self.SESSION_NAME in req.session:
             data = req.session[self.SESSION_NAME]
             self.content = pickle.loads(data.encode('utf-8'))
         else:
@@ -60,8 +159,9 @@ class Coindesk_Exchange(object):
 
     def is_up_to_date(self):
         # rate is up-to-date 15 minutes
-        if not self.updated:
+        if not self.updated():
             return False
+
         d = datetime.now() - self.updated()
         if d.seconds < 900: # 15min = 900 sec.
             return True
@@ -74,6 +174,14 @@ class Coindesk_Exchange(object):
             return datetime.strptime(date, self.DATE_FORMAT)
         else:
             return False
+
+    def updated_formated(self):
+        if 'updated' in self.content:
+            date = self.content['updated']
+            date = datetime.strptime(date, self.DATE_FORMAT)
+            return date.strftime(self.DATE_FORMAT)
+        else:
+            return ''
 
     def get_btc_in_dollar(self):
         if not self.is_up_to_date():
