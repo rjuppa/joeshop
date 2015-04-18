@@ -23,8 +23,7 @@ EMAIL_ADMIN = 'vitamineral1@gmail.com'
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-TEMPLATE_DEBUG = True
+
 
 ALLOWED_HOSTS = ['vitamineral.info', '127.0.0.1', '178.62.240.190']
 PREPEND_WWW = False
@@ -71,6 +70,10 @@ WSGI_APPLICATION = 'joeshop.wsgi.application'
 IS_PRODUCTION = os.environ.get('PRODUCTION')
 
 if IS_PRODUCTION:
+    # production
+    DEBUG = False
+    TEMPLATE_DEBUG = False
+
     # SECURITY WARNING: keep the secret key used in production secret!
     SECRET_KEY = os.environ.get('SECRET_KEY')
 
@@ -109,6 +112,8 @@ if IS_PRODUCTION:
 
 else:
     # testing
+    DEBUG = True
+    TEMPLATE_DEBUG = True
     SECRET_KEY = 'gfnbmsasf51x_-z8zvg12e3ofd*m$ngdrs1r1115$sw^+$k6(p'
 
     # PAYPAL testing
