@@ -355,9 +355,8 @@ class OverviewView(LoginMixin, ShopTemplateView):
                                             order_price=order_price,
                                             currency=currency,
                                             status=PaymentHistory.CREATED,
-                                            wallet_address='',
                                             transaction_id='',
-                                            result = 'placed_order',
+                                            result='placed_order',
                                             payment_method='paypal')
 
             elif self.payment == 'bitcoin-payment':
