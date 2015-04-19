@@ -11,6 +11,12 @@ def get_currency(request):
     else:
         return settings.PRIMARY_CURRENCY
 
+def get_language(request):
+    if hasattr(request, 'LANGUAGE_CODE'):
+        return request.LANGUAGE_CODE
+    else:
+        return 'en'
+
 
 class Blockchain(object):
 

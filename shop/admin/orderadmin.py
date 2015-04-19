@@ -32,33 +32,33 @@ class OrderItemInline(LocalizeDecimalFieldsMixin, admin.TabularInline):
 #TODO: add ExtraOrderItemPriceField inline, ideas?
 
 
-class OrderAdmin(LocalizeDecimalFieldsMixin, ModelAdmin):
-    list_display = ('id', 'user', 'status', 'order_total', 'created')
-    list_filter = ('status', 'user')
-    search_fields = ('id', 'shipping_address_text', 'user__username')
-    date_hierarchy = 'created'
-    inlines = (OrderItemInline, OrderExtraInfoInline,
-            ExtraOrderPriceFieldInline, OrderPaymentInline)
-    readonly_fields = ('created', 'modified',)
-    raw_id_fields = ('user',)
-    fieldsets = (
-            (None, {'fields': ('user', 'status', 'order_total',
-                'order_subtotal', 'created', 'modified')}),
-            (_('Shipping'), {
-                'fields': ('shipping_address_text',),
-                }),
-            (_('Billing'), {
-                'fields': ('billing_address_text',)
-                }),
-            )
-
-    def save_model(self, request, order, form, change):
-        super(OrderAdmin, self).save_model(request, order, form, change)
-        if not order.is_completed() and order.is_paid():
-            order.status = Order.COMPLETED
-            order.save()
-            completed.send(sender=self, order=order)
-
-ORDER_MODEL = getattr(settings, 'SHOP_ORDER_MODEL', None)
-if not ORDER_MODEL:
-    admin.site.register(Order, OrderAdmin)
+# class OrderAdmin(LocalizeDecimalFieldsMixin, ModelAdmin):
+#     list_display = ('id', 'user', 'status', 'order_total', 'created')
+#     list_filter = ('status', 'user')
+#     search_fields = ('id', 'shipping_address_text', 'user__username')
+#     date_hierarchy = 'created'
+#     inlines = (OrderItemInline, OrderExtraInfoInline,
+#             ExtraOrderPriceFieldInline, OrderPaymentInline)
+#     readonly_fields = ('created', 'modified',)
+#     raw_id_fields = ('user',)
+#     fieldsets = (
+#             (None, {'fields': ('user', 'status', 'order_total',
+#                 'order_subtotal', 'created', 'modified')}),
+#             (_('Shipping'), {
+#                 'fields': ('shipping_address_text',),
+#                 }),
+#             (_('Billing'), {
+#                 'fields': ('billing_address_text',)
+#                 }),
+#             )
+#
+#     def save_model(self, request, order, form, change):
+#         super(OrderAdmin, self).save_model(request, order, form, change)
+#         if not order.is_completed() and order.is_paid():
+#             order.status = Order.COMPLETED
+#             order.save()
+#             completed.send(sender=self, order=order)
+#
+# ORDER_MODEL = getattr(settings, 'SHOP_ORDER_MODEL', None)
+# if not ORDER_MODEL:
+#     admin.site.register(Order, OrderAdmin)

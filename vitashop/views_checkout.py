@@ -327,7 +327,7 @@ class OverviewView(LoginMixin, ShopTemplateView):
             raise Exception("id cannot be negative!")
 
         if settings.DEBUG:
-            return "BTC-ADDRESS-MISSING-IN-DEBUG"
+            return "BTC-ADDRESS-MISSING-IN-DEBUG-%s" % str(id)
         acc = Account(settings.XPUB)
         return acc.gen_new_address(id)
 
@@ -343,14 +343,38 @@ class OverviewView(LoginMixin, ShopTemplateView):
             return wallet_address
         except PaymentHistory.DoesNotExist:
             # create OrderPayment once
-            PaymentHistory.objects.create(order=order, amount=Decimal(0),
-                                        email=self.request.user.email,
-                                        currency='BTC',
-                                        status=PaymentHistory.CREATED,
-                                        wallet_address=wallet_address,
-                                        transaction_id='',
-                                        result = 'placed_order',
-                                        payment_method='bitcoin')
+            exs = ExchangeService(self.request)
+            if self.payment == 'paypal':
+                currency = get_currency(self.request)
+                if currency == 'CZK':
+                    order_price = order.order_total
+                else:
+                    order_price = exs.price_in_usd(order.order_total)
+                PaymentHistory.objects.create(order=order, amount=Decimal(0),
+                                            email=self.request.user.email,
+                                            order_price=order_price,
+                                            currency=currency,
+                                            status=PaymentHistory.CREATED,
+                                            wallet_address='',
+                                            transaction_id='',
+                                            result = 'placed_order',
+                                            payment_method='paypal')
+
+            elif self.payment == 'bitcoin-payment':
+                price_usd = exs.price_in_usd(order.order_total)     # order price is in CZK
+                ex = Coindesk_Exchange(self.request)
+                price_btc = ex.convert_dollar_to_btc(price_usd)
+                PaymentHistory.objects.create(order=order, amount=Decimal(0),
+                                            email=self.request.user.email,
+                                            order_price=price_btc,
+                                            currency='BTC',
+                                            status=PaymentHistory.CREATED,
+                                            wallet_address=wallet_address,
+                                            transaction_id='',
+                                            result = 'placed_order',
+                                            payment_method='bitcoin')
+            else:
+                raise ValueError('payment')
 
             # Confirm the current order
             order.status = Order.CONFIRMED
@@ -370,33 +394,7 @@ class OverviewView(LoginMixin, ShopTemplateView):
         extra_info_form = self.get_extra_info_form()
         ctx.update({'extra_info_form': extra_info_form})
         self.order = get_order_from_request(self.request)
-        ctx.update({'order': self.order})
-
-        shipping_address = json.loads(self.order.shipping_address_text)
-        ctx.update({'shipping_address_name': shipping_address['name']})
-        ctx.update({'shipping_address_street': shipping_address['address'] + ' ' + shipping_address['address2']})
-        ctx.update({'shipping_address_city': shipping_address['city']})
-        ctx.update({'shipping_address_state': shipping_address['state']})
-        ctx.update({'shipping_address_zip': shipping_address['zip_code']})
-        ctx.update({'shipping_address_country': shipping_address['country']})
-        billing_address = json.loads(self.order.billing_address_text)
-        ctx.update({'billing_address_name': billing_address['name']})
-        ctx.update({'billing_address_street': billing_address['address'] + ' ' + billing_address['address2']})
-        ctx.update({'billing_address_city': billing_address['city']})
-        ctx.update({'billing_address_state': billing_address['state']})
-        ctx.update({'billing_address_zip': billing_address['zip_code']})
-        ctx.update({'billing_address_country': billing_address['country']})
-        if shipping_address['name'] == billing_address['name'] \
-            and shipping_address['address'] == billing_address['address'] \
-            and shipping_address['address2'] == billing_address['address2'] \
-            and shipping_address['city'] == billing_address['city'] \
-            and shipping_address['state'] == billing_address['state'] \
-            and shipping_address['zip_code'] == billing_address['zip_code'] \
-            and shipping_address['country'] == billing_address['country']:
-            ctx.update({'is_billing_address_same': True})
-        else:
-            ctx.update({'is_billing_address_same': False})
-
+        ctx = add_order_to_context(ctx, self.order)
         self.payment = self.request.session['payment_backend']
         self.shipping = self.request.session['shipping_backend']
         ctx.update({'shipping_backend': self.shipping})
@@ -405,9 +403,42 @@ class OverviewView(LoginMixin, ShopTemplateView):
 
     def post(self, *args, **kwargs):
         """ Called when view is POSTed """
+        self.payment = self.request.session['payment_backend']
+        self.shipping = self.request.session['shipping_backend']
         order = get_order_from_request(self.request)
         self.create_confirmed_order(order)
         return HttpResponseRedirect(reverse('checkout_thankyou'))
+
+
+# helper function
+def add_order_to_context(ctx, order):
+    ctx.update({'order': order})
+    shipping_address = json.loads(order.shipping_address_text)
+    ctx.update({'shipping_address_name': shipping_address['name']})
+    ctx.update({'shipping_address_street': shipping_address['address'] + ' ' + shipping_address['address2']})
+    ctx.update({'shipping_address_city': shipping_address['city']})
+    ctx.update({'shipping_address_state': shipping_address['state']})
+    ctx.update({'shipping_address_zip': shipping_address['zip_code']})
+    ctx.update({'shipping_address_country': shipping_address['country']})
+    billing_address = json.loads(order.billing_address_text)
+    ctx.update({'billing_address_name': billing_address['name']})
+    ctx.update({'billing_address_street': billing_address['address'] + ' ' + billing_address['address2']})
+    ctx.update({'billing_address_city': billing_address['city']})
+    ctx.update({'billing_address_state': billing_address['state']})
+    ctx.update({'billing_address_zip': billing_address['zip_code']})
+    ctx.update({'billing_address_country': billing_address['country']})
+    if shipping_address['name'] == billing_address['name'] \
+        and shipping_address['address'] == billing_address['address'] \
+        and shipping_address['address2'] == billing_address['address2'] \
+        and shipping_address['city'] == billing_address['city'] \
+        and shipping_address['state'] == billing_address['state'] \
+        and shipping_address['zip_code'] == billing_address['zip_code'] \
+        and shipping_address['country'] == billing_address['country']:
+        ctx.update({'is_billing_address_same': True})
+    else:
+        ctx.update({'is_billing_address_same': False})
+    return ctx
+
 
 
 class ThankYouView(LoginMixin, ShopTemplateView):

@@ -1,9 +1,118 @@
 {% extends "vitashop/base.html" %}
 {% load i18n %}
+{% load url from future %}
 {% load shop_tags %}
-
+{% load currency %}
 {% block body %}
-  <h1>{{ object }}</h1>
 
-  {% order object %}
+    <div class="row">
+        <table border="1" class="order">
+
+        {% if is_billing_address_same %}
+            <tr>
+                <td colspan="2" class="top">{% trans "Customer information" %}</td>
+                <td colspan="2">
+                    <b>{% trans "Shipping and billing address" %}</b><br/>
+                    {{ shipping_address_name }}<br/>
+                    {{ shipping_address_street }}<br/>
+                    {{ shipping_address_city }}<br/>
+                    {{ shipping_address_zip }}<br/>
+                    {{ shipping_address_country }}<br/>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2" class="top">{% trans "Customer information" %}</td>
+                <td colspan="2">
+                    <b>{% trans "Shipping address" %}</b><br/>
+                    {{ shipping_address_name }}<br/>
+                    {{ shipping_address_street }}<br/>
+                    {{ shipping_address_city }}<br/>
+                    {{ shipping_address_zip }}<br/>
+                    {{ shipping_address_country }}<br/>
+                    <br/>
+                    <b>{% trans "Billing address" %}</b><br/>
+                    {{ billing_address_name }}<br/>
+                    {{ billing_address_street }}<br/>
+                    {{ billing_address_city }}<br/>
+                    {{ billing_address_zip }}<br/>
+                    {{ billing_address_country }}<br/>
+                    <br/>
+                </td>
+            </tr>
+
+        {% endif %}
+            <tr>
+                <td colspan="2">{% trans "Shipping" %}</td>
+                <td colspan="2">
+                    {{ shipping_backend }}<br/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">{% trans "Payment" %}</td>
+                <td colspan="2">
+                    {{ payment_backend }}<br/>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="header">{% trans "Product name" %}</td>
+                <td class="header">{% trans "Unit price" %}</td>
+                <td class="header">{% trans "Quantity" %}</td>
+                <td class="header text-center">{% trans "Price" %}</td>
+            </tr>
+
+            {% for item in order.items.all %}
+              <tr>
+                <td>{{item.product_name}}</td>
+                <td class="text-right">{% currency_tag item.unit_price currency %}</td>
+                <td>{{item.quantity}}</td>
+                <td class="text-right">{% currency_tag item.line_subtotal currency %}</td>
+              </tr>
+
+              {% if item.extraorderitempricefield_set.all %}
+                  {% for item_extra in item.extraorderitempricefield_set.all %}
+                    <tr>
+                      <td colspan="2">&nbsp;</td>
+                      <td>{{ item_extra.label }}</td>
+                      <td>{{ item_extra.value }}</td>
+                    </tr>
+                  {% endfor %}
+
+                  <tr>
+                      <td colspan="2">&nbsp;</td>
+                      <td>{% trans "Line Total" %}:</td>
+                      <td class="text-right">{% currency_tag item.line_total currency %}</td>
+                  </tr>
+                {% endif %}
+
+            {% endfor %}
+
+
+          <tfoot>
+            <tr>
+                <td colspan="2">&nbsp;</td>
+                <td>{% trans "Order Subtotal" %}</td>
+                <td class="text-right">{% currency_tag order.order_subtotal currency %}</td>
+            </tr>
+            {% for extra_price_field in order.extraorderpricefield_set.all %}
+              <tr>
+                <td colspan="2">&nbsp;</td>
+                <td>{% trans extra_price_field.label|safe %}</td>
+                <td class="text-right">{% currency_tag extra_price_field.value currency %}</td>
+              </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="2">&nbsp;</td>
+                <td><b>{% trans "Order Total" %}</b></td>
+                <td class="text-right"><b>{% currency_tag order.order_total currency %}</b></td>
+            </tr>
+          </tfoot>
+        </table>
+
+    </div>
+
+    <div class="space40"></div>
+    <div class="clearfix"></div>
+
 {% endblock %}

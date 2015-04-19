@@ -66,6 +66,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'joeshop.urls'
 WSGI_APPLICATION = 'joeshop.wsgi.application'
 
+BTC_PRICE_TOLERANCE = Decimal('0.0002')
 
 IS_PRODUCTION = os.environ.get('PRODUCTION')
 
@@ -289,7 +290,7 @@ LOGGING = {
         }
     },
     'handlers': {
-        'console':{
+        'console': {
             'class': 'logging.StreamHandler',
         },
         'mail_admins': {
@@ -299,6 +300,10 @@ LOGGING = {
     },
     'loggers': {
         'vitashop.checkout': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+        'scripts': {
             'handlers': ['console'],
             'level': 'DEBUG',
         },

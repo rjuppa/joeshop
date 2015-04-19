@@ -25,7 +25,8 @@ from shop.forms import get_cart_item_formset
 from shop.models.productmodel import Product
 from shop.util.cart import get_or_create_cart
 from shop.views import ShopView, ShopTemplateResponseMixin
-
+from vitashop.utils import get_currency, get_language
+from vitashop.views_checkout import add_order_to_context
 
 
 def index(request):
@@ -116,7 +117,15 @@ def activate_view(request, code):
 
 @login_required
 def profile(request):
+    # show user profile page
     user = request.user
+    customer = Customer.objects.get_by_email(user.email)
+    if not customer and Customer.objects.has_user_paid_order(user):
+        # create customer
+        currency = get_currency(request)
+        language = get_language(request)
+        customer = Customer.objects.create(user, language, currency)
+
     ctx = dict(site=get_current_site(request))
     if request.method == 'POST':
         profile_form = ProfileForm(request.POST, instance=user)
@@ -131,6 +140,7 @@ def profile(request):
 
     orders = Order.objects.filter(user=user).order_by('-created')
     ctx['orders'] = orders
+    ctx['customer'] = customer
     ctx['profile_form'] = profile_form
     ctx['use_password'] = user.has_usable_password()
     ctx['customer'] = Customer.get_customer(user.email)
@@ -260,10 +270,26 @@ class OrderDetailView(ShopDetailView):
         queryset = queryset.filter(user=self.request.user)
         return queryset
 
+    def get_context_data(self, **kwargs):
+        ctx = super(OrderDetailView, self).get_context_data(**kwargs)
+        if self.object:
+            ctx = add_order_to_context(ctx, self.object)
+        return ctx
+
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(OrderDetailView, self).dispatch(*args, **kwargs)
 
+    def get(self, request, *args, **kwargs):
+        order_id = self.kwargs.get('id')
+        try:
+            self.object = Order.objects.get(id=order_id)
+        except Order.DoesNotExist:
+            self.object = None
+            return HttpResponseBadRequest("Order not found")
+
+        context = self.get_context_data(**kwargs)
+        return self.render_to_response(context)
 
 class MyCartDetails(ShopTemplateResponseMixin, CartItemDetail):
     """

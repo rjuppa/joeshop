@@ -12,11 +12,12 @@
     {% if payment_backend == 'paypal' %}
         <form action="" method="post">
             {% csrf_token %}
-            <p>{% trans "Please continue to pay your order with " %}<mark>{% currency_tag order.order_total currency %}</mark> at <input type="submit" class="btn btn-warning btn-lg" value="PayPal" /></p>
+            <p>{% trans "Please continue to pay for your order " %}<mark>{% currency_tag order.order_total currency %}</mark>{% trans " with " %}<input type="submit" class="btn btn-warning btn-md" value="PayPal" /></p>
         </form>
-        <p>
+
+        <div class="centerDiv">
             <a href="{% url 'shop_welcome' %}">{% trans "Back to the main page" %}</a>
-        </p>
+        </div>
     {% else %}
         <div>
             <h4>{% trans "Payment instructions" %}</h4>

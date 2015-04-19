@@ -156,7 +156,7 @@ class CustomerForm(forms.ModelForm):
 
     class Meta:
         model = Customer
-        fields = ('language', 'currency', 'newsletter')
+        fields = ('language', 'currency', 'has_newsletter', 'affiliate')
 
 
 class ChangePasswordForm(forms.ModelForm):

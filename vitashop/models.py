@@ -15,6 +15,7 @@ from django.core.mail import send_mail
 from django.core.mail import EmailMultiAlternatives
 from django.core import validators
 from django.utils import timezone
+from datetime import datetime
 from vitashop.exchange import ExchangeService
 from decimal import Decimal
 import uuid
@@ -253,15 +254,76 @@ class MyProduct(Product):
     def get_absolute_url(self):
         return reverse('product_detail', kwargs={'slug': self.slug})
 
+class CustomerManager(models.Manager):
+
+    def has_user_paid_order(self, user):
+        payments = PaymentHistory.objects.filter(email=user.email, status=PaymentHistory.CONFIRMED)
+        if payments and len(payments) > 0:
+            return True
+        else:
+            return False
+
+    def get_by_email(self, email):
+        try:
+            customer = Customer.objects.get(email=email)
+            return customer
+        except Customer.DoesNotExist:
+            return None
+
+    def normalize_email(cls, email):
+        """
+        Normalize the address by lowercasing
+        """
+        email = email or ''
+        try:
+            email_name, domain_part = email.strip().rsplit('@', 1)
+        except ValueError:
+            pass
+        else:
+            email = '@'.join([email_name.lower(), domain_part.lower()])
+        return email
+
+    def create(self, user, language, currency):
+        """
+        Creates and saves a new Customer
+        """
+        if not user:
+            raise ValueError('Users must exists.')
+
+        customer = Customer(
+            user=user,
+            email=self.normalize_email(user.email),
+            language=language,
+            currency=currency,
+            has_newsletter=True,
+            send_affiliate_email=False,
+            total_sale=0,
+            discount=0,
+            parent=None
+        )
+        customer.save(using=self._db)
+        return customer
+
+    def generate_slug(self):
+        import base64
+        b = base64.urlsafe_b64encode(uuid.uuid4().bytes)
+        s = b.decode("utf-8")
+        return s
 
 class Customer(models.Model):
     user = models.OneToOneField(USER_MODEL, verbose_name=_('User'))
+    slag = models.CharField(max_length=5, unique=True, null=True, verbose_name=_('Slag'))
     email = models.EmailField(max_length=255, verbose_name=_('Email'), unique=True)
     language = models.CharField(max_length=2, verbose_name=_('Language'))
     currency = models.CharField(max_length=3, verbose_name=_('Currency'))
-    newsletter = models.CharField(max_length=3, verbose_name=_('Newsletter'))
+    has_newsletter = models.BooleanField(default=True, verbose_name=_('Newsletter'))
+    affiliate = models.BooleanField(default=False, verbose_name=_('Affiliate'))
+    send_affiliate_email = models.DateTimeField(verbose_name=_('Affiliate_email'), null=True)
+    total_sale = models.DecimalField(max_digits=11, decimal_places=4, default=0, verbose_name=_('Total Sale'))
     discount = models.DecimalField(max_digits=5, decimal_places=2, verbose_name=_('Discount'), default=0)
     parent = models.ForeignKey('Customer', verbose_name=_('Parent'), blank=True, null=True)
+
+    objects = CustomerManager()
 
     class Meta(object):
         verbose_name = _('Customer')
@@ -312,8 +374,9 @@ class PaymentHistory(OrderPayment):
     )
 
     email = models.EmailField(verbose_name=_('Email'), null=True, blank=True)
-    currency = models.CharField(max_length=3, verbose_name=_('Currency'))
-    result = models.CharField(max_length=20, verbose_name=_('Result'))
+    order_price = models.DecimalField(max_digits=11, decimal_places=4, default=0, verbose_name=_('Price'))
+    currency = models.CharField(max_length=3, verbose_name=_('Currency'), default='CZK')
+    result = models.CharField(max_length=20, verbose_name=_('Result'), default='')
     wallet_address = models.CharField(max_length=34, unique=True, null=True, verbose_name=_('Wallet address'))
     status = models.IntegerField(default=CREATED, choices=PAYMENT_STATUSES, verbose_name=_('Payment status'))
     created = models.DateTimeField(auto_now_add=True, verbose_name=_('Created'))
@@ -329,6 +392,34 @@ class PaymentHistory(OrderPayment):
             return cls.objects.get(order_id=order_id)
         except:
             return None
+
+    # Order Emails
+    def send_unconfirmed_payment_email(self):
+        subject = 'VITAMINERAL.INFO - Payment Received'
+        body = render_to_string('emails/payment_received.txt', dict(order=self.order))
+        send_mail(subject, body, settings.EMAIL_FROM, [self.user.email])
+
+    def send_money_received_email(self, amount):
+        subject = 'VITAMINERAL.INFO - Payment Confirmed'
+        body = render_to_string('emails/payment_confirmed.txt', dict(order=self.order, amount=amount))
+        send_mail(subject, body, settings.EMAIL_FROM, [self.user.email])
+
+    def send_insufficient_payment_email(self, amount):
+        subject = 'VITAMINERAL.INFO - Insufficient Payment Confirmed'
+        body = render_to_string('emails/insufficient_payment_received.txt', dict(order=self.order, amount=amount))
+        send_mail(subject, body, settings.EMAIL_FROM, [self.user.email])
+
+    def send_shipped_order_email(self):
+        subject = 'VITAMINERAL.INFO - Order Shipped'
+        body = render_to_string('emails/order_shipped.txt', dict(order=self))
+        send_mail(subject, body, settings.EMAIL_FROM, [self.user.email])
+
+    def send_affiliate_email(self):
+        subject = 'VITAMINERAL.INFO - Affiliate Program'
+        body = render_to_string('emails/affiliate_program.txt', dict(order=self))
+        send_mail(subject, body, settings.EMAIL_FROM, [self.user.email])
+        self.send_affiliate_email = datetime.now()
+        self.save_base(update_fields=['sent_satisfaction_email', ])
 
 
     def __unicode__(self):

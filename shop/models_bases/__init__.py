@@ -332,7 +332,7 @@ class BaseOrder(models.Model):
 
     PROCESSING = 10  # New order, addresses and shipping/payment methods chosen (user is in the shipping backend)
     CONFIRMING = 20  # The order is pending confirmation (user is on the confirm view)
-    CONFIRMED = 30  # The order was confirmed (user is in the payment backend)
+    CONFIRMED = 30  # The order was placed waiting for payment
     COMPLETED = 40  # Payment backend successfully completed
     SHIPPED = 50  # The order was shipped to client
     CANCELED = 60  # The order was canceled

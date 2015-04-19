@@ -60,6 +60,6 @@ urlpatterns = patterns('vitashop.views',
     url(r'^checkout/ppcanceled', pp_canceled_page, name='ppcanceled'),
     url(r'^checkout/ppfailed', pp_failed_page, name='ppfailed'),
 
-    url(r'^orders/(?P<pk>\d+)/$', OrderDetailView.as_view(), name='order_detail'),
+    url(r'^orders/(?P<id>\d+)/$', OrderDetailView.as_view(), name='vita_order_detail'),
 
 )
