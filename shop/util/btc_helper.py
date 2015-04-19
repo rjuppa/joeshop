@@ -199,7 +199,7 @@ class Coindesk_Exchange(object):
         f = round(price, 4)
         s = str(f) + '0000000000'
         n = s.index('.')
-        return Decimal(s[0:n+4])
+        return Decimal(s[0:n+5])
 
     def convert_dollar_to_btc(self, dollar):
         if not self.is_up_to_date():
