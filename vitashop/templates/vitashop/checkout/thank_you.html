@@ -5,7 +5,7 @@
 
 {% block body %}
   <h1>{% trans "Thank you for your order!" %}</h1>
-  <p>{% trans "Your order has been placed" %}</p>
+  <p>{% trans "Your order has been placed" %} {{ now|date:"d M Y H:i" }}</p>
 
     <div class="clearfix"></div>
 
@@ -27,6 +27,7 @@
                 <b>{% trans "to wallet address:" %} {{ wallet_address }}</b>
             </p>
             <img src="{{ qrcode }}" title="Wallet address" />
+            <div class="clearfix"></div>
             {% trans "Your payment has to be verified..." %}
             <p>
 

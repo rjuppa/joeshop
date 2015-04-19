@@ -5,6 +5,8 @@ This models the checkout process using views.
 import json
 import logging
 import urllib
+import datetime
+from pytz import timezone
 from decimal import Decimal
 from django.core.urlresolvers import reverse
 from django.forms import models as model_forms
@@ -320,10 +322,39 @@ class OverviewView(LoginMixin, ShopTemplateView):
             extra_info.order = order
             extra_info.save()
 
-    def confirm_order(self):
-        order = get_order_from_request(self.request)
-        order.status = Order.CONFIRMED
-        order.save()
+    def create_wallet_address(self, id):
+        if id < 0:
+            raise Exception("id cannot be negative!")
+
+        if settings.DEBUG:
+            return "BTC-ADDRESS-MISSING-IN-DEBUG"
+        acc = Account(settings.XPUB)
+        return acc.gen_new_address(id)
+
+    def create_confirmed_order(self, order):
+        """
+        Create an order from the current cart but does not mark it as payed.
+        Instead mark the order as CONFIRMED only, as somebody manually has to
+        check if bitcoins were received (or auto script) and mark the payments.
+        """
+        wallet_address = self.create_wallet_address(order.id)
+        try:
+            ph = PaymentHistory.objects.get(wallet_address=wallet_address)
+            return wallet_address
+        except PaymentHistory.DoesNotExist:
+            # create OrderPayment once
+            PaymentHistory.objects.create(order=order, amount=Decimal(0),
+                                        email=self.request.user.email,
+                                        currency='BTC',
+                                        status=PaymentHistory.CREATED,
+                                        wallet_address=wallet_address,
+                                        transaction_id='',
+                                        result = 'placed_order',
+                                        payment_method='bitcoin')
+
+            # Confirm the current order
+            order.status = Order.CONFIRMED
+            order.save()
 
         # empty the related cart
         try:
@@ -331,9 +362,8 @@ class OverviewView(LoginMixin, ShopTemplateView):
             cart.empty()
         except Cart.DoesNotExist:
             pass
-
-        confirmed.send(sender=None, order=order)
-
+        confirmed.send(sender=self, order=order)
+        return wallet_address
 
     def get_context_data(self, **kwargs):
         ctx = super(OverviewView, self).get_context_data(**kwargs)
@@ -375,10 +405,8 @@ class OverviewView(LoginMixin, ShopTemplateView):
 
     def post(self, *args, **kwargs):
         """ Called when view is POSTed """
-        # extra_info_form = self.get_extra_info_form()
-        # if extra_info_form.is_valid():
-        #     self.save_extra_info_to_order(self.order, extra_info_form)
-        self.confirm_order()
+        order = get_order_from_request(self.request)
+        self.create_confirmed_order(order)
         return HttpResponseRedirect(reverse('checkout_thankyou'))
 
 
@@ -401,39 +429,32 @@ class ThankYouView(LoginMixin, ShopTemplateView):
         self.shipping = self.request.session['shipping_backend']
         ctx.update({'shipping_backend': self.shipping})
         ctx.update({'payment_backend': self.payment})
+        my_date = datetime.datetime.now(timezone(settings.TIME_ZONE))
+        ctx.update({'now':my_date})
 
-        # convert price in dollar into BTC
-        exs = ExchangeService(self.request)
-        price_usd = exs.price_in_usd(order.order_total)
-        ex = Coindesk_Exchange(self.request)
-        amount_fiat = order.order_total
-        ctx.update({'amount_fiat': amount_fiat})
-
-        amount_btc = ex.convert_dollar_to_btc(price_usd)
-        ctx.update({'amount_btc': amount_btc})
-
-        transaction_id = date.today().strftime('%Y') + '%06d' % order.id
-        ctx.update({'transaction_id': transaction_id})
-
-        wallet_address = self.create_wallet_address(order.id)
-        ctx.update({'wallet_address': wallet_address})
-
-
-        rate_btc = exs.one_btc_in_czk()
-        ctx.update({'rate_btc': rate_btc})
-
-        chl = urllib.quote("bitcoin:%s?amount=%s" % (wallet_address, amount_btc))
-        ctx.update({'qrcode': 'https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=%s' % chl})
+        if self.payment == 'paypal':
+            pass
+        elif self.payment == 'bitcoin-payment':
+            # convert price in dollar into BTC
+            exs = ExchangeService(self.request)
+            price_usd = exs.price_in_usd(order.order_total)     # order price is in CZK
+            ex = Coindesk_Exchange(self.request)
+            amount_fiat = order.order_total
+            ctx.update({'amount_fiat': amount_fiat})
+            amount_btc = ex.convert_dollar_to_btc(price_usd)
+            ctx.update({'amount_btc': amount_btc})
+            transaction_id = date.today().strftime('%Y') + '%06d' % order.id
+            ctx.update({'transaction_id': transaction_id})
+            ph = PaymentHistory.get_by_order(order)
+            ctx.update({'wallet_address': ph.wallet_address})
+            rate_btc = exs.one_btc_in_czk()
+            ctx.update({'rate_btc': rate_btc})
+            chl = urllib.quote("bitcoin:%s?amount=%s" % (ph.wallet_address, amount_btc))
+            ctx.update({'qrcode': 'https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=%s' % chl})
+        else:
+            raise ValueError
         return ctx
 
-    def create_wallet_address(self, id):
-        if id < 0:
-            raise Exception("id cannot be negative!")
-
-        if settings.DEBUG:
-            return "BTC-ADDRESS-MISSING-IN-DEBUG"
-        acc = Account(settings.XPUB)
-        return acc.gen_new_address(id)
 
     def post(self, *args, **kwargs):
         # need to pay on Paypal in USD

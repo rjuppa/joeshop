@@ -195,12 +195,19 @@ class Coindesk_Exchange(object):
         rate = Decimal(self.content['btc_in_euro'])
         return Decimal(round(rate * self.COIN)) / self.COIN
 
+    def convert_to_4dec(self, price):
+        f = round(price, 4)
+        s = str(f) + '0000000000'
+        n = s.index('.')
+        return Decimal(s[0:n+4])
+
     def convert_dollar_to_btc(self, dollar):
         if not self.is_up_to_date():
             self.refresh()
         dolar_rate = self.get_btc_in_dollar()
         btc = round(dollar / dolar_rate * self.COIN)
-        return Decimal(btc)/self.COIN + self.FEE
+        f = Decimal(btc)/self.COIN + self.FEE
+        return self.convert_to_4dec(f)
 
     def convert_euro_to_btc(self, euro):
         if not self.is_up_to_date():
