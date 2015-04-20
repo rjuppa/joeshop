@@ -3,6 +3,7 @@ import os
 import sys
 import logging
 import requests
+import django
 from decimal import Decimal
 from datetime import datetime, timedelta
 from django.core.mail import send_mail
@@ -117,6 +118,7 @@ if __name__ == "__main__":
     sys.path.append('../')
     sys.path.append('.')
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "joeshop.settings")
+    django.setup()
 
     from django.db import connection
     from shop.models import Order
