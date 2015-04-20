@@ -419,7 +419,7 @@ class PaymentHistory(OrderPayment):
         body = render_to_string('emails/affiliate_program.txt', dict(order=self))
         send_mail(subject, body, settings.EMAIL_FROM, [self.user.email])
         self.send_affiliate_email = datetime.now()
-        self.save_base(update_fields=['sent_satisfaction_email', ])
+        self.save_base(update_fields=['send_affiliate_email', ])
 
 
     def __unicode__(self):
