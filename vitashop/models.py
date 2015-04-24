@@ -5,6 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.template.loader import render_to_string
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 from django.contrib.auth import get_user_model
+from django.core.mail import EmailMultiAlternatives, EmailMessage
 from shop.util.fields import CurrencyField
 from shop.models.productmodel import Product
 from shop.models.ordermodel import OrderPayment
@@ -396,8 +397,14 @@ class PaymentHistory(OrderPayment):
     # Order Emails
     def send_unconfirmed_payment_email(self):
         subject = 'VITAMINERAL.INFO - Payment Received'
-        body = render_to_string('emails/payment_received.txt', dict(order=self.order))
-        send_mail(subject, body, settings.EMAIL_FROM, [self.user.email])
+        body = render_to_string('emails/payment_received.html', dict(order=self.order))
+        try:
+            msg = EmailMessage(subject, body, 'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM, [self.user.email])
+            msg.content_subtype = "html"
+            msg.send()
+        except Exception as ex:
+            logger.error(ex)
+
 
     def send_money_received_email(self, amount):
         subject = 'VITAMINERAL.INFO - Payment Confirmed'
