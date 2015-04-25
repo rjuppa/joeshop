@@ -1,4 +1,4 @@
 VITAMINERAL.INFO
 ================
-
-Payment confirmed.
+Order: {{ order.id }}
+Payment confirmed. {{ amount }}

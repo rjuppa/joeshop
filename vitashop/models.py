@@ -397,34 +397,69 @@ class PaymentHistory(OrderPayment):
     # Order Emails
     def send_unconfirmed_payment_email(self):
         subject = 'VITAMINERAL.INFO - Payment Received'
-        body = render_to_string('emails/payment_received.html', dict(order=self.order))
+        text_content = render_to_string('emails/payment_received.txt', dict(order=self))
+        html_content = render_to_string('emails/payment_received.html', dict(order=self))
         try:
-            msg = EmailMessage(subject, body, 'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM, [self.user.email])
-            msg.content_subtype = "html"
+            msg = EmailMultiAlternatives(subject, text_content,
+                                         'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM,
+                                         [self.email])
+            msg.attach_alternative(html_content, "text/html")
             msg.send()
         except Exception as ex:
             logger.error(ex)
 
-
     def send_money_received_email(self, amount):
         subject = 'VITAMINERAL.INFO - Payment Confirmed'
-        body = render_to_string('emails/payment_confirmed.txt', dict(order=self.order, amount=amount))
-        send_mail(subject, body, settings.EMAIL_FROM, [self.user.email])
+        text_content = render_to_string('emails/payment_confirmed.txt', dict(order=self.order, amount=amount))
+        html_content = render_to_string('emails/payment_confirmed.html', dict(order=self.order, amount=amount))
+        try:
+            msg = EmailMultiAlternatives(subject, text_content,
+                                         'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM,
+                                         [self.email])
+            msg.attach_alternative(html_content, "text/html")
+            msg.send()
+        except Exception as ex:
+            logger.error(ex)
 
     def send_insufficient_payment_email(self, amount):
         subject = 'VITAMINERAL.INFO - Insufficient Payment Confirmed'
-        body = render_to_string('emails/insufficient_payment_received.txt', dict(order=self.order, amount=amount))
-        send_mail(subject, body, settings.EMAIL_FROM, [self.user.email])
+        text_content = render_to_string('emails/insufficient_payment_received.txt', dict(order=self, amount=amount))
+        html_content = render_to_string('emails/insufficient_payment_received.html', dict(order=self, amount=amount))
+        try:
+            msg = EmailMultiAlternatives(subject, text_content,
+                                         'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM,
+                                         [self.email])
+            msg.attach_alternative(html_content, "text/html")
+            msg.send()
+        except Exception as ex:
+            logger.error(ex)
 
     def send_shipped_order_email(self):
         subject = 'VITAMINERAL.INFO - Order Shipped'
-        body = render_to_string('emails/order_shipped.txt', dict(order=self))
-        send_mail(subject, body, settings.EMAIL_FROM, [self.user.email])
+        text_content = render_to_string('emails/order_shipped.txt', dict(order=self))
+        html_content = render_to_string('emails/order_shipped.html', dict(order=self))
+        try:
+            msg = EmailMultiAlternatives(subject, text_content,
+                                         'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM,
+                                         [self.email])
+            msg.attach_alternative(html_content, "text/html")
+            msg.send()
+        except Exception as ex:
+            logger.error(ex)
 
     def send_affiliate_email(self):
         subject = 'VITAMINERAL.INFO - Affiliate Program'
-        body = render_to_string('emails/affiliate_program.txt', dict(order=self))
-        send_mail(subject, body, settings.EMAIL_FROM, [self.user.email])
+        text_content = render_to_string('emails/affiliate_program.txt', dict(order=self))
+        html_content = render_to_string('emails/affiliate_program.html', dict(order=self))
+        try:
+            msg = EmailMultiAlternatives(subject, text_content,
+                                         'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM,
+                                         [self.email])
+            msg.attach_alternative(html_content, "text/html")
+            msg.send()
+        except Exception as ex:
+            logger.error(ex)
+
         self.send_affiliate_email = datetime.now()
         self.save_base(update_fields=['send_affiliate_email', ])
 

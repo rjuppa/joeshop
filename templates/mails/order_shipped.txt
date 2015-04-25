@@ -1,4 +1,5 @@
 VITAMINERAL.INFO
 ================
 
-Your order has shipped.
+    Order: {{ order.id }}
+    Your order has shipped.

@@ -1,0 +1,143 @@
+{% load staticfiles %}
+{% load currency %}
+{% load shopytags %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8">
+    <title>Vitamineral.info</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<style>
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.col-sm-3 {width: 25%; float: left;}
+.col-sm-2 {width: 16%; float: left;}
+.col-sm-1 {width: 8%; float: left;}
+a:hover { color: #f7360f; }
+a:hover, a:visited, a:link, a:active {text-decoration: none;}
+footer {
+    background-color: #272015;
+    border-top: 3px solid #F5B834;
+    height: auto;
+    padding: 10px;
+    margin-top: 20px;
+}
+footer ul {
+    margin: 0;
+    padding: 0;
+    margin-left: 10px;
+    list-style-type: none;
+    display: block;
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    list-style-type: none;
+}
+.clearfix:after{clear: both;}
+.clearfix:before{display: table; content: " ";}
+
+h3 {
+    font-size: 24px;
+    padding-top: 15px;
+    color: #F5B834;
+    font-weight: 600;
+}
+.navbar-default {
+    background-color: #1E6B48;
+    color: #FFFFFF;
+    font-weight: 600;
+    border-bottom: 3px solid #F5B834;
+}
+.navbar {border-radius: 0;border: 0;}
+#brand {
+    color: #FFFFFF;
+    font-weight: 500;
+    font-family: "DancingScript", Georgia, serif;
+    font-size: 2em;
+}
+</style>
+  </head>
+  <body>
+      <header>
+          <nav class="navbar navbar-default">
+            <div class="container">
+              <div class="navbar-header">
+                <a class="navbar-brand" id="brand" href="http://vitamineral.info/" target="_blank">Vitamineral .info</a>
+              </div>
+            </div>
+          </nav>
+      </header>
+
+    <div class="container">
+
+        {% block body %}
+        {% endblock %}
+
+    </div>
+
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h3>{% trans "Information" %}</h3>
+                    <ul>
+                        <li><a href="http://vitamineral.info/faq/" target="_blank">{% trans "FAQ" %}</a></li>
+                        <li><a href="http://vitamineral.info/contact/" target="_blank">{% trans "Contact" %}</a></li>
+                        <li><a href="http://vitamineral.info/information/#affiliate#" target="_blank">{% trans "Affiliate" %}</a></li>
+                        <li><a href="http://vitamineral.info/information/#shipping#" target="_blank">{% trans "Shipping" %}</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h3>{% trans "Media" %}</h3>
+                    <ul>
+                        <li><a href="http://www.zdraviok.cz/zdravi/62-VICE-O-ZDRAVI/214-Zdravotni-problemy" target="_blank">{% trans "Blog" %}</a></li>
+                        <li><a href="https://www.facebook.com/pages/Zdraví-OK-sro/381736631841888" target="_blank">{% trans "Facebook" %}</a></li>
+                        <li><a href="http://receptyprozdravi.cz/video/58-jime-spravne-vitaminy" target="_blank">{% trans "Video" %}</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h3>{% trans "Other" %}</h3>
+                    <ul>
+                        <li><a href="http://vitamineral.info/bitcoins/" target="_blank">{% trans "Bitcoins" %}</a></li>
+                        <li><a href="http://vitamineral.info/information/#vitamins#" target="_blank">{% trans "Vitamins" %}</a></li>
+                        <li><a href="http://vitamineral.info/information/#minerals#" target="_blank">{% trans "Minerals" %}</a></li>
+                        <li><a href="http://vitamineral.info/information/#calmag#" target="_blank">{% trans "CalMag" %}</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-2">
+                    <h3>{% trans "Payment" %}</h3>
+                    <br/>
+                    <img src="http://vitamineral.info/media/img/bitcoin_accepted.png" class="img-responsive" alt="Pay with Bitcoins" style="margin:10px 0;" />
+                    <img src="http://vitamineral.info/media/img/paypal.png" class="img-responsive" alt="Pay with PayPal" style="margin:10px 0;" />
+                </div>
+            </div>
+            <hr style="color: red">
+            <div class="col-sm-8">
+            <small>&copy; 2015 vitamineral.info {% trans "All Rights Reserved." %}</small>
+            </div>
+            <div class="col-sm-2">
+
+            </div>
+            <div class="col-sm-2">
+
+            </div>
+        </div>
+    </footer>
+ </body>
+</html>

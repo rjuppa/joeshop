@@ -1,4 +1,5 @@
 VITAMINERAL.INFO
 ================
 
-Insufficient payment received.
+Order: {{ order.id }}
+Insufficient payment received. {{ amount }}
