@@ -6,7 +6,8 @@ import json
 import logging
 import urllib
 import datetime
-from pytz import timezone
+
+from django.utils import timezone
 from decimal import Decimal
 from django.core.urlresolvers import reverse
 from django.forms import models as model_forms
@@ -343,6 +344,7 @@ class OverviewView(LoginMixin, ShopTemplateView):
             return wallet_address
         except PaymentHistory.DoesNotExist:
             # create OrderPayment once
+
             exs = ExchangeService(self.request)
             if self.payment == 'paypal':
                 currency = get_currency(self.request)
@@ -357,7 +359,8 @@ class OverviewView(LoginMixin, ShopTemplateView):
                                             status=PaymentHistory.CREATED,
                                             transaction_id='',
                                             result='placed_order',
-                                            payment_method='paypal')
+                                            payment_method='paypal',
+                                            created=timezone.now())
                 ph.send_order_placed()
 
             elif self.payment == 'bitcoin-payment':
@@ -372,7 +375,8 @@ class OverviewView(LoginMixin, ShopTemplateView):
                                             wallet_address=wallet_address,
                                             transaction_id='',
                                             result = 'placed_order',
-                                            payment_method='bitcoin')
+                                            payment_method='bitcoin',
+                                            created=timezone.now())
                 ph.send_order_placed()
             else:
                 raise ValueError('payment')

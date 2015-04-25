@@ -6,6 +6,7 @@ import requests
 import django
 from decimal import Decimal
 from datetime import datetime, timedelta
+from django.utils import timezone
 from django.core.mail import send_mail
 from django.conf import settings
 
@@ -13,7 +14,7 @@ logger = logging.getLogger('scripts')
 
 # def cleanup_cancelled(cls):
 #     old = cls.objects.filter(transaction_status=cls.CANCELLED, order_status=cls.CANCELLED,
-#                              created__lte=datetime.now() - timedelta(days=7))
+#                              created__lte=timezone.now() - timedelta(days=7))
 #     for o in old:
 #         print "Deleting order", o
 #         o.delete()
@@ -58,7 +59,7 @@ def check_orders_for_unconfirmed_payments():
                 ph.save()
 
             # CANCELLED
-            elif ph.created <= (datetime.now() - timedelta(hours=6)):
+            elif ph.created <= (timezone.now() - timedelta(hours=6)):
                 # Mark timed out transactions as cancelled
                 logger.debug("Setting order %s as CANCELLED" % (order.id))
                 # update PaymentHistory
