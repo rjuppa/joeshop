@@ -426,8 +426,8 @@ class PaymentHistory(OrderPayment):
 
     def send_unconfirmed_payment_email(self):
         subject = 'VITAMINERAL.INFO - Payment Received'
-        text_content = render_to_string('emails/payment_received.txt', dict(order=self.order))
-        html_content = render_to_string('emails/payment_received.html', dict(order=self.order))
+        text_content = render_to_string('../templates/mails/payment_received.txt', dict(order=self.order))
+        html_content = render_to_string('../templates/mails/payment_received.html', dict(order=self.order))
         try:
             msg = EmailMultiAlternatives(subject, text_content,
                                          'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM,
@@ -439,8 +439,8 @@ class PaymentHistory(OrderPayment):
 
     def send_money_received_email(self, amount):
         subject = 'VITAMINERAL.INFO - Payment Confirmed'
-        text_content = render_to_string('emails/payment_confirmed.txt', dict(order=self.order, amount=amount))
-        html_content = render_to_string('emails/payment_confirmed.html', dict(order=self.order, amount=amount))
+        text_content = render_to_string('../templates/mails/payment_confirmed.txt', dict(order=self.order, amount=amount))
+        html_content = render_to_string('../templates/mails/payment_confirmed.html', dict(order=self.order, amount=amount))
         try:
             msg = EmailMultiAlternatives(subject, text_content,
                                          'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM,
@@ -452,8 +452,8 @@ class PaymentHistory(OrderPayment):
 
     def send_insufficient_payment_email(self, amount):
         subject = 'VITAMINERAL.INFO - Insufficient Payment Confirmed'
-        text_content = render_to_string('emails/insufficient_payment_received.txt', dict(order=self.order, amount=amount))
-        html_content = render_to_string('emails/insufficient_payment_received.html', dict(order=self.order, amount=amount))
+        text_content = render_to_string('../templates/mails/insufficient_payment_received.txt', dict(order=self.order, amount=amount))
+        html_content = render_to_string('../templates/mails/insufficient_payment_received.html', dict(order=self.order, amount=amount))
         try:
             msg = EmailMultiAlternatives(subject, text_content,
                                          'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM,
@@ -465,8 +465,8 @@ class PaymentHistory(OrderPayment):
 
     def send_shipped_order_email(self):
         subject = 'VITAMINERAL.INFO - Order Shipped'
-        text_content = render_to_string('emails/order_shipped.txt', dict(order=self.order))
-        html_content = render_to_string('emails/order_shipped.html', dict(order=self.order))
+        text_content = render_to_string('../templates/mails/order_shipped.txt', dict(order=self.order))
+        html_content = render_to_string('../templates/mails/order_shipped.html', dict(order=self.order))
         try:
             msg = EmailMultiAlternatives(subject, text_content,
                                          'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM,
@@ -478,8 +478,8 @@ class PaymentHistory(OrderPayment):
 
     def send_affiliate_email(self):
         subject = 'VITAMINERAL.INFO - Affiliate Program'
-        text_content = render_to_string('emails/affiliate_program.txt', dict(order=self.order))
-        html_content = render_to_string('emails/affiliate_program.html', dict(order=self.order))
+        text_content = render_to_string('../templates/mails/affiliate_program.txt', dict(order=self.order))
+        html_content = render_to_string('../templates/mails/affiliate_program.html', dict(order=self.order))
         try:
             msg = EmailMultiAlternatives(subject, text_content,
                                          'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM,
