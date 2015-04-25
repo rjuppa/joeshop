@@ -11,7 +11,7 @@ from web.views import *
 urlpatterns = patterns('web.views',
     url(r'^contact/', contact_view, name='contact'),
     url(r'^information/', information_view, name='information'),
-    url(r'^bitcoin/', bitcoin_view, name='bitcoin'),
+    url(r'^bitcoins/', bitcoin_view, name='bitcoin'),
     url(r'^faq/', faq_view, name='faq'),
     url(r'^affiliate/', affiliate_view, name='affiliate'),
     url(r'^thankyou/', thankyou_view, name='thankyou'),
