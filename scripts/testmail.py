@@ -10,10 +10,13 @@ from django.core.mail import EmailMultiAlternatives, EmailMessage
 
 def send_affiliate_email():
     subject = 'VITAMINERAL.INFO - Affiliate Program'
-    body = render_to_string('../templates/mails/affiliate_program.html', {})
+    text_content = render_to_string('../templates/mails/affiliate_program.html', {})
+    html_content = render_to_string('../templates/mails/affiliate_program.html', {})
     try:
-        msg = EmailMessage(subject, body, 'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM, ['rjuppa@gmail.com'])
-        msg.content_subtype = "html"
+        msg = EmailMultiAlternatives(subject, text_content,
+                                     'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM,
+                                     ['rjuppa@gmail.com'])
+        msg.attach_alternative(html_content, "text/html")
         msg.send()
     except Exception as ex:
         print ex
