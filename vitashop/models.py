@@ -58,6 +58,7 @@ class MyUserManager(BaseUserManager):
         user.set_password(password)
         user.is_active = True
         user.save(using=self._db)
+        self.send_new_user_created(email)
         return user
 
     def generate_activation_key(self):
@@ -75,6 +76,19 @@ class MyUserManager(BaseUserManager):
             return True
         except MyUser.DoesNotExist:
             return False
+
+        # Order Emails
+
+    def send_new_user_created(self, email):
+        subject = 'VITAMINERAL.INFO - New User Created'
+        text_content = """
+        New User Created: %s
+        """ % email
+        try:
+            send_mail(subject, text_content, 'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM,
+                                         [settings.EMAIL_ADMIN])
+        except Exception as ex:
+            logger.error(ex)
 
     def create_superuser(self, email, username, password):
         """
@@ -395,10 +409,25 @@ class PaymentHistory(OrderPayment):
             return None
 
     # Order Emails
+    def send_order_placed(self):
+        subject = 'VITAMINERAL.INFO - Order placed'
+        text_content = """
+        An order was placed: %s
+        order_total: %s
+        email: %s
+        payment_method: %s
+        created: %s
+        """ % (self.order.id, self.order.order_total, self.email, self.payment_method, self.created)
+        try:
+            send_mail(subject, text_content, 'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM,
+                                         [settings.EMAIL_ADMIN])
+        except Exception as ex:
+            logger.error(ex)
+
     def send_unconfirmed_payment_email(self):
         subject = 'VITAMINERAL.INFO - Payment Received'
-        text_content = render_to_string('emails/payment_received.txt', dict(order=self))
-        html_content = render_to_string('emails/payment_received.html', dict(order=self))
+        text_content = render_to_string('emails/payment_received.txt', dict(order=self.order))
+        html_content = render_to_string('emails/payment_received.html', dict(order=self.order))
         try:
             msg = EmailMultiAlternatives(subject, text_content,
                                          'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM,
@@ -423,8 +452,8 @@ class PaymentHistory(OrderPayment):
 
     def send_insufficient_payment_email(self, amount):
         subject = 'VITAMINERAL.INFO - Insufficient Payment Confirmed'
-        text_content = render_to_string('emails/insufficient_payment_received.txt', dict(order=self, amount=amount))
-        html_content = render_to_string('emails/insufficient_payment_received.html', dict(order=self, amount=amount))
+        text_content = render_to_string('emails/insufficient_payment_received.txt', dict(order=self.order, amount=amount))
+        html_content = render_to_string('emails/insufficient_payment_received.html', dict(order=self.order, amount=amount))
         try:
             msg = EmailMultiAlternatives(subject, text_content,
                                          'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM,
@@ -436,8 +465,8 @@ class PaymentHistory(OrderPayment):
 
     def send_shipped_order_email(self):
         subject = 'VITAMINERAL.INFO - Order Shipped'
-        text_content = render_to_string('emails/order_shipped.txt', dict(order=self))
-        html_content = render_to_string('emails/order_shipped.html', dict(order=self))
+        text_content = render_to_string('emails/order_shipped.txt', dict(order=self.order))
+        html_content = render_to_string('emails/order_shipped.html', dict(order=self.order))
         try:
             msg = EmailMultiAlternatives(subject, text_content,
                                          'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM,
@@ -449,8 +478,8 @@ class PaymentHistory(OrderPayment):
 
     def send_affiliate_email(self):
         subject = 'VITAMINERAL.INFO - Affiliate Program'
-        text_content = render_to_string('emails/affiliate_program.txt', dict(order=self))
-        html_content = render_to_string('emails/affiliate_program.html', dict(order=self))
+        text_content = render_to_string('emails/affiliate_program.txt', dict(order=self.order))
+        html_content = render_to_string('emails/affiliate_program.html', dict(order=self.order))
         try:
             msg = EmailMultiAlternatives(subject, text_content,
                                          'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM,

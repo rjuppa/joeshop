@@ -350,7 +350,7 @@ class OverviewView(LoginMixin, ShopTemplateView):
                     order_price = order.order_total
                 else:
                     order_price = exs.price_in_usd(order.order_total)
-                PaymentHistory.objects.create(order=order, amount=Decimal(0),
+                ph = PaymentHistory.objects.create(order=order, amount=Decimal(0),
                                             email=self.request.user.email,
                                             order_price=order_price,
                                             currency=currency,
@@ -358,12 +358,13 @@ class OverviewView(LoginMixin, ShopTemplateView):
                                             transaction_id='',
                                             result='placed_order',
                                             payment_method='paypal')
+                ph.send_order_placed()
 
             elif self.payment == 'bitcoin-payment':
                 price_usd = exs.price_in_usd(order.order_total)     # order price is in CZK
                 ex = Coindesk_Exchange(self.request)
                 price_btc = ex.convert_dollar_to_btc(price_usd)
-                PaymentHistory.objects.create(order=order, amount=Decimal(0),
+                ph = PaymentHistory.objects.create(order=order, amount=Decimal(0),
                                             email=self.request.user.email,
                                             order_price=price_btc,
                                             currency='BTC',
@@ -372,6 +373,7 @@ class OverviewView(LoginMixin, ShopTemplateView):
                                             transaction_id='',
                                             result = 'placed_order',
                                             payment_method='bitcoin')
+                ph.send_order_placed()
             else:
                 raise ValueError('payment')
 
