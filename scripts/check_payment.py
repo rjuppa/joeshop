@@ -50,13 +50,13 @@ def check_orders_for_unconfirmed_payments():
             if unconfirmed_btc >= (ph.order_price - settings.BTC_PRICE_TOLERANCE):
                 logger.debug("UNCONFIRMED balance of %s (order %s) is %s BTC" % (ph.wallet_address, order.id, unconfirmed_btc))
 
-                if ph.amount > unconfirmed_btc:
+                if ph.status == PaymentHistory.CREATED:
+                    # send email only one time
                     ph.send_unconfirmed_payment_email()  # SEND EMAIL
 
-                # update PaymentHistory
-                ph.amount = unconfirmed_btc
-                ph.status = PaymentHistory.UNCONFIRMED
-                ph.save()
+                    # update PaymentHistory
+                    ph.status = PaymentHistory.UNCONFIRMED
+                    ph.save()
 
             # CANCELLED
             elif ph.created <= (timezone.now() - timedelta(hours=6)):
@@ -104,14 +104,14 @@ def check_orders_for_payment_confirmation():
             # Received NOT ENOUGH MONEY
             elif (confirmed_btc > 0) and (confirmed_btc < (ph.order_price - settings.BTC_PRICE_TOLERANCE)):
 
-                if ph.amount > confirmed_btc:
+                if ph.amount < confirmed_btc:   # only once
                     logger.debug("Order %s received insufficient payment!!" % order.id)
                     ph.send_insufficient_payment_email(confirmed_btc)  # SEND EMAIL
 
-                # update PaymentHistory
-                ph.amount = confirmed_btc
-                ph.status = PaymentHistory.UNCONFIRMED
-                ph.save()
+                    # update PaymentHistory
+                    ph.amount = confirmed_btc
+                    ph.status = PaymentHistory.UNCONFIRMED
+                    ph.save()
 
 
 
