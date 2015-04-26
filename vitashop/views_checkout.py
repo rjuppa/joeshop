@@ -465,8 +465,9 @@ class ThankYouView(LoginMixin, ShopTemplateView):
         self.shipping = self.request.session['shipping_backend']
         ctx.update({'shipping_backend': self.shipping})
         ctx.update({'payment_backend': self.payment})
-        my_date = datetime.datetime.now(timezone(settings.TIME_ZONE))
-        ctx.update({'now':my_date})
+        # my_date = datetime.datetime.now(timezone(settings.TIME_ZONE))
+        my_date = timezone.now()
+        ctx.update({'now': my_date})
 
         if self.payment == 'paypal':
             pass
