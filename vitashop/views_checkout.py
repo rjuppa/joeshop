@@ -496,13 +496,14 @@ class ThankYouView(LoginMixin, ShopTemplateView):
     def post(self, *args, **kwargs):
         # need to pay on Paypal in USD
         order = get_order_from_request(self.request)
+        c = get_currency(self.request)
         sprice = str(order.order_total)
         try:
             #urllib.quote_plus(sprice)
-            url = PaypalAPI.call_express_checkout(order, 'USD', sprice, self.request.user, '')
+            url = PaypalAPI.call_express_checkout(order, c, sprice, self.request.user, '')
         except Exception as ex:
             logger.error(ex)
-            return HttpResponseRedirect(reverse('error'))
+            return HttpResponseRedirect(reverse('error', kwargs={'message': 'Error in call_express_checkout'} ))
 
         return HttpResponseRedirect(url)
 

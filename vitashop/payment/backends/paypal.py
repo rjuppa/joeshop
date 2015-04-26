@@ -126,8 +126,8 @@ class PaypalAPI(object):
 
         PaypalAPI.place_payment(order, currency, sprice, user, coupon, 'paypal')
         if order.id > 0:
-            site = 'http://daily4sport.com:8000/'
-            url = 'http://daily4sport.com:8000/vitashop/'
+            site = 'http://' + settings.SITE_NAME + '/'
+            url = site + 'shop/'
             ppsuccess = '%scheckout/ppsuccess/' % url
             ppcanceled = '%scheckout/ppcanceled/' % url
             param = (settings.PAYPAL_USERNAME, settings.PAYPAL_PASSWORD, settings.PAYPAL_SIGNATURE, settings.PAYPAL_VERSION, order.id, sprice, currency, site, lang, ppsuccess, ppcanceled)
