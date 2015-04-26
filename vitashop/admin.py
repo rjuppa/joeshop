@@ -42,9 +42,9 @@ class PaymentHistoryAdmin(admin.ModelAdmin):
     wallet_address_link.allow_tags = True
 
 
-    list_display = ('id', 'created', 'order', 'status', 'email', 'wallet_address', 'amount', 'currency')
+    list_display = ('id', 'created', 'order', 'status', 'email', 'wallet_address', 'order_price', 'amount', 'currency')
     list_display_links = ('order',)
-    readonly_fields = ('id', 'created', 'order_link', 'status', 'email', 'wallet_address', 'amount', 'currency')
-    fields = ('id', 'created', 'order_link', 'status', 'email', 'wallet_address', 'amount', 'currency')
+    readonly_fields = ('id', 'created', 'order_link', 'status', 'email', 'wallet_address', 'order_price', 'amount', 'currency')
+    fields = ('id', 'created', 'order_link', 'status', 'email', 'wallet_address', 'order_price', 'amount', 'currency')
 
 
