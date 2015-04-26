@@ -94,7 +94,7 @@ class OrderPayment(models.Model):
     """
     order = models.ForeignKey(Order, verbose_name=_('Order'))
     # How much was paid with this particular transfer
-    amount = CurrencyField(verbose_name=_('Amount'))
+    amount = models.DecimalField(max_digits=11, decimal_places=4, default=0, verbose_name=_('Amount'))
     transaction_id = models.CharField(max_length=255,
             verbose_name=_('Transaction ID'),
             help_text=_("The transaction processor's reference"))
