@@ -140,7 +140,9 @@ class PaypalAPI(object):
             if r.status_code == 200:
                 data = parse_qs(r.text)
                 tt = data['TOKEN'][0]
+                logger.debug('TT=%s' % tt)
                 ack = data['ACK'][0]
+                logger.debug('ack=%s' % ack)
                 logger.debug('call_express_checkout ack: %s ' % ack)
                 token = unquote(tt)
                 return settings.PAYPAL_REDIRECT % token  # return token

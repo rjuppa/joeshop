@@ -502,6 +502,7 @@ class ThankYouView(LoginMixin, ShopTemplateView):
         try:
             #urllib.quote_plus(sprice)
             url = PaypalAPI.call_express_checkout(order, c, sprice, self.request.user, '')
+            logger.info('url=%s' % url)
         except Exception as ex:
             logger.error(ex)
             return HttpResponseRedirect(reverse('error'))
