@@ -282,6 +282,42 @@ MEDIA_ROOT = BASE_DIR + '/media/'
 LOG_DIR = BASE_DIR + '/logs/'
 LOGGING = {
     'version': 1,
+    'disable_existing_loggers': True,
+    'formatters': {
+        'standard': {
+            'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+        },
+        'verbose': {
+            'format': "[%(asctime)s] %(levelname)s [%(name)s, line=%(lineno)s] %(message)s",
+            'datefmt': "%Y-%m-%d %H:%M:%S"
+        },
+    },
+    'handlers': {
+        'default': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'logs/mylog.log',
+            'maxBytes': 1024*1024*5, # 5 MB
+            'backupCount': 5,
+            'formatter': 'verbose',
+        },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['default'],
+            'level': 'DEBUG',
+            'propagate': True
+        },
+        'vitashop.checkout': {
+            'handlers': ['default'],
+            'level': 'DEBUG',
+            'propagate': False
+        },
+    }
+}
+
+LOGGING22 = {
+    'version': 1,
     'root': {'level': 'INFO'},
     'disable_existing_loggers': False,
     'formatters': {
@@ -299,6 +335,14 @@ LOGGING = {
         }
     },
     'handlers': {
+        'default': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'logs/mylog.log',
+            'maxBytes': 1024*1024*5, # 5 MB
+            'backupCount': 5,
+            'formatter': 'verbose',
+        },
         'console': {
             'class': 'logging.StreamHandler',
         },
@@ -306,16 +350,22 @@ LOGGING = {
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
         },
-        'file': {'level': 'INFO',
+        'file': {
+            'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'filename': LOG_DIR + "django.log",
             'formatter': 'verbose'
         },
     },
     'loggers': {
-        'vitashop.checkout': {
+        '': {
             'handlers': ['console', 'file'],
             'level': 'DEBUG',
+            'propagate': True
+        },
+        'vitashop.checkout': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
         },
         'scripts': {
             'handlers': ['console', 'file'],

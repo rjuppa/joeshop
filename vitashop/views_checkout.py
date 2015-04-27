@@ -29,6 +29,7 @@ from vitashop.forms import ShippingForm, BillingForm
 from vitashop.payment.backends.paypal import *
 from vitashop.utils import get_currency
 from vitashop.exchange import ExchangeService
+from vitashop.models import PaymentHistory
 from shop.backends_pool import backends_pool
 from shop.util.btc_helper import Coindesk_Exchange
 from vitashop.utils import Account
@@ -481,7 +482,7 @@ class ThankYouView(LoginMixin, ShopTemplateView):
             ctx.update({'amount_fiat': amount_fiat})
             amount_btc = ex.convert_dollar_to_btc(price_usd)
             ctx.update({'amount_btc': amount_btc})
-            transaction_id = date.today().strftime('%Y') + '%06d' % order.id
+            transaction_id = my_date.today().strftime('%Y') + '%06d' % order.id
             ctx.update({'transaction_id': transaction_id})
             ph = PaymentHistory.get_by_order(order)
             ctx.update({'wallet_address': ph.wallet_address})

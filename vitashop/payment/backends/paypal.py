@@ -1,24 +1,18 @@
 # -*- coding: utf-8 -*-
-import logging
 import requests
-from decimal import Decimal
-from datetime import date
+import logging
 from urlparse import urlparse, parse_qs, unquote
 from django.conf.urls import patterns, url
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 from django.shortcuts import render_to_response
-from django.core.exceptions import ObjectDoesNotExist
 from shop.models.ordermodel import Order
 from shop.models.cartmodel import Cart
 from shop.util.decorators import on_method, order_required
 from shop.order_signals import completed, confirmed, cancelled
-from vitashop.models import PaymentHistory
 from django.conf import settings
 
-
-logger = logging.getLogger('vitashop')
-
+logger = logging.getLogger('vitashop.checkout')
 
 class PaypalBackend(object):
     url_namespace = 'paypal'
@@ -138,6 +132,7 @@ class PaypalAPI(object):
             r = requests.post(settings.PAYPAL_SIG_URL, data=payload)
             logger.debug('call_express_checkout: r.status_code == %s ' % r.status_code)
             if r.status_code == 200:
+                logger.error('noerror===' )
                 data = parse_qs(r.text)
                 tt = data['TOKEN'][0]
                 logger.debug('TT=%s' % tt)
