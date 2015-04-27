@@ -12,7 +12,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from shop.models.ordermodel import Order
 from shop.models.cartmodel import Cart
 from shop.util.decorators import on_method, order_required
-from shop.order_signals import completed, confirmed
+from shop.order_signals import completed, confirmed, cancelled
 from vitashop.models import PaymentHistory
 from django.conf import settings
 
@@ -66,55 +66,56 @@ class PaypalAPI(object):
             return None
 
     @classmethod
-    def place_payment(cls, order, currency, price, user, coupon='', method='paypal'):
+    def pp_order_completed(cls, order, ph, payer_id):
         # log payment
-        if not user:
-            raise ValueError('user')
+        if not ph:
+            raise ValueError('ph')
         if not order:
             raise ValueError('order')
 
-        ph = PaymentHistory()
-        ph.order = order
-        ph.email = user.email
-        ph.amount = Decimal(price)
-        ph.currency = currency
-        ph.payment_method = method
-        ph.result = 'place_order'
-        ph.status = PaymentHistory.CREATED
-        ph.transaction_id = ''
-        ph.save()
-        return ph.id
+        ph.amount = ph.order_price
+        ph.result = 'success'
+        ph.transaction_id = payer_id
+        ph.save(update_fields=['result', 'amount', 'transaction_id'])
+
+        if order.order.is_paid():
+            order.status = Order.COMPLETED
+            order.save()
+            completed.send(sender=None, order=order)
+            return True
+        else:
+            return False    # this should not happened
 
     @classmethod
-    def confirm_payment(cls, order, transaction_id, result):
+    def pp_payment_canceled(cls, order, ph):
+        # log payment
+        if not ph:
+            raise ValueError('ph')
         if not order:
             raise ValueError('order')
 
-        ph = PaymentHistory.get_by_order(order)
-        if ph:
-            ph.payment_id = transaction_id
-            ph.result = result
-            ph.save(update_fields=['result', 'transaction_id'])
+        ph.result = 'canceled'
+        ph.save(update_fields=['result'])
+        order.status = Order.CANCELED
+        order.save()
 
-            if order.is_paid():
-                # Set the order status:
-                order.status = Order.COMPLETED
-                order.save()
+        cancelled.send(sender=None, order=order)
+        return True
 
-                # empty the related cart
-                # try:
-                #     cart = Cart.objects.get(pk=order.cart_pk)
-                #     cart.empty()
-                # except Cart.DoesNotExist:
-                #     pass
+    @classmethod
+    def pp_payment_failed(cls, order, ph, err_msg):
+        # log payment
+        if not ph:
+            raise ValueError('ph')
+        if not order:
+            raise ValueError('order')
 
-                completed.send(sender=None, order=order)
-                return True
-            else:
-                return False
-
-        else:
-            logger.error('PaymentHistory for order=%s not found.' % order.id)
+        msg = err_msg[:12] | ''
+        ph.result = 'failed-' + msg
+        ph.save(update_fields=['result'])
+        order.status = Order.ERROR
+        order.save()
+        return True
 
     @classmethod
     def call_express_checkout(cls, order, currency, sprice, user, coupon='', lang='en'):
@@ -124,7 +125,7 @@ class PaypalAPI(object):
         if not user:
             raise ValueError('user')
 
-        PaypalAPI.place_payment(order, currency, sprice, user, coupon, 'paypal')
+        #PaypalAPI.place_payment(order, currency, sprice, user, coupon, 'paypal')
         if order.id > 0:
             site = 'http://' + settings.SITE_NAME + '/'
             url = site + 'shop/'

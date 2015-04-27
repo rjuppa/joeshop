@@ -470,6 +470,7 @@ class ThankYouView(LoginMixin, ShopTemplateView):
         ctx.update({'now': my_date})
 
         if self.payment == 'paypal':
+            # ph = PaymentHistory.get_by_order(order)
             pass
         elif self.payment == 'bitcoin-payment':
             # convert price in dollar into BTC
@@ -529,7 +530,8 @@ def pp_canceled_page(request):
                 if order_id > 0:
                     order = PaypalAPI.get_order(order_id)
                     if order:
-                        PaypalAPI.confirm_payment(order, '', 'canceled')
+                        ph = PaymentHistory.get_by_order(order_id)
+                        PaypalAPI.pp_payment_canceled(order, ph)
                     else:
                         logger.error("order not found detail='%s' " % detail)
 
@@ -557,7 +559,8 @@ def pp_failed_page(request):
                 if order_id > 0:
                     order = PaypalAPI.get_order(order_id)
                     if order:
-                        PaypalAPI.confirm_payment(order, '', 'failed')
+                        ph = PaymentHistory.get_by_order(order_id)
+                        PaypalAPI.pp_payment_failed(order, ph, 'PP failed')
                     else:
                         logger.error("order not found detail='%s' " % detail)
 
@@ -601,20 +604,20 @@ def pp_success_page(request):
                     if order:
                         ph = PaymentHistory.get_by_order(order_id)
                         if ph:
-                            sprice = str(ph.amount)
+                            sprice = str(ph.order_price)
 
                             # PAY
                             result = PaypalAPI.do_express_checkout_payment(payer_id, token, sprice)
                             if result:
-                                if PaypalAPI.confirm_payment(order, payer_id, 'success'):
+                                if PaypalAPI.pp_order_completed(order, ph, payer_id):
                                     context['order'] = order
                                     return render_to_response('vitashop/checkout/ppsuccess.html', context)
                                 else:
-                                    context['error'] = 'You pay less then is the prize. Order total price is $%s' % sprice
+                                    context['error'] = 'You paid less then is the prize. Order total price is $%s' % sprice
                                 return render_to_response('vitashop/checkout/ppfailed.html', context)
                             else:
-                                PaypalAPI.confirm_payment(order, payer_id, 'failed')
                                 context['error'] = 'An error has occurred in payment processing.'
+                                PaypalAPI.pp_payment_failed(order, ph, 'in payment processing')
                                 return render_to_response('vitashop/checkout/ppfailed.html', context)
                         else:
                             logger.error('OrderPayment for order=%s not found.' % order_id)
@@ -628,8 +631,7 @@ def pp_success_page(request):
             return render_to_response('vitashop/checkout/ppsuccess.html', context)
     else:
         context = {}
-        context['play_url'] = settings.LANGEVO_PLAY
-        context['error'] = 'NOT_AUTHENTICATED'
+        context['message'] = 'NOT_AUTHENTICATED'
         return render_to_response('vitashop/error.html', context)
 
 

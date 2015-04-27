@@ -336,6 +336,7 @@ class BaseOrder(models.Model):
     COMPLETED = 40  # Payment backend successfully completed
     SHIPPED = 50  # The order was shipped to client
     CANCELED = 60  # The order was canceled
+    ERROR = 90
     CANCELLED = CANCELED  # DEPRECATED SPELLING
 
     PAYMENT = 30  # DEPRECATED!
@@ -347,6 +348,7 @@ class BaseOrder(models.Model):
         (COMPLETED, _('Completed')),
         (SHIPPED, _('Shipped')),
         (CANCELED, _('Canceled')),
+        (ERROR, _('Error')),
     )
 
     # If the user is null, the order was created with a session
