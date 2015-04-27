@@ -132,15 +132,17 @@ class PaypalAPI(object):
             r = requests.post(settings.PAYPAL_SIG_URL, data=payload)
             logger.debug('call_express_checkout: r.status_code == %s ' % r.status_code)
             if r.status_code == 200:
-                logger.error('noerror===>' + r.text)
+                logger.error('noerror==> r.text=' + r.text)
                 data = parse_qs(r.text)
-                tt = data['TOKEN'][0]
-                logger.debug('TT=%s' % tt)
                 ack = data['ACK'][0]
+                if ack == 'Success':
+                    tt = data['TOKEN'][0]
+                    token = unquote(tt)
+                    return settings.PAYPAL_REDIRECT % token  # return token
+
                 logger.debug('ack=%s' % ack)
                 logger.debug('call_express_checkout ack: %s ' % ack)
-                token = unquote(tt)
-                return settings.PAYPAL_REDIRECT % token  # return token
+                return '/error?message=' + r.text
             else:
                 r.raise_for_status()
         else:
