@@ -4,7 +4,6 @@
 
 {% block body %}
 
-
     <div class="centerDiv">
         <div class="row">
             <div id="panel" class="panel panel-info col-md-5 col-sm-6">
@@ -16,13 +15,13 @@
                 </div>
             </div>
         </div>
+
+        <form action="{% url 'checkout_thankyou' %}" method="post">
+            {% csrf_token %}
+            <p>{% trans "Please continue to pay again your order at" %} <input type="submit" class="btn btn-warning btn-lg" value="PayPal" /></p>
+        </form>
+
+        <p><a href="{% url 'shop_welcome' %}">{% trans "Back to the main page" %}</a></p>
     </div>
-
-    <form action="{% url 'checkout_thankyou' %}" method="post">
-        {% csrf_token %}
-        <p>{% trans "Please continue to pay again your order at" %} <input type="submit" class="btn btn-warning btn-lg" value="PayPal" /></p>
-    </form>
-
-    <p><a href="{% url 'shop_welcome' %}">{% trans "Back to the main page" %}</a></p>
 
 {% endblock %}
