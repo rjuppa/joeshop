@@ -408,9 +408,6 @@ class PaymentHistory(OrderPayment):
         except:
             return None
 
-    def save(self, *args, **kwargs):
-        super(PaymentHistory, self).save(*args, **kwargs)
-
     # Order Emails
     def send_order_placed(self):
         subject = 'VITAMINERAL.INFO - Order placed'

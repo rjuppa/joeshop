@@ -72,16 +72,19 @@ class PaypalAPI(object):
             ph.result = 'success'
             ph.transaction_id = payer_id
             ph.save(update_fields=['result', 'amount', 'transaction_id'])
+
+            if order.is_paid():
+                order.status = Order.COMPLETED
+                order.save()
+                completed.send(sender=None, order=order)
+                return True
+            else:
+                return False    # this should not happened
+
         except Exception as ex:
             logger.error(ex)
+            return False
 
-        if order.order.is_paid():
-            order.status = Order.COMPLETED
-            order.save()
-            completed.send(sender=None, order=order)
-            return True
-        else:
-            return False    # this should not happened
 
     @classmethod
     def pp_payment_canceled(cls, order, ph):
