@@ -380,6 +380,7 @@ class PaymentHistory(OrderPayment):
     UNCONFIRMED = 20
     CONFIRMED = 30
     CANCELLED = 40
+    FAILED = 90
 
     PAYMENT_STATUSES = (
         (CREATED, _('Created')),

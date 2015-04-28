@@ -625,7 +625,7 @@ def pp_success_page(request):
                                 result = PaypalAPI.do_express_checkout_payment(payer_id, token, sprice, c)
                                 if result:
                                     logger.debug('result=True')
-                                    if PaypalAPI.pp_order_completed(order, ph, payer_id):
+                                    if PaypalAPI.pp_order_completed(order, ph, payer_id, sprice):
                                         context['order'] = order
                                         logger.debug('PP SUCCESS -> ppsuccess.html')
                                         return render_to_response('vitashop/checkout/ppsuccess.html', context)

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import requests
 import logging
+from decimal import Decimal
 from urlparse import urlparse, parse_qs, unquote
 from django.conf.urls import patterns, url
 from django.template import RequestContext
@@ -10,6 +11,7 @@ from shop.models.ordermodel import Order
 from shop.models.cartmodel import Cart
 from shop.util.decorators import on_method, order_required
 from shop.order_signals import completed, confirmed, cancelled
+from vitashop.models import PaymentHistory
 from django.conf import settings
 
 logger = logging.getLogger('vitashop.checkout')
@@ -60,7 +62,7 @@ class PaypalAPI(object):
             return None
 
     @classmethod
-    def pp_order_completed(cls, order, ph, payer_id):
+    def pp_order_completed(cls, order, ph, payer_id, sprice):
         # log payment
         if not ph:
             raise ValueError('ph')
@@ -68,10 +70,11 @@ class PaypalAPI(object):
             raise ValueError('order')
 
         try:
-            ph.amount = ph.order_price
+            ph.amount = Decimal(sprice)
             ph.result = 'success'
+            ph.status = PaymentHistory.CONFIRMED
             ph.transaction_id = payer_id
-            ph.save(update_fields=['result', 'amount', 'transaction_id'])
+            ph.save(update_fields=['result', 'amount', 'transaction_id', 'status'])
 
             if order.is_paid():
                 order.status = Order.COMPLETED
@@ -96,7 +99,8 @@ class PaypalAPI(object):
 
         try:
             ph.result = 'canceled'
-            ph.save(update_fields=['result'])
+            ph.status = PaymentHistory.CANCELLED
+            ph.save(update_fields=['result', 'status'])
             order.status = Order.CANCELED
             order.save()
         except Exception as ex:
@@ -116,7 +120,8 @@ class PaypalAPI(object):
         try:
             msg = err_msg[:12] | ''
             ph.result = 'failed-' + msg
-            ph.save(update_fields=['result'])
+            ph.status = PaymentHistory.FAILED
+            ph.save(update_fields=['result', 'status'])
             order.status = Order.ERROR
             order.save()
         except Exception as ex:
