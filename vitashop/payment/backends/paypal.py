@@ -144,7 +144,7 @@ class PaypalAPI(object):
 
                 logger.debug('ack=%s' % ack)
                 logger.debug('call_express_checkout ack: %s ' % ack)
-                return 'error?message=' + r.text
+                return '/shop/error?message=' + r.text
             else:
                 r.raise_for_status()
         else:
@@ -153,7 +153,7 @@ class PaypalAPI(object):
     @classmethod
     def do_express_checkout_payment(cls, payer_id, token, sprice, currency='USD'):
         param = (settings.PAYPAL_USERNAME, settings.PAYPAL_PASSWORD, settings.PAYPAL_SIGNATURE, settings.PAYPAL_VERSION, token, payer_id, sprice, currency)
-        payload = 'USER=%s&PWD=%s&SIGNATURE=%s&METHOD=DoExpressCheckoutPayment&VERSION=%s&TOKEN=%s&PAYERID=%s&PAYMENTREQUEST_0_PAYMENTACTION=SALE&PAYMENTREQUEST_0_AMT=%s&PAYMENTREQUEST_0_CURRENCYCODE=%s' % param
+        payload = 'x=1&USER=%s&PWD=%s&SIGNATURE=%s&METHOD=DoExpressCheckoutPayment&VERSION=%s&TOKEN=%s&PAYERID=%s&PAYMENTREQUEST_0_PAYMENTACTION=SALE&PAYMENTREQUEST_0_AMT=%s&PAYMENTREQUEST_0_CURRENCYCODE=%s' % param
         r = requests.post(settings.PAYPAL_SIG_URL, data=payload)
         logger.debug('do_express_checkout_payment: r.status_code == %s ' % r.status_code)
         if r.status_code == 200:
