@@ -129,7 +129,7 @@ class PaypalAPI(object):
             currency = 'USD'
             param = (settings.PAYPAL_USERNAME, settings.PAYPAL_PASSWORD, settings.PAYPAL_SIGNATURE, settings.PAYPAL_VERSION, order.id, sprice, currency, site, lang, ppsuccess, ppcanceled)
             payload = 'USER=%s&PWD=%s&SIGNATURE=%s&METHOD=SetExpressCheckout&VERSION=%s&PAYMENTREQUEST_0_PAYMENTACTION=SALE&PAYMENTREQUEST_0_CUSTOM=%s&PAYMENTREQUEST_0_AMT=%s&PAYMENTREQUEST_0_CURRENCYCODE=%s&PAGESTYLE=joeshop&LOGOIMG=%s/img/logo_90x60.png&CARTBORDERCOLOR=A0CF29&NOSHIPPING=1&LOCALECODE=%s&RETURNURL=%s&CANCELURL=%s' % param
-
+            logger.debug('payload: %s ' % payload)
             # Set Express order in Paypal
             r = requests.post(settings.PAYPAL_SIG_URL, data=payload)
             logger.debug('call_express_checkout: r.status_code == %s ' % r.status_code)
