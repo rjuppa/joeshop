@@ -619,30 +619,36 @@ def pp_success_page(request):
                             if ph:
                                 sprice = format(ph.order_price, '.2f')
                                 c = get_currency(request)
+                                logger.debug('sprice: %s %s' % (sprice, c))
 
                                 ############# PAY ###########
                                 result = PaypalAPI.do_express_checkout_payment(payer_id, token, sprice, c)
                                 if result:
+                                    logger.debug('result=True')
                                     if PaypalAPI.pp_order_completed(order, ph, payer_id):
                                         context['order'] = order
+                                        logger.debug('PP SUCCESS -> ppsuccess.html')
                                         return render_to_response('vitashop/checkout/ppsuccess.html', context)
                                     else:
-                                        context['error'] = 'You paid less then is the prize. Order total price is %s %s' % (sprice, c)
-                                    return render_to_response('vitashop/checkout/ppfailed.html', context)
+                                        msg = 'You paid less then is the prize. Order total price is %s %s' % (sprice, c)
+                                        logger.error(msg)
+                                        context['error'] = msg
+                                        return render_to_response('vitashop/checkout/ppfailed.html', context)
                                 else:
+                                    logger.debug('result=False  - An error has occurred in payment processing.')
                                     context['error'] = 'An error has occurred in payment processing.'
                                     PaypalAPI.pp_payment_failed(order, ph, 'in payment processing')
                                     return render_to_response('vitashop/checkout/ppfailed.html', context)
                             else:
                                 logger.error('OrderPayment for order=%s not found.' % order_id)
 
-                msg = 'order_not_found'
+                msg = "order_not_found: '%s' " % detail
                 context['error'] = msg
-                logger.info("order_not_found: '%s' " % detail)
+                logger.debug(msg)
             else:
                 msg = 'TOKEN is missing'
                 context['error'] = msg
-                logger.info(msg)
+                logger.debug(msg)
             return render_to_response('vitashop/checkout/ppfailed.html', context)
         else:
             # this should not happen

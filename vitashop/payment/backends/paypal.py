@@ -67,10 +67,13 @@ class PaypalAPI(object):
         if not order:
             raise ValueError('order')
 
-        ph.amount = ph.order_price
-        ph.result = 'success'
-        ph.transaction_id = payer_id
-        ph.save(update_fields=['result', 'amount', 'transaction_id'])
+        try:
+            ph.amount = ph.order_price
+            ph.result = 'success'
+            ph.transaction_id = payer_id
+            ph.save(update_fields=['result', 'amount', 'transaction_id'])
+        except Exception as ex:
+            logger.error(ex)
 
         if order.order.is_paid():
             order.status = Order.COMPLETED
@@ -88,10 +91,13 @@ class PaypalAPI(object):
         if not order:
             raise ValueError('order')
 
-        ph.result = 'canceled'
-        ph.save(update_fields=['result'])
-        order.status = Order.CANCELED
-        order.save()
+        try:
+            ph.result = 'canceled'
+            ph.save(update_fields=['result'])
+            order.status = Order.CANCELED
+            order.save()
+        except Exception as ex:
+            logger.error(ex)
 
         cancelled.send(sender=None, order=order)
         return True
@@ -104,11 +110,15 @@ class PaypalAPI(object):
         if not order:
             raise ValueError('order')
 
-        msg = err_msg[:12] | ''
-        ph.result = 'failed-' + msg
-        ph.save(update_fields=['result'])
-        order.status = Order.ERROR
-        order.save()
+        try:
+            msg = err_msg[:12] | ''
+            ph.result = 'failed-' + msg
+            ph.save(update_fields=['result'])
+            order.status = Order.ERROR
+            order.save()
+        except Exception as ex:
+            logger.error(ex)
+
         return True
 
     @classmethod
@@ -128,11 +138,12 @@ class PaypalAPI(object):
             pwd = '%s' % settings.PAYPAL_PASSWORD
             sign = '%s' % settings.PAYPAL_SIGNATURE
             v = '%s' % settings.PAYPAL_VERSION
-            param = (usr, pwd, sign, v, order.id, sprice, currency, site, lang, ppsuccess, ppcanceled)
-            payload = 'USER=%s&PWD=%s&SIGNATURE=%s&METHOD=SetExpressCheckout&VERSION=%s&PAYMENTREQUEST_0_PAYMENTACTION=SALE&PAYMENTREQUEST_0_CUSTOM=%s&PAYMENTREQUEST_0_AMT=%s&PAYMENTREQUEST_0_CURRENCYCODE=%s&PAGESTYLE=joeshop&LOGOIMG=%smedia/img/logo_90x60.png&CARTBORDERCOLOR=A0CF29&NOSHIPPING=1&LOCALECODE=%s&RETURNURL=%s&CANCELURL=%s' % param
-            logger.debug('payload: %s ' % payload)
+            param = (order.id, sprice, currency, site, lang, ppsuccess, ppcanceled)
+            payload1 = 'USER=%s&PWD=%s&SIGNATURE=%s&METHOD=SetExpressCheckout&VERSION=%s' % (usr, pwd, sign, v)
+            payload2 = '&PAYMENTREQUEST_0_PAYMENTACTION=SALE&PAYMENTREQUEST_0_CUSTOM=%s&PAYMENTREQUEST_0_AMT=%s&PAYMENTREQUEST_0_CURRENCYCODE=%s&PAGESTYLE=joeshop&LOGOIMG=%smedia/img/logo_90x60.png&CARTBORDERCOLOR=A0CF29&NOSHIPPING=1&LOCALECODE=%s&RETURNURL=%s&CANCELURL=%s' % param
+            logger.debug('payload: %s ' % payload2)
             # Set Express order in Paypal
-            r = requests.post(settings.PAYPAL_SIG_URL, data=payload)
+            r = requests.post(settings.PAYPAL_SIG_URL, data=payload1+payload2)
             logger.debug('call_express_checkout: r.status_code == %s ' % r.status_code)
             if r.status_code == 200:
                 logger.error('noerror==> r.text=' + r.text)
@@ -143,10 +154,10 @@ class PaypalAPI(object):
                     token = unquote(tt)
                     return settings.PAYPAL_REDIRECT % token  # return token
 
-                logger.debug('ack=%s' % ack)
                 logger.debug('call_express_checkout ack: %s ' % ack)
                 return '/shop/error?message=' + r.text
             else:
+                logger.error('status=%s' % r.status_code)
                 r.raise_for_status()
         else:
             raise ValueError('order_id')
@@ -157,10 +168,11 @@ class PaypalAPI(object):
         pwd = '%s' % settings.PAYPAL_PASSWORD
         sign = '%s' % settings.PAYPAL_SIGNATURE
         v = '%s' % settings.PAYPAL_VERSION
-        param = (usr, pwd, sign, v, token, payer_id, sprice, currency)
-        payload = 'USER=%s&PWD=%s&SIGNATURE=%s&METHOD=DoExpressCheckoutPayment&VERSION=%s&TOKEN=%s&PAYERID=%s&PAYMENTREQUEST_0_PAYMENTACTION=SALE&PAYMENTREQUEST_0_AMT=%s&PAYMENTREQUEST_0_CURRENCYCODE=%s' % param
-        logger.debug('payload: %s ' % payload)
-        r = requests.post(settings.PAYPAL_SIG_URL, data=payload)
+        param = (token, payer_id, sprice, currency)
+        payload1 = 'USER=%s&PWD=%s&SIGNATURE=%s&METHOD=DoExpressCheckoutPayment&VERSION=%s' % (usr, pwd, sign, v)
+        payload2 = '&TOKEN=%s&PAYERID=%s&PAYMENTREQUEST_0_PAYMENTACTION=SALE&PAYMENTREQUEST_0_AMT=%s&PAYMENTREQUEST_0_CURRENCYCODE=%s' % param
+        logger.debug('payload: %s ' % payload2)
+        r = requests.post(settings.PAYPAL_SIG_URL, data=payload1+payload2)
         logger.debug('do_express_checkout_payment: r.status_code == %s ' % r.status_code)
         if r.status_code == 200:
             data = parse_qs(r.text)
@@ -173,6 +185,7 @@ class PaypalAPI(object):
                 logger.debug('do_express_checkout_payment L_LONGMESSAGE0: %s ' % msg)
                 return False
         else:
+            logger.error('status=%s' % r.status_code)
             r.raise_for_status()
 
     @classmethod
@@ -192,4 +205,5 @@ class PaypalAPI(object):
             custom = data['CUSTOM'][0]
             return custom
         else:
+            logger.error('status=%s' % r.status_code)
             r.raise_for_status()
