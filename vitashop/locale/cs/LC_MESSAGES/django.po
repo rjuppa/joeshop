@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-19 23:10+0200\n"
+"POT-Creation-Date: 2015-04-28 21:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgstr "Tento email je již zaregistrován."
 msgid "The two password fields didn't match."
 msgstr ""
 
-#: forms.py:55 models.py:316 models.py:376 templates/vitashop/login.html:88
+#: forms.py:55 models.py:331 models.py:391 templates/vitashop/login.html:88
 #: templates/vitashop/profile.html:34 templates/vitashop/register.html:87
 msgid "Email"
 msgstr ""
@@ -60,253 +60,253 @@ msgstr "Doručovací metoda"
 msgid "Payment method"
 msgstr "Platební metoda"
 
-#: models.py:98
+#: models.py:113
 msgid "username"
 msgstr ""
 
-#: models.py:99
+#: models.py:114
 msgid "Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."
 msgstr ""
 
-#: models.py:103
+#: models.py:118
 msgid "Enter a valid username."
 msgstr ""
 
-#: models.py:105
+#: models.py:120
 msgid "first name"
 msgstr "jméno"
 
-#: models.py:106
+#: models.py:121
 msgid "last name"
 msgstr ""
 
-#: models.py:107
+#: models.py:122
 msgid "email address"
 msgstr ""
 
-#: models.py:108
+#: models.py:123
 msgid "staff status"
 msgstr ""
 
-#: models.py:109
+#: models.py:124
 msgid "Designates whether the user can log into this admin site."
 msgstr ""
 
-#: models.py:111
+#: models.py:126
 msgid "active"
 msgstr ""
 
-#: models.py:112
+#: models.py:127
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
 msgstr ""
 
-#: models.py:114
+#: models.py:129
 msgid "affiliate"
 msgstr ""
 
-#: models.py:115
+#: models.py:130
 msgid "date joined"
 msgstr ""
 
-#: models.py:116
+#: models.py:131
 msgid "code"
 msgstr ""
 
-#: models.py:117
+#: models.py:132
 msgid "lang"
 msgstr ""
 
-#: models.py:123
+#: models.py:138
 msgid "user"
 msgstr ""
 
-#: models.py:124
+#: models.py:139
 msgid "users"
 msgstr ""
 
-#: models.py:183
+#: models.py:198
 msgid "Name"
 msgstr ""
 
-#: models.py:184
+#: models.py:199
 msgid "Slug"
 msgstr ""
 
-#: models.py:185
+#: models.py:200
 msgid "Active"
 msgstr ""
 
-#: models.py:186 models.py:202
+#: models.py:201 models.py:217
 msgid "Image"
 msgstr ""
 
-#: models.py:187 models.py:203
+#: models.py:202 models.py:218
 msgid "Intro"
 msgstr ""
 
-#: models.py:188 models.py:348 models.py:370 models.py:382
+#: models.py:203 models.py:363 models.py:385 models.py:397
 msgid "Created"
 msgstr ""
 
-#: models.py:191 models.py:205
+#: models.py:206 models.py:220
 msgid "Category"
 msgstr ""
 
-#: models.py:192
+#: models.py:207
 msgid "Categories"
 msgstr ""
 
-#: models.py:204
+#: models.py:219
 msgid "Link"
 msgstr ""
 
-#: models.py:206
+#: models.py:221
 msgid "Desc1"
 msgstr ""
 
-#: models.py:207
+#: models.py:222
 msgid "Desc2"
 msgstr ""
 
-#: models.py:208
+#: models.py:223
 msgid "Desc3"
 msgstr ""
 
-#: models.py:209
+#: models.py:224
 msgid "Filter1"
 msgstr ""
 
-#: models.py:210
+#: models.py:225
 msgid "Filter2"
 msgstr ""
 
-#: models.py:211
+#: models.py:226
 msgid "Featured"
 msgstr ""
 
-#: models.py:212
+#: models.py:227
 msgid "Weight"
 msgstr "Váha"
 
-#: models.py:213
+#: models.py:228
 msgid "Old Price"
 msgstr ""
 
-#: models.py:214 models.py:323
+#: models.py:229 models.py:338
 msgid "Discount"
 msgstr "Sleva"
 
-#: models.py:215
+#: models.py:230
 msgid "Ordering"
 msgstr "Pořadí"
 
-#: models.py:220 models.py:346
+#: models.py:235 models.py:361
 msgid "Product"
 msgstr "Produkt"
 
-#: models.py:221 templates/vitashop/base.html:34
+#: models.py:236 templates/vitashop/base.html:34
 #: templates/vitashop/product_detail.html:10
 #: templates/vitashop/products.html:9
 msgid "Products"
 msgstr "Produkty"
 
-#: models.py:314
+#: models.py:329
 msgid "User"
 msgstr "Uživatel"
 
-#: models.py:315
+#: models.py:330
 msgid "Slag"
 msgstr ""
 
-#: models.py:317
+#: models.py:332
 msgid "Language"
 msgstr "Jazyk"
 
-#: models.py:318 models.py:378 templates/vitashop/cart.html:17
+#: models.py:333 models.py:393 templates/vitashop/cart.html:17
 #: templates/vitashop/checkout/overview.html:46
 #: templates/vitashop/product_detail.html:23
 #: templates/vitashop/products.html:17
 msgid "Currency"
 msgstr "Měna"
 
-#: models.py:319 templates/vitashop/profile.html:55
+#: models.py:334 templates/vitashop/profile.html:55
 msgid "Newsletter"
 msgstr "Newsletter"
 
-#: models.py:320 templates/vitashop/base.html:80
+#: models.py:335 templates/vitashop/base.html:80
 msgid "Affiliate"
 msgstr "Spolupráce"
 
-#: models.py:321
+#: models.py:336
 #, fuzzy
 #| msgid "Affiliate"
 msgid "Affiliate_email"
 msgstr "Spolupráce"
 
-#: models.py:322
+#: models.py:337
 msgid "Total Sale"
 msgstr ""
 
-#: models.py:324
+#: models.py:339
 msgid "Parent"
 msgstr ""
 
-#: models.py:329 models.py:345
+#: models.py:344 models.py:360
 msgid "Customer"
 msgstr "Zákazník"
 
-#: models.py:330
+#: models.py:345
 msgid "Customers"
 msgstr "Zákazníci"
 
-#: models.py:347 templates/vitashop/cart.html:58
+#: models.py:362 templates/vitashop/cart.html:58
 #: templates/vitashop/checkout/overview.html:105
-#: templates/vitashop/order_detail.html:61
+#: templates/vitashop/order_detail.html:66
 #: templates/vitashop/templatetags/_order.html:29
 msgid "Quantity"
 msgstr "Množství"
 
-#: models.py:351 models.py:352
+#: models.py:366 models.py:367
 msgid "ShoppingHistory"
 msgstr ""
 
-#: models.py:371
+#: models.py:386
 msgid "Unconfirmed"
 msgstr ""
 
-#: models.py:372
+#: models.py:387
 msgid "Confirmed"
 msgstr ""
 
-#: models.py:373
+#: models.py:388
 msgid "Canceled"
 msgstr ""
 
-#: models.py:377 templates/vitashop/cart.html:59
+#: models.py:392 templates/vitashop/cart.html:59
 #: templates/vitashop/checkout/methods.html:99
 #: templates/vitashop/checkout/methods.html:119
 #: templates/vitashop/checkout/overview.html:106
-#: templates/vitashop/order_detail.html:62
+#: templates/vitashop/order_detail.html:67
 #: templates/vitashop/product_detail.html:49
 #: templates/vitashop/products.html:50
 msgid "Price"
 msgstr "Cena"
 
-#: models.py:379
+#: models.py:394
 msgid "Result"
 msgstr ""
 
-#: models.py:380
+#: models.py:395
 msgid "Wallet address"
 msgstr ""
 
-#: models.py:381
+#: models.py:396
 msgid "Payment status"
 msgstr ""
 
-#: models.py:386 models.py:387
+#: models.py:401 models.py:402
 msgid "Payment History"
 msgstr "Platební historie"
 
@@ -318,7 +318,7 @@ msgstr "Dobírka"
 msgid "Bitcoin payment"
 msgstr "Bitcoin platba"
 
-#: payment/backends/paypal.py:25
+#: payment/backends/paypal.py:19
 msgid "Paypal payment"
 msgstr "PayPal platba"
 
@@ -362,7 +362,7 @@ msgstr "Kontakt"
 
 #: templates/vitashop/base.html:81
 #: templates/vitashop/checkout/overview.html:90
-#: templates/vitashop/order_detail.html:46
+#: templates/vitashop/order_detail.html:51
 msgid "Shipping"
 msgstr "Doručování"
 
@@ -408,7 +408,7 @@ msgstr "CalMag"
 
 #: templates/vitashop/base.html:104
 #: templates/vitashop/checkout/overview.html:96
-#: templates/vitashop/order_detail.html:52
+#: templates/vitashop/order_detail.html:57
 msgid "Payment"
 msgstr "Platby"
 
@@ -426,21 +426,21 @@ msgstr "Vyprázdnit košík"
 
 #: templates/vitashop/cart.html:56
 #: templates/vitashop/checkout/overview.html:103
-#: templates/vitashop/order_detail.html:59
+#: templates/vitashop/order_detail.html:64
 #: templates/vitashop/templatetags/_order.html:27
 msgid "Product name"
 msgstr "Název"
 
 #: templates/vitashop/cart.html:57
 #: templates/vitashop/checkout/overview.html:104
-#: templates/vitashop/order_detail.html:60
+#: templates/vitashop/order_detail.html:65
 #: templates/vitashop/templatetags/_order.html:28
 msgid "Unit price"
 msgstr "Cena/kus"
 
 #: templates/vitashop/cart.html:85
 #: templates/vitashop/checkout/overview.html:128
-#: templates/vitashop/order_detail.html:84
+#: templates/vitashop/order_detail.html:89
 #: templates/vitashop/templatetags/_order.html:49
 msgid "Line Total"
 msgstr ""
@@ -623,34 +623,34 @@ msgstr "Objednávka"
 
 #: templates/vitashop/checkout/overview.html:57
 #: templates/vitashop/checkout/overview.html:69
-#: templates/vitashop/order_detail.html:13
-#: templates/vitashop/order_detail.html:25
+#: templates/vitashop/order_detail.html:18
+#: templates/vitashop/order_detail.html:30
 msgid "Customer information"
 msgstr "Informace o zákazníkovi"
 
 #: templates/vitashop/checkout/overview.html:59
-#: templates/vitashop/order_detail.html:15
+#: templates/vitashop/order_detail.html:20
 msgid "Shipping and billing address"
 msgstr "Doručovací a fakturační adresa"
 
 #: templates/vitashop/checkout/overview.html:71
-#: templates/vitashop/order_detail.html:27
+#: templates/vitashop/order_detail.html:32
 msgid "Shipping address"
 msgstr "Doručovací adresa"
 
 #: templates/vitashop/checkout/overview.html:78
-#: templates/vitashop/order_detail.html:34
+#: templates/vitashop/order_detail.html:39
 msgid "Billing address"
 msgstr "Fakturační adresa"
 
 #: templates/vitashop/checkout/overview.html:139
-#: templates/vitashop/order_detail.html:95
+#: templates/vitashop/order_detail.html:100
 #: templates/vitashop/templatetags/_order.html:54
 msgid "Order Subtotal"
 msgstr "Mezisoučet"
 
 #: templates/vitashop/checkout/overview.html:151
-#: templates/vitashop/order_detail.html:107
+#: templates/vitashop/order_detail.html:112
 #: templates/vitashop/templatetags/_order.html:62
 msgid "Order Total"
 msgstr "Celkem"
@@ -662,6 +662,37 @@ msgstr "Zpět na platební metody"
 #: templates/vitashop/checkout/overview.html:168
 msgid "Place the Order"
 msgstr "Odeslat objednávku"
+
+#: templates/vitashop/checkout/ppcanceled.html:12
+msgid "The payment was canceled by user."
+msgstr "Platba byla stornována uživatelem."
+
+#: templates/vitashop/checkout/ppcanceled.html:23
+msgid "Please continue to pay again your order at"
+msgstr "Prosím zaplaťte svoji objednávku "
+
+#: templates/vitashop/checkout/ppcanceled.html:26
+#: templates/vitashop/checkout/ppfailed.html:29
+#: templates/vitashop/checkout/ppsuccess.html:20
+#: templates/vitashop/checkout/thank_you.html:19
+msgid "Back to the main page"
+msgstr "Zpět na hlavní stránku"
+
+#: templates/vitashop/checkout/ppfailed.html:11
+msgid "An error occured!"
+msgstr "Chyba!"
+
+#: templates/vitashop/checkout/ppfailed.html:24
+msgid "Please continue to pay your order at"
+msgstr "Prosím zaplaťte svoji objednávku "
+
+#: templates/vitashop/checkout/ppsuccess.html:11
+msgid "The payment was processed successfully."
+msgstr "Platba byla úspěšně zpracována."
+
+#: templates/vitashop/checkout/ppsuccess.html:14
+msgid "Thank you for your payment!"
+msgstr "Děkujeme za Vaši platbu!"
 
 #: templates/vitashop/checkout/selection.html:40
 msgid "Fill in your address"
@@ -703,10 +734,6 @@ msgstr "Prosím zaplaťte svoji objednávku "
 msgid " with "
 msgstr " přes "
 
-#: templates/vitashop/checkout/thank_you.html:19
-msgid "Back to the main page"
-msgstr "Zpět na hlavní stránku"
-
 #: templates/vitashop/checkout/thank_you.html:23
 msgid "Payment instructions"
 msgstr "Platební instrukce"
@@ -740,7 +767,7 @@ msgstr ""
 
 #: templates/vitashop/checkout/thank_you.html:36
 msgid "Thank you for your order"
-msgstr "Dekujeme za Vaši objednávku"
+msgstr "Děkujeme za Vaši objednávku"
 
 #: templates/vitashop/error.html:13
 msgid "Continue shopping"
@@ -832,6 +859,10 @@ msgstr ""
 #: templates/vitashop/login.html:134
 msgid "register a new user"
 msgstr "registrovat se."
+
+#: templates/vitashop/order_detail.html:9
+msgid "Order"
+msgstr "Pořadí"
 
 #: templates/vitashop/order_list.html:5
 msgid "Order list"
@@ -1140,7 +1171,7 @@ msgstr "Spolupráce"
 #, fuzzy
 #| msgid "Order list"
 msgid "My Orders"
-msgstr "Výpis objednávek"
+msgstr "Mé objednávek"
 
 #: templates/vitashop/register.html:58
 msgid "Register With Your Email"

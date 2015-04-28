@@ -4,17 +4,19 @@
 
 {% block body %}
 
-    <div class="row">
-        <div id="panel" class="panel panel-success col-md-5 col-sm-6">
-            <div class="panel-heading">
-                <h3 class="panel-title">The payment was processed successfully.</h3>
-            </div>
-            <div class="panel-body">
-                Thank you for your payment!
+    <div class="centerDiv">
+        <div class="row">
+            <div id="panel" class="panel panel-success col-md-5 col-sm-6">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{% trans "The payment was processed successfully." %}</h3>
+                </div>
+                <div class="panel-body">
+                    {% trans "Thank you for your payment!" %}
+                </div>
             </div>
         </div>
     </div>
 
-    <p><a href="{% url 'shop_welcome' %}">Back to the main page</a></p>
+    <p><a href="{% url 'shop_welcome' %}">{% trans "Back to the main page" %}</a></p>
 
 {% endblock %}
