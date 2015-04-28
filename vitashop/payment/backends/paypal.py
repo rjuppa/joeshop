@@ -113,13 +113,12 @@ class PaypalAPI(object):
 
     @classmethod
     def call_express_checkout(cls, order, currency, sprice, user, coupon='', lang='en'):
-        # create pre-order in DB
+        # init PP and get TOKEN
         if not order:
             raise ValueError('order')
         if not user:
             raise ValueError('user')
 
-        #PaypalAPI.place_payment(order, currency, sprice, user, coupon, 'paypal')
         if order.id > 0:
             site = 'http://' + settings.SITE_NAME + '/'
             url = site + 'shop/'
@@ -159,7 +158,7 @@ class PaypalAPI(object):
         sign = '%s' % settings.PAYPAL_SIGNATURE
         v = '%s' % settings.PAYPAL_VERSION
         param = (usr, pwd, sign, v, token, payer_id, sprice, currency)
-        payload = 'x=1&USER=%s&PWD=%s&SIGNATURE=%s&METHOD=DoExpressCheckoutPayment&VERSION=%s&TOKEN=%s&PAYERID=%s&PAYMENTREQUEST_0_PAYMENTACTION=SALE&PAYMENTREQUEST_0_AMT=%s&PAYMENTREQUEST_0_CURRENCYCODE=%s' % param
+        payload = 'USER=%s&PWD=%s&SIGNATURE=%s&METHOD=DoExpressCheckoutPayment&VERSION=%s&TOKEN=%s&PAYERID=%s&PAYMENTREQUEST_0_PAYMENTACTION=SALE&PAYMENTREQUEST_0_AMT=%s&PAYMENTREQUEST_0_CURRENCYCODE=%s' % param
         logger.debug('payload: %s ' % payload)
         r = requests.post(settings.PAYPAL_SIG_URL, data=payload)
         logger.debug('do_express_checkout_payment: r.status_code == %s ' % r.status_code)
