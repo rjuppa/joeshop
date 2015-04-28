@@ -125,10 +125,12 @@ class PaypalAPI(object):
             url = site + 'shop/'
             ppsuccess = '%scheckout/ppsuccess/' % url
             ppcanceled = '%scheckout/ppcanceled/' % url
-            sprice = '1.00'
-            currency = 'USD'
-            param = (settings.PAYPAL_USERNAME, settings.PAYPAL_PASSWORD, settings.PAYPAL_SIGNATURE, settings.PAYPAL_VERSION, order.id, sprice, currency, site, lang, ppsuccess, ppcanceled)
-            payload = 'USER=%s&PWD=%s&SIGNATURE=%s&METHOD=SetExpressCheckout&VERSION=%s&PAYMENTREQUEST_0_PAYMENTACTION=SALE&PAYMENTREQUEST_0_CUSTOM=%s&PAYMENTREQUEST_0_AMT=%s&PAYMENTREQUEST_0_CURRENCYCODE=%s&PAGESTYLE=joeshop&LOGOIMG=%s/img/logo_90x60.png&CARTBORDERCOLOR=A0CF29&NOSHIPPING=1&LOCALECODE=%s&RETURNURL=%s&CANCELURL=%s' % param
+            usr = '%s' % settings.PAYPAL_USERNAME
+            pwd = '%s' % settings.PAYPAL_PASSWORD
+            sign = '%s' % settings.PAYPAL_SIGNATURE
+            v = '%s' % settings.PAYPAL_VERSION
+            param = (usr, pwd, sign, v, order.id, sprice, currency, site, lang, ppsuccess, ppcanceled)
+            payload = 'USER=%s&PWD=%s&SIGNATURE=%s&METHOD=SetExpressCheckout&VERSION=%s&PAYMENTREQUEST_0_PAYMENTACTION=SALE&PAYMENTREQUEST_0_CUSTOM=%s&PAYMENTREQUEST_0_AMT=%s&PAYMENTREQUEST_0_CURRENCYCODE=%s&PAGESTYLE=joeshop&LOGOIMG=%smedia/img/logo_90x60.png&CARTBORDERCOLOR=A0CF29&NOSHIPPING=1&LOCALECODE=%s&RETURNURL=%s&CANCELURL=%s' % param
             logger.debug('payload: %s ' % payload)
             # Set Express order in Paypal
             r = requests.post(settings.PAYPAL_SIG_URL, data=payload)
@@ -152,7 +154,11 @@ class PaypalAPI(object):
 
     @classmethod
     def do_express_checkout_payment(cls, payer_id, token, sprice, currency='USD'):
-        param = (settings.PAYPAL_USERNAME, settings.PAYPAL_PASSWORD, settings.PAYPAL_SIGNATURE, settings.PAYPAL_VERSION, token, payer_id, sprice, currency)
+        usr = '%s' % settings.PAYPAL_USERNAME
+        pwd = '%s' % settings.PAYPAL_PASSWORD
+        sign = '%s' % settings.PAYPAL_SIGNATURE
+        v = '%s' % settings.PAYPAL_VERSION
+        param = (usr, pwd, sign, v, token, payer_id, sprice, currency)
         payload = 'x=1&USER=%s&PWD=%s&SIGNATURE=%s&METHOD=DoExpressCheckoutPayment&VERSION=%s&TOKEN=%s&PAYERID=%s&PAYMENTREQUEST_0_PAYMENTACTION=SALE&PAYMENTREQUEST_0_AMT=%s&PAYMENTREQUEST_0_CURRENCYCODE=%s' % param
         logger.debug('payload: %s ' % payload)
         r = requests.post(settings.PAYPAL_SIG_URL, data=payload)
@@ -172,7 +178,11 @@ class PaypalAPI(object):
 
     @classmethod
     def get_express_checkout_details(cls, token):
-        param = (settings.PAYPAL_USERNAME, settings.PAYPAL_PASSWORD, settings.PAYPAL_SIGNATURE, settings.PAYPAL_VERSION, token)
+        usr = '%s' % settings.PAYPAL_USERNAME
+        pwd = '%s' % settings.PAYPAL_PASSWORD
+        sign = '%s' % settings.PAYPAL_SIGNATURE
+        v = '%s' % settings.PAYPAL_VERSION
+        param = (usr, pwd, sign, v, token)
         payload = 'USER=%s&PWD=%s&SIGNATURE=%s&METHOD=GetExpressCheckoutDetails&VERSION=%s&TOKEN=%s' % param
         r = requests.post(settings.PAYPAL_SIG_URL, data=payload)
         logger.debug('get_express_checkout_details: r.status_code == %s ' % r.status_code)
