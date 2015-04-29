@@ -76,9 +76,13 @@ class PaypalAPI(object):
             ph.transaction_id = payer_id
             ph.save(update_fields=['result', 'amount', 'transaction_id', 'status'])
 
+            order.status = Order.CONFIRMED
             if order.is_paid():
                 order.status = Order.COMPLETED
-                order.save()
+
+            order.save()
+
+            if order.status == Order.COMPLETED:
                 completed.send(sender=None, order=order)
                 return True
             else:
@@ -101,6 +105,7 @@ class PaypalAPI(object):
             ph.result = 'canceled'
             ph.status = PaymentHistory.CANCELLED
             ph.save(update_fields=['result', 'status'])
+
             order.status = Order.CANCELED
             order.save()
         except Exception as ex:

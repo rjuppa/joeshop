@@ -16,7 +16,7 @@ from django.utils.translation import ugettext_lazy as _
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-SITE_NAME = 'Vitamineral.info'
+SITE_NAME = 'vitamineral.info'
 EMAIL_FROM = 'do-not-reply@vitamineral.info'
 EMAIL_ADMIN = 'vitamineral1@gmail.com'
 # Quick-start development settings - unsuitable for production
@@ -116,6 +116,7 @@ else:
     DEBUG = True
     TEMPLATE_DEBUG = True
     SECRET_KEY = 'gfnbmsasf51x_-z8zvg12e3ofd*m$ngdrs1r1115$sw^+$k6(p'
+    SITE_NAME = 'vitamineral:8080'
 
     # PAYPAL testing
     PAYPAL_USERNAME = 'sdk-three_api1.sdk.com'

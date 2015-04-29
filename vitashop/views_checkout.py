@@ -496,12 +496,12 @@ class ThankYouView(LoginMixin, ShopTemplateView):
 
 
     def post(self, *args, **kwargs):
-        # need to pay on Paypal in USD
-        order = get_order_from_request(self.request)
-        c = get_currency(self.request)
-        sprice = str(order.order_total)
+        # init call PP to get token
         try:
-            #urllib.quote_plus(sprice)
+            order = get_order_from_request(self.request)
+            c = get_currency(self.request)
+            ph = PaymentHistory.get_by_order(order)
+            sprice = format(ph.order_price, '.2f')
             url = PaypalAPI.call_express_checkout(order, c, sprice, self.request.user, '')
             logger.info('url=%s' % url)
         except Exception as ex:
