@@ -153,7 +153,7 @@ class PaypalAPI(object):
             v = '%s' % settings.PAYPAL_VERSION
             param = (order.id, sprice, currency, site, lang, ppsuccess, ppcanceled)
             payload1 = 'USER=%s&PWD=%s&SIGNATURE=%s&METHOD=SetExpressCheckout&VERSION=%s' % (usr, pwd, sign, v)
-            payload2 = '&PAYMENTREQUEST_0_PAYMENTACTION=SALE&PAYMENTREQUEST_0_CUSTOM=%s&PAYMENTREQUEST_0_AMT=%s&PAYMENTREQUEST_0_CURRENCYCODE=%s&PAGESTYLE=joeshop&LOGOIMG=%smedia/img/logo_90x60.png&CARTBORDERCOLOR=A0CF29&NOSHIPPING=1&LOCALECODE=%s&RETURNURL=%s&CANCELURL=%s' % param
+            payload2 = '&PAYMENTREQUEST_0_PAYMENTACTION=SALE&PAYMENTREQUEST_0_CUSTOM=%s&PAYMENTREQUEST_0_AMT=%s&PAYMENTREQUEST_0_CURRENCYCODE=%s&PAGESTYLE=joeshop&LOGOIMG=%smedia/img/logo_90x60.png&CARTBORDERCOLOR=248748&NOSHIPPING=1&LOCALECODE=%s&RETURNURL=%s&CANCELURL=%s' % param
             logger.debug('payload: %s ' % payload2)
             # Set Express order in Paypal
             r = requests.post(settings.PAYPAL_SIG_URL, data=payload1+payload2)
