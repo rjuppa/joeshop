@@ -27,8 +27,8 @@ def track_it(func):
         logger.debug('func %s started' % func.func_name)
         ret = func(*args, **kwargs)
         t2 = datetime.now()
-        d = t1 - t2
-        duration = 'Duration: %s,%s' % (d.seconds, d.microseconds)
+        delta = t1 - t2
+        duration = 'Process time: %sms' % int(delta.total_seconds() * 1000)
         logger.debug('func #%s# ended. %s' % (func.func_name, duration))
         return ret
 
