@@ -118,12 +118,15 @@ def activate_view(request, code):
 def profile(request):
     # show user profile page
     user = request.user
-    customer = Customer.objects.get_by_email(user.email)
-    if not customer and Customer.objects.has_user_paid_order(user):
-        # create customer
-        currency = get_currency(request)
-        language = get_language(request)
-        customer = Customer.objects.create(user, language, currency)
+    try:
+        customer = Customer.objects.get_by_email(user.email)
+        if not customer and Customer.objects.has_user_paid_order(user):
+            # create customer
+            currency = get_currency(request)
+            language = get_language(request)
+            customer = Customer.objects.create(user, language, currency)
+    except Exception as ex:
+        logger.error(ex)
 
     ctx = dict(site=get_current_site(request))
     if request.method == 'POST':
@@ -139,7 +142,8 @@ def profile(request):
 
     orders = Order.objects.filter(user=user).order_by('-created')
     ctx['orders'] = orders
-    ctx['customer'] = customer
+    if customer:
+        ctx['customer'] = customer 
     ctx['profile_form'] = profile_form
     ctx['use_password'] = user.has_usable_password()
     ctx['customer'] = Customer.get_customer(user.email)
