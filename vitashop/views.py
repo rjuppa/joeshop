@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.shortcuts import render
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect, request
@@ -29,10 +30,31 @@ from shop.views import ShopView, ShopTemplateResponseMixin
 from vitashop.utils import get_currency, get_language
 from vitashop.views_checkout import add_order_to_context
 
-@track_it
+def set_cookie(response, key, value, days_expire=30):
+    if days_expire is None:
+        max_age = 365 * 24 * 60 * 60  #one year
+    else:
+        max_age = days_expire * 24 * 60 * 60    # domain=settings.SESSION_COOKIE_DOMAIN,
+    exp = timezone.now() + timezone.timedelta(seconds=max_age)
+    expires = exp.strftime("%a, %d-%b-%Y %H:%M:%S GMT")
+    response.set_cookie(key, value, max_age=max_age, expires=expires, secure=settings.SESSION_COOKIE_SECURE or None)
+
 def index(request):
     ctx = {}
     return render(request, 'vitashop/index.html', ctx)
+
+@track_it
+def affil_index(request, slug=None):
+    ctx = {}
+    if slug:
+        # save parent user to cookie for next processing
+        slug = MyUser.objects.find_parent_customer(slug)
+    response = render(request, 'vitashop/index.html', ctx)
+    if slug:
+        # set cookie
+        set_cookie(response, 'parent_slug', slug)
+    return response
+
 
 
 def test_view(request):
@@ -118,8 +140,10 @@ def profile(request):
     # show user profile page
     user = request.user
     customer = None
+    customer_form = None
     try:
         customer = Customer.objects.get_by_email(user.email)
+
         if not customer and Customer.objects.has_user_paid_order(user):
             # create customer
             currency = get_currency(request)
@@ -129,20 +153,33 @@ def profile(request):
         logger.error(ex)
 
     ctx = dict(site=get_current_site(request))
+
+    # POST --------------------
     if request.method == 'POST':
         profile_form = ProfileForm(request.POST, instance=user)
         if profile_form.is_valid():
             profile_form.save()
-            messages.success(request, 'Your profile has updated.')
+            messages.success(request, 'Your profile has been updated.')
         else:
             messages.error(request, 'Unable to save changes.', extra_tags='danger')
 
+        if customer:
+            # if customer exists  (customer=>user who paid)
+            customer_form = CustomerForm(request.POST, instance=customer)
+            if customer_form.is_valid():
+                customer_form.save()
+            else:
+                messages.error(request, 'Unable to save changes.', extra_tags='danger')
+
     else:
         profile_form = ProfileForm(instance=user)
+        if customer:
+            customer_form = CustomerForm(instance=customer)
 
-    orders = Order.objects.filter(user=user).order_by('-created')
+    orders = Order.objects.filter(user=user).order_by('-created')[:10]
     ctx['orders'] = orders
     ctx['customer'] = customer
+    ctx['customer_form'] = customer_form
     ctx['profile_form'] = profile_form
     ctx['use_password'] = user.has_usable_password()
     return render(request, 'vitashop/profile.html', ctx)

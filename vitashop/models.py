@@ -1,3 +1,6 @@
+import string
+import random
+import uuid
 from django.db import models
 from django.conf import settings
 from polymorphic.manager import PolymorphicManager
@@ -20,7 +23,6 @@ from datetime import datetime
 from vitashop.exchange import ExchangeService
 from vitashop.utils import track_it
 from decimal import Decimal
-import uuid
 import logging
 
 logger = logging.getLogger('vitashop')
@@ -79,6 +81,14 @@ class MyUserManager(BaseUserManager):
             return False
 
         # Order Emails
+
+    def find_parent_customer(self, slug):
+        if slug and len(slug) == 5:
+            slug = slug.upper()
+            cust = Customer.objects.get_by_slug(slug)
+            if cust and cust.slag == slug:
+                return slug
+        return None
 
     def send_new_user_created(self, email):
         subject = 'VITAMINERAL.INFO - New User Created'
@@ -286,6 +296,13 @@ class CustomerManager(models.Manager):
         except Customer.DoesNotExist:
             return None
 
+    def get_by_slug(self, slug):
+        try:
+            customer = Customer.objects.get(slag=slug)
+            return customer
+        except Customer.DoesNotExist:
+            return None
+
     @track_it
     def normalize_email(cls, email):
         """
@@ -310,6 +327,7 @@ class CustomerManager(models.Manager):
 
         customer = Customer(
             user=user,
+            slag=self.generate_slug(),
             email=self.normalize_email(user.email),
             language=language,
             currency=currency,
@@ -322,10 +340,19 @@ class CustomerManager(models.Manager):
         return customer
 
     def generate_slug(self):
-        import base64
-        b = base64.urlsafe_b64encode(uuid.uuid4().bytes)
-        s = b.decode("utf-8")
-        return s
+        # slug is 6 UNIQUE random chars
+        while True:
+            slug = 'V' + self.generate_rnd_word(4)
+            cust = self.get_by_slug(slug)
+            if cust is None:
+                return slug
+
+
+    def generate_rnd_word(self, n):
+        s = ''
+        for i in range(0, n):
+            s += random.choice(string.letters)
+        return s.upper()
 
 class Customer(models.Model):
     user = models.OneToOneField(USER_MODEL, verbose_name=_('User'))

@@ -1,4 +1,5 @@
 from django import forms
+from django.conf import settings
 from django.contrib.auth.forms import AuthenticationForm as DjangoAuthenticationForm, PasswordResetForm
 from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
@@ -153,7 +154,14 @@ class ProfileForm(forms.ModelForm):
 
 
 class CustomerForm(forms.ModelForm):
-
+    Language_CHOICES = settings.LANGUAGES
+    Currency_CHOICES = (('CZK', 'CZK'), ('USD', 'USD'))
+    language = forms.ChoiceField(label=_("Language"),
+                                 widget=forms.Select(attrs={'class': 'form-control'}),
+                                 choices=Language_CHOICES)
+    currency = forms.ChoiceField(label=_("Currency"),
+                                 widget=forms.Select(attrs={'class': 'form-control'}),
+                                 choices=Currency_CHOICES)
     class Meta:
         model = Customer
         fields = ('language', 'currency', 'has_newsletter', 'affiliate')

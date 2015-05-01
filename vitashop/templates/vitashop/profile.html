@@ -10,6 +10,7 @@
         </div>
 
         <div class="centerDiv">
+
             <div id="profile-panel" class="panel panel-primary col-md-6">
               <div class="panel-heading">
                   <h5 class="panel-title">{% trans "Your Profile" %}</h5>
@@ -50,18 +51,41 @@
                             </div>
                           </div>
 
+                {% if customer %}
+                          <div class="form-group">
+                            <label for="language" class="col-sm-5 control-label">{% trans "Language" %}</label>
+                              <div class="col-sm-7">
+                                  {{ customer_form.language }}
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="currency" class="col-sm-5 control-label">{% trans "Currency" %}</label>
+                              <div class="col-sm-7">
+                                  {{ customer_form.currency }}
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="affiliate" class="col-sm-5 control-label">{% trans "Affiliate Program" %}</label>
+                              <div class="col-sm-7">
+                                  {{ customer_form.affiliate }}
+                              </div>
+                          </div>
+
+                        {% if customer.affiliate %}
+                           <div class="form-group">
+                             <label for="code" class="col-sm-5 control-label">{% trans "Your Affiliate Code" %}</label>
+                             <h4 style="padding: 0">&nbsp;&nbsp;{{ customer.slag }}</h4>
+                           </div>
+                        {% endif %}
+
+                {% endif %}
 
                       <div class="form-group">
                         <label for="has_newsletter" class="col-sm-5 control-label">{% trans "Newsletter" %}</label>
                           <div class="col-sm-7">
-                              <input type="checkbox" name="has_newsletter" id="has_newsletter" class="checkbox" />
-                          </div>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="affiliate" class="col-sm-5 control-label">{% trans "Affiliate Program" %}</label>
-                          <div class="col-sm-7">
-                              <input type="checkbox" name="affiliate" id="affiliate" class="checkbox" />
+                              {{ customer_form.has_newsletter }}
                           </div>
                       </div>
 

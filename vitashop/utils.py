@@ -1,5 +1,6 @@
 from django.conf import settings
 from bip32utils import BIP32Key
+from datetime import datetime
 import requests
 import logging
 
@@ -22,10 +23,15 @@ def track_it(func):
     decorator for tracking / logging code use: @track_it
     """
     def inner(*args, **kwargs):
+        t1 = datetime.now()
         logger.debug('func %s started' % func.func_name)
         ret = func(*args, **kwargs)
-        logger.debug('func #%s# ended' % func.func_name)
+        t2 = datetime.now()
+        d = t1 - t2
+        duration = 'Duration: %s,%s' % (d.seconds, d.microseconds)
+        logger.debug('func #%s# ended. %s' % (func.func_name, duration))
         return ret
+
     return inner
 
 class Blockchain(object):
