@@ -314,7 +314,6 @@ class CustomerManager(models.Manager):
             language=language,
             currency=currency,
             has_newsletter=True,
-            send_affiliate_email=False,
             total_sale=0,
             discount=0,
             parent=None
