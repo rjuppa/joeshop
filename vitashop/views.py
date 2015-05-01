@@ -31,6 +31,7 @@ from vitashop.views_checkout import add_order_to_context
 
 def index(request):
     ctx = {}
+    logger.debug('load view: index')
     return render(request, 'vitashop/index.html', ctx)
 
 
@@ -41,18 +42,21 @@ def test_view(request):
 
 def error_view(request):
     ctx = {}
+    logger.debug('load view: error_view')
     return render(request, 'vitashop/error.html', ctx)
 
 
 
 
 def products(request):
+    logger.debug('load view: products')
     products = MyProduct.objects.filter(active=True).order_by('ordering')
     ctx = {'products': products}
     return render(request, 'vitashop/products.html', ctx)
 
 
 def product_detail(request, slug):
+    logger.debug('load view: product_detail')
     if not slug:
         return HttpResponseRedirect(reverse('products'))
 
@@ -105,6 +109,7 @@ def clean_next(value):
 
 
 def activate_view(request, code):
+    logger.debug('load view: activate_view')
     ctx = {}
     if MyUser.objects.activate(code):
         messages.success(request, 'Your account has been activated successfully.')
@@ -117,7 +122,9 @@ def activate_view(request, code):
 @login_required
 def profile(request):
     # show user profile page
+    logger.debug('load view: profile')
     user = request.user
+    customer = None
     try:
         customer = Customer.objects.get_by_email(user.email)
         if not customer and Customer.objects.has_user_paid_order(user):
@@ -142,16 +149,15 @@ def profile(request):
 
     orders = Order.objects.filter(user=user).order_by('-created')
     ctx['orders'] = orders
-    if customer:
-        ctx['customer'] = customer 
+    ctx['customer'] = customer
     ctx['profile_form'] = profile_form
     ctx['use_password'] = user.has_usable_password()
-    ctx['customer'] = Customer.get_customer(user.email)
     return render(request, 'vitashop/profile.html', ctx)
 
 
 @login_required
 def password_set(request):
+    logger.debug('load view: password_set')
     if request.user.has_usable_password():
         return HttpResponseRedirect(reverse('profile'))
 
@@ -173,6 +179,7 @@ def password_set(request):
 
 
 def login_view(request):
+    logger.debug('load view: login_view')
     user = request.user
     ctx = dict(site=get_current_site(request))
     ctx['message'] = ''
@@ -212,10 +219,12 @@ def login_view(request):
     return render(request, 'vitashop/login.html', ctx)
 
 def logout_view(request):
+    logger.debug('load view: logout_view')
     logout(request)
     return HttpResponseRedirect(reverse('shop_welcome'))
 
 def register_success_view(request):
+    logger.debug('load view: register_success_view')
     email = ''
     if 'email' in request.GET:
         email = request.GET['email']
@@ -224,6 +233,7 @@ def register_success_view(request):
     return render(request, 'vitashop/register_success.html', ctx)
 
 def register_view(request):
+    logger.debug('load view: register_view')
     ctx = dict(site=get_current_site(request))
     ctx['message'] = ''
     ctx['SOCIAL_AUTH_FACEBOOK_KEY'] = settings.SOCIAL_AUTH_FACEBOOK_KEY
@@ -243,6 +253,7 @@ def register_view(request):
 
 @login_required
 def change_pwd(request):
+    logger.debug('load view: change_pwd')
     user = request.user
     ctx = dict(site=get_current_site(request))
     if request.method == 'POST':
@@ -281,6 +292,7 @@ class OrderDetailView(ShopDetailView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
+        logger.debug('load view: OrderDetailView.dispatch')
         return super(OrderDetailView, self).dispatch(*args, **kwargs)
 
     def get(self, request, *args, **kwargs):
@@ -305,6 +317,7 @@ class MyCartDetails(ShopTemplateResponseMixin, CartItemDetail):
 
     def get_context_data(self, **kwargs):
         # There is no get_context_data on super(), we inherit from the mixin!
+        logger.debug('load view: MyCartDetails.get_context_data')
         ctx = {}
         cart = get_or_create_cart(self.request)
         cart.update(self.request)
