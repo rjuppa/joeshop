@@ -17,6 +17,16 @@ def get_language(request):
     else:
         return 'en'
 
+def track_it(func):
+    """
+    decorator for tracking / logging code use: @track_it
+    """
+    def inner(*args, **kwargs):
+        logger.debug('func %s started' % func.func_name)
+        ret = func(*args, **kwargs)
+        logger.debug('func #%s# ended' % func.func_name)
+        return ret
+    return inner
 
 class Blockchain(object):
 

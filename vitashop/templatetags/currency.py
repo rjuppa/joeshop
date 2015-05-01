@@ -25,6 +25,8 @@ def currency(value, currency):
 
 @register.simple_tag(takes_context=True)
 def currency_tag(context, value, currency):
+    if not value:
+        value = 0
     if settings.PRIMARY_CURRENCY == 'CZK':
         if currency == settings.PRIMARY_CURRENCY:
             return str(value) + ' ' + currency

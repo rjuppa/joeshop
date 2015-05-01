@@ -10,6 +10,7 @@ import datetime
 from django.utils import timezone
 from decimal import Decimal
 from django.core.urlresolvers import reverse
+from django.core.exceptions import PermissionDenied
 from django.forms import models as model_forms
 from django.http import HttpResponseRedirect
 from vitashop.shipping.backends.cp import CPostaShipping
@@ -462,38 +463,43 @@ class ThankYouView(LoginMixin, ShopTemplateView):
         if order and order.status == Order.CONFIRMED:
             ctx.update({'order': order, })
 
-        self.payment = self.request.session['payment_backend']
-        self.shipping = self.request.session['shipping_backend']
-        ctx.update({'shipping_backend': self.shipping})
-        ctx.update({'payment_backend': self.payment})
-        # my_date = datetime.datetime.now(timezone(settings.TIME_ZONE))
-        my_date = timezone.now()
-        ctx.update({'now': my_date})
+            if order.order_total == 0:
+                raise ValueError
 
-        if self.payment == 'paypal':
-            # ph = PaymentHistory.get_by_order(order)
-            pass
-        elif self.payment == 'bitcoin-payment':
-            # convert price in dollar into BTC
-            exs = ExchangeService(self.request)
-            price_usd = exs.price_in_usd(order.order_total)     # order price is in CZK
-            ex = Coindesk_Exchange(self.request)
-            amount_fiat = order.order_total
-            ctx.update({'amount_fiat': amount_fiat})
-            amount_btc = ex.convert_dollar_to_btc(price_usd)
-            ctx.update({'amount_btc': amount_btc})
-            transaction_id = my_date.today().strftime('%Y') + '%06d' % order.id
-            ctx.update({'transaction_id': transaction_id})
-            ph = PaymentHistory.get_by_order(order)
-            ctx.update({'wallet_address': ph.wallet_address})
-            rate_btc = exs.one_btc_in_czk()
-            ctx.update({'rate_btc': rate_btc})
-            chl = urllib.quote("bitcoin:%s?amount=%s" % (ph.wallet_address, amount_btc))
-            ctx.update({'qrcode': 'https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=%s' % chl})
-        else:
-            raise ValueError
+            self.payment = self.request.session['payment_backend']
+            self.shipping = self.request.session['shipping_backend']
+            ctx.update({'shipping_backend': self.shipping})
+            ctx.update({'payment_backend': self.payment})
+            # my_date = datetime.datetime.now(timezone(settings.TIME_ZONE))
+            my_date = timezone.now()
+            ctx.update({'now': my_date})
+
+            if self.payment == 'paypal':
+                # ph = PaymentHistory.get_by_order(order)
+                pass
+            elif self.payment == 'bitcoin-payment':
+                # convert price in dollar into BTC
+                exs = ExchangeService(self.request)
+                price_usd = exs.price_in_usd(order.order_total)     # order price is in CZK
+                ex = Coindesk_Exchange(self.request)
+                amount_fiat = order.order_total
+                ctx.update({'amount_fiat': amount_fiat})
+                amount_btc = ex.convert_dollar_to_btc(price_usd)
+                ctx.update({'amount_btc': amount_btc})
+                transaction_id = my_date.today().strftime('%Y') + '%06d' % order.id
+                ctx.update({'transaction_id': transaction_id})
+                ph = PaymentHistory.get_by_order(order)
+                ctx.update({'wallet_address': ph.wallet_address})
+                rate_btc = exs.one_btc_in_czk()
+                ctx.update({'rate_btc': rate_btc})
+                chl = urllib.quote("bitcoin:%s?amount=%s" % (ph.wallet_address, amount_btc))
+                ctx.update({'qrcode': 'https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=%s' % chl})
+            else:
+                raise ValueError
         return ctx
 
+    def get(self, request, *args, **kwargs):
+        raise PermissionDenied  # HTTP 403
 
     def post(self, *args, **kwargs):
         # init call PP to get token

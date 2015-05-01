@@ -18,6 +18,7 @@ from django.core import validators
 from django.utils import timezone
 from datetime import datetime
 from vitashop.exchange import ExchangeService
+from vitashop.utils import track_it
 from decimal import Decimal
 import uuid
 import logging
@@ -285,6 +286,7 @@ class CustomerManager(models.Manager):
         except Customer.DoesNotExist:
             return None
 
+    @track_it
     def normalize_email(cls, email):
         """
         Normalize the address by lowercasing
@@ -298,6 +300,7 @@ class CustomerManager(models.Manager):
             email = '@'.join([email_name.lower(), domain_part.lower()])
         return email
 
+    @track_it
     def create(self, user, language, currency):
         """
         Creates and saves a new Customer

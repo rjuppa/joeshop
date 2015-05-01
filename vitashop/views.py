@@ -17,6 +17,7 @@ from shop.views.cart import CartDetails, CartItemDetail
 from shop.models.defaults.order import Order
 from vitashop.models import *
 from vitashop.forms import *
+from vitashop.utils import track_it
 from shop.util.btc_helper import Coindesk_Exchange, BC, CNB_Exchange
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext as _
@@ -28,10 +29,9 @@ from shop.views import ShopView, ShopTemplateResponseMixin
 from vitashop.utils import get_currency, get_language
 from vitashop.views_checkout import add_order_to_context
 
-
+@track_it
 def index(request):
     ctx = {}
-    logger.debug('load view: index')
     return render(request, 'vitashop/index.html', ctx)
 
 
@@ -39,24 +39,19 @@ def test_view(request):
     ctx = RequestContext(request, {})
     return render(request, 'vitashop/test.html', ctx)
 
-
+@track_it
 def error_view(request):
     ctx = {}
-    logger.debug('load view: error_view')
     return render(request, 'vitashop/error.html', ctx)
 
-
-
-
+@track_it
 def products(request):
-    logger.debug('load view: products')
     products = MyProduct.objects.filter(active=True).order_by('ordering')
     ctx = {'products': products}
     return render(request, 'vitashop/products.html', ctx)
 
-
+@track_it
 def product_detail(request, slug):
-    logger.debug('load view: product_detail')
     if not slug:
         return HttpResponseRedirect(reverse('products'))
 
@@ -107,9 +102,8 @@ def clean_next(value):
     else:
         return li[0], None
 
-
+@track_it
 def activate_view(request, code):
-    logger.debug('load view: activate_view')
     ctx = {}
     if MyUser.objects.activate(code):
         messages.success(request, 'Your account has been activated successfully.')
@@ -118,11 +112,10 @@ def activate_view(request, code):
         messages.error(request, 'Your activation code was not found. (Maybe expired)', extra_tags='danger')
         return render(request, 'vitashop/error.html', ctx)
 
-
+@track_it
 @login_required
 def profile(request):
     # show user profile page
-    logger.debug('load view: profile')
     user = request.user
     customer = None
     try:
@@ -154,10 +147,9 @@ def profile(request):
     ctx['use_password'] = user.has_usable_password()
     return render(request, 'vitashop/profile.html', ctx)
 
-
+@track_it
 @login_required
 def password_set(request):
-    logger.debug('load view: password_set')
     if request.user.has_usable_password():
         return HttpResponseRedirect(reverse('profile'))
 
@@ -177,9 +169,8 @@ def password_set(request):
     return render(request, 'vitashop/set_pwd.html', ctx)
 
 
-
+@track_it
 def login_view(request):
-    logger.debug('load view: login_view')
     user = request.user
     ctx = dict(site=get_current_site(request))
     ctx['message'] = ''
@@ -218,13 +209,13 @@ def login_view(request):
     ctx['next'] = next
     return render(request, 'vitashop/login.html', ctx)
 
+@track_it
 def logout_view(request):
-    logger.debug('load view: logout_view')
     logout(request)
     return HttpResponseRedirect(reverse('shop_welcome'))
 
+@track_it
 def register_success_view(request):
-    logger.debug('load view: register_success_view')
     email = ''
     if 'email' in request.GET:
         email = request.GET['email']
@@ -232,8 +223,8 @@ def register_success_view(request):
     ctx['email'] = email
     return render(request, 'vitashop/register_success.html', ctx)
 
+@track_it
 def register_view(request):
-    logger.debug('load view: register_view')
     ctx = dict(site=get_current_site(request))
     ctx['message'] = ''
     ctx['SOCIAL_AUTH_FACEBOOK_KEY'] = settings.SOCIAL_AUTH_FACEBOOK_KEY
@@ -251,9 +242,9 @@ def register_view(request):
     ctx['form'] = RegistrationForm
     return render(request, 'vitashop/register.html', ctx)
 
+@track_it
 @login_required
 def change_pwd(request):
-    logger.debug('load view: change_pwd')
     user = request.user
     ctx = dict(site=get_current_site(request))
     if request.method == 'POST':
@@ -269,7 +260,6 @@ def change_pwd(request):
 
     ctx['pwd_form'] = pwd_form
     return render(request, 'vitashop/change_pwd.html', ctx)
-
 
 
 class OrderDetailView(ShopDetailView):
@@ -292,7 +282,6 @@ class OrderDetailView(ShopDetailView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        logger.debug('load view: OrderDetailView.dispatch')
         return super(OrderDetailView, self).dispatch(*args, **kwargs)
 
     def get(self, request, *args, **kwargs):
@@ -317,7 +306,6 @@ class MyCartDetails(ShopTemplateResponseMixin, CartItemDetail):
 
     def get_context_data(self, **kwargs):
         # There is no get_context_data on super(), we inherit from the mixin!
-        logger.debug('load view: MyCartDetails.get_context_data')
         ctx = {}
         cart = get_or_create_cart(self.request)
         cart.update(self.request)
