@@ -30,16 +30,20 @@ from shop.views import ShopView, ShopTemplateResponseMixin
 from vitashop.utils import get_currency, get_language
 from vitashop.views_checkout import add_order_to_context
 
-def set_cookie(response, key, value, days_expire=30):
-    if days_expire is None:
-        max_age = 365 * 24 * 60 * 60  #one year
-    else:
-        max_age = days_expire * 24 * 60 * 60    # domain=settings.SESSION_COOKIE_DOMAIN,
+def set_cookie(response, key, value):
+    # one year
+    max_age = 365 * 24 * 60 * 60    # domain=settings.SESSION_COOKIE_DOMAIN,
     exp = timezone.now() + timezone.timedelta(seconds=max_age)
     expires = exp.strftime("%a, %d-%b-%Y %H:%M:%S GMT")
     response.set_cookie(key, value, max_age=max_age, expires=expires, secure=settings.SESSION_COOKIE_SECURE or None)
 
+def get_cookie(request, key):
+    if key in request.COOKIES:
+        return request.COOKIES[key]
+
+
 def index(request):
+
     ctx = {}
     return render(request, 'vitashop/index.html', ctx)
 
@@ -143,12 +147,22 @@ def profile(request):
     customer_form = None
     try:
         customer = Customer.objects.get_by_email(user.email)
-
         if not customer and Customer.objects.has_user_paid_order(user):
             # create customer
+            # it runs only once when user paid -> then he becomes a customer
             currency = get_currency(request)
             language = get_language(request)
             customer = Customer.objects.create(user, language, currency)
+
+            # check cookie for slug
+            slug = get_cookie(request, 'parent_slug')
+            if slug:
+                parent = Customer.objects.get_by_slug(slug)
+                if parent:
+                    # set parent customer
+                    customer.parent = parent
+                    customer.save()
+
     except Exception as ex:
         logger.error(ex)
 

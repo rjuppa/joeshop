@@ -337,6 +337,8 @@ class CustomerManager(models.Manager):
             parent=None
         )
         customer.save(using=self._db)
+
+
         return customer
 
     def generate_slug(self):
