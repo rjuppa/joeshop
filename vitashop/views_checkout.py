@@ -340,6 +340,7 @@ class OverviewView(LoginMixin, ShopTemplateView):
         Instead mark the order as CONFIRMED only, as somebody manually has to
         check if bitcoins were received (or auto script) and mark the payments.
         """
+        logger.debug('OverviewView.create_confirmed_order')
         wallet_address = self.create_wallet_address(order.id)
         try:
             ph = PaymentHistory.objects.get(wallet_address=wallet_address)
@@ -397,6 +398,7 @@ class OverviewView(LoginMixin, ShopTemplateView):
         return wallet_address
 
     def get_context_data(self, **kwargs):
+        logger.debug('OverviewView.get_context_data')
         ctx = super(OverviewView, self).get_context_data(**kwargs)
         extra_info_form = self.get_extra_info_form()
         ctx.update({'extra_info_form': extra_info_form})
@@ -409,6 +411,7 @@ class OverviewView(LoginMixin, ShopTemplateView):
         return ctx
 
     def post(self, *args, **kwargs):
+        logger.debug('OverviewView.post')
         """ Called when view is POSTed """
         self.payment = self.request.session['payment_backend']
         self.shipping = self.request.session['shipping_backend']
@@ -457,7 +460,7 @@ class ThankYouView(LoginMixin, ShopTemplateView):
 
     def get_context_data(self, **kwargs):
         ctx = super(ThankYouView, self).get_context_data(**kwargs)
-
+        logger.debug('ThankYouView.get_context_data')
         # put the latest order in the context only if it is completed
         order = get_order_from_request(self.request)
         if order and order.status == Order.CONFIRMED:
@@ -474,6 +477,7 @@ class ThankYouView(LoginMixin, ShopTemplateView):
             my_date = timezone.now()
             ctx.update({'now': my_date})
 
+            logger.debug('ThankYouView.payment == %s' % self.payment)
             if self.payment == 'paypal':
                 # ph = PaymentHistory.get_by_order(order)
                 pass
@@ -484,6 +488,7 @@ class ThankYouView(LoginMixin, ShopTemplateView):
                 ex = Coindesk_Exchange(self.request)
                 amount_fiat = order.order_total
                 ctx.update({'amount_fiat': amount_fiat})
+
                 amount_btc = ex.convert_dollar_to_btc(price_usd)
                 ctx.update({'amount_btc': amount_btc})
                 transaction_id = my_date.today().strftime('%Y') + '%06d' % order.id
@@ -498,11 +503,13 @@ class ThankYouView(LoginMixin, ShopTemplateView):
                 raise ValueError
         return ctx
 
-    def get(self, request, *args, **kwargs):
-        raise PermissionDenied  # HTTP 403
+    # def get(self, request, *args, **kwargs):
+    #     logger.debug('ThankYouView.get')
+    #     raise PermissionDenied  # HTTP 403
 
     def post(self, *args, **kwargs):
         # init call PP to get token
+        logger.debug('ThankYouView.post')
         try:
             order = get_order_from_request(self.request)
             c = get_currency(self.request)
