@@ -21,3 +21,4 @@ class BulkRebateModifier(BaseCartModifier):
             rebate = (REBATE_PERCENTAGE / 100) * cart_item.line_subtotal
             result_tuple = ('Rebate', -rebate)
         return result_tuple  # Returning None is ok
+

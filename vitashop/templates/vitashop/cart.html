@@ -100,7 +100,7 @@
                       <tr>
                         <td colspan="2">&nbsp;</td>
                         <td>{{ extra_price_field.0 }}</td>
-                        <td>{{ extra_price_field.1 }}</td>
+                        <td>{% currency_tag extra_price_field.1 currency %}</td>
                       </tr>
                     {% endfor %}
                     <tr>

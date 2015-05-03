@@ -239,12 +239,13 @@ CRISPY_CLASS_CONVERTERS = {'textinput': "form-control",
                            'select': "form-control"}
 
 
-SHOP_CART_MODIFIERS = []  # ['beershop.modifiers.MyModifier',]
+SHOP_CART_MODIFIERS = ['vitashop.cart.modifiers.AffiliateModifier', ]
+
 SHOP_SHIPPING_BACKENDS = ['vitashop.shipping.backends.cp.CPostaShipping',
-                        'vitashop.shipping.backends.personal.PersonalShipping',]
+                          'vitashop.shipping.backends.personal.PersonalShipping', ]
 
 SHOP_PAYMENT_BACKENDS = ['vitashop.payment.backends.paybitcoin.BitcoinBackend',
-                         'vitashop.payment.backends.paypal.PaypalBackend',]
+                         'vitashop.payment.backends.paypal.PaypalBackend', ]
 
 SHOP_SHIPPING_FLAT_RATE = 0
 
