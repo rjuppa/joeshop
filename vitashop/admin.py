@@ -18,11 +18,13 @@ class SubPaymentHistoryAdmin(admin.TabularInline):
     model = PaymentHistory
     extra = 0
 
+
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('id', 'created', 'status', 'user', 'order_total', 'shipping_address_text')
-    readonly_fields = ('id', 'created', 'status', 'user', 'order_total', 'shipping_address_text')
-    fields = ('status',)
+    list_filter = ('created', 'status', )
+    fields = ('id', 'created', 'status', 'user', 'order_total', 'shipping_address_text')
+    readonly_fields = ('id', 'created', 'user', 'order_total', 'shipping_address_text')
     inlines = (SubPaymentHistoryAdmin, )
 
 

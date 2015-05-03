@@ -337,8 +337,6 @@ class CustomerManager(models.Manager):
             parent=None
         )
         customer.save(using=self._db)
-
-
         return customer
 
     def generate_slug(self):
@@ -349,11 +347,10 @@ class CustomerManager(models.Manager):
             if cust is None:
                 return slug
 
-
     def generate_rnd_word(self, n):
         s = ''
         for i in range(0, n):
-            s += random.choice(string.letters)
+            s += random.choice(string.uppercase + string.digits)
         return s.upper()
 
 class Customer(models.Model):
