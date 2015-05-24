@@ -10,7 +10,7 @@ from django.core.mail import EmailMultiAlternatives, EmailMessage
 
 def send_affiliate_email():
     order = object()
-    order.id = 99
+    order.__setattr__('id', 99)
     subject = 'VITAMINERAL.INFO - payment received'
     text_content = render_to_string('vitashop/mails/payment_received.txt', {'amount': 2.3, 'order': order})
     html_content = render_to_string('vitashop/mails/payment_received.html', {'amount': 2.3, 'order': order})
