@@ -453,10 +453,10 @@ class PaymentHistory(OrderPayment):
         except Exception as ex:
             logger.error(ex)
 
-    def send_unconfirmed_payment_email(self):
+    def send_unconfirmed_payment_email(self, amount):
         subject = 'VITAMINERAL.INFO - Payment Received'
-        text_content = render_to_string('vitashop/mails/payment_received.txt', dict(order=self.order, currency=self.currency))
-        html_content = render_to_string('vitashop/mails/payment_received.html', dict(order=self.order, currency=self.currency))
+        text_content = render_to_string('vitashop/mails/payment_received.txt', dict(order=self.order, amount=amount, currency=self.currency))
+        html_content = render_to_string('vitashop/mails/payment_received.html', dict(order=self.order, amount=amount, currency=self.currency))
         try:
             msg = EmailMultiAlternatives(subject, text_content,
                                          'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM,

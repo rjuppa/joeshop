@@ -58,7 +58,7 @@ def check_orders_for_unconfirmed_payments():
 
                 if ph.status == PaymentHistory.CREATED:
                     # send email only one time
-                    ph.send_unconfirmed_payment_email()  # SEND EMAIL
+                    ph.send_unconfirmed_payment_email(unconfirmed_btc)  # SEND EMAIL
 
                     # update PaymentHistory
                     ph.status = PaymentHistory.UNCONFIRMED
