@@ -8,9 +8,10 @@ from django.utils.translation import ugettext_lazy as _
 from django.template.loader import render_to_string
 from django.core.mail import EmailMultiAlternatives, EmailMessage
 
+
 def send_affiliate_email():
-    order = object()
-    order.__setattr__('id', 99)
+    order = Order()
+    order.id = 99
     subject = 'VITAMINERAL.INFO - payment received'
     text_content = render_to_string('vitashop/mails/payment_received.txt', {'amount': 2.3, 'order': order})
     html_content = render_to_string('vitashop/mails/payment_received.html', {'amount': 2.3, 'order': order})
@@ -27,7 +28,9 @@ if __name__ == "__main__":
     sys.path.append('../')
     sys.path.append('.')
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "joeshop.settings")
+    from vitashop.models import Order
     django.setup()
+
 
     send_affiliate_email()
 
