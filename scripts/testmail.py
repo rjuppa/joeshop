@@ -2,7 +2,6 @@
 import os
 import sys
 import django
-from django.core.mail import send_mail
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone, translation
@@ -16,8 +15,12 @@ def send_affiliate_email():
 
     translation.activate('cs')
     subject = 'VITAMINERAL.INFO - payment received'
-    text_content = render_to_string('vitashop/mails/payment_received.txt', {'amount': 2.3, 'order': order})
-    html_content = render_to_string('vitashop/mails/payment_received.html', {'amount': 2.3, 'order': order})
+    text_content = render_to_string('vitashop/mails/payment_received.txt', {'amount': 2.3,
+                                                                            'order': order,
+                                                                            'LANGUAGE_CODE': 'cs'})
+    html_content = render_to_string('vitashop/mails/payment_received.html', {'amount': 2.3,
+                                                                             'order': order,
+                                                                             'LANGUAGE_CODE': 'cs'})
     try:
         msg = EmailMultiAlternatives(subject, text_content,
                                      'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM,
