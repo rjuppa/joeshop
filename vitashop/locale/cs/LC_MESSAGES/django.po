@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-24 21:00+0200\n"
+"POT-Creation-Date: 2015-05-24 21:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -936,10 +936,7 @@ msgstr ""
 #: templates/vitashop/mails/payment_confirmed.html:10
 #: templates/vitashop/mails/payment_confirmed.txt:1
 msgid "Your payment was confirmed."
-msgstr ""
-"Vaše platba musí být 3x potvrzena během následujících 6 hodin.<br /> Jinak, "
-"bude objednávka automaticky zrušena.<br /> V každém případě Vás o stavu "
-"budeme informovat emailem."
+msgstr "Vaše platba byla potvrzena."
 
 #: templates/vitashop/mails/payment_confirmed.html:13
 msgid "payment_was_confirmed"
@@ -949,26 +946,16 @@ msgstr ""
 
 #: templates/vitashop/mails/payment_confirmed.txt:3
 #, fuzzy
+#| msgid "Your payment was received."
 msgid "payment_was_received"
-msgstr ""
-"Vaše platba musí být 3x potvrzena během následujících 6 hodin.<br /> Jinak, "
-"bude objednávka automaticky zrušena.<br /> V každém případě Vás o stavu "
-"budeme informovat emailem."
+msgstr "Vaše platba byla přijata."
 
 #: templates/vitashop/mails/payment_received.html:10
 msgid "Your payment was received."
-msgstr ""
-"Vaše platba musí být 3x potvrzena během následujících 6 hodin.<br /> Jinak, "
-"bude objednávka automaticky zrušena.<br /> V každém případě Vás o stavu "
-"budeme informovat emailem."
+msgstr "Vaše platba byla přijata."
 
 #: templates/vitashop/mails/payment_received.html:13
 #, fuzzy, python-format
-#| msgid ""
-#| "\n"
-#| "Hello, <br>we have received your payment %(amount1)s for your order "
-#| "%(order_id)s. <br>\n"
-#| "Thank you for your purchase. <br>\n"
 msgid ""
 "Hello, <br>\n"
 "    we have received your payment %(amount1)s for your order %(order_id)s. "

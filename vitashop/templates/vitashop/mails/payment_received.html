@@ -10,7 +10,7 @@ LANGUAGE_CODE: {{ LANGUAGE_CODE }}
     <h3>{% trans "Your payment was received." %}</h3><br/>
 </p>
 <p>
-{% blocktrans with amount as amount1 and order.id as order_id %}Hello, <br>
+{% blocktrans with amount1=amount order_id=order.id %}Hello, <br>
     we have received your payment {{ amount1 }} for your order {{ order_id }}. <br>
     Thank you for your purchase. <br>
 {% endblocktrans %}

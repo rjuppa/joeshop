@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-24 21:01+0200\n"
+"POT-Creation-Date: 2015-05-24 21:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -950,11 +950,8 @@ msgstr ""
 "{{ order.id }}. <br>Thank you for your purchase. <br>"
 
 #: templates/vitashop/mails/payment_received.html:10
-#, fuzzy
 msgid "Your payment was received."
 msgstr ""
-"Hello, <br>we have received your payment {{ amount }} for your order "
-"{{ order.id }}. <br>Thank you for your purchase. <br>"
 
 #: templates/vitashop/mails/payment_received.html:13
 #, python-format
