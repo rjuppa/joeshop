@@ -15,12 +15,8 @@ def send_affiliate_email():
 
     translation.activate('cs')
     subject = 'VITAMINERAL.INFO - payment received'
-    text_content = render_to_string('vitashop/mails/payment_received.txt', {'amount': 2.3,
-                                                                            'order': order,
-                                                                            'LANGUAGE_CODE': 'cs'})
-    html_content = render_to_string('vitashop/mails/payment_received.html', {'amount': 2.3,
-                                                                             'order': order,
-                                                                             'LANGUAGE_CODE': 'cs'})
+    text_content = render_to_string('vitashop/mails/payment_received.txt', {'amount': 2.3, 'order': order})
+    html_content = render_to_string('vitashop/mails/payment_received.html', {'amount': 2.3, 'order': order})
     try:
         msg = EmailMultiAlternatives(subject, text_content,
                                      'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM,

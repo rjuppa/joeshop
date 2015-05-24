@@ -1,13 +1,12 @@
 {% extends "vitashop/mails/mail_base.html" %}
 {% load url from future %}
 {% load i18n %}
-{% get_current_language as LANGUAGE_CODE %}
 
 {% block body %}
 
 <b>{% trans "Email notification:" %}</b>
 <p>
-    <h3>{% trans "Your payment was received." %}</h3><br/>
+    <h3>{% trans "Your payment was received." %}</h3>
 </p>
 <p>
 {% trans "Hello, " %} <br>
