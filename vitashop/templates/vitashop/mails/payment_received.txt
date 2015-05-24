@@ -1,4 +1,6 @@
-VITAMINERAL.INFO
-================
+{% trans "Your payment was received." %}
 
-Payment received.
+{% trans "Hello, " %}
+{% trans "we have received your payment" %} {{ amount }} {% trans "for your order no. " %} {{ order.id }}.
+{% trans "Thank you for your purchase." %}
+Vitamineral team

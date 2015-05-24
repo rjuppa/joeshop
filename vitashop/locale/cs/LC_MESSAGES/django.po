@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-24 22:01+0200\n"
+"POT-Creation-Date: 2015-05-24 22:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -881,11 +881,27 @@ msgstr "Registrace byla úspěšná!"
 
 #: templates/vitashop/mails/activation_email.html:10
 #: templates/vitashop/mails/activation_email.txt:3
-msgid "activate_account"
+#: templates/vitashop/mails/affiliate_program.html:13
+#: templates/vitashop/mails/affiliate_program.txt:3
+#: templates/vitashop/mails/insufficient_payment_received.html:14
+#: templates/vitashop/mails/insufficient_payment_received.txt:3
+#: templates/vitashop/mails/order_shipped.html:13
+#: templates/vitashop/mails/order_shipped.txt:3
+#: templates/vitashop/mails/payment_confirmed.html:13
+#: templates/vitashop/mails/payment_confirmed.txt:3
+#: templates/vitashop/mails/payment_received.html:13
+#: templates/vitashop/mails/payment_received.txt:3
+msgid "Hello, "
+msgstr "Dobrý den, "
+
+#: templates/vitashop/mails/activation_email.html:11
+#: templates/vitashop/mails/activation_email.txt:4
+msgid ""
+"you have successfully signed up. <br> Please click on activation link bellow "
+"to activate your account."
 msgstr ""
-"Dobrý den,<br/>úspěšně jste se zaregistrovali.<br/>Klikněte prosím na "
-"aktivační link, čímž ověříte svoji emailovou adresu a aktivujete tak svůj "
-"účet.<br/>"
+"úspěšně jste se zaregistrovali. <br> Prosím klikněte na aktivační link níže. "
+"Tím aktivujete svůj účet. <br>"
 
 #: templates/vitashop/mails/affiliate_program.html:10
 #: templates/vitashop/mails/affiliate_program.txt:1
@@ -893,24 +909,60 @@ msgstr ""
 msgid "Welcome to affiliate program."
 msgstr "Vítejte v affiliate programu."
 
-#: templates/vitashop/mails/affiliate_program.html:13
-#: templates/vitashop/mails/affiliate_program.txt:3
+#: templates/vitashop/mails/affiliate_program.html:14
+#: templates/vitashop/mails/affiliate_program.txt:4
 #, fuzzy
-msgid "affiliate_program"
-msgstr "Vážený zákazníku,<br/>máme pro Vás speciální nabídku.<br/>"
+msgid "welcome to affiliate program."
+msgstr "Vítejte v affiliate programu."
+
+#: templates/vitashop/mails/affiliate_program.html:15
+#: templates/vitashop/mails/affiliate_program.txt:5
+msgid "We have a great offer for you."
+msgstr "Máme pro Vás zajímavou nabídku."
 
 #: templates/vitashop/mails/insufficient_payment_received.html:10
 #: templates/vitashop/mails/insufficient_payment_received.txt:1
 msgid "We received insufficient payment."
 msgstr "Obdrželi jsme nedostatečnou platbu."
 
-#: templates/vitashop/mails/insufficient_payment_received.html:13
-#: templates/vitashop/mails/insufficient_payment_received.txt:3
-msgid "insufficient_payment"
-msgstr ""
-"Dobrý den,<br>obdrželi jsme nedostatečnou platbu {{ amount }} za vaši "
-"objednávku {{ order.id }}. <br>Celková cena činí {{ order_price }} "
-"{{ currency }}. Prosím uhraďte rozdíl.<br>Děkujeme. <br>"
+#: templates/vitashop/mails/insufficient_payment_received.html:15
+#: templates/vitashop/mails/insufficient_payment_received.txt:4
+#, fuzzy
+#| msgid "We received insufficient payment."
+msgid "we have received insufficient payment"
+msgstr "Obdrželi jsme nedostatečnou platbu."
+
+#: templates/vitashop/mails/insufficient_payment_received.html:15
+#: templates/vitashop/mails/insufficient_payment_received.txt:4
+#: templates/vitashop/mails/payment_confirmed.html:14
+#: templates/vitashop/mails/payment_confirmed.txt:4
+#: templates/vitashop/mails/payment_received.html:14
+#: templates/vitashop/mails/payment_received.txt:4
+#, fuzzy
+#| msgid "Thank you for your order"
+msgid "for your order no. "
+msgstr " za Vaši objednávku číslo: "
+
+#: templates/vitashop/mails/insufficient_payment_received.html:16
+#: templates/vitashop/mails/insufficient_payment_received.txt:5
+msgid "Total price is "
+msgstr "Celková cena je "
+
+#: templates/vitashop/mails/insufficient_payment_received.html:16
+#: templates/vitashop/mails/insufficient_payment_received.txt:5
+msgid "Please adjust your payment accordingly."
+msgstr "Prosím doplaťte zbývající část."
+
+#: templates/vitashop/mails/insufficient_payment_received.html:17
+#: templates/vitashop/mails/insufficient_payment_received.txt:6
+#: templates/vitashop/mails/payment_confirmed.html:15
+#: templates/vitashop/mails/payment_confirmed.txt:5
+#: templates/vitashop/mails/payment_received.html:15
+#: templates/vitashop/mails/payment_received.txt:5
+#, fuzzy
+#| msgid "Thank you for your order"
+msgid "Thank you for your purchase."
+msgstr "Děkujeme za Vaši objednávku."
 
 #: templates/vitashop/mails/newsletter.html:8
 msgid "newsletter_unsubscribe_text"
@@ -926,56 +978,53 @@ msgstr ""
 msgid "Your order has been shipped."
 msgstr "Objednávka byla expedována"
 
-#: templates/vitashop/mails/order_shipped.html:13
-#: templates/vitashop/mails/order_shipped.txt:3
-msgid "order_was_shipped"
-msgstr ""
-"Dobrý den,<br>vaše objednávka {{ order.id }} byla expedována. <br>Očekávejte "
-"doručení během následujících dní. <br>"
+#: templates/vitashop/mails/order_shipped.html:14
+#: templates/vitashop/mails/order_shipped.txt:4
+msgid "your order no."
+msgstr " vaše objednávka číslo: "
+
+#: templates/vitashop/mails/order_shipped.html:14
+#: templates/vitashop/mails/order_shipped.txt:4
+#, fuzzy
+msgid " has been shipped. "
+msgstr "Objednávka byla expedována"
+
+#: templates/vitashop/mails/order_shipped.html:15
+#: templates/vitashop/mails/order_shipped.txt:5
+msgid "You can expect delivery within few days."
+msgstr "Očekávejte doručení v následujících dnech."
 
 #: templates/vitashop/mails/payment_confirmed.html:10
 #: templates/vitashop/mails/payment_confirmed.txt:1
 msgid "Your payment was confirmed."
 msgstr "Vaše platba byla potvrzena."
 
-#: templates/vitashop/mails/payment_confirmed.html:13
-msgid "payment_was_confirmed"
-msgstr ""
-"Dobrý den, <br>obdrželi jsme potvrzení vaší platby {{ amount }} za "
-"objednávku {{ order.id }}. <br>Děkujeme za Váš nákup. <br>"
-
-#: templates/vitashop/mails/payment_confirmed.txt:3
-#, fuzzy
-#| msgid "Your payment was received."
-msgid "payment_was_received"
-msgstr "Vaše platba byla přijata."
+#: templates/vitashop/mails/payment_confirmed.html:14
+#: templates/vitashop/mails/payment_confirmed.txt:4
+msgid "we have received confirmation of your payment"
+msgstr "Obdrželi jsme potvrzení vaší platby."
 
 #: templates/vitashop/mails/payment_received.html:10
+#: templates/vitashop/mails/payment_received.txt:1
 msgid "Your payment was received."
 msgstr "Vaše platba byla přijata."
 
-#: templates/vitashop/mails/payment_received.html:13
-#, fuzzy, python-format
-msgid ""
-"Hello, <br>\n"
-"    we have received your payment %(amount1)s for your order %(order_id)s. "
-"<br>\n"
-"    Thank you for your purchase. <br>\n"
-msgstr ""
-"Dobrý den, <br>obdrželi jsme potvrzení vaší platby %(amount1)s za objednávku "
-"%(order_id)s. <br>Děkujeme za Váš nákup. <br>"
+#: templates/vitashop/mails/payment_received.html:14
+#: templates/vitashop/mails/payment_received.txt:4
+msgid "we have received your payment"
+msgstr "obdrželi jsme vaši platbu"
 
 #: templates/vitashop/mails/reset_email.html:4
 #, fuzzy
 msgid "reset_password_title"
 msgstr "Nové heslo"
 
-#: templates/vitashop/mails/reset_email.html:6
+#: templates/vitashop/mails/reset_email.html:8
 #, fuzzy
 msgid "reset_password_email1"
 msgstr "Nové heslo"
 
-#: templates/vitashop/mails/reset_email.html:10
+#: templates/vitashop/mails/reset_email.html:12
 #, fuzzy
 msgid "reset_password_email2"
 msgstr "Nové heslo"
@@ -1343,6 +1392,39 @@ msgstr "Doručovací adresa"
 #: templates/vitashop/templatetags/_order.html:18
 msgid "Billing Address"
 msgstr "Fakturační adresa"
+
+#, fuzzy
+#~ msgid "affiliate_program"
+#~ msgstr "Spolupráce"
+
+#, fuzzy
+#~| msgid "We received insufficient payment."
+#~ msgid "insufficient_payment"
+#~ msgstr "Obdrželi jsme nedostatečnou platbu."
+
+#, fuzzy
+#~ msgid "order_was_shipped"
+#~ msgstr "Objednávka byla expedována"
+
+#, fuzzy
+#~| msgid "Your payment was received."
+#~ msgid "payment_was_received"
+#~ msgstr "Vaše platba byla přijata."
+
+#~ msgid "payment_was_confirmed"
+#~ msgstr ""
+#~ "Dobrý den, <br>obdrželi jsme potvrzení vaší platby {{ amount }} za "
+#~ "objednávku {{ order.id }}. <br>Děkujeme za Váš nákup. <br>"
+
+#, fuzzy
+#~ msgid ""
+#~ "Hello, <br>\n"
+#~ "    we have received your payment %(amount1)s for your order "
+#~ "%(order_id)s. <br>\n"
+#~ "    Thank you for your purchase. <br>\n"
+#~ msgstr ""
+#~ "Dobrý den, <br>obdrželi jsme potvrzení vaší platby %(amount1)s za "
+#~ "objednávku %(order_id)s. <br>Děkujeme za Váš nákup. <br>"
 
 #, fuzzy
 #~ msgid "reset_password"

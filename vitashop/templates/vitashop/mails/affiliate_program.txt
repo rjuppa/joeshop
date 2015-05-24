@@ -1,4 +1,6 @@
 {% trans "Welcome to affiliate program." %}
 
-{% trans "affiliate_program" %}
+{% trans "Hello, " %}
+{% trans "welcome to affiliate program." %}
+{% trans "We have a great offer for you." %}
 Vitamineral team

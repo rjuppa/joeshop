@@ -10,7 +10,9 @@
     <h3>{% trans "Your payment was confirmed." %}</h3><br/>
 </p>
 <p>
-{% trans "payment_was_confirmed" %}
+{% trans "Hello, " %} <br>
+{% trans "we have received confirmation of your payment" %} {{ amount }} {% trans "for your order no. " %} {{ order.id }}. <br>
+{% trans "Thank you for your purchase." %} <br>
 </p>
 Vitamineral team
 

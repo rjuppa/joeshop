@@ -1,4 +1,6 @@
 {% trans "Your payment was confirmed." %}
 
-{% trans "payment_was_received" %}
+{% trans "Hello, " %}
+{% trans "we have received confirmation of your payment" %} {{ amount }} {% trans "for your order no. " %} {{ order.id }}.
+{% trans "Thank you for your purchase." %}
 Vitamineral team

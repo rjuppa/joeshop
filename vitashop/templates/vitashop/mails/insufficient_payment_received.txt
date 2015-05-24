@@ -1,4 +1,7 @@
 {% trans "We received insufficient payment." %}
 
-{% trans "insufficient_payment" %}
+{% trans "Hello, " %}
+{% trans "we have received insufficient payment" %} {{ amount }} {% trans "for your order no. " %} {{ order.id }}.
+{% trans "Total price is " %} {{ order_price }} {{ currency }} {% trans "Please adjust your payment accordingly." %}
+{% trans "Thank you for your purchase." %}
 Vitamineral team

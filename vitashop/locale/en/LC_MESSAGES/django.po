@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-24 22:02+0200\n"
+"POT-Creation-Date: 2015-05-24 22:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -684,12 +684,8 @@ msgid "The payment was processed successfully."
 msgstr ""
 
 #: templates/vitashop/checkout/ppsuccess.html:14
-#, fuzzy
 msgid "Thank you for your payment!"
 msgstr ""
-"Your payment has to be verified by 3 confirmations within 6 hours.<br /> "
-"Otherwise, your order will be cancelled automatically.<br /> In any case, "
-"we'll inform you by email."
 
 #: templates/vitashop/checkout/selection.html:40
 msgid "Fill in your address"
@@ -724,12 +720,8 @@ msgid "Your order has been placed"
 msgstr ""
 
 #: templates/vitashop/checkout/thank_you.html:15
-#, fuzzy
 msgid "Please continue to pay for your order "
 msgstr ""
-"Your payment has to be verified by 3 confirmations within 6 hours.<br /> "
-"Otherwise, your order will be cancelled automatically.<br /> In any case, "
-"we'll inform you by email."
 
 #: templates/vitashop/checkout/thank_you.html:15
 msgid " with "
@@ -766,9 +758,6 @@ msgstr ""
 #: templates/vitashop/checkout/thank_you.html:36
 msgid "Thank you for your order"
 msgstr ""
-"Your payment has to be verified by 3 confirmations within 6 hours.<br /> "
-"Otherwise, your order will be cancelled automatically.<br /> In any case, "
-"we'll inform you by email."
 
 #: templates/vitashop/error.html:13
 msgid "Continue shopping"
@@ -875,36 +864,78 @@ msgstr ""
 
 #: templates/vitashop/mails/activation_email.html:10
 #: templates/vitashop/mails/activation_email.txt:3
-msgid "activate_account"
+#: templates/vitashop/mails/affiliate_program.html:13
+#: templates/vitashop/mails/affiliate_program.txt:3
+#: templates/vitashop/mails/insufficient_payment_received.html:14
+#: templates/vitashop/mails/insufficient_payment_received.txt:3
+#: templates/vitashop/mails/order_shipped.html:13
+#: templates/vitashop/mails/order_shipped.txt:3
+#: templates/vitashop/mails/payment_confirmed.html:13
+#: templates/vitashop/mails/payment_confirmed.txt:3
+#: templates/vitashop/mails/payment_received.html:13
+#: templates/vitashop/mails/payment_received.txt:3
+msgid "Hello, "
+msgstr ""
+
+#: templates/vitashop/mails/activation_email.html:11
+#: templates/vitashop/mails/activation_email.txt:4
+msgid ""
+"you have successfully signed up. <br> Please click on activation link bellow "
+"to activate your account."
 msgstr ""
 
 #: templates/vitashop/mails/affiliate_program.html:10
 #: templates/vitashop/mails/affiliate_program.txt:1
-#, fuzzy
 msgid "Welcome to affiliate program."
-msgstr "Dear customer,<br/>we have a special offer for you.<br/>"
+msgstr ""
 
-#: templates/vitashop/mails/affiliate_program.html:13
-#: templates/vitashop/mails/affiliate_program.txt:3
-msgid "affiliate_program"
-msgstr "Dear customer,<br/>we have a special offer for you.<br/>"
+#: templates/vitashop/mails/affiliate_program.html:14
+#: templates/vitashop/mails/affiliate_program.txt:4
+msgid "welcome to affiliate program."
+msgstr ""
+
+#: templates/vitashop/mails/affiliate_program.html:15
+#: templates/vitashop/mails/affiliate_program.txt:5
+msgid "We have a great offer for you."
+msgstr ""
 
 #: templates/vitashop/mails/insufficient_payment_received.html:10
 #: templates/vitashop/mails/insufficient_payment_received.txt:1
-#, fuzzy
 msgid "We received insufficient payment."
 msgstr ""
-"Hello,<br> we have received insufficient payment {{ amount }} for your order "
-"{{ order.id }}. <br>Total price is {{ order_price }} {{ currency }}. Please "
-"adjust your payment accordingly.<br>Thank you for your purchase. <br>"
 
-#: templates/vitashop/mails/insufficient_payment_received.html:13
-#: templates/vitashop/mails/insufficient_payment_received.txt:3
-msgid "insufficient_payment"
+#: templates/vitashop/mails/insufficient_payment_received.html:15
+#: templates/vitashop/mails/insufficient_payment_received.txt:4
+msgid "we have received insufficient payment"
 msgstr ""
-"Hello,<br> we have received insufficient payment {{ amount }} for your order "
-"{{ order.id }}. <br>Total price is {{ order_price }} {{ currency }}. Please "
-"adjust your payment accordingly.<br>Thank you for your purchase. <br>"
+
+#: templates/vitashop/mails/insufficient_payment_received.html:15
+#: templates/vitashop/mails/insufficient_payment_received.txt:4
+#: templates/vitashop/mails/payment_confirmed.html:14
+#: templates/vitashop/mails/payment_confirmed.txt:4
+#: templates/vitashop/mails/payment_received.html:14
+#: templates/vitashop/mails/payment_received.txt:4
+msgid "for your order no. "
+msgstr ""
+
+#: templates/vitashop/mails/insufficient_payment_received.html:16
+#: templates/vitashop/mails/insufficient_payment_received.txt:5
+msgid "Total price is "
+msgstr ""
+
+#: templates/vitashop/mails/insufficient_payment_received.html:16
+#: templates/vitashop/mails/insufficient_payment_received.txt:5
+msgid "Please adjust your payment accordingly."
+msgstr ""
+
+#: templates/vitashop/mails/insufficient_payment_received.html:17
+#: templates/vitashop/mails/insufficient_payment_received.txt:6
+#: templates/vitashop/mails/payment_confirmed.html:15
+#: templates/vitashop/mails/payment_confirmed.txt:5
+#: templates/vitashop/mails/payment_received.html:15
+#: templates/vitashop/mails/payment_received.txt:5
+msgid "Thank you for your purchase."
+msgstr ""
 
 #: templates/vitashop/mails/newsletter.html:8
 msgid "newsletter_unsubscribe_text"
@@ -916,61 +947,53 @@ msgstr ""
 
 #: templates/vitashop/mails/order_shipped.html:10
 #: templates/vitashop/mails/order_shipped.txt:1
-#, fuzzy
 msgid "Your order has been shipped."
 msgstr ""
-"Hello, <br>Your order {{ order.id }} has been shipped. <br>You can expect "
-"delivery within few days. <br>"
 
-#: templates/vitashop/mails/order_shipped.html:13
-#: templates/vitashop/mails/order_shipped.txt:3
-msgid "order_was_shipped"
+#: templates/vitashop/mails/order_shipped.html:14
+#: templates/vitashop/mails/order_shipped.txt:4
+msgid "your order no."
 msgstr ""
-"Hello, <br>Your order {{ order.id }} has been shipped. <br>You can expect "
-"delivery within few days. <br>"
+
+#: templates/vitashop/mails/order_shipped.html:14
+#: templates/vitashop/mails/order_shipped.txt:4
+msgid " has been shipped. "
+msgstr ""
+
+#: templates/vitashop/mails/order_shipped.html:15
+#: templates/vitashop/mails/order_shipped.txt:5
+msgid "You can expect delivery within few days."
+msgstr ""
 
 #: templates/vitashop/mails/payment_confirmed.html:10
 #: templates/vitashop/mails/payment_confirmed.txt:1
-#, fuzzy
 msgid "Your payment was confirmed."
 msgstr ""
-"Hello, <br>we have received confirmation of your payment {{ amount }} for "
-"your order {{ order.id }}. <br>Thank you for your purchase. <br>"
 
-#: templates/vitashop/mails/payment_confirmed.html:13
-msgid "payment_was_confirmed"
+#: templates/vitashop/mails/payment_confirmed.html:14
+#: templates/vitashop/mails/payment_confirmed.txt:4
+msgid "we have received confirmation of your payment"
 msgstr ""
-"Hello, <br>we have received confirmation of your payment {{ amount }} for "
-"your order {{ order.id }}. <br>Thank you for your purchase. <br>"
-
-#: templates/vitashop/mails/payment_confirmed.txt:3
-msgid "payment_was_received"
-msgstr ""
-"Hello, <br>we have received your payment {{ amount }} for your order "
-"{{ order.id }}. <br>Thank you for your purchase. <br>"
 
 #: templates/vitashop/mails/payment_received.html:10
+#: templates/vitashop/mails/payment_received.txt:1
 msgid "Your payment was received."
 msgstr ""
 
-#: templates/vitashop/mails/payment_received.html:13
-#, python-format
-msgid ""
-"Hello, <br>\n"
-"    we have received your payment %(amount1)s for your order %(order_id)s. "
-"<br>\n"
-"    Thank you for your purchase. <br>\n"
+#: templates/vitashop/mails/payment_received.html:14
+#: templates/vitashop/mails/payment_received.txt:4
+msgid "we have received your payment"
 msgstr ""
 
 #: templates/vitashop/mails/reset_email.html:4
 msgid "reset_password_title"
 msgstr ""
 
-#: templates/vitashop/mails/reset_email.html:6
+#: templates/vitashop/mails/reset_email.html:8
 msgid "reset_password_email1"
 msgstr ""
 
-#: templates/vitashop/mails/reset_email.html:10
+#: templates/vitashop/mails/reset_email.html:12
 msgid "reset_password_email2"
 msgstr ""
 

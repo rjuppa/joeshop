@@ -1,4 +1,5 @@
 {% trans "Signed up successfully" %}
 
-{% trans "activate_account" %}
+{% trans "Hello, " %}
+{% trans "you have successfully signed up. <br> Please click on activation link bellow to activate your account." %}
 Vitamineral team

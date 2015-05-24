@@ -7,10 +7,15 @@
 
 <b>{% trans "Email notification:" %}</b>
 <p>
-    <h3>{% trans "We received insufficient payment." %}</h3><br/>
+    <h3>{% trans "We received insufficient payment." %}</h3>
 </p>
+
 <p>
-{% trans "insufficient_payment" %}
+{% trans "Hello, " %} <br>
+{% trans "we have received insufficient payment" %} {{ amount }} {% trans "for your order no. " %} {{ order.id }}. <br>
+{% trans "Total price is " %} {{ order_price }} {{ currency }} {% trans "Please adjust your payment accordingly." %} <br>
+{% trans "Thank you for your purchase." %} <br>
+
 </p>
 Vitamineral team
 

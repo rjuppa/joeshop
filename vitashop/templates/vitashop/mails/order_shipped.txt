@@ -1,4 +1,6 @@
 {% trans "Your order has been shipped." %}
 
-{% trans "order_was_shipped" %}
+{% trans "Hello, " %}
+{% trans "your order no." %} {{ order.id }} {% trans " has been shipped. " %}
+{% trans "You can expect delivery within few days." %}
 Vitamineral team
