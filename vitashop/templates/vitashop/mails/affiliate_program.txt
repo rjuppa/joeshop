@@ -1,3 +1,5 @@
+{% load i18n %}
+{% load url from future %}
 {% trans "Welcome to affiliate program." %}
 
 {% trans "Hello, " %}

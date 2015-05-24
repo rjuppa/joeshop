@@ -1,3 +1,5 @@
+{% load i18n %}
+{% load url from future %}
 {% trans "We received insufficient payment." %}
 
 {% trans "Hello, " %}

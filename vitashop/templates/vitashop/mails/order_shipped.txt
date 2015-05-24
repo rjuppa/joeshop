@@ -1,3 +1,5 @@
+{% load i18n %}
+{% load url from future %}
 {% trans "Your order has been shipped." %}
 
 {% trans "Hello, " %}

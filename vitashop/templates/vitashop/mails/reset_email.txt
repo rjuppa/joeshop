@@ -1,3 +1,5 @@
+{% load i18n %}
+{% load url from future %}
 Hello,
 
 you have asked for reseting password.
