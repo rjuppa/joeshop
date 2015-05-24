@@ -5,11 +5,13 @@
 
 {% block body %}
 
+<b>{% trans "Email notification:" %}</b>
 <p>
-VITAMINERAL.INFO<br/>
-================
+    <h3>{% trans "Your order has been shipped." %}</h3>
 </p>
-    Order: {{ order.id }}<br/>
-    Your order has shipped. {{ amount }}.<br/>
+<p>
+{% trans "order_was_shipped" %}
+</p>
+Vitamineral team
 
 {% endblock %}

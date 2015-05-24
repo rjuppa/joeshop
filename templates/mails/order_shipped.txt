@@ -1,5 +1,4 @@
-VITAMINERAL.INFO
-================
+{% trans "Your order has been shipped." %}
 
-    Order: {{ order.id }}
-    Your order has shipped.
+{% trans "order_was_shipped" %}
+Vitamineral team

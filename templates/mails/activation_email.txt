@@ -1,5 +1,4 @@
-Hello,
-it is an activation e-mail.
-Please click the link {{ site }}/shop/activate/{{ activation_code }}?lang={{ lang }}
+{% trans "Signed up successfully" %}
 
-Vitamineral.info Team
+{% trans "activate_account" %}
+Vitamineral team

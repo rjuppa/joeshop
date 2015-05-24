@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-28 21:51+0200\n"
+"POT-Creation-Date: 2015-05-24 14:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,297 +18,301 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: forms.py:52
+#: forms.py:53
 msgid "A user with that email already exists."
 msgstr "Tento email je již zaregistrován."
 
-#: forms.py:53
+#: forms.py:54
 msgid "The two password fields didn't match."
 msgstr ""
 
-#: forms.py:55 models.py:331 models.py:391 templates/vitashop/login.html:88
-#: templates/vitashop/profile.html:34 templates/vitashop/register.html:87
+#: forms.py:56 models.py:359 models.py:420 templates/vitashop/login.html:88
+#: templates/vitashop/profile.html:35 templates/vitashop/register.html:87
 msgid "Email"
 msgstr ""
 
-#: forms.py:55
+#: forms.py:56
 msgid "Required. "
 msgstr ""
 
-#: forms.py:56
+#: forms.py:57
 msgid "This value must be valid email address."
 msgstr ""
 
-#: forms.py:57 forms.py:118 templates/vitashop/login.html:94
-#: templates/vitashop/profile.html:42 templates/vitashop/register.html:93
+#: forms.py:58 forms.py:119 templates/vitashop/login.html:94
+#: templates/vitashop/profile.html:43 templates/vitashop/register.html:93
 msgid "Password"
 msgstr "Heslo"
 
-#: forms.py:59
+#: forms.py:60
 msgid "Password confirmation"
 msgstr "Potvrzení hesla"
 
-#: forms.py:61
+#: forms.py:62
 msgid "Enter the same password as above, for verification."
 msgstr ""
 
-#: forms.py:195
+#: forms.py:159 models.py:360 templates/vitashop/profile.html:56
+msgid "Language"
+msgstr "Jazyk"
+
+#: forms.py:162 models.py:361 models.py:422 templates/vitashop/cart.html:17
+#: templates/vitashop/product_detail.html:23
+#: templates/vitashop/products.html:17 templates/vitashop/profile.html:63
+#: templates/vitashop/checkout/overview.html:46
+msgid "Currency"
+msgstr "Měna"
+
+#: forms.py:203
 msgid "Shipping method"
 msgstr "Doručovací metoda"
 
-#: forms.py:205
+#: forms.py:213
 msgid "Payment method"
 msgstr "Platební metoda"
 
-#: models.py:113
+#: models.py:124
 msgid "username"
 msgstr ""
 
-#: models.py:114
+#: models.py:125
 msgid "Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."
 msgstr ""
 
-#: models.py:118
+#: models.py:129
 msgid "Enter a valid username."
 msgstr ""
 
-#: models.py:120
+#: models.py:131
 msgid "first name"
 msgstr "jméno"
 
-#: models.py:121
+#: models.py:132
 msgid "last name"
 msgstr ""
 
-#: models.py:122
+#: models.py:133
 msgid "email address"
 msgstr ""
 
-#: models.py:123
+#: models.py:134
 msgid "staff status"
 msgstr ""
 
-#: models.py:124
+#: models.py:135
 msgid "Designates whether the user can log into this admin site."
 msgstr ""
 
-#: models.py:126
+#: models.py:137
 msgid "active"
 msgstr ""
 
-#: models.py:127
+#: models.py:138
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
 msgstr ""
 
-#: models.py:129
+#: models.py:140
 msgid "affiliate"
 msgstr ""
 
-#: models.py:130
+#: models.py:141
 msgid "date joined"
 msgstr ""
 
-#: models.py:131
+#: models.py:142
 msgid "code"
 msgstr ""
 
-#: models.py:132
+#: models.py:143
 msgid "lang"
 msgstr ""
 
-#: models.py:138
+#: models.py:149
 msgid "user"
 msgstr ""
 
-#: models.py:139
+#: models.py:150
 msgid "users"
 msgstr ""
 
-#: models.py:198
+#: models.py:209
 msgid "Name"
 msgstr ""
 
-#: models.py:199
+#: models.py:210
 msgid "Slug"
 msgstr ""
 
-#: models.py:200
+#: models.py:211
 msgid "Active"
 msgstr ""
 
-#: models.py:201 models.py:217
+#: models.py:212 models.py:228
 msgid "Image"
 msgstr ""
 
-#: models.py:202 models.py:218
+#: models.py:213 models.py:229
 msgid "Intro"
 msgstr ""
 
-#: models.py:203 models.py:363 models.py:385 models.py:397
+#: models.py:214 models.py:391 models.py:414 models.py:426
 msgid "Created"
 msgstr ""
 
-#: models.py:206 models.py:220
+#: models.py:217 models.py:231
 msgid "Category"
 msgstr ""
 
-#: models.py:207
+#: models.py:218
 msgid "Categories"
 msgstr ""
 
-#: models.py:219
+#: models.py:230
 msgid "Link"
 msgstr ""
 
-#: models.py:221
+#: models.py:232
 msgid "Desc1"
 msgstr ""
 
-#: models.py:222
+#: models.py:233
 msgid "Desc2"
 msgstr ""
 
-#: models.py:223
+#: models.py:234
 msgid "Desc3"
 msgstr ""
 
-#: models.py:224
+#: models.py:235
 msgid "Filter1"
 msgstr ""
 
-#: models.py:225
+#: models.py:236
 msgid "Filter2"
 msgstr ""
 
-#: models.py:226
+#: models.py:237
 msgid "Featured"
 msgstr ""
 
-#: models.py:227
+#: models.py:238
 msgid "Weight"
 msgstr "Váha"
 
-#: models.py:228
+#: models.py:239
 msgid "Old Price"
 msgstr ""
 
-#: models.py:229 models.py:338
+#: models.py:240 models.py:366
 msgid "Discount"
 msgstr "Sleva"
 
-#: models.py:230
+#: models.py:241
 msgid "Ordering"
 msgstr "Pořadí"
 
-#: models.py:235 models.py:361
+#: models.py:246 models.py:389
 msgid "Product"
 msgstr "Produkt"
 
-#: models.py:236 templates/vitashop/base.html:34
+#: models.py:247 templates/vitashop/base.html:34
 #: templates/vitashop/product_detail.html:10
 #: templates/vitashop/products.html:9
 msgid "Products"
 msgstr "Produkty"
 
-#: models.py:329
+#: models.py:357
 msgid "User"
 msgstr "Uživatel"
 
-#: models.py:330
+#: models.py:358
 msgid "Slag"
 msgstr ""
 
-#: models.py:332
-msgid "Language"
-msgstr "Jazyk"
-
-#: models.py:333 models.py:393 templates/vitashop/cart.html:17
-#: templates/vitashop/checkout/overview.html:46
-#: templates/vitashop/product_detail.html:23
-#: templates/vitashop/products.html:17
-msgid "Currency"
-msgstr "Měna"
-
-#: models.py:334 templates/vitashop/profile.html:55
+#: models.py:362 templates/vitashop/profile.html:87
 msgid "Newsletter"
 msgstr "Newsletter"
 
-#: models.py:335 templates/vitashop/base.html:80
+#: models.py:363 templates/vitashop/base.html:80
 msgid "Affiliate"
 msgstr "Spolupráce"
 
-#: models.py:336
+#: models.py:364
 #, fuzzy
-#| msgid "Affiliate"
 msgid "Affiliate_email"
 msgstr "Spolupráce"
 
-#: models.py:337
+#: models.py:365
 msgid "Total Sale"
 msgstr ""
 
-#: models.py:339
+#: models.py:367
 msgid "Parent"
 msgstr ""
 
-#: models.py:344 models.py:360
+#: models.py:372 models.py:388
 msgid "Customer"
 msgstr "Zákazník"
 
-#: models.py:345
+#: models.py:373
 msgid "Customers"
 msgstr "Zákazníci"
 
-#: models.py:362 templates/vitashop/cart.html:58
-#: templates/vitashop/checkout/overview.html:105
+#: models.py:390 templates/vitashop/cart.html:58
 #: templates/vitashop/order_detail.html:66
+#: templates/vitashop/checkout/overview.html:105
 #: templates/vitashop/templatetags/_order.html:29
 msgid "Quantity"
 msgstr "Množství"
 
-#: models.py:366 models.py:367
+#: models.py:394 models.py:395
 msgid "ShoppingHistory"
 msgstr ""
 
-#: models.py:386
+#: models.py:415
 msgid "Unconfirmed"
 msgstr ""
 
-#: models.py:387
+#: models.py:416
 msgid "Confirmed"
 msgstr ""
 
-#: models.py:388
+#: models.py:417
 msgid "Canceled"
 msgstr ""
 
-#: models.py:392 templates/vitashop/cart.html:59
-#: templates/vitashop/checkout/methods.html:99
-#: templates/vitashop/checkout/methods.html:119
-#: templates/vitashop/checkout/overview.html:106
+#: models.py:421 templates/vitashop/cart.html:59
 #: templates/vitashop/order_detail.html:67
 #: templates/vitashop/product_detail.html:49
 #: templates/vitashop/products.html:50
+#: templates/vitashop/checkout/methods.html:99
+#: templates/vitashop/checkout/methods.html:119
+#: templates/vitashop/checkout/overview.html:106
 msgid "Price"
 msgstr "Cena"
 
-#: models.py:394
+#: models.py:423
 msgid "Result"
 msgstr ""
 
-#: models.py:395
+#: models.py:424
 msgid "Wallet address"
 msgstr ""
 
-#: models.py:396
+#: models.py:425
 msgid "Payment status"
 msgstr ""
 
-#: models.py:401 models.py:402
+#: models.py:430 models.py:431
 msgid "Payment History"
 msgstr "Platební historie"
+
+#: cart/modifiers.py:20
+#, fuzzy
+msgid "Member discount"
+msgstr "Sleva"
 
 #: payment/backends/pay_on_delivery.py:11
 msgid "Pay On Delivery"
@@ -318,7 +322,7 @@ msgstr "Dobírka"
 msgid "Bitcoin payment"
 msgstr "Bitcoin platba"
 
-#: payment/backends/paypal.py:19
+#: payment/backends/paypal.py:21
 msgid "Paypal payment"
 msgstr "PayPal platba"
 
@@ -360,9 +364,8 @@ msgstr "Otázky"
 msgid "Contact"
 msgstr "Kontakt"
 
-#: templates/vitashop/base.html:81
+#: templates/vitashop/base.html:81 templates/vitashop/order_detail.html:51
 #: templates/vitashop/checkout/overview.html:90
-#: templates/vitashop/order_detail.html:51
 msgid "Shipping"
 msgstr "Doručování"
 
@@ -406,13 +409,12 @@ msgstr "Minerály"
 msgid "CalMag"
 msgstr "CalMag"
 
-#: templates/vitashop/base.html:104
+#: templates/vitashop/base.html:104 templates/vitashop/order_detail.html:57
 #: templates/vitashop/checkout/overview.html:96
-#: templates/vitashop/order_detail.html:57
 msgid "Payment"
 msgstr "Platby"
 
-#: templates/vitashop/base.html:112
+#: templates/vitashop/base.html:112 templates/vitashop/mails/mail_base.html:60
 msgid "All Rights Reserved."
 msgstr "Všechna práva vyhrazena."
 
@@ -424,23 +426,20 @@ msgstr "Nákupní košík"
 msgid "Empty Shopping Cart"
 msgstr "Vyprázdnit košík"
 
-#: templates/vitashop/cart.html:56
+#: templates/vitashop/cart.html:56 templates/vitashop/order_detail.html:64
 #: templates/vitashop/checkout/overview.html:103
-#: templates/vitashop/order_detail.html:64
 #: templates/vitashop/templatetags/_order.html:27
 msgid "Product name"
 msgstr "Název"
 
-#: templates/vitashop/cart.html:57
+#: templates/vitashop/cart.html:57 templates/vitashop/order_detail.html:65
 #: templates/vitashop/checkout/overview.html:104
-#: templates/vitashop/order_detail.html:65
 #: templates/vitashop/templatetags/_order.html:28
 msgid "Unit price"
 msgstr "Cena/kus"
 
-#: templates/vitashop/cart.html:85
+#: templates/vitashop/cart.html:85 templates/vitashop/order_detail.html:89
 #: templates/vitashop/checkout/overview.html:128
-#: templates/vitashop/order_detail.html:89
 #: templates/vitashop/templatetags/_order.html:49
 msgid "Line Total"
 msgstr ""
@@ -465,7 +464,7 @@ msgstr "Nakupovat zboží"
 msgid "Proceed to checkout"
 msgstr "Dokončit nákup"
 
-#: templates/vitashop/cart.html:136
+#: templates/vitashop/cart.html:137
 msgid "Shopping cart is empty"
 msgstr "Nákupní košík je prázdný."
 
@@ -489,7 +488,7 @@ msgstr "Nové heslo (potvrzení)"
 msgid "Back"
 msgstr "Zpět"
 
-#: templates/vitashop/change_pwd.html:60 templates/vitashop/profile.html:71
+#: templates/vitashop/change_pwd.html:60 templates/vitashop/profile.html:96
 #: templates/vitashop/set_pwd.html:42
 msgid "Save"
 msgstr "Uložit"
@@ -501,273 +500,6 @@ msgstr "Vaše heslo bylo úspěšně nastaveno."
 #: templates/vitashop/change_pwd_done.html:12
 msgid "Go to your profile"
 msgstr "Jít na profil"
-
-#: templates/vitashop/checkout/methods.html:10
-#: templates/vitashop/checkout/overview.html:9
-#: templates/vitashop/checkout/selection.html:9
-msgid "Progress of your checkout"
-msgstr "Platební proces"
-
-#: templates/vitashop/checkout/methods.html:12
-#: templates/vitashop/checkout/overview.html:11
-#: templates/vitashop/checkout/selection.html:11
-msgid "Shopping"
-msgstr "Nakupování"
-
-#: templates/vitashop/checkout/methods.html:16
-#: templates/vitashop/checkout/overview.html:15
-#: templates/vitashop/checkout/selection.html:15
-msgid "Cart"
-msgstr "Košík"
-
-#: templates/vitashop/checkout/methods.html:20
-#: templates/vitashop/checkout/overview.html:19
-#: templates/vitashop/checkout/selection.html:19
-msgid "Delivery Address"
-msgstr "Doručovací adresa"
-
-#: templates/vitashop/checkout/methods.html:24
-#: templates/vitashop/checkout/overview.html:23
-#: templates/vitashop/checkout/selection.html:23
-msgid "Shipping and Billing"
-msgstr "Platební metoda"
-
-#: templates/vitashop/checkout/methods.html:28
-#: templates/vitashop/checkout/overview.html:27
-#: templates/vitashop/checkout/selection.html:27
-msgid "Summary"
-msgstr "Souhrn"
-
-#: templates/vitashop/checkout/methods.html:32
-#: templates/vitashop/checkout/overview.html:31
-#: templates/vitashop/checkout/selection.html:31
-msgid "Pay"
-msgstr "Platba"
-
-#: templates/vitashop/checkout/methods.html:42
-msgid "Shipping and payment methods"
-msgstr "Doručení a platby"
-
-#: templates/vitashop/checkout/methods.html:53
-msgid "Shipping Methods"
-msgstr "Doručovací metody"
-
-#: templates/vitashop/checkout/methods.html:66
-msgid "Payment Methods"
-msgstr "Platební metody"
-
-#: templates/vitashop/checkout/methods.html:85
-msgid "Back to Delivery Address"
-msgstr "Zpět na doručovací adresu"
-
-#: templates/vitashop/checkout/methods.html:86
-msgid "Continue to Payment"
-msgstr "Pokračovat"
-
-#: templates/vitashop/checkout/methods.html:100
-#: templates/vitashop/checkout/methods.html:120
-msgid "Period od delivery"
-msgstr "Termín"
-
-#: templates/vitashop/checkout/methods.html:101
-msgid "Delivery usually takes 1-2 working days."
-msgstr "Doručení obvykle trvá 1-2 pracovní dny."
-
-#: templates/vitashop/checkout/methods.html:103
-msgid "Delivery"
-msgstr "Doručení"
-
-#: templates/vitashop/checkout/methods.html:104
-msgid "An email with number of package will be sent in day of expedition."
-msgstr "V den expedice Vám bude emailem zaslána informace o čísle balíku."
-
-#: templates/vitashop/checkout/methods.html:106
-msgid ""
-"If messenger does not reach you then package will be stored 7 days in the "
-"post office. "
-msgstr ""
-"Výhodou je doručení přímo k Vašim rukám, v případě neúspěšného doručení je "
-"balík po dobu 7 dnů uložen na Vaší poště."
-
-#: templates/vitashop/checkout/methods.html:121
-msgid ""
-"Personal pick up is available only in Plzeň. You will receive instructions "
-"where to pick up products."
-msgstr ""
-"Produkty lze zatím vyzvednout osobně jen v Plzni na prodejně.<br/>Zboží je "
-"připraveno k odběru ihned po objednání. Případně lze domluvit osobní "
-"předání. Instrukce, kde si můžete zboží vyzvednout, budou vytištěny na "
-"objednávce."
-
-#: templates/vitashop/checkout/methods.html:123
-msgid "We work on"
-msgstr "Připravujeme"
-
-#: templates/vitashop/checkout/methods.html:124
-msgid "Posibility to pick up products in main cities."
-msgstr "Možnost vyzvednutí produktů v krajských městech."
-
-#: templates/vitashop/checkout/methods.html:129
-msgid "The bitcoin address will be shown to pay this order on next page."
-msgstr ""
-"Bitcoinová adresa pro zaplacení této objednávky bude zobrazena na "
-"následující stránce."
-
-#: templates/vitashop/checkout/methods.html:133
-msgid "You will be redirected to Paypal payment gateway to pay this order."
-msgstr "Po odeslání objednávky budete přesměrováni na platební bránu PayPal."
-
-#: templates/vitashop/checkout/overview.html:41
-msgid "Order summary"
-msgstr "Objednávka"
-
-#: templates/vitashop/checkout/overview.html:57
-#: templates/vitashop/checkout/overview.html:69
-#: templates/vitashop/order_detail.html:18
-#: templates/vitashop/order_detail.html:30
-msgid "Customer information"
-msgstr "Informace o zákazníkovi"
-
-#: templates/vitashop/checkout/overview.html:59
-#: templates/vitashop/order_detail.html:20
-msgid "Shipping and billing address"
-msgstr "Doručovací a fakturační adresa"
-
-#: templates/vitashop/checkout/overview.html:71
-#: templates/vitashop/order_detail.html:32
-msgid "Shipping address"
-msgstr "Doručovací adresa"
-
-#: templates/vitashop/checkout/overview.html:78
-#: templates/vitashop/order_detail.html:39
-msgid "Billing address"
-msgstr "Fakturační adresa"
-
-#: templates/vitashop/checkout/overview.html:139
-#: templates/vitashop/order_detail.html:100
-#: templates/vitashop/templatetags/_order.html:54
-msgid "Order Subtotal"
-msgstr "Mezisoučet"
-
-#: templates/vitashop/checkout/overview.html:151
-#: templates/vitashop/order_detail.html:112
-#: templates/vitashop/templatetags/_order.html:62
-msgid "Order Total"
-msgstr "Celkem"
-
-#: templates/vitashop/checkout/overview.html:165
-msgid "Back to Shipping and Billing"
-msgstr "Zpět na platební metody"
-
-#: templates/vitashop/checkout/overview.html:168
-msgid "Place the Order"
-msgstr "Odeslat objednávku"
-
-#: templates/vitashop/checkout/ppcanceled.html:12
-msgid "The payment was canceled by user."
-msgstr "Platba byla stornována uživatelem."
-
-#: templates/vitashop/checkout/ppcanceled.html:23
-msgid "Please continue to pay again your order at"
-msgstr "Prosím zaplaťte svoji objednávku "
-
-#: templates/vitashop/checkout/ppcanceled.html:26
-#: templates/vitashop/checkout/ppfailed.html:29
-#: templates/vitashop/checkout/ppsuccess.html:20
-#: templates/vitashop/checkout/thank_you.html:19
-msgid "Back to the main page"
-msgstr "Zpět na hlavní stránku"
-
-#: templates/vitashop/checkout/ppfailed.html:11
-msgid "An error occured!"
-msgstr "Chyba!"
-
-#: templates/vitashop/checkout/ppfailed.html:24
-msgid "Please continue to pay your order at"
-msgstr "Prosím zaplaťte svoji objednávku "
-
-#: templates/vitashop/checkout/ppsuccess.html:11
-msgid "The payment was processed successfully."
-msgstr "Platba byla úspěšně zpracována."
-
-#: templates/vitashop/checkout/ppsuccess.html:14
-msgid "Thank you for your payment!"
-msgstr "Děkujeme za Vaši platbu!"
-
-#: templates/vitashop/checkout/selection.html:40
-msgid "Fill in your address"
-msgstr "Vyplňte adresu"
-
-#: templates/vitashop/checkout/selection.html:51
-msgid "Your shipping address"
-msgstr "Doručovací adresa"
-
-#: templates/vitashop/checkout/selection.html:60
-msgid "Your billing address"
-msgstr "Fakturační adresa"
-
-#: templates/vitashop/checkout/selection.html:71
-msgid "Use different billing address"
-msgstr "Použít jinou fakturační adresu"
-
-#: templates/vitashop/checkout/selection.html:80
-msgid "Back to Cart"
-msgstr "Zpět do košíku"
-
-#: templates/vitashop/checkout/selection.html:81
-msgid "Continue"
-msgstr "Pokračovat"
-
-#: templates/vitashop/checkout/thank_you.html:7
-msgid "Thank you for your order!"
-msgstr "Děkujeme za Vaši objednávku!"
-
-#: templates/vitashop/checkout/thank_you.html:8
-msgid "Your order has been placed"
-msgstr "Objednávka byla přijata"
-
-#: templates/vitashop/checkout/thank_you.html:15
-msgid "Please continue to pay for your order "
-msgstr "Prosím zaplaťte svoji objednávku "
-
-#: templates/vitashop/checkout/thank_you.html:15
-msgid " with "
-msgstr " přes "
-
-#: templates/vitashop/checkout/thank_you.html:23
-msgid "Payment instructions"
-msgstr "Platební instrukce"
-
-#: templates/vitashop/checkout/thank_you.html:25
-msgid "Price is "
-msgstr "Cena je "
-
-#: templates/vitashop/checkout/thank_you.html:26
-msgid "Please pay "
-msgstr "Prosím zaplaťte "
-
-#: templates/vitashop/checkout/thank_you.html:27
-msgid "Bitcoin exchange rate: "
-msgstr "Aktuální kurz Bitcoinu"
-
-#: templates/vitashop/checkout/thank_you.html:27
-msgid "from"
-msgstr " přes "
-
-#: templates/vitashop/checkout/thank_you.html:28
-msgid "to wallet address:"
-msgstr "na adresu:"
-
-#: templates/vitashop/checkout/thank_you.html:32
-msgid "Your payment has to be verified..."
-msgstr ""
-"Vaše platba musí být 3x potvrzena během následujících 6 hodin.<br /> Jinak, "
-"bude objednávka automaticky zrušena.<br /> V každém případě Vás o stavu "
-"budeme informovat emailem."
-
-#: templates/vitashop/checkout/thank_you.html:36
-msgid "Thank you for your order"
-msgstr "Děkujeme za Vaši objednávku"
 
 #: templates/vitashop/error.html:13
 msgid "Continue shopping"
@@ -863,6 +595,40 @@ msgstr "registrovat se."
 #: templates/vitashop/order_detail.html:9
 msgid "Order"
 msgstr "Pořadí"
+
+#: templates/vitashop/order_detail.html:18
+#: templates/vitashop/order_detail.html:30
+#: templates/vitashop/checkout/overview.html:57
+#: templates/vitashop/checkout/overview.html:69
+msgid "Customer information"
+msgstr "Informace o zákazníkovi"
+
+#: templates/vitashop/order_detail.html:20
+#: templates/vitashop/checkout/overview.html:59
+msgid "Shipping and billing address"
+msgstr "Doručovací a fakturační adresa"
+
+#: templates/vitashop/order_detail.html:32
+#: templates/vitashop/checkout/overview.html:71
+msgid "Shipping address"
+msgstr "Doručovací adresa"
+
+#: templates/vitashop/order_detail.html:39
+#: templates/vitashop/checkout/overview.html:78
+msgid "Billing address"
+msgstr "Fakturační adresa"
+
+#: templates/vitashop/order_detail.html:100
+#: templates/vitashop/checkout/overview.html:139
+#: templates/vitashop/templatetags/_order.html:54
+msgid "Order Subtotal"
+msgstr "Mezisoučet"
+
+#: templates/vitashop/order_detail.html:112
+#: templates/vitashop/checkout/overview.html:151
+#: templates/vitashop/templatetags/_order.html:62
+msgid "Order Total"
+msgstr "Celkem"
 
 #: templates/vitashop/order_list.html:5
 msgid "Order list"
@@ -1137,39 +903,42 @@ msgstr ""
 "případě horkého nápoje. Vložíme pytlík s čajem a dolejeme horkou vodou. V "
 "případě studeného nápoje dolejeme studeným džusem."
 
-#: templates/vitashop/profile.html:9 templates/vitashop/profile.html.py:15
+#: templates/vitashop/profile.html:9 templates/vitashop/profile.html.py:16
 msgid "Your Profile"
 msgstr "Váš profil"
 
-#: templates/vitashop/profile.html:22
+#: templates/vitashop/profile.html:23
 msgid "First Name"
 msgstr "Jméno"
 
-#: templates/vitashop/profile.html:28
+#: templates/vitashop/profile.html:29
 msgid "Last Name"
 msgstr "Příjmení"
 
-#: templates/vitashop/profile.html:45
+#: templates/vitashop/profile.html:46
 msgid "Change"
 msgstr "Změnit"
 
-#: templates/vitashop/profile.html:47
+#: templates/vitashop/profile.html:48
 msgid "Password is not used."
 msgstr "Heslo není nastaveno"
 
-#: templates/vitashop/profile.html:48
+#: templates/vitashop/profile.html:49
 msgid "Set"
 msgstr "Nastavit"
 
-#: templates/vitashop/profile.html:62
+#: templates/vitashop/profile.html:70
 #, fuzzy
-#| msgid "Affiliate"
 msgid "Affiliate Program"
 msgstr "Spolupráce"
 
-#: templates/vitashop/profile.html:81
+#: templates/vitashop/profile.html:78
 #, fuzzy
-#| msgid "Order list"
+msgid "Your Affiliate Code"
+msgstr "Spolupráce"
+
+#: templates/vitashop/profile.html:106
+#, fuzzy
 msgid "My Orders"
 msgstr "Mé objednávek"
 
@@ -1186,6 +955,7 @@ msgid "Register"
 msgstr "Registrovat"
 
 #: templates/vitashop/register_success.html:9
+#: templates/vitashop/mails/activation_email.html:7
 msgid "Signed up successfully"
 msgstr "Registrace byla úspěšná!"
 
@@ -1203,6 +973,370 @@ msgstr "Prosím zkontrolujte Váši mailovou schánku a aktivujte svůj účet."
 
 #: templates/vitashop/set_pwd.html:10
 msgid "Set Password"
+msgstr "Nové heslo"
+
+#: templates/vitashop/checkout/methods.html:10
+#: templates/vitashop/checkout/overview.html:9
+#: templates/vitashop/checkout/selection.html:9
+msgid "Progress of your checkout"
+msgstr "Platební proces"
+
+#: templates/vitashop/checkout/methods.html:12
+#: templates/vitashop/checkout/overview.html:11
+#: templates/vitashop/checkout/selection.html:11
+msgid "Shopping"
+msgstr "Nakupování"
+
+#: templates/vitashop/checkout/methods.html:16
+#: templates/vitashop/checkout/overview.html:15
+#: templates/vitashop/checkout/selection.html:15
+msgid "Cart"
+msgstr "Košík"
+
+#: templates/vitashop/checkout/methods.html:20
+#: templates/vitashop/checkout/overview.html:19
+#: templates/vitashop/checkout/selection.html:19
+msgid "Delivery Address"
+msgstr "Doručovací adresa"
+
+#: templates/vitashop/checkout/methods.html:24
+#: templates/vitashop/checkout/overview.html:23
+#: templates/vitashop/checkout/selection.html:23
+msgid "Shipping and Billing"
+msgstr "Platební metoda"
+
+#: templates/vitashop/checkout/methods.html:28
+#: templates/vitashop/checkout/overview.html:27
+#: templates/vitashop/checkout/selection.html:27
+msgid "Summary"
+msgstr "Souhrn"
+
+#: templates/vitashop/checkout/methods.html:32
+#: templates/vitashop/checkout/overview.html:31
+#: templates/vitashop/checkout/selection.html:31
+msgid "Pay"
+msgstr "Platba"
+
+#: templates/vitashop/checkout/methods.html:42
+msgid "Shipping and payment methods"
+msgstr "Doručení a platby"
+
+#: templates/vitashop/checkout/methods.html:53
+msgid "Shipping Methods"
+msgstr "Doručovací metody"
+
+#: templates/vitashop/checkout/methods.html:66
+msgid "Payment Methods"
+msgstr "Platební metody"
+
+#: templates/vitashop/checkout/methods.html:85
+msgid "Back to Delivery Address"
+msgstr "Zpět na doručovací adresu"
+
+#: templates/vitashop/checkout/methods.html:86
+msgid "Continue to Payment"
+msgstr "Pokračovat"
+
+#: templates/vitashop/checkout/methods.html:100
+#: templates/vitashop/checkout/methods.html:120
+msgid "Period od delivery"
+msgstr "Termín"
+
+#: templates/vitashop/checkout/methods.html:101
+msgid "Delivery usually takes 1-2 working days."
+msgstr "Doručení obvykle trvá 1-2 pracovní dny."
+
+#: templates/vitashop/checkout/methods.html:103
+msgid "Delivery"
+msgstr "Doručení"
+
+#: templates/vitashop/checkout/methods.html:104
+msgid "An email with number of package will be sent in day of expedition."
+msgstr "V den expedice Vám bude emailem zaslána informace o čísle balíku."
+
+#: templates/vitashop/checkout/methods.html:106
+msgid ""
+"If messenger does not reach you then package will be stored 7 days in the "
+"post office. "
+msgstr ""
+"Výhodou je doručení přímo k Vašim rukám, v případě neúspěšného doručení je "
+"balík po dobu 7 dnů uložen na Vaší poště."
+
+#: templates/vitashop/checkout/methods.html:121
+msgid ""
+"Personal pick up is available only in Plzeň. You will receive instructions "
+"where to pick up products."
+msgstr ""
+"Produkty lze zatím vyzvednout osobně jen v Plzni na prodejně.<br/>Zboží je "
+"připraveno k odběru ihned po objednání. Případně lze domluvit osobní "
+"předání. Instrukce, kde si můžete zboží vyzvednout, budou vytištěny na "
+"objednávce."
+
+#: templates/vitashop/checkout/methods.html:123
+msgid "We work on"
+msgstr "Připravujeme"
+
+#: templates/vitashop/checkout/methods.html:124
+msgid "Posibility to pick up products in main cities."
+msgstr "Možnost vyzvednutí produktů v krajských městech."
+
+#: templates/vitashop/checkout/methods.html:129
+msgid "The bitcoin address will be shown to pay this order on next page."
+msgstr ""
+"Bitcoinová adresa pro zaplacení této objednávky bude zobrazena na "
+"následující stránce."
+
+#: templates/vitashop/checkout/methods.html:133
+msgid "You will be redirected to Paypal payment gateway to pay this order."
+msgstr "Po odeslání objednávky budete přesměrováni na platební bránu PayPal."
+
+#: templates/vitashop/checkout/overview.html:41
+msgid "Order summary"
+msgstr "Objednávka"
+
+#: templates/vitashop/checkout/overview.html:165
+msgid "Back to Shipping and Billing"
+msgstr "Zpět na platební metody"
+
+#: templates/vitashop/checkout/overview.html:168
+msgid "Place the Order"
+msgstr "Odeslat objednávku"
+
+#: templates/vitashop/checkout/ppcanceled.html:11
+msgid "The payment was canceled by user."
+msgstr "Platba byla stornována uživatelem."
+
+#: templates/vitashop/checkout/ppcanceled.html:21
+msgid "Please continue to pay again your order at"
+msgstr "Prosím zaplaťte svoji objednávku "
+
+#: templates/vitashop/checkout/ppcanceled.html:24
+#: templates/vitashop/checkout/ppfailed.html:26
+#: templates/vitashop/checkout/ppsuccess.html:19
+#: templates/vitashop/checkout/thank_you.html:19
+msgid "Back to the main page"
+msgstr "Zpět na hlavní stránku"
+
+#: templates/vitashop/checkout/ppfailed.html:11
+msgid "An error occured!"
+msgstr "Chyba!"
+
+#: templates/vitashop/checkout/ppfailed.html:22
+msgid "Please continue to pay your order at"
+msgstr "Prosím zaplaťte svoji objednávku "
+
+#: templates/vitashop/checkout/ppsuccess.html:11
+msgid "The payment was processed successfully."
+msgstr "Platba byla úspěšně zpracována."
+
+#: templates/vitashop/checkout/ppsuccess.html:14
+msgid "Thank you for your payment!"
+msgstr "Děkujeme za Vaši platbu!"
+
+#: templates/vitashop/checkout/selection.html:40
+msgid "Fill in your address"
+msgstr "Vyplňte adresu"
+
+#: templates/vitashop/checkout/selection.html:51
+msgid "Your shipping address"
+msgstr "Doručovací adresa"
+
+#: templates/vitashop/checkout/selection.html:60
+msgid "Your billing address"
+msgstr "Fakturační adresa"
+
+#: templates/vitashop/checkout/selection.html:71
+msgid "Use different billing address"
+msgstr "Použít jinou fakturační adresu"
+
+#: templates/vitashop/checkout/selection.html:80
+msgid "Back to Cart"
+msgstr "Zpět do košíku"
+
+#: templates/vitashop/checkout/selection.html:81
+msgid "Continue"
+msgstr "Pokračovat"
+
+#: templates/vitashop/checkout/thank_you.html:7
+msgid "Thank you for your order!"
+msgstr "Děkujeme za Vaši objednávku!"
+
+#: templates/vitashop/checkout/thank_you.html:8
+msgid "Your order has been placed"
+msgstr "Objednávka byla přijata"
+
+#: templates/vitashop/checkout/thank_you.html:15
+msgid "Please continue to pay for your order "
+msgstr "Prosím zaplaťte svoji objednávku "
+
+#: templates/vitashop/checkout/thank_you.html:15
+msgid " with "
+msgstr " přes "
+
+#: templates/vitashop/checkout/thank_you.html:23
+msgid "Payment instructions"
+msgstr "Platební instrukce"
+
+#: templates/vitashop/checkout/thank_you.html:25
+msgid "Price is "
+msgstr "Cena je "
+
+#: templates/vitashop/checkout/thank_you.html:26
+msgid "Please pay "
+msgstr "Prosím zaplaťte "
+
+#: templates/vitashop/checkout/thank_you.html:27
+msgid "Bitcoin exchange rate: "
+msgstr "Aktuální kurz Bitcoinu"
+
+#: templates/vitashop/checkout/thank_you.html:27
+msgid "from"
+msgstr " přes "
+
+#: templates/vitashop/checkout/thank_you.html:28
+msgid "to wallet address:"
+msgstr "na adresu:"
+
+#: templates/vitashop/checkout/thank_you.html:32
+msgid "Your payment has to be verified..."
+msgstr ""
+"Vaše platba musí být 3x potvrzena během následujících 6 hodin.<br /> Jinak, "
+"bude objednávka automaticky zrušena.<br /> V každém případě Vás o stavu "
+"budeme informovat emailem."
+
+#: templates/vitashop/checkout/thank_you.html:36
+msgid "Thank you for your order"
+msgstr "Děkujeme za Vaši objednávku"
+
+#: templates/vitashop/mails/activation_email.html:5
+#: templates/vitashop/mails/affiliate_program.html:8
+#: templates/vitashop/mails/insufficient_payment_received.html:8
+#: templates/vitashop/mails/order_shipped.html:8
+#: templates/vitashop/mails/payment_confirmed.html:8
+#: templates/vitashop/mails/payment_received.html:8
+msgid "Email notification:"
+msgstr "Upozornění:"
+
+#: templates/vitashop/mails/activation_email.html:10
+msgid "activate_account"
+msgstr ""
+"Dobrý den,<br/>"
+"úspěšně jste se zaregistrovali.<br/>"
+"Klikněte prosím na aktivační link, čímž ověříte svoji emailovou adresu a aktivujete tak svůj účet.<br/>"
+
+#: templates/vitashop/mails/affiliate_program.html:10
+#, fuzzy
+msgid "Welcome to affiliate program."
+msgstr "Vítejte v affiliate programu."
+
+#: templates/vitashop/mails/affiliate_program.html:13
+#, fuzzy
+msgid "affiliate_program"
+msgstr ""
+"Vážený zákazníku,<br/>"
+"máme pro Vás speciální nabídku.<br/>"
+
+#: templates/vitashop/mails/insufficient_payment_received.html:10
+msgid "We received insufficient payment."
+msgstr "Obdrželi jsme nedostatečnou platbu."
+
+#: templates/vitashop/mails/insufficient_payment_received.html:13
+msgid "insufficient_payment"
+msgstr ""
+"Dobrý den,<br>"
+"obdrželi jsme nedostatečnou platbu {{ amount }} za vaši objednávku {{ order.id }}. <br>"
+"Celková cena činí {{ order_price }} {{ currency }}. Prosím uhraďte rozdíl.<br>"
+"Děkujeme. <br>"
+
+#: templates/vitashop/mails/newsletter.html:12
+msgid "newsletter_unsubscribe_text"
+msgstr ""
+
+#: templates/vitashop/mails/newsletter.html:12
+msgid "newsletter_unsubscribe_link"
+msgstr ""
+
+#: templates/vitashop/mails/newsletter.html:21
+#: templates/vitashop/mails/report.html:31
+msgid "play_langevo"
+msgstr ""
+
+#: templates/vitashop/mails/order_shipped.html:10
+#, fuzzy
+msgid "Your order has been shipped."
+msgstr "Objednávka byla expedována"
+
+#: templates/vitashop/mails/order_shipped.html:13
+msgid "order_was_shipped"
+msgstr ""
+"Dobrý den,<br>"
+"vaše objednávka {{ order.id }} byla expedována. <br>"
+"Očekávejte doručení během následujících dní. <br>"
+
+#: templates/vitashop/mails/payment_confirmed.html:10
+msgid "Your payment was confirmed."
+msgstr ""
+"Vaše platba musí být 3x potvrzena během následujících 6 hodin.<br /> Jinak, "
+"bude objednávka automaticky zrušena.<br /> V každém případě Vás o stavu "
+"budeme informovat emailem."
+
+#: templates/vitashop/mails/payment_confirmed.html:13
+msgid "payment_was_confirmed"
+msgstr ""
+"Dobrý den, <br>"
+"obdrželi jsme potvrzení vaší platby {{ amount }} za objednávku {{ order.id }}. <br>"
+"Děkujeme za Váš nákup. <br>"
+
+#: templates/vitashop/mails/payment_received.html:10
+msgid "Your payment was received."
+msgstr ""
+"Vaše platba musí být 3x potvrzena během následujících 6 hodin.<br /> Jinak, "
+"bude objednávka automaticky zrušena.<br /> V každém případě Vás o stavu "
+"budeme informovat emailem."
+
+#: templates/vitashop/mails/payment_received.html:13
+msgid "payment_was_received"
+msgstr ""
+"Dobrý den, <br>"
+"obdrželi jsme vaši platbu {{ amount }} za objednávku {{ order.id }}. <br>"
+"Děkujeme za Váš nákup. <br>"
+
+#: templates/vitashop/mails/report.html:10
+msgid "report_greetings"
+msgstr ""
+
+#: templates/vitashop/mails/report.html:13
+msgid "report_intro"
+msgstr ""
+
+#: templates/vitashop/mails/report.html:18
+msgid "report_outro"
+msgstr ""
+
+#: templates/vitashop/mails/report.html:22
+msgid "report_unsubscribe_text"
+msgstr ""
+
+#: templates/vitashop/mails/report.html:22
+msgid "report_unsubscribe_link"
+msgstr ""
+
+#: templates/vitashop/mails/reset_email.html:4
+#: templates/vitashop/mails/reset_email.html:8
+msgid "reset_password_title"
+msgstr ""
+
+#: templates/vitashop/mails/reset_email.html:10
+msgid "reset_password_email1"
+msgstr ""
+
+#: templates/vitashop/mails/reset_email.html:14
+msgid "reset_password_email2"
+msgstr ""
+
+#: templates/vitashop/mails/reset_email.html:22
+#, fuzzy
+msgid "reset_password"
 msgstr "Nové heslo"
 
 #: templates/vitashop/templatetags/_cart.html:3

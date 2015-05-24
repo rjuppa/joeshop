@@ -1,4 +1,4 @@
-VITAMINERAL.INFO
-================
-Order: {{ order.id }}
-Payment confirmed. {{ amount }}
+{% trans "Your payment was confirmed." %}
+
+{% trans "payment_was_received" %}
+Vitamineral team

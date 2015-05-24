@@ -5,11 +5,14 @@
 
 {% block body %}
 
-<b>Email notification:</b>
+<b>{% trans "Email notification:" %}</b>
 <p>
-    Order: {{ order.id }}<br/>
-    Payment confirmed {{ amount }}.<br/>
+    <h3>{% trans "Your payment was confirmed." %}</h3><br/>
 </p>
+<p>
+{% trans "payment_was_confirmed" %}
+</p>
+Vitamineral team
 
 
 {% endblock %}

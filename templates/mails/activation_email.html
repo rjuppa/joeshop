@@ -1,35 +1,21 @@
-{% extends "mails/mail_layout.html" %}{% load i18n %}
-
-{% block title %}
-	      {% trans "activation_email_title" %}
-{% endblock title %}
-
+{% extends "mails/mail_base.html" %}{% load i18n %}
 
 {% block body %}
 
-<h2 style="color: #F7BD09;font-weight: 600;text-shadow: 0 1px 2px rgba(0, 0, 0, .6);">Signed up successfully</h2>
+<b>{% trans "Email notification:" %}</b>
 <p>
-    You have signed up successfully.<br/>
-    Click on activation link bellow to activate your account.<br/>
+    <h3>{% trans "Signed up successfully" %}</h3><br/>
 </p>
+<p>
+{% trans "activate_account" %}
+</p>
+
 <p>
 <a href='{{ site }}/shop/activate/{{ activation_code }}?lang={{ lang }}'>{{ site }}/shop/activate/{{ activation_code }}?lang={{ lang }}</a>
 </p>
-<hr>
-{% trans "activation_email1" %}
-<hr>
-{% trans "activation_email2" %}
 
+Vitamineral team
 
-{% endblock body %}
+{% endblock %}
 
-
-{% block buttonlink %}
-	{{ site }}/shop/{{ activation_code }}?lang={{ lang }}
-{% endblock buttonlink %}
-
-
-{% block buttontext %}
-	{% trans "activate_account" %}
-{% endblock buttontext %}
 

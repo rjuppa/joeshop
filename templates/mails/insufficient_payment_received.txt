@@ -1,5 +1,4 @@
-VITAMINERAL.INFO
-================
+{% trans "We received insufficient payment." %}
 
-Order: {{ order.id }}
-Insufficient payment received. {{ amount }}
+{% trans "insufficient_payment" %}
+Vitamineral team

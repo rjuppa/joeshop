@@ -1,4 +1,4 @@
-VITAMINERAL.INFO
-================
+{% trans "Welcome to affiliate program." %}
 
-Welcome to affiliate program.
+{% trans "affiliate_program" %}
+Vitamineral team

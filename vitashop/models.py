@@ -481,8 +481,8 @@ class PaymentHistory(OrderPayment):
 
     def send_insufficient_payment_email(self, amount):
         subject = 'VITAMINERAL.INFO - Insufficient Payment Confirmed'
-        text_content = render_to_string('../templates/mails/insufficient_payment_received.txt', dict(order=self.order, amount=amount))
-        html_content = render_to_string('../templates/mails/insufficient_payment_received.html', dict(order=self.order, amount=amount))
+        text_content = render_to_string('../templates/mails/insufficient_payment_received.txt', dict(order=self.order, amount=amount, order_price=self.order_price, currency=self.currency))
+        html_content = render_to_string('../templates/mails/insufficient_payment_received.html', dict(order=self.order, amount=amount, order_price=self.order_price, currency=self.currency))
         try:
             msg = EmailMultiAlternatives(subject, text_content,
                                          'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM,
