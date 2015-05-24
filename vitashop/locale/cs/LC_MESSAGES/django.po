@@ -933,7 +933,7 @@ msgstr "obdrželi jsme nedostatečnou platbu."
 #: templates/vitashop/mails/payment_received.html:13
 #: templates/vitashop/mails/payment_received.txt:6
 msgid "for your order no. "
-msgstr " za Vaši objednávku číslo: "
+msgstr " za vaši objednávku číslo: "
 
 #: templates/vitashop/mails/insufficient_payment_received.html:16
 #: templates/vitashop/mails/insufficient_payment_received.txt:5
@@ -952,7 +952,7 @@ msgstr "Prosím doplaťte zbývající část."
 #: templates/vitashop/mails/payment_received.html:14
 #: templates/vitashop/mails/payment_received.txt:7
 msgid "Thank you for your purchase."
-msgstr "Děkujeme za Vaši objednávku."
+msgstr "Děkujeme za vaši objednávku."
 
 #: templates/vitashop/mails/newsletter.html:8
 msgid "newsletter_unsubscribe_text"
@@ -1000,7 +1000,7 @@ msgstr "Vaše platba byla přijata."
 #: templates/vitashop/mails/payment_received.html:13
 #: templates/vitashop/mails/payment_received.txt:6
 msgid "we have received your payment"
-msgstr "obdrželi jsme vaši platbu"
+msgstr "obdrželi jsme platbu"
 
 #: templates/vitashop/mails/reset_email.html:4
 msgid "reset_password_title"
