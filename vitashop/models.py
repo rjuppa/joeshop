@@ -176,8 +176,8 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
 
         content = {'site': 'http://' + settings.SITE_NAME, 'activation_code': self.code,
                    'email_to': self.email, 'lang': self.lang}
-        text_content = render_to_string('mails/activation_email.txt', content)
-        html_content = render_to_string('mails/activation_email.html', content)
+        text_content = render_to_string('vitashop/mails/activation_email.txt', content)
+        html_content = render_to_string('vitashop/mails/activation_email.html', content)
 
         try:
             # send an email
@@ -455,8 +455,8 @@ class PaymentHistory(OrderPayment):
 
     def send_unconfirmed_payment_email(self):
         subject = 'VITAMINERAL.INFO - Payment Received'
-        text_content = render_to_string('vitashop/mails/payment_received.txt', dict(order=self.order))
-        html_content = render_to_string('vitashop/mails/payment_received.html', dict(order=self.order))
+        text_content = render_to_string('vitashop/mails/payment_received.txt', dict(order=self.order, currency=self.currency))
+        html_content = render_to_string('vitashop/mails/payment_received.html', dict(order=self.order, currency=self.currency))
         try:
             msg = EmailMultiAlternatives(subject, text_content,
                                          'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM,
@@ -468,8 +468,8 @@ class PaymentHistory(OrderPayment):
 
     def send_money_received_email(self, amount):
         subject = 'VITAMINERAL.INFO - Payment Confirmed'
-        text_content = render_to_string('vitashop/mails/payment_confirmed.txt', dict(order=self.order, amount=amount))
-        html_content = render_to_string('vitashop/mails/payment_confirmed.html', dict(order=self.order, amount=amount))
+        text_content = render_to_string('vitashop/mails/payment_confirmed.txt', dict(order=self.order, amount=amount, currency=self.currency))
+        html_content = render_to_string('vitashop/mails/payment_confirmed.html', dict(order=self.order, amount=amount, currency=self.currency))
         try:
             msg = EmailMultiAlternatives(subject, text_content,
                                          'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM,

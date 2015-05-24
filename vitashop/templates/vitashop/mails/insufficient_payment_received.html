@@ -12,7 +12,7 @@
 
 <p>
 {% trans "Hello, " %} <br>
-{% trans "we have received insufficient payment" %} {{ amount }} {% trans "for your order no. " %} {{ order.id }}. <br>
+{% trans "we have received insufficient payment" %} {{ amount }} {{ currecncy }} {% trans "for your order no. " %} {{ order.id }}. <br>
 {% trans "Total price is " %} {{ order_price }} {{ currency }} {% trans "Please adjust your payment accordingly." %} <br>
 {% trans "Thank you for your purchase." %} <br>
 
