@@ -1,8 +1,4 @@
-{% extends "mails/mail_layout.html" %}{% load i18n %}
-
-{% block title %}
-    Vitamineral.info Newsletter
-{% endblock title %}
+{% extends "vitashop/mails/mail_base.html" %}{% load i18n %}
 
 {% block content %}
 	<div style="margin:0; padding:0; padding-bottom:20px; padding-top:20px;">
@@ -13,10 +9,3 @@
   </div>
 {% endblock content %}
 
-{% block buttonlink %}
-	http://vitamineral.info?utm_source=server&utm_medium=email&utm_campaign=server-email&utm_content=odkaz_hrat-langevo
-{% endblock buttonlink %}
-
-{% block buttontext %}
-	{% trans "play_langevo" %}
-{% endblock buttontext %}

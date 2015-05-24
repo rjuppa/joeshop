@@ -1,0 +1,21 @@
+{% extends "vitashop/mails/mail_base.html" %}
+{% load url from future %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block body %}
+LANGUAGE_CODE: {{ LANGUAGE_CODE }}
+<b>{% trans "Email notification:" %}</b>
+<p>
+    <h3>{% trans "Your payment was received." %}</h3><br/>
+</p>
+<p>
+{% blocktrans with amount as amount1 and order.id as order_id %}Hello, <br>
+    we have received your payment {{ amount1 }} for your order {{ order_id }}. <br>
+    Thank you for your purchase. <br>
+{% endblocktrans %}
+</p>
+Vitamineral team
+
+{% endblock %}
+

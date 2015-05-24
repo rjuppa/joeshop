@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-24 14:29+0200\n"
+"POT-Creation-Date: 2015-05-24 21:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: cart/modifiers.py:20
+msgid "Member discount"
+msgstr ""
 
 #: forms.py:53
 msgid "A user with that email already exists."
@@ -56,9 +60,9 @@ msgid "Language"
 msgstr ""
 
 #: forms.py:162 models.py:361 models.py:422 templates/vitashop/cart.html:17
+#: templates/vitashop/checkout/overview.html:46
 #: templates/vitashop/product_detail.html:23
 #: templates/vitashop/products.html:17 templates/vitashop/profile.html:63
-#: templates/vitashop/checkout/overview.html:46
 msgid "Currency"
 msgstr ""
 
@@ -259,8 +263,8 @@ msgid "Customers"
 msgstr ""
 
 #: models.py:390 templates/vitashop/cart.html:58
-#: templates/vitashop/order_detail.html:66
 #: templates/vitashop/checkout/overview.html:105
+#: templates/vitashop/order_detail.html:66
 #: templates/vitashop/templatetags/_order.html:29
 msgid "Quantity"
 msgstr ""
@@ -282,12 +286,12 @@ msgid "Canceled"
 msgstr ""
 
 #: models.py:421 templates/vitashop/cart.html:59
-#: templates/vitashop/order_detail.html:67
-#: templates/vitashop/product_detail.html:49
-#: templates/vitashop/products.html:50
 #: templates/vitashop/checkout/methods.html:99
 #: templates/vitashop/checkout/methods.html:119
 #: templates/vitashop/checkout/overview.html:106
+#: templates/vitashop/order_detail.html:67
+#: templates/vitashop/product_detail.html:49
+#: templates/vitashop/products.html:50
 msgid "Price"
 msgstr ""
 
@@ -305,10 +309,6 @@ msgstr ""
 
 #: models.py:430 models.py:431
 msgid "Payment History"
-msgstr ""
-
-#: cart/modifiers.py:20
-msgid "Member discount"
 msgstr ""
 
 #: payment/backends/pay_on_delivery.py:11
@@ -361,8 +361,9 @@ msgstr ""
 msgid "Contact"
 msgstr ""
 
-#: templates/vitashop/base.html:81 templates/vitashop/order_detail.html:51
+#: templates/vitashop/base.html:81
 #: templates/vitashop/checkout/overview.html:90
+#: templates/vitashop/order_detail.html:51
 msgid "Shipping"
 msgstr ""
 
@@ -406,8 +407,9 @@ msgstr ""
 msgid "CalMag"
 msgstr ""
 
-#: templates/vitashop/base.html:104 templates/vitashop/order_detail.html:57
+#: templates/vitashop/base.html:104
 #: templates/vitashop/checkout/overview.html:96
+#: templates/vitashop/order_detail.html:57
 msgid "Payment"
 msgstr ""
 
@@ -423,20 +425,23 @@ msgstr ""
 msgid "Empty Shopping Cart"
 msgstr ""
 
-#: templates/vitashop/cart.html:56 templates/vitashop/order_detail.html:64
+#: templates/vitashop/cart.html:56
 #: templates/vitashop/checkout/overview.html:103
+#: templates/vitashop/order_detail.html:64
 #: templates/vitashop/templatetags/_order.html:27
 msgid "Product name"
 msgstr ""
 
-#: templates/vitashop/cart.html:57 templates/vitashop/order_detail.html:65
+#: templates/vitashop/cart.html:57
 #: templates/vitashop/checkout/overview.html:104
+#: templates/vitashop/order_detail.html:65
 #: templates/vitashop/templatetags/_order.html:28
 msgid "Unit price"
 msgstr ""
 
-#: templates/vitashop/cart.html:85 templates/vitashop/order_detail.html:89
+#: templates/vitashop/cart.html:85
 #: templates/vitashop/checkout/overview.html:128
+#: templates/vitashop/order_detail.html:89
 #: templates/vitashop/templatetags/_order.html:49
 msgid "Line Total"
 msgstr ""
@@ -497,6 +502,273 @@ msgstr ""
 #: templates/vitashop/change_pwd_done.html:12
 msgid "Go to your profile"
 msgstr ""
+
+#: templates/vitashop/checkout/methods.html:10
+#: templates/vitashop/checkout/overview.html:9
+#: templates/vitashop/checkout/selection.html:9
+msgid "Progress of your checkout"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:12
+#: templates/vitashop/checkout/overview.html:11
+#: templates/vitashop/checkout/selection.html:11
+msgid "Shopping"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:16
+#: templates/vitashop/checkout/overview.html:15
+#: templates/vitashop/checkout/selection.html:15
+msgid "Cart"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:20
+#: templates/vitashop/checkout/overview.html:19
+#: templates/vitashop/checkout/selection.html:19
+msgid "Delivery Address"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:24
+#: templates/vitashop/checkout/overview.html:23
+#: templates/vitashop/checkout/selection.html:23
+msgid "Shipping and Billing"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:28
+#: templates/vitashop/checkout/overview.html:27
+#: templates/vitashop/checkout/selection.html:27
+msgid "Summary"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:32
+#: templates/vitashop/checkout/overview.html:31
+#: templates/vitashop/checkout/selection.html:31
+msgid "Pay"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:42
+msgid "Shipping and payment methods"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:53
+msgid "Shipping Methods"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:66
+msgid "Payment Methods"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:85
+msgid "Back to Delivery Address"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:86
+msgid "Continue to Payment"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:100
+#: templates/vitashop/checkout/methods.html:120
+msgid "Period od delivery"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:101
+msgid "Delivery usually takes 1-2 working days."
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:103
+msgid "Delivery"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:104
+msgid "An email with number of package will be sent in day of expedition."
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:106
+msgid ""
+"If messenger does not reach you then package will be stored 7 days in the "
+"post office. "
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:121
+msgid ""
+"Personal pick up is available only in Plzeň. You will receive instructions "
+"where to pick up products."
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:123
+msgid "We work on"
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:124
+msgid "Posibility to pick up products in main cities."
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:129
+msgid "The bitcoin address will be shown to pay this order on next page."
+msgstr ""
+
+#: templates/vitashop/checkout/methods.html:133
+msgid "You will be redirected to Paypal payment gateway to pay this order."
+msgstr ""
+
+#: templates/vitashop/checkout/overview.html:41
+msgid "Order summary"
+msgstr ""
+
+#: templates/vitashop/checkout/overview.html:57
+#: templates/vitashop/checkout/overview.html:69
+#: templates/vitashop/order_detail.html:18
+#: templates/vitashop/order_detail.html:30
+msgid "Customer information"
+msgstr ""
+
+#: templates/vitashop/checkout/overview.html:59
+#: templates/vitashop/order_detail.html:20
+msgid "Shipping and billing address"
+msgstr ""
+
+#: templates/vitashop/checkout/overview.html:71
+#: templates/vitashop/order_detail.html:32
+msgid "Shipping address"
+msgstr ""
+
+#: templates/vitashop/checkout/overview.html:78
+#: templates/vitashop/order_detail.html:39
+msgid "Billing address"
+msgstr ""
+
+#: templates/vitashop/checkout/overview.html:139
+#: templates/vitashop/order_detail.html:100
+#: templates/vitashop/templatetags/_order.html:54
+msgid "Order Subtotal"
+msgstr ""
+
+#: templates/vitashop/checkout/overview.html:151
+#: templates/vitashop/order_detail.html:112
+#: templates/vitashop/templatetags/_order.html:62
+msgid "Order Total"
+msgstr ""
+
+#: templates/vitashop/checkout/overview.html:165
+msgid "Back to Shipping and Billing"
+msgstr ""
+
+#: templates/vitashop/checkout/overview.html:168
+msgid "Place the Order"
+msgstr ""
+
+#: templates/vitashop/checkout/ppcanceled.html:11
+msgid "The payment was canceled by user."
+msgstr ""
+
+#: templates/vitashop/checkout/ppcanceled.html:21
+msgid "Please continue to pay again your order at"
+msgstr ""
+
+#: templates/vitashop/checkout/ppcanceled.html:24
+#: templates/vitashop/checkout/ppfailed.html:26
+#: templates/vitashop/checkout/ppsuccess.html:19
+#: templates/vitashop/checkout/thank_you.html:19
+msgid "Back to the main page"
+msgstr ""
+
+#: templates/vitashop/checkout/ppfailed.html:11
+msgid "An error occured!"
+msgstr ""
+
+#: templates/vitashop/checkout/ppfailed.html:22
+msgid "Please continue to pay your order at"
+msgstr ""
+
+#: templates/vitashop/checkout/ppsuccess.html:11
+msgid "The payment was processed successfully."
+msgstr ""
+
+#: templates/vitashop/checkout/ppsuccess.html:14
+#, fuzzy
+msgid "Thank you for your payment!"
+msgstr ""
+"Your payment has to be verified by 3 confirmations within 6 hours.<br /> "
+"Otherwise, your order will be cancelled automatically.<br /> In any case, "
+"we'll inform you by email."
+
+#: templates/vitashop/checkout/selection.html:40
+msgid "Fill in your address"
+msgstr ""
+
+#: templates/vitashop/checkout/selection.html:51
+msgid "Your shipping address"
+msgstr ""
+
+#: templates/vitashop/checkout/selection.html:60
+msgid "Your billing address"
+msgstr ""
+
+#: templates/vitashop/checkout/selection.html:71
+msgid "Use different billing address"
+msgstr ""
+
+#: templates/vitashop/checkout/selection.html:80
+msgid "Back to Cart"
+msgstr ""
+
+#: templates/vitashop/checkout/selection.html:81
+msgid "Continue"
+msgstr ""
+
+#: templates/vitashop/checkout/thank_you.html:7
+msgid "Thank you for your order!"
+msgstr ""
+
+#: templates/vitashop/checkout/thank_you.html:8
+msgid "Your order has been placed"
+msgstr ""
+
+#: templates/vitashop/checkout/thank_you.html:15
+#, fuzzy
+msgid "Please continue to pay for your order "
+msgstr ""
+"Your payment has to be verified by 3 confirmations within 6 hours.<br /> "
+"Otherwise, your order will be cancelled automatically.<br /> In any case, "
+"we'll inform you by email."
+
+#: templates/vitashop/checkout/thank_you.html:15
+msgid " with "
+msgstr ""
+
+#: templates/vitashop/checkout/thank_you.html:23
+msgid "Payment instructions"
+msgstr ""
+
+#: templates/vitashop/checkout/thank_you.html:25
+msgid "Price is "
+msgstr ""
+
+#: templates/vitashop/checkout/thank_you.html:26
+msgid "Please pay "
+msgstr ""
+
+#: templates/vitashop/checkout/thank_you.html:27
+msgid "Bitcoin exchange rate: "
+msgstr ""
+
+#: templates/vitashop/checkout/thank_you.html:27
+msgid "from"
+msgstr ""
+
+#: templates/vitashop/checkout/thank_you.html:28
+msgid "to wallet address:"
+msgstr ""
+
+#: templates/vitashop/checkout/thank_you.html:32
+msgid "Your payment has to be verified..."
+msgstr ""
+
+#: templates/vitashop/checkout/thank_you.html:36
+msgid "Thank you for your order"
+msgstr ""
+"Your payment has to be verified by 3 confirmations within 6 hours.<br /> "
+"Otherwise, your order will be cancelled automatically.<br /> In any case, "
+"we'll inform you by email."
 
 #: templates/vitashop/error.html:13
 msgid "Continue shopping"
@@ -586,42 +858,127 @@ msgstr ""
 msgid "register a new user"
 msgstr ""
 
+#: templates/vitashop/mails/activation_email.html:5
+#: templates/vitashop/mails/affiliate_program.html:8
+#: templates/vitashop/mails/insufficient_payment_received.html:8
+#: templates/vitashop/mails/order_shipped.html:8
+#: templates/vitashop/mails/payment_confirmed.html:8
+#: templates/vitashop/mails/payment_received.html:8
+msgid "Email notification:"
+msgstr ""
+
+#: templates/vitashop/mails/activation_email.html:7
+#: templates/vitashop/mails/activation_email.txt:1
+#: templates/vitashop/register_success.html:9
+msgid "Signed up successfully"
+msgstr ""
+
+#: templates/vitashop/mails/activation_email.html:10
+#: templates/vitashop/mails/activation_email.txt:3
+msgid "activate_account"
+msgstr ""
+
+#: templates/vitashop/mails/affiliate_program.html:10
+#: templates/vitashop/mails/affiliate_program.txt:1
+#, fuzzy
+msgid "Welcome to affiliate program."
+msgstr "Dear customer,<br/>we have a special offer for you.<br/>"
+
+#: templates/vitashop/mails/affiliate_program.html:13
+#: templates/vitashop/mails/affiliate_program.txt:3
+msgid "affiliate_program"
+msgstr "Dear customer,<br/>we have a special offer for you.<br/>"
+
+#: templates/vitashop/mails/insufficient_payment_received.html:10
+#: templates/vitashop/mails/insufficient_payment_received.txt:1
+#, fuzzy
+msgid "We received insufficient payment."
+msgstr ""
+"Hello,<br> we have received insufficient payment {{ amount }} for your order "
+"{{ order.id }}. <br>Total price is {{ order_price }} {{ currency }}. Please "
+"adjust your payment accordingly.<br>Thank you for your purchase. <br>"
+
+#: templates/vitashop/mails/insufficient_payment_received.html:13
+#: templates/vitashop/mails/insufficient_payment_received.txt:3
+msgid "insufficient_payment"
+msgstr ""
+"Hello,<br> we have received insufficient payment {{ amount }} for your order "
+"{{ order.id }}. <br>Total price is {{ order_price }} {{ currency }}. Please "
+"adjust your payment accordingly.<br>Thank you for your purchase. <br>"
+
+#: templates/vitashop/mails/newsletter.html:8
+msgid "newsletter_unsubscribe_text"
+msgstr ""
+
+#: templates/vitashop/mails/newsletter.html:8
+msgid "newsletter_unsubscribe_link"
+msgstr ""
+
+#: templates/vitashop/mails/order_shipped.html:10
+#: templates/vitashop/mails/order_shipped.txt:1
+#, fuzzy
+msgid "Your order has been shipped."
+msgstr ""
+"Hello, <br>Your order {{ order.id }} has been shipped. <br>You can expect "
+"delivery within few days. <br>"
+
+#: templates/vitashop/mails/order_shipped.html:13
+#: templates/vitashop/mails/order_shipped.txt:3
+msgid "order_was_shipped"
+msgstr ""
+"Hello, <br>Your order {{ order.id }} has been shipped. <br>You can expect "
+"delivery within few days. <br>"
+
+#: templates/vitashop/mails/payment_confirmed.html:10
+#: templates/vitashop/mails/payment_confirmed.txt:1
+#, fuzzy
+msgid "Your payment was confirmed."
+msgstr ""
+"Hello, <br>we have received confirmation of your payment {{ amount }} for "
+"your order {{ order.id }}. <br>Thank you for your purchase. <br>"
+
+#: templates/vitashop/mails/payment_confirmed.html:13
+msgid "payment_was_confirmed"
+msgstr ""
+"Hello, <br>we have received confirmation of your payment {{ amount }} for "
+"your order {{ order.id }}. <br>Thank you for your purchase. <br>"
+
+#: templates/vitashop/mails/payment_confirmed.txt:3
+msgid "payment_was_received"
+msgstr ""
+"Hello, <br>we have received your payment {{ amount }} for your order "
+"{{ order.id }}. <br>Thank you for your purchase. <br>"
+
+#: templates/vitashop/mails/payment_received.html:10
+#, fuzzy
+msgid "Your payment was received."
+msgstr ""
+"Hello, <br>we have received your payment {{ amount }} for your order "
+"{{ order.id }}. <br>Thank you for your purchase. <br>"
+
+#: templates/vitashop/mails/payment_received.html:13
+#, python-format
+msgid ""
+"Hello, <br>\n"
+"    we have received your payment %(amount1)s for your order %(order_id)s. "
+"<br>\n"
+"    Thank you for your purchase. <br>\n"
+msgstr ""
+
+#: templates/vitashop/mails/reset_email.html:4
+msgid "reset_password_title"
+msgstr ""
+
+#: templates/vitashop/mails/reset_email.html:6
+msgid "reset_password_email1"
+msgstr ""
+
+#: templates/vitashop/mails/reset_email.html:10
+msgid "reset_password_email2"
+msgstr ""
+
 #: templates/vitashop/order_detail.html:9
 msgid "Order"
-msgstr ""
-
-#: templates/vitashop/order_detail.html:18
-#: templates/vitashop/order_detail.html:30
-#: templates/vitashop/checkout/overview.html:57
-#: templates/vitashop/checkout/overview.html:69
-msgid "Customer information"
-msgstr ""
-
-#: templates/vitashop/order_detail.html:20
-#: templates/vitashop/checkout/overview.html:59
-msgid "Shipping and billing address"
-msgstr ""
-
-#: templates/vitashop/order_detail.html:32
-#: templates/vitashop/checkout/overview.html:71
-msgid "Shipping address"
-msgstr ""
-
-#: templates/vitashop/order_detail.html:39
-#: templates/vitashop/checkout/overview.html:78
-msgid "Billing address"
-msgstr ""
-
-#: templates/vitashop/order_detail.html:100
-#: templates/vitashop/checkout/overview.html:139
-#: templates/vitashop/templatetags/_order.html:54
-msgid "Order Subtotal"
-msgstr ""
-
-#: templates/vitashop/order_detail.html:112
-#: templates/vitashop/checkout/overview.html:151
-#: templates/vitashop/templatetags/_order.html:62
-msgid "Order Total"
 msgstr ""
 
 #: templates/vitashop/order_list.html:5
@@ -770,11 +1127,6 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
-#: templates/vitashop/register_success.html:9
-#: templates/vitashop/mails/activation_email.html:7
-msgid "Signed up successfully"
-msgstr ""
-
 #: templates/vitashop/register_success.html:17
 msgid "You have signed up successfully."
 msgstr ""
@@ -789,357 +1141,6 @@ msgstr ""
 
 #: templates/vitashop/set_pwd.html:10
 msgid "Set Password"
-msgstr ""
-
-#: templates/vitashop/checkout/methods.html:10
-#: templates/vitashop/checkout/overview.html:9
-#: templates/vitashop/checkout/selection.html:9
-msgid "Progress of your checkout"
-msgstr ""
-
-#: templates/vitashop/checkout/methods.html:12
-#: templates/vitashop/checkout/overview.html:11
-#: templates/vitashop/checkout/selection.html:11
-msgid "Shopping"
-msgstr ""
-
-#: templates/vitashop/checkout/methods.html:16
-#: templates/vitashop/checkout/overview.html:15
-#: templates/vitashop/checkout/selection.html:15
-msgid "Cart"
-msgstr ""
-
-#: templates/vitashop/checkout/methods.html:20
-#: templates/vitashop/checkout/overview.html:19
-#: templates/vitashop/checkout/selection.html:19
-msgid "Delivery Address"
-msgstr ""
-
-#: templates/vitashop/checkout/methods.html:24
-#: templates/vitashop/checkout/overview.html:23
-#: templates/vitashop/checkout/selection.html:23
-msgid "Shipping and Billing"
-msgstr ""
-
-#: templates/vitashop/checkout/methods.html:28
-#: templates/vitashop/checkout/overview.html:27
-#: templates/vitashop/checkout/selection.html:27
-msgid "Summary"
-msgstr ""
-
-#: templates/vitashop/checkout/methods.html:32
-#: templates/vitashop/checkout/overview.html:31
-#: templates/vitashop/checkout/selection.html:31
-msgid "Pay"
-msgstr ""
-
-#: templates/vitashop/checkout/methods.html:42
-msgid "Shipping and payment methods"
-msgstr ""
-
-#: templates/vitashop/checkout/methods.html:53
-msgid "Shipping Methods"
-msgstr ""
-
-#: templates/vitashop/checkout/methods.html:66
-msgid "Payment Methods"
-msgstr ""
-
-#: templates/vitashop/checkout/methods.html:85
-msgid "Back to Delivery Address"
-msgstr ""
-
-#: templates/vitashop/checkout/methods.html:86
-msgid "Continue to Payment"
-msgstr ""
-
-#: templates/vitashop/checkout/methods.html:100
-#: templates/vitashop/checkout/methods.html:120
-msgid "Period od delivery"
-msgstr ""
-
-#: templates/vitashop/checkout/methods.html:101
-msgid "Delivery usually takes 1-2 working days."
-msgstr ""
-
-#: templates/vitashop/checkout/methods.html:103
-msgid "Delivery"
-msgstr ""
-
-#: templates/vitashop/checkout/methods.html:104
-msgid "An email with number of package will be sent in day of expedition."
-msgstr ""
-
-#: templates/vitashop/checkout/methods.html:106
-msgid ""
-"If messenger does not reach you then package will be stored 7 days in the "
-"post office. "
-msgstr ""
-
-#: templates/vitashop/checkout/methods.html:121
-msgid ""
-"Personal pick up is available only in Plzeň. You will receive instructions "
-"where to pick up products."
-msgstr ""
-
-#: templates/vitashop/checkout/methods.html:123
-msgid "We work on"
-msgstr ""
-
-#: templates/vitashop/checkout/methods.html:124
-msgid "Posibility to pick up products in main cities."
-msgstr ""
-
-#: templates/vitashop/checkout/methods.html:129
-msgid "The bitcoin address will be shown to pay this order on next page."
-msgstr ""
-
-#: templates/vitashop/checkout/methods.html:133
-msgid "You will be redirected to Paypal payment gateway to pay this order."
-msgstr ""
-
-#: templates/vitashop/checkout/overview.html:41
-msgid "Order summary"
-msgstr ""
-
-#: templates/vitashop/checkout/overview.html:165
-msgid "Back to Shipping and Billing"
-msgstr ""
-
-#: templates/vitashop/checkout/overview.html:168
-msgid "Place the Order"
-msgstr ""
-
-#: templates/vitashop/checkout/ppcanceled.html:11
-msgid "The payment was canceled by user."
-msgstr ""
-
-#: templates/vitashop/checkout/ppcanceled.html:21
-msgid "Please continue to pay again your order at"
-msgstr ""
-
-#: templates/vitashop/checkout/ppcanceled.html:24
-#: templates/vitashop/checkout/ppfailed.html:26
-#: templates/vitashop/checkout/ppsuccess.html:19
-#: templates/vitashop/checkout/thank_you.html:19
-msgid "Back to the main page"
-msgstr ""
-
-#: templates/vitashop/checkout/ppfailed.html:11
-msgid "An error occured!"
-msgstr ""
-
-#: templates/vitashop/checkout/ppfailed.html:22
-msgid "Please continue to pay your order at"
-msgstr ""
-
-#: templates/vitashop/checkout/ppsuccess.html:11
-msgid "The payment was processed successfully."
-msgstr ""
-
-#: templates/vitashop/checkout/ppsuccess.html:14
-#, fuzzy
-msgid "Thank you for your payment!"
-msgstr ""
-"Your payment has to be verified by 3 confirmations within 6 hours.<br /> "
-"Otherwise, your order will be cancelled automatically.<br /> In any case, "
-"we'll inform you by email."
-
-#: templates/vitashop/checkout/selection.html:40
-msgid "Fill in your address"
-msgstr ""
-
-#: templates/vitashop/checkout/selection.html:51
-msgid "Your shipping address"
-msgstr ""
-
-#: templates/vitashop/checkout/selection.html:60
-msgid "Your billing address"
-msgstr ""
-
-#: templates/vitashop/checkout/selection.html:71
-msgid "Use different billing address"
-msgstr ""
-
-#: templates/vitashop/checkout/selection.html:80
-msgid "Back to Cart"
-msgstr ""
-
-#: templates/vitashop/checkout/selection.html:81
-msgid "Continue"
-msgstr ""
-
-#: templates/vitashop/checkout/thank_you.html:7
-msgid "Thank you for your order!"
-msgstr ""
-
-#: templates/vitashop/checkout/thank_you.html:8
-msgid "Your order has been placed"
-msgstr ""
-
-#: templates/vitashop/checkout/thank_you.html:15
-#, fuzzy
-msgid "Please continue to pay for your order "
-msgstr ""
-"Your payment has to be verified by 3 confirmations within 6 hours.<br /> "
-"Otherwise, your order will be cancelled automatically.<br /> In any case, "
-"we'll inform you by email."
-
-#: templates/vitashop/checkout/thank_you.html:15
-msgid " with "
-msgstr ""
-
-#: templates/vitashop/checkout/thank_you.html:23
-msgid "Payment instructions"
-msgstr ""
-
-#: templates/vitashop/checkout/thank_you.html:25
-msgid "Price is "
-msgstr ""
-
-#: templates/vitashop/checkout/thank_you.html:26
-msgid "Please pay "
-msgstr ""
-
-#: templates/vitashop/checkout/thank_you.html:27
-msgid "Bitcoin exchange rate: "
-msgstr ""
-
-#: templates/vitashop/checkout/thank_you.html:27
-msgid "from"
-msgstr ""
-
-#: templates/vitashop/checkout/thank_you.html:28
-msgid "to wallet address:"
-msgstr ""
-
-#: templates/vitashop/checkout/thank_you.html:32
-msgid "Your payment has to be verified..."
-msgstr ""
-
-#: templates/vitashop/checkout/thank_you.html:36
-msgid "Thank you for your order"
-msgstr ""
-"Your payment has to be verified by 3 confirmations within 6 hours.<br /> "
-"Otherwise, your order will be cancelled automatically.<br /> In any case, "
-"we'll inform you by email."
-
-#: templates/vitashop/mails/activation_email.html:5
-#: templates/vitashop/mails/affiliate_program.html:8
-#: templates/vitashop/mails/insufficient_payment_received.html:8
-#: templates/vitashop/mails/order_shipped.html:8
-#: templates/vitashop/mails/payment_confirmed.html:8
-#: templates/vitashop/mails/payment_received.html:8
-msgid "Email notification:"
-msgstr ""
-
-#: templates/vitashop/mails/activation_email.html:10
-msgid "activate_account"
-msgstr ""
-
-#: templates/vitashop/mails/affiliate_program.html:10
-msgid "Welcome to affiliate program."
-msgstr ""
-
-#: templates/vitashop/mails/affiliate_program.html:13
-msgid "affiliate_program"
-msgstr ""
-"Dear customer,<br/>"
-"we have a special offer for you.<br/>"
-
-#: templates/vitashop/mails/insufficient_payment_received.html:10
-msgid "We received insufficient payment."
-msgstr ""
-
-#: templates/vitashop/mails/insufficient_payment_received.html:13
-msgid "insufficient_payment"
-msgstr ""
-"Hello,<br>"
-" we have received insufficient payment {{ amount }} for your order {{ order.id }}. <br>"
-"Total price is {{ order_price }} {{ currency }}. Please adjust your payment accordingly.<br>"
-"Thank you for your purchase. <br>"
-
-#: templates/vitashop/mails/newsletter.html:12
-msgid "newsletter_unsubscribe_text"
-msgstr ""
-
-#: templates/vitashop/mails/newsletter.html:12
-msgid "newsletter_unsubscribe_link"
-msgstr ""
-
-#: templates/vitashop/mails/newsletter.html:21
-#: templates/vitashop/mails/report.html:31
-msgid "play_langevo"
-msgstr ""
-
-#: templates/vitashop/mails/order_shipped.html:10
-msgid "Your order has been shipped."
-msgstr ""
-
-#: templates/vitashop/mails/order_shipped.html:13
-msgid "order_was_shipped"
-msgstr ""
-"Hello, <br>"
-"Your order {{ order.id }} has been shipped. <br>"
-"You can expect delivery within few days. <br>"
-
-#: templates/vitashop/mails/payment_confirmed.html:10
-msgid "Your payment was confirmed."
-msgstr ""
-
-#: templates/vitashop/mails/payment_confirmed.html:13
-msgid "payment_was_confirmed"
-msgstr ""
-"Hello, <br>"
-"we have received confirmation of your payment {{ amount }} for your order {{ order.id }}. <br>"
-"Thank you for your purchase. <br>"
-
-#: templates/vitashop/mails/payment_received.html:10
-msgid "Your payment was received."
-msgstr ""
-
-#: templates/vitashop/mails/payment_received.html:13
-msgid "payment_was_received"
-msgstr ""
-"Hello, <br>"
-"we have received your payment {{ amount }} for your order {{ order.id }}. <br>"
-"Thank you for your purchase. <br>"
-
-#: templates/vitashop/mails/report.html:10
-msgid "report_greetings"
-msgstr ""
-
-#: templates/vitashop/mails/report.html:13
-msgid "report_intro"
-msgstr ""
-
-#: templates/vitashop/mails/report.html:18
-msgid "report_outro"
-msgstr ""
-
-#: templates/vitashop/mails/report.html:22
-msgid "report_unsubscribe_text"
-msgstr ""
-
-#: templates/vitashop/mails/report.html:22
-msgid "report_unsubscribe_link"
-msgstr ""
-
-#: templates/vitashop/mails/reset_email.html:4
-#: templates/vitashop/mails/reset_email.html:8
-msgid "reset_password_title"
-msgstr ""
-
-#: templates/vitashop/mails/reset_email.html:10
-msgid "reset_password_email1"
-msgstr ""
-
-#: templates/vitashop/mails/reset_email.html:14
-msgid "reset_password_email2"
-msgstr ""
-
-#: templates/vitashop/mails/reset_email.html:22
-msgid "reset_password"
 msgstr ""
 
 #: templates/vitashop/templatetags/_cart.html:3

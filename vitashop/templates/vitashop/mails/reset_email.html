@@ -1,10 +1,6 @@
-{% extends "mails/mail_layout.html" %}{% load i18n %}
+{% extends "vitashop/mails/mail_base.html" %}{% load i18n %}
 
-{% block title %}
-	{% trans "reset_password_title" %}
-{% endblock title %}
-
-{% block content %}
+{% block body %}
   <h1 style="padding:0; padding-bottom:20px; border-bottom:1px solid #eae2d9; margin:0; font-size:18px; color:#000; font-weight:normal;">{% trans "reset_password_title" %}</h1>
 	
   {% trans "reset_password_email1" %}  
@@ -14,10 +10,3 @@
   {% trans "reset_password_email2" %}  
 {% endblock content %}
 
-{% block buttonlink %}
-	{{ url }}?key={{ activation_code }}&lang={{ lang }}
-{% endblock buttonlink %}
-
-{% block buttontext %}
-	{% trans "reset_password" %}
-{% endblock buttontext %}

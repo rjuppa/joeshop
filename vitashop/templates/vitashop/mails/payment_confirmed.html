@@ -1,4 +1,4 @@
-{% extends "mails/mail_base.html" %}
+{% extends "vitashop/mails/mail_base.html" %}
 {% load url from future %}
 {% load i18n %}
 
@@ -7,11 +7,12 @@
 
 <b>{% trans "Email notification:" %}</b>
 <p>
-    <h3>{% trans "Your order has been shipped." %}</h3>
+    <h3>{% trans "Your payment was confirmed." %}</h3><br/>
 </p>
 <p>
-{% trans "order_was_shipped" %}
+{% trans "payment_was_confirmed" %}
 </p>
 Vitamineral team
+
 
 {% endblock %}

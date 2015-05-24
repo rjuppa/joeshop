@@ -6,9 +6,9 @@ import requests
 import django
 from decimal import Decimal
 from datetime import datetime, timedelta
-from django.utils import timezone
-from django.core.mail import send_mail
+from django.utils import timezone, translation
 from django.conf import settings
+
 
 logger = logging.getLogger('scripts')
 
@@ -84,6 +84,14 @@ def check_orders_for_payment_confirmation():
         if ph and ph.payment_method == 'bitcoin' \
                 and (ph.status == PaymentHistory.CREATED or ph.status == PaymentHistory.UNCONFIRMED):
 
+            # set language
+            language = 'cs'     # default
+            user = MyUser.objects.get(id=order.user_id)
+            if user:
+                language = user.lang
+
+            translation.activate(language)
+
             # check bitcoins received
             confirmed_btc = get_received_by_address(ph.wallet_address, 3)
 
@@ -113,6 +121,8 @@ def check_orders_for_payment_confirmation():
                     ph.status = PaymentHistory.UNCONFIRMED
                     ph.save()
 
+            translation.deactivate()
+
 
 
 if __name__ == "__main__":
@@ -123,7 +133,7 @@ if __name__ == "__main__":
 
     from django.db import connection
     from shop.models import Order
-    from vitashop.models import PaymentHistory
+    from vitashop.models import PaymentHistory, MyUser
 
     check_orders_for_payment_confirmation()
     check_orders_for_unconfirmed_payments()
