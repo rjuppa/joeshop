@@ -46,6 +46,12 @@ def check_orders_for_unconfirmed_payments():
             # check bitcoins received
             unconfirmed_btc = get_received_by_address(ph.wallet_address, 0)
 
+            # set language
+            language = 'cs'     # default
+            user = MyUser.objects.get(id=order.user_id)
+            if user:
+                language = user.lang
+
             # UNCONFIRMED - enough money
             if unconfirmed_btc >= (ph.order_price - settings.BTC_PRICE_TOLERANCE):
                 logger.debug("UNCONFIRMED balance of %s (order %s) is %s BTC" % (ph.wallet_address, order.id, unconfirmed_btc))
@@ -69,6 +75,8 @@ def check_orders_for_unconfirmed_payments():
                 # update Order
                 order.status = Order.CANCELLED
                 order.save()
+
+            translation.deactivate()
 
 
 def check_orders_for_payment_confirmation():
