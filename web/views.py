@@ -67,6 +67,8 @@ def contact_view(request):
     ctx['is_error'] = is_error
     return render(request, 'web/contact.html', ctx)
 
+def fbtest_view(request):
+    pass
 
 
 

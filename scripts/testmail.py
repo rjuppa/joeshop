@@ -9,9 +9,9 @@ from django.template.loader import render_to_string
 from django.core.mail import EmailMultiAlternatives, EmailMessage
 
 def send_affiliate_email():
-    subject = 'VITAMINERAL.INFO - Affiliate Program'
-    text_content = render_to_string('../templates/mails/affiliate_program.html', {})
-    html_content = render_to_string('../templates/mails/affiliate_program.html', {})
+    subject = 'VITAMINERAL.INFO - payment received'
+    text_content = render_to_string('../templates/mails/payment_received.txt', {})
+    html_content = render_to_string('../templates/mails/payment_received.html', {})
     try:
         msg = EmailMultiAlternatives(subject, text_content,
                                      'VITAMINERAL.INFO <%s>' % settings.EMAIL_FROM,

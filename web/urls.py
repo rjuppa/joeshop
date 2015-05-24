@@ -15,5 +15,5 @@ urlpatterns = patterns('web.views',
     url(r'^faq/', faq_view, name='faq'),
     url(r'^affiliate/', affiliate_view, name='affiliate'),
     url(r'^thankyou/', thankyou_view, name='thankyou'),
-
+    url(r'^fbtest/', fbtest_view, name='fbtest'),
 )

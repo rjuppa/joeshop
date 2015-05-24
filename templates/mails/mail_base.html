@@ -29,40 +29,49 @@ h3 {
   </head>
   <body>
 
-          <div style="height:32px;padding:5px;background-color: #1E6B48;color: #FFFFFF;font-weight: 600; border-radius: 0; border: 0; border-bottom: 3px solid #F5B834;">
-            <div style="height:30px;padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;">
-              <div style="float: left;">
-                <a style="text-decoration:none; color: #FFFFFF; font-weight: 500; font-family: Georgia, serif;font-size: 2em;" id="brand" href="http://vitamineral.info/" target="_blank">Vitamineral .info</a>
-              </div>
-            </div>
-          </div>
+    <table style="border: 0;margin: 0; padding: 0">
+        <tr>
+            <td style="padding: 5px;margin: 0;background-color: #1E6B48;color: #FFFFFF;font-weight: 600;height:32px;border: 0; border-bottom: 3px solid #F5B834;">
+                <div style="float: left;">
+                    <a style="text-decoration:none; color: #FFFFFF; font-weight: 500; font-family: Georgia, serif;font-size: 2em;" id="brand" href="http://vitamineral.info/" target="_blank">Vitamineral .info</a>
+                </div>
+            </td>
+        </tr>
 
-          <p>&nbsp;</p>
+        <tr>
+            <td>
+                <div style="padding-right: 15px;padding-left: 15px;margin-right: auto;margin-left: auto;">
 
-    <div style="padding-right: 15px;padding-left: 15px;margin-right: auto;margin-left: auto;">
+                    {% block body %}
+                    {% endblock %}
 
-        {% block body %}
-        {% endblock %}
+                </div>
+            </td>
+        </tr>
 
-    </div>
+        <tr>
+            <td><p>&nbsp;</p></td>
+        </tr>
+        <tr>
+            <td>
+                <div style="background-color: #272015;border-top: 3px solid #F5B834;height: auto; padding: 10px; margin-top: 20px;">
+                    <div style="padding-right: 15px;padding-left: 15px;margin-right: auto;margin-left: auto;">
+                        <div style="color: white; width: 60%;">
+                            <small>&copy; 2015 vitamineral.info {% trans "All Rights Reserved." %}</small>
+                        </div>
+                        <div style="float: left;width: 20%;">
+                            &nbsp;
+                        </div>
+                        <div style="float: left;width: 20%;">
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
 
-          <p>&nbsp;</p>
 
-      <div style="clear: both;"></div>
 
-    <div style="background-color: #272015;border-top: 3px solid #F5B834;height: auto; padding: 10px; margin-top: 20px;">
-        <div style="padding-right: 15px;padding-left: 15px;margin-right: auto;margin-left: auto;">
-            <hr style="color: #474035">
-            <div style="color: white; width: 60%;">
-            <small>&copy; 2015 vitamineral.info {% trans "All Rights Reserved." %}</small>
-            </div>
-            <div style="float: left;width: 20%;">
-
-            </div>
-            <div style="float: left;width: 20%;">
-
-            </div>
-        </div>
-    </div>
  </body>
 </html>
