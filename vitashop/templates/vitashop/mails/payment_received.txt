@@ -3,7 +3,7 @@
 {% trans "Your payment was received." %}
 
 {% trans "Hello, " %}
-{% trans "we have received your payment" %} {{ amount }} {{ currecncy }} {% trans "for your order no. " %} {{ order.id }}.
+{% trans "we have received your payment" %} {{ amount }} {{ currency }} {% trans "for your order no. " %} {{ order.id }}.
 {% trans "Thank you for your purchase." %}
 
 Vitamineral team
