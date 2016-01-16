@@ -132,9 +132,9 @@ else:
             'default': {
                 'ENGINE': 'django.db.backends.postgresql_psycopg2',
                 'NAME': 'vitashop',
-                'USER': 'postgres',
-                'PASSWORD': 'postgres',
-                'HOST': '127.0.0.1',
+                'USER': 'pguser',
+                'PASSWORD': 'pguser',
+                'HOST': os.environ.get('JOESHOP_POSTGRES_1_PORT_5432_TCP_ADDR'),
                 'PORT': '',
                 'TEST_NAME': 'test_beer',
             },
